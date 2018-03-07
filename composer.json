@@ -1,0 +1,26 @@
+{
+    "name": "oxid-esales/econda-module",
+    "description": "This is the Econda module for the OXID eShop.",
+    "type": "oxideshop-module",
+    "keywords": ["oxid", "modules", "eShop"],
+    "homepage": "https://www.oxid-esales.com/en/home.html",
+    "license": [
+        "proprietary"
+    ],
+    "extra": {
+        "oxideshop": {
+            "blacklist-filter": [
+                "documentation/**/*.*"
+            ],
+            "target-directory": "oe/oeeconda"
+        }
+    },
+    "require": {
+        "php": ">=5.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "OxidEsales\\EcondaModule\\": "../../../source/modules/oe/oeeconda"
+        }
+    }
+}
