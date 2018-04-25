@@ -1,0 +1,22 @@
+<div class="row gridView">
+    <% for (ip = 0; ip < products.length; ip++) { %>
+    <div class="col-xs-12 col-sm-6 col-md-3">
+        <div class="picture text-center">
+            <a href="<%= products[ip].deeplink %>" title="<%= products[ip].name %>"><img src="<%= products[ip].iconurl %>" alt="<%= products[ip].name %>" /></a>
+        </div>
+        <div class="text-center">
+            <div class="title">
+                <a href="<%= products[ip].deeplink %>" title="<%= products[ip].name %>"><%= products[ip].name %></a>
+            </div>
+        </div>
+        <div class="text-center">
+            <div class="content">
+                <% if(products[ip].oldprice) { %>
+                <span class="text-muted"><del><%= products[ip].oldprice %></del></span>
+                <% } %>
+                <span class="lead text-nowrap"><%= products[ip].price %></span>
+            </div>
+        </div>
+    </div>
+    <% } %>
+</div>
