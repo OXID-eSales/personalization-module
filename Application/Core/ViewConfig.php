@@ -6,6 +6,7 @@
 
 namespace OxidEsales\EcondaModule\Application\Core;
 
+use OxidEsales\EcondaModule\Application\Factory;
 use OxidEsales\EcondaModule\Component\DemoAccountData;
 
 /**
@@ -19,6 +20,11 @@ class ViewConfig extends ViewConfig_parent
             return DemoAccountData::getAccountId();
         }
         return $this->getConfig()->getConfigParam('sOeEcondaAccountId');
+    }
+
+    public function oeEcondaShowEconda()
+    {
+        return $this->getConfig()->getConfigParam('blOeEcondaEnableWidgets');
     }
 
     public function oeEcondaGetListPageWidgetId()

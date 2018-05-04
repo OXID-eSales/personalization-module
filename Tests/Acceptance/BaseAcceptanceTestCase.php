@@ -52,4 +52,15 @@ abstract class BaseAcceptanceTestCase extends \OxidEsales\TestingLibrary\Accepta
             $this->waitForTextDisappear('%LOGIN%');
         }
     }
+
+    protected function enableWidgets()
+    {
+        $this->callShopSC('oxConfig', null, null, [
+            'blOeEcondaEnableWidgets' => [
+                'type' => 'bool',
+                'value' => true,
+                'module' => 'module:oeeconda'
+            ]
+        ]);
+    }
 }

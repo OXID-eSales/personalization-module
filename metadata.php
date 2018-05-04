@@ -30,9 +30,17 @@ $aModule = array(
         \OxidEsales\Eshop\Application\Component\Widget\ArticleDetails::class => \OxidEsales\EcondaModule\Application\Component\Widget\ArticleDetails::class,
         \OxidEsales\Eshop\Application\Controller\ThankYouController::class => \OxidEsales\EcondaModule\Application\Controller\ThankYouController::class,
     ],
-    'controllers' => [],
-    'events' => [],
-    'templates' => [],
+    'controllers' => [
+        'oeecondaadmin' => \OxidEsales\EcondaModule\Application\Controller\Admin\EcondaAdminController::class,
+        'oeecondaemosjsupload' => \OxidEsales\EcondaModule\Application\Controller\Admin\EmosJsUploadController::class,
+    ],
+    'events' => [
+        'onActivate'   => '\OxidEsales\EcondaModule\Application\Core\Events::onActivate',
+    ],
+    'templates' => [
+        // Admin Templates
+        'oeecondaadmin.tpl' => 'oe/oeeconda/Application/views/admin/tpl/oeecondaadmin.tpl'
+    ],
     'blocks' => [
         [
             'template' => 'layout/base.tpl',
@@ -65,7 +73,7 @@ $aModule = array(
             'file'=>'Application/views/blocks/widgets/checkout_thankyou_info.tpl'
         ],
     ],
-    'settings' => [
+    'settings' => [/*
         [
             'group' => 'oeeconda_account',
             'name' => 'sOeEcondaAccountId',
@@ -137,6 +145,6 @@ $aModule = array(
             'name' => 'sOeEcondaWidgetTemplateThankYouPage',
             'type' => 'str',
             'value' => 'Component/views/list.ejs.html'
-        ],
+        ],*/
     ]
 );

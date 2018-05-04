@@ -9,6 +9,7 @@ $aLang = [
 
     'SHOP_MODULE_GROUP_oeeconda_account' => 'Econda account',
     'SHOP_MODULE_sOeEcondaAccountId' => 'Account Id',
+    'SHOP_MODULE_blOeEcondaEnableWidgets' => 'Enable Econda widgets',
     'SHOP_MODULE_blOeEcondaUseDemoAccount' => 'Use Econda demo account',
 
     'SHOP_MODULE_GROUP_oeeconda_start_page_widgets' => 'Start page widgets',
@@ -28,4 +29,6 @@ $aLang = [
     'SHOP_MODULE_GROUP_oeeconda_thank_you_page_widgets' => 'Thank you page widget',
     'SHOP_MODULE_sOeEcondaWidgetIdThankYouPage'=> 'Widget Id',
     'SHOP_MODULE_sOeEcondaWidgetTemplateThankYouPage' => 'Widget template',
+
+    'SHOP_MODULE_blOeEcondaEnableTracking' => 'Enable Econda tracking'
 ];

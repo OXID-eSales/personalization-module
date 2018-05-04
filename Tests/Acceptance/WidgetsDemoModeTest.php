@@ -14,6 +14,7 @@ class WidgetsDemoModeTest extends BaseAcceptanceTestCase
     {
         parent::setUp();
         $this->activateDemoMode();
+        $this->enableWidgets();
     }
 
     public function testWidgetsArePresentOnStartPage()

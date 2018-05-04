@@ -8,44 +8,38 @@ namespace OxidEsales\EcondaModule\Tests\Acceptance;
 
 use OxidEsales\TestingLibrary\TestConfig;
 
-class WidgetsTest extends BaseAcceptanceTestCase
+class WidgetsDontShowTest extends BaseAcceptanceTestCase
 {
     public function setUp()
     {
         parent::setUp();
-        $this->startMinkSession('goutte');
-        $this->enableWidgets();
+        $this->openShop();
+        $this->activateDemoMode();
     }
 
-    public function testWidgetsArePresentOnStartPage()
+    public function testWidgetsAreNotPresentOnStartPage()
     {
-        $this->openShop();
-        $this->assertElementPresent(static::BARGAIN_ARTICLES_WIDGET_ID);
-        $this->assertElementPresent(static::TOP_ARTICLES_WIDGET_ID);
+        $this->assertElementNotPresent(static::BARGAIN_ARTICLES_WIDGET_ID);
+        $this->assertElementNotPresent(static::TOP_ARTICLES_WIDGET_ID);
     }
 
-    public function testWidgetIsPresentOnListPage()
+    public function testWidgetIsNotPresentOnListPage()
     {
-        $this->openShop();
         $this->open((new TestConfig)->getShopUrl() . 'en/Test-category/');
 
-        $this->assertElementPresent(static::LIST_WIDGET_ID);
+        $this->assertElementNotPresent(static::LIST_WIDGET_ID);
     }
 
-    public function testWidgetIsPresentOnDetailsPage()
+    public function testWidgetIsNotPresentOnDetailsPage()
     {
-        $this->openShop();
         $this->open((new TestConfig)->getShopUrl() . 'en/Test-category/');
         $this->open((new TestConfig)->getShopUrl() . 'en/Test-category/Test-product.html');
 
-        $this->assertElementPresent(static::CROSS_SELLING_WIDGET_ID);
+        $this->assertElementNotPresent(static::CROSS_SELLING_WIDGET_ID);
     }
 
-    public function testWidgetIsPresentOnThankYouPage()
+    public function testWidgetIsNotPresentOnThankYouPage()
     {
-        $this->startMinkSession('selenium');
-        $this->openShop();
-
         $this->loginInFrontend("testing_account@oxid-esales.local", "useruser");
         $this->addToBasket("1000");
         $nextStep = "%CONTINUE_TO_NEXT_STEP%";
@@ -55,6 +49,6 @@ class WidgetsTest extends BaseAcceptanceTestCase
         $this->clickAndWait("//button[contains(text(), '{$nextStep}')]");
         $this->clickAndWait("//form[@id='orderConfirmAgbBottom']//button");
 
-        $this->assertElementPresent(static::THANK_YOU_INFO_WIDGET_ID);
+        $this->assertElementNotPresent(static::THANK_YOU_INFO_WIDGET_ID);
     }
 }

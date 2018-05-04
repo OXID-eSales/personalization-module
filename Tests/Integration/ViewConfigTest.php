@@ -7,7 +7,11 @@
 namespace OxidEsales\EcondaModule\Tests\Integration;
 
 use \OxidEsales\EcondaModule\Application\Core\ViewConfig;
+use OxidEsales\EcondaModule\Application\Factory;
+use OxidEsales\EcondaModule\Component\Tracking\File\FileSystem;
+use OxidEsales\EcondaModule\Component\Tracking\File\JsFileLocator;
 use \OxidEsales\Eshop\Core\Registry;
+use OxidEsales\Eshop\Core\UtilsObject;
 
 class ViewConfigTest extends \OxidEsales\TestingLibrary\UnitTestCase
 {
@@ -55,6 +59,12 @@ class ViewConfigTest extends \OxidEsales\TestingLibrary\UnitTestCase
         Registry::getConfig()->setConfigParam('sOeEcondaWidgetTemplateThankYouPage', 'testThankYouTemplate');
         $this->assertEquals('testThankYouId', $this->getViewConfig()->oeEcondaGetThankYouPageWidgetId());
         $this->assertEquals('testThankYouTemplate', $this->getViewConfig()->oeEcondaGetThankYouPageTemplate());
+    }
+
+    public function testOeEcondaShowEconda()
+    {
+        Registry::getConfig()->setConfigParam('blOeEcondaEnableWidgets', true);
+        $this->assertTrue($this->getViewConfig()->oeEcondaShowEconda());
     }
 
     /**
