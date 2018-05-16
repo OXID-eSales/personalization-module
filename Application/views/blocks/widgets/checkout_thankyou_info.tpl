@@ -12,6 +12,7 @@
                 </div>
             </div>
             <script type="text/javascript">
+                var lang_MORE_INFO = '[{oxmultilang ident="MORE_INFO"}]';
                 var widget = new econda.recengine.Widget({
                     element: '#oeEcondaThankYouInfo .inner',
                     renderer: {

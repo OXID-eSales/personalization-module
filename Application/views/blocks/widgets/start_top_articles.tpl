@@ -11,11 +11,12 @@
             </div>
 
             <div id="oeEcondaTopArticles">
-                <div class="inner">
+                <div class="inner list-container">
                     [{include file=$oViewConf->getModulePath('oeeconda','Application/views/blocks/widgets/includes/preloader.tpl')}]
                 </div>
             </div>
             <script type="text/javascript">
+                var lang_MORE_INFO = '[{oxmultilang ident="MORE_INFO"}]';
                 var widget = new econda.recengine.Widget({
                     element: '#oeEcondaTopArticles .inner',
                     renderer: {
