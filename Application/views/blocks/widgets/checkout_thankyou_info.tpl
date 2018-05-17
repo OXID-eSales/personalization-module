@@ -1,6 +1,6 @@
 [{$smarty.block.parent}]
 
-[{if $oViewConf->oeEcondaShowEconda()}]
+[{if $oViewConf->oeEcondaEnableWidgets()}]
     [{block name="oeeconda_checkout_thankyou_info"}]
         <div class="boxwrapper">
             <div class="page-header">

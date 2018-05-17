@@ -1,6 +1,6 @@
 [{$smarty.block.parent}]
 
-[{if $oViewConf->oeEcondaShowEconda()}]
+[{if $oViewConf->oeEcondaEnableWidgets()}]
     [{block name="oeeconda_details_relatedproducts_crossselling"}]
         [{capture append="oxidBlock_productbar"}]
             <div class="boxwrapper">

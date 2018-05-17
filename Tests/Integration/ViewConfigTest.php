@@ -61,10 +61,10 @@ class ViewConfigTest extends \OxidEsales\TestingLibrary\UnitTestCase
         $this->assertEquals('testThankYouTemplate', $this->getViewConfig()->oeEcondaGetThankYouPageTemplate());
     }
 
-    public function testOeEcondaShowEconda()
+    public function testoeEcondaEnableWidgets()
     {
         Registry::getConfig()->setConfigParam('blOeEcondaEnableWidgets', true);
-        $this->assertTrue($this->getViewConfig()->oeEcondaShowEconda());
+        $this->assertTrue($this->getViewConfig()->oeEcondaEnableWidgets());
     }
 
     /**

@@ -1,6 +1,6 @@
 [{$smarty.block.parent}]
 
-[{if $oViewConf->oeEcondaShowEconda()}]
+[{if $oViewConf->oeEcondaEnableWidgets()}]
     [{block name="oeeconda_page_list_listhead"}]
         <div class="boxwrapper">
             <div class="page-header">

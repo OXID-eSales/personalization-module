@@ -22,7 +22,7 @@ class ViewConfig extends ViewConfig_parent
         return $this->getConfig()->getConfigParam('sOeEcondaAccountId');
     }
 
-    public function oeEcondaShowEconda()
+    public function oeEcondaEnableWidgets()
     {
         return $this->getConfig()->getConfigParam('blOeEcondaEnableWidgets');
     }
