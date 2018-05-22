@@ -75,7 +75,9 @@ SET
   `OXLONGDESC_1` = '<p>Category 0 long desc</p>',
   `OXVAT` = NULL,
   `OXSKIPDISCOUNTS` = 0,
-  `OXSHOWSUFFIX` = 1;
+  `OXSHOWSUFFIX` = 1,
+  `OXLONGDESC_2` = 'any data',
+  `OXLONGDESC_3` = 'any data';
 
 REPLACE INTO `oxobject2category`
 SET

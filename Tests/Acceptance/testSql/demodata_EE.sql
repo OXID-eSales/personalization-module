@@ -52,7 +52,8 @@ SET
   `OXTITLE_1` = 'Test product',
   `OXSHORTDESC_1` = 'Test product short desc',
   `OXSUBCLASS` = 'oxarticle',
-  `OXVPE` = 1;
+  `OXVPE` = 1,
+  `OXORDERINFO` = 'any data';
 
 REPLACE INTO `oxarticles2shop`
 SET
@@ -83,7 +84,9 @@ SET
   `OXLONGDESC_1` = '<p>Category 0 long desc</p>',
   `OXVAT` = NULL,
   `OXSKIPDISCOUNTS` = 0,
-  `OXSHOWSUFFIX` = 1;
+  `OXSHOWSUFFIX` = 1,
+  `OXLONGDESC_2` = 'any data',
+  `OXLONGDESC_3` = 'any data';
 
 
 REPLACE INTO `oxcategories2shop`
