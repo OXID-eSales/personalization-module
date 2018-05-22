@@ -12,7 +12,7 @@
             "blacklist-filter": [
                 "documentation/**/*.*"
             ],
-            "target-directory": "oe/oeeconda"
+            "target-directory": "oe/econda"
         }
     },
     "require": {
@@ -23,7 +23,7 @@
     },
     "autoload": {
         "psr-4": {
-            "OxidEsales\\EcondaModule\\": "../../../source/modules/oe/oeeconda"
+            "OxidEsales\\EcondaModule\\": "../../../source/modules/oe/econda"
         }
     }
 }

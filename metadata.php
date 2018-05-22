@@ -39,7 +39,7 @@ $aModule = array(
     ],
     'templates' => [
         // Admin Templates
-        'oeecondaadmin.tpl' => 'oe/oeeconda/Application/views/admin/tpl/oeecondaadmin.tpl'
+        'oeecondaadmin.tpl' => 'oe/econda/Application/views/admin/tpl/oeecondaadmin.tpl'
     ],
     'blocks' => [
         [
