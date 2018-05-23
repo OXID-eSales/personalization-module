@@ -91,4 +91,9 @@ class ViewConfig extends ViewConfig_parent
     {
         return $this->getConfig()->getConfigParam('sOeEcondaWidgetTemplateStartPageTopArticles');
     }
+
+    public function oeEcondaGetExportPath()
+    {
+        return $this->getConfig()->getConfigParam('sOeEcondaExportPath');
+    }
 }

@@ -6,17 +6,17 @@
 
 namespace OxidEsales\EcondaModule\Tests\Integration;
 
-use OxidEsales\EcondaModule\Application\Controller\Admin\EcondaAdminController;
+use OxidEsales\EcondaModule\Application\Feed\GenerateCSVExportsMain;
 use OxidEsales\EcondaModule\Application\Factory;
 use OxidEsales\EcondaModule\Component\Tracking\File\FileSystem;
 
-class EcondaAdminControllerTest extends \OxidEsales\TestingLibrary\UnitTestCase
+class GenerateCSVExportsMainTest extends \OxidEsales\TestingLibrary\UnitTestCase
 {
     public function testGetTrackingScriptMessageIfEnabledWhenFileIsPresent()
     {
         $jsFileLocatorStub = $this->getFileSystemStub(true);
 
-        $controller = $this->getEcondaAdminController($jsFileLocatorStub);
+        $controller = $this->getGenerateCSVExportsMain($jsFileLocatorStub);
         $this->assertNotEmpty($controller->getTrackingScriptMessageIfEnabled());
     }
 
@@ -24,7 +24,7 @@ class EcondaAdminControllerTest extends \OxidEsales\TestingLibrary\UnitTestCase
     {
         $jsFileLocatorStub = $this->getFileSystemStub(false);
 
-        $controller = $this->getEcondaAdminController($jsFileLocatorStub);
+        $controller = $this->getGenerateCSVExportsMain($jsFileLocatorStub);
         $this->assertEmpty($controller->getTrackingScriptMessageIfEnabled());
     }
 
@@ -32,7 +32,7 @@ class EcondaAdminControllerTest extends \OxidEsales\TestingLibrary\UnitTestCase
     {
         $jsFileLocatorStub = $this->getFileSystemStub(true);
 
-        $controller = $this->getEcondaAdminController($jsFileLocatorStub);
+        $controller = $this->getGenerateCSVExportsMain($jsFileLocatorStub);
         $this->assertEmpty($controller->getTrackingScriptMessageIfDisabled());
     }
 
@@ -40,21 +40,21 @@ class EcondaAdminControllerTest extends \OxidEsales\TestingLibrary\UnitTestCase
     {
         $jsFileLocatorStub = $this->getFileSystemStub(false);
 
-        $controller = $this->getEcondaAdminController($jsFileLocatorStub);
+        $controller = $this->getGenerateCSVExportsMain($jsFileLocatorStub);
         $this->assertNotEmpty($controller->getTrackingScriptMessageIfDisabled());
     }
 
     /**
      * @param FileSystem $fileSystem
-     * @return EcondaAdminController
+     * @return GenerateCSVExportsMain
      */
-    protected function getEcondaAdminController($fileSystem)
+    protected function getGenerateCSVExportsMain($fileSystem)
     {
         $factory = $this->getMockBuilder(Factory::class)
             ->setMethods(['getFileSystem'])
             ->getMock();
         $factory->method('getFileSystem')->willReturn($fileSystem);
-        $controller = oxNew(EcondaAdminController::class, $factory);
+        $controller = oxNew(GenerateCSVExportsMain::class, $factory);
 
         return $controller;
     }

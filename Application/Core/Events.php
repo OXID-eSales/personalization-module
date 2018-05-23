@@ -127,6 +127,12 @@ class Events
                 'type' => 'bool',
                 'value' => ''
             ],
+            [
+                'group' => 'oeeconda_export',
+                'name' => 'sOeEcondaExportPath',
+                'type' => 'str',
+                'value' => 'export/oeeconda'
+            ],
         ];
     }
 }

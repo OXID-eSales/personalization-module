@@ -11,13 +11,23 @@ use \OxidEsales\EcondaModule\Application\Core\Events;
 
 class EventsTest extends \OxidEsales\TestingLibrary\UnitTestCase
 {
-    public function testDoesSetDefaultShowEcondaConfigurationOnActivate()
+    public function testDoesSetDefaultEnableWidgetsConfigurationOnActivate()
     {
         Events::onActivate();
 
         $this->assertEquals(
             false,
             Registry::getConfig()->getConfigParam('blOeEcondaEnableWidgets')
+        );
+    }
+
+    public function testDoesSetDefaultExportPathConfigurationOnActivate()
+    {
+        Events::onActivate();
+
+        $this->assertEquals(
+            'export/oeeconda',
+            Registry::getConfig()->getConfigParam('sOeEcondaExportPath')
         );
     }
 

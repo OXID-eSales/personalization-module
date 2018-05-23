@@ -2,7 +2,7 @@
 
 <form action="[{$oViewConf->getSelfLink()}]" method="post">
     [{$oViewConf->getHiddenSid()}]
-    <input type="hidden" name="cl" value="oeecondaadmin">
+    <input type="hidden" name="cl" value="[{$sClassMain}]">
     <input type="hidden" name="fnc" value="save">
     <h3>[{oxmultilang ident="SHOP_MODULE_GROUP_oeeconda_account"}]</h3>
     <div>
@@ -64,12 +64,48 @@
         <input type=text  class="txt" style="width: 250px;" name="confstrs[sOeEcondaWidgetTemplateThankYouPage]" value="[{$sOeEcondaWidgetTemplateThankYouPage}]">
         [{oxmultilang ident="SHOP_MODULE_sOeEcondaWidgetTemplateThankYouPage"}]
     </div>
+    <h3>[{oxmultilang ident="SHOP_MODULE_GROUP_oeeconda_export"}]</h3>
+    <div>
+        <input type=text  class="txt" style="width: 250px;" name="confstrs[sOeEcondaExportPath]" value="[{$sOeEcondaExportPath}]">
+        [{oxmultilang ident="SHOP_MODULE_sOeEcondaExportPath"}]
+    </div>
     <br/>
     <div>
-        <input type="submit" class="confinput" name="save" value="[{oxmultilang ident="GENERAL_SAVE"}]">
+        <input type="submit" name="save" value="[{oxmultilang ident="GENERAL_SAVE"}]">
     </div>
 </form>
+
+<form action="[{$oViewConf->getSelfLink()}]" method="post" target="dynexport_do">
+    [{$oViewConf->getHiddenSid()}]
+    <input type="hidden" name="cl" value="[{$sClassDo}]">
+    <input type="hidden" name="fnc" value="start">
+    <h3>[{oxmultilang ident="OEECONDA_EXPORT"}]</h3>
+    <div>
+        <div>
+            <div>[{oxmultilang ident="GENERAL_CATEGORYSELECT"}]</div>
+            <select name="acat[]" size="20" multiple style="width: 210px;">
+                [{foreach from=$cattree item=oCat}]
+                    <option value="[{$oCat->getId()}]">[{$oCat->oxcategories__oxtitle->value}]</option>
+                [{/foreach}]
+            </select>
+        </div>
+        <div>
+            [{oxmultilang ident="GENERAL_EXPOSTVARS"}] <input type="checkbox" name="blExportVars" value="true" checked>
+        </div>
+        <div>
+            [{oxmultilang ident="GENERAL_EXPORTMAINVARS"}] <input type="checkbox" name="blExportMainVars" value="true" checked>
+        </div>
+        <div>
+            [{oxmultilang ident="GENERAL_EXPORTMINSTOCK"}] <input type="text" size="10" maxlength="10" name="sExportMinStock" value="1">
+        </div>
+    </div>
+    <div>
+        <input type="submit" value="[{oxmultilang ident="OEECONDA_EXPORT"}]">
+    </div>
+</form>
+
 <hr>
+
 <h3>[{oxmultilang ident="OEECONDA_TRACKING_SECTION_TITLE"}]</h3>
 
 <div class="messagebox">
@@ -91,7 +127,7 @@
 <br>
 <form action="[{$oViewConf->getSelfLink()}]" method="post">
     [{$oViewConf->getHiddenSid()}]
-    <input type="hidden" name="cl" value="oeecondaadmin">
+    <input type="hidden" name="cl" value="[{$sClassMain}]">
     <input type="hidden" name="fnc" value="save">
     <div>
         <input type=hidden name="confbools[blOeEcondaTracking]" value=false>

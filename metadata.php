@@ -35,13 +35,15 @@ $aModule = array(
     'controllers' => [
         'oeecondaadmin' => \OxidEsales\EcondaModule\Application\Controller\Admin\EcondaAdminController::class,
         'oeecondaemosjsupload' => \OxidEsales\EcondaModule\Application\Controller\Admin\EmosJsUploadController::class,
+        'oeecondaexport' => \OxidEsales\EcondaModule\Application\Feed\GenerateCSVExports::class,
     ],
     'events' => [
         'onActivate'   => '\OxidEsales\EcondaModule\Application\Core\Events::onActivate',
     ],
     'templates' => [
         // Admin Templates
-        'oeecondaadmin.tpl' => 'oe/econda/Application/views/admin/tpl/oeecondaadmin.tpl'
+        'oeecondaadmin.tpl' => 'oe/econda/Application/views/admin/tpl/oeecondaadmin.tpl',
+        'oeecondaexportresult.tpl' => 'oe/econda/Application/views/admin/tpl/oeecondaexportresult.tpl'
     ],
     'blocks' => [
         [
