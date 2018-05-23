@@ -50,7 +50,10 @@ SET
   `OXVARMINPRICE` = 50,
   `OXTITLE_1` = 'Test product',
   `OXSHORTDESC_1` = 'Test product short desc',
-  `OXSUBCLASS` = 'oxarticle';
+  `OXSUBCLASS` = 'oxarticle',
+  `OXACTIVEFROM` = '2008-02-04 17:07:29',
+  `OXACTIVETO` = '2600-02-04 17:07:29',
+  `OXDELIVERY` = '2008-02-04';
 
 # Add categories demo data.
 REPLACE INTO `oxcategories`

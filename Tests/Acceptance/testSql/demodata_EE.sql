@@ -53,7 +53,10 @@ SET
   `OXSHORTDESC_1` = 'Test product short desc',
   `OXSUBCLASS` = 'oxarticle',
   `OXVPE` = 1,
-  `OXORDERINFO` = 'any data';
+  `OXORDERINFO` = 'any data',
+  `OXACTIVEFROM` = '2008-02-04 17:07:29',
+  `OXACTIVETO` = '2600-02-04 17:07:29',
+  `OXDELIVERY` = '2008-02-04';
 
 REPLACE INTO `oxarticles2shop`
 SET
