@@ -25,7 +25,7 @@
                         id: '[{$oViewConf->oeEcondaGetDetailsPageWidgetId()}]',
                         context: {
                             products: new Array({
-                                id: '[{$oView->oeEcondaGetArticleId()}]'
+                                id: '[{$oView->oeEcondaGetProductNumber()}]'
                             })
                         },
                         chunkSize: 4

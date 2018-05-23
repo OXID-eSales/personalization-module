@@ -17,16 +17,17 @@
  * @param array  $params  params
  * @param Smarty &$smarty clever simulation of a method
  *
- * @deprecated v5.3 (2016-05-10); Econda will be moved to own module.
- *
  * @return string
  */
 function smarty_insert_oxid_tracker($params, &$smarty)
 {
     $config = \OxidEsales\Eshop\Core\Registry::getConfig();
     if ($config->getConfigParam('blOeEcondaTracking')) {
+        $factory = oxNew(\OxidEsales\EcondaModule\Application\Factory::class);
 
-        $output = oxNew(\OxidEsales\EcondaModule\Application\Emos\EmosAdapter::class)->getCode($params, $smarty);
+        $entity = $factory->getActivePageEntityPreparator()->prepareEntity($params, $smarty);
+        $trackingCodeGenerator = $factory->getTrackingCodeGenerator($entity, $params, $smarty);
+        $output = $trackingCodeGenerator->generateCode();
 
         // returning JS code to output
         if (strlen(trim($output))) {

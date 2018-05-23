@@ -37,6 +37,7 @@ If file was uploaded, it can be found in `out/oeeconda` directory.
 Module provides functionality which allows:
 * Add widgets
 * Provide widget for Visual CMS
+* Track visitors behaviour
 
 ### Visual CMS Widget
 

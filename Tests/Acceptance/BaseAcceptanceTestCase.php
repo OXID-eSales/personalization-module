@@ -6,6 +6,8 @@
 
 namespace OxidEsales\EcondaModule\Tests\Acceptance;
 
+use OxidEsales\Eshop\Core\Config;
+
 abstract class BaseAcceptanceTestCase extends \OxidEsales\TestingLibrary\AcceptanceTestCase
 {
     const BARGAIN_ARTICLES_WIDGET_ID = 'oeEcondaBargainArticles';
@@ -120,6 +122,17 @@ abstract class BaseAcceptanceTestCase extends \OxidEsales\TestingLibrary\Accepta
             'sOeEcondaWidgetIdStartPageTopArticles' => [
                 'type' => 'string',
                 'value' => '1',
+                'module' => 'module:oeeconda'
+            ]
+        ]);
+    }
+
+    protected function enableTracking()
+    {
+        $this->callShopSC('oxConfig', null, null, [
+            'blOeEcondaTracking' => [
+                'type' => 'bool',
+                'value' => true,
                 'module' => 'module:oeeconda'
             ]
         ]);

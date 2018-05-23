@@ -20,11 +20,18 @@ class JsFileLocator
     private $documentRootPath;
 
     /**
-     * @param $documentRootPath
+     * @var string
      */
-    public function __construct($documentRootPath)
+    private $applicationUrl;
+
+    /**
+     * @param string $documentRootPath
+     * @param string $applicationUrl
+     */
+    public function __construct($documentRootPath, $applicationUrl)
     {
         $this->documentRootPath = $documentRootPath;
+        $this->applicationUrl = $applicationUrl;
     }
 
     /**
@@ -54,5 +61,10 @@ class JsFileLocator
     public function getJsFileLocation()
     {
         return Path::join([$this->getJsDirectoryLocation(), $this->getFileName()]);
+    }
+
+    public function getJsFileUrl()
+    {
+        return $this->applicationUrl . '/' . Path::join([$this->getDirectoryName(), $this->getFileName()]);
     }
 }

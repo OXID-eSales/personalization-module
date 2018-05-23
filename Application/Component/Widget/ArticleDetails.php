@@ -23,9 +23,10 @@ class ArticleDetails extends ArticleDetails_parent
         return $activeCategoryId;
     }
 
-    public function oeEcondaGetArticleId()
+    public function oeEcondaGetProductNumber()
     {
-        $productId = $this->getProduct()->getId();
+        $product = $this->getProduct();
+        $productId = (isset($product->oxarticles__oxartnum->value) && $product->oxarticles__oxartnum->value) ? $product->oxarticles__oxartnum->value : $product->getId();
         if ($this->getConfig()->getConfigParam('blOeEcondaUseDemoAccount')) {
             $productId = DemoAccountData::getProductId();
         }

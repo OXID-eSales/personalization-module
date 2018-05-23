@@ -20,7 +20,7 @@ class ArticleDetailsDemoModeTest extends \OxidEsales\TestingLibrary\UnitTestCase
         Registry::getConfig()->setConfigParam('blOeEcondaUseDemoAccount', '1');
     }
 
-    public function testOeEcondaGetProductId()
+    public function testOeEcondaGetProductNumber()
     {
         $article = oxNew(Article::class);
         $article->setId('__testId');
@@ -28,7 +28,7 @@ class ArticleDetailsDemoModeTest extends \OxidEsales\TestingLibrary\UnitTestCase
         $articleDetails = oxNew(ArticleDetails::class);
         $articleDetails->setViewProduct($article);
 
-        $this->assertEquals(DemoAccountData::getProductId(), $articleDetails->oeEcondaGetArticleId());
+        $this->assertEquals(DemoAccountData::getProductId(), $articleDetails->oeEcondaGetProductNumber());
     }
 
     public function testOeEcondaGetCategoryId()
