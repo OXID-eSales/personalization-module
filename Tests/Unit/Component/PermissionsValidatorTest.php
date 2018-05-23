@@ -7,7 +7,7 @@
 namespace OxidEsales\EcondaModule\Tests\Unit\Component;
 
 use FileUpload\File;
-use OxidEsales\EcondaModule\Component\Tracking\File\PermissionsValidator;
+use OxidEsales\EcondaModule\Component\Tracking\File\Validator\PermissionsValidator;
 
 class PermissionsValidatorTest extends \OxidEsales\TestingLibrary\UnitTestCase
 {

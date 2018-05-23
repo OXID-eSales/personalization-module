@@ -6,6 +6,10 @@
 
 namespace OxidEsales\EcondaModule\Component\Tracking\File;
 
+use OxidEsales\EcondaModule\Component\Tracking\File\Validator\ContentValidator;
+use OxidEsales\EcondaModule\Component\Tracking\File\Validator\ExtensionValidator;
+use OxidEsales\EcondaModule\Component\Tracking\File\Validator\PermissionsValidator;
+
 class JsFileUploadFactory
 {
     private $pathToUpload;
@@ -23,17 +27,23 @@ class JsFileUploadFactory
      */
     public function getFileUploader()
     {
+        $fileForUpload = $_FILES['file_to_upload'];
+
         $pathResolver = new \FileUpload\PathResolver\Simple($this->pathToUpload);
         $filesystem = new \FileUpload\FileSystem\Simple();
         $validatorSimple = new \FileUpload\Validator\Simple('1M', ['text/plain']);
         $permissionsValidator = new PermissionsValidator($this->pathToUpload, $this->fileName);
+        $contentValidator = new ContentValidator();
+        $extensionValidator = new ExtensionValidator($fileForUpload['name']);
         $fileNameGenerator = new \FileUpload\FileNameGenerator\Custom($this->fileName);
 
-        $fileUpload = new \FileUpload\FileUpload($_FILES['file_to_upload'], $_SERVER);
+        $fileUpload = new \FileUpload\FileUpload($fileForUpload, $_SERVER);
         $fileUpload->setPathResolver($pathResolver);
         $fileUpload->setFileSystem($filesystem);
         $fileUpload->addValidator($validatorSimple);
         $fileUpload->addValidator($permissionsValidator);
+        $fileUpload->addValidator($contentValidator);
+        $fileUpload->addValidator($extensionValidator);
         $fileUpload->setFileNameGenerator($fileNameGenerator);
 
         return $fileUpload;

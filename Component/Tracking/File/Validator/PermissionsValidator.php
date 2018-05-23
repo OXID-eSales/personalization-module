@@ -4,7 +4,7 @@
  * See LICENSE file for license details.
  */
 
-namespace OxidEsales\EcondaModule\Component\Tracking\File;
+namespace OxidEsales\EcondaModule\Component\Tracking\File\Validator;
 
 use FileUpload\File;
 use FileUpload\Validator\Validator;
