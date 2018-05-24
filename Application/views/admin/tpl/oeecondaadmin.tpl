@@ -1,6 +1,7 @@
 [{include file="headitem.tpl" title="GENERAL_ADMIN_TITLE"|oxmultilangassign box="box"}]
 
 <form action="[{$oViewConf->getSelfLink()}]" method="post">
+    [{$oViewConf->getHiddenSid()}]
     <input type="hidden" name="cl" value="oeecondaadmin">
     <input type="hidden" name="fnc" value="save">
     <h3>[{oxmultilang ident="SHOP_MODULE_GROUP_oeeconda_account"}]</h3>
@@ -83,11 +84,13 @@
 </div>
 
 <form action="[{$oViewConf->getSelfLink()}]cl=oeecondaemosjsupload&fnc=upload" method="post" enctype="multipart/form-data">
+    [{$oViewConf->getHiddenSid()}]
     <input type="file" name="file_to_upload">
     <input type="submit" value="[{oxmultilang ident="OEECONDA_UPLOAD_BUTTON_TITLE"}]">
 </form>
 <br>
 <form action="[{$oViewConf->getSelfLink()}]" method="post">
+    [{$oViewConf->getHiddenSid()}]
     <input type="hidden" name="cl" value="oeecondaadmin">
     <input type="hidden" name="fnc" value="save">
     <div>
