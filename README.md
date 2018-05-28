@@ -36,7 +36,16 @@ If file was uploaded, it can be found in `out/oeeconda` directory.
 
 Module provides functionality which allows:
 * Add widgets
-* ...
+* Provide widget for Visual CMS
+
+### Visual CMS Widget
+
+A widget is provided for the Visual CMS module.
+After installation of the Econda personalization module, the widget will be available
+in the Visual CMS editor. You can find it by the name "Econda".
+To add it, just fill in the required settings for widget id and widget template.
+There is an optionally setting to limit the number of results; if it is left blank,
+no limit will be applied.
 
 ## License
 
