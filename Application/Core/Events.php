@@ -19,7 +19,7 @@ class Events
         $activeShopId = $config->getShopId();
 
         foreach (self::getConfVarsSettings() as $confVar) {
-            if (array_key_exists('value', $confVar) && !empty($confVar['value'])) {
+            if (array_key_exists('value', $confVar)) {
                 $value = $config->getConfigParam($confVar['name']);
                 if (empty($value)) {
                     $value = $confVar['value'];
@@ -120,6 +120,12 @@ class Events
                 'name' => 'sOeEcondaWidgetTemplateThankYouPage',
                 'type' => 'str',
                 'value' => 'Component/views/list.ejs.html'
+            ],
+            [
+                'group' => '',
+                'name' => 'blOeEcondaTracking',
+                'type' => 'bool',
+                'value' => ''
             ],
         ];
     }
