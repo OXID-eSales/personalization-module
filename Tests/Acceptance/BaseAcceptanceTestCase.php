@@ -29,6 +29,17 @@ abstract class BaseAcceptanceTestCase extends \OxidEsales\TestingLibrary\Accepta
         ]);
     }
 
+    protected function deactivateDemoMode()
+    {
+        $this->callShopSC('oxConfig', null, null, [
+            'blOeEcondaUseDemoAccount' => [
+                'type' => 'bool',
+                'value' => false,
+                'module' => 'module:oeeconda'
+            ]
+        ]);
+    }
+
     protected function checkIfProductExistsInWidget($widgetSelectorId, $productNumberInRow)
     {
         $this->waitForItemAppear("//div[@id='$widgetSelectorId']//div[@class='row gridView']/div[$productNumberInRow]", 3);
@@ -59,6 +70,56 @@ abstract class BaseAcceptanceTestCase extends \OxidEsales\TestingLibrary\Accepta
             'blOeEcondaEnableWidgets' => [
                 'type' => 'bool',
                 'value' => true,
+                'module' => 'module:oeeconda'
+            ]
+        ]);
+    }
+
+    protected function disableWidgets()
+    {
+        $this->callShopSC('oxConfig', null, null, [
+            'blOeEcondaEnableWidgets' => [
+                'type' => 'bool',
+                'value' => false,
+                'module' => 'module:oeeconda'
+            ]
+        ]);
+    }
+
+    protected function setWidgetsIds()
+    {
+        $this->callShopSC('oxConfig', null, null, [
+            'sOeEcondaWidgetIdThankYouPage' => [
+                'type' => 'string',
+                'value' => '1',
+                'module' => 'module:oeeconda'
+            ]
+        ]);
+        $this->callShopSC('oxConfig', null, null, [
+            'sOeEcondaWidgetIdDetailsPage' => [
+                'type' => 'string',
+                'value' => '1',
+                'module' => 'module:oeeconda'
+            ]
+        ]);
+        $this->callShopSC('oxConfig', null, null, [
+            'sOeEcondaWidgetIdListPage' => [
+                'type' => 'string',
+                'value' => '1',
+                'module' => 'module:oeeconda'
+            ]
+        ]);
+        $this->callShopSC('oxConfig', null, null, [
+            'sOeEcondaWidgetIdStartPageBargainArticles' => [
+                'type' => 'string',
+                'value' => '1',
+                'module' => 'module:oeeconda'
+            ]
+        ]);
+        $this->callShopSC('oxConfig', null, null, [
+            'sOeEcondaWidgetIdStartPageTopArticles' => [
+                'type' => 'string',
+                'value' => '1',
                 'module' => 'module:oeeconda'
             ]
         ]);

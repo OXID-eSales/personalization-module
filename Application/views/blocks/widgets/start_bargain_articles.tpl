@@ -1,6 +1,6 @@
 [{$smarty.block.parent}]
 
-[{if $oViewConf->oeEcondaEnableWidgets()}]
+[{if $oViewConf->oeEcondaEnableWidgets() && $oViewConf->oeEcondaGetStartPageBargainArticlesWidgetId()}]
     [{block name="oeeconda_start_bargain_articles"}]
         <div class="boxwrapper">
             <div class="page-header">

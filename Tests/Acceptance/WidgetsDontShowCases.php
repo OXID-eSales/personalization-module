@@ -8,15 +8,8 @@ namespace OxidEsales\EcondaModule\Tests\Acceptance;
 
 use OxidEsales\TestingLibrary\TestConfig;
 
-class WidgetsDontShowTest extends BaseAcceptanceTestCase
+trait WidgetsDontShowCases
 {
-    public function setUp()
-    {
-        parent::setUp();
-        $this->openShop();
-        $this->activateDemoMode();
-    }
-
     public function testWidgetsAreNotPresentOnStartPage()
     {
         $this->assertElementNotPresent(static::BARGAIN_ARTICLES_WIDGET_ID);

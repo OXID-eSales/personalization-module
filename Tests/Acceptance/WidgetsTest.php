@@ -15,6 +15,7 @@ class WidgetsTest extends BaseAcceptanceTestCase
         parent::setUp();
         $this->startMinkSession('goutte');
         $this->enableWidgets();
+        $this->setWidgetsIds();
     }
 
     public function testWidgetsArePresentOnStartPage()
