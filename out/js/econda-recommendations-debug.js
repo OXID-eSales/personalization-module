@@ -440,7 +440,7 @@ var econda;
       function Version() {
       }
       Version.currentVersion = function() {
-        return"3.0.10"
+        return"3.0.16"
       };
       return Version
     }();
@@ -2479,35 +2479,6 @@ var econda;
 })(econda || (econda = {}));
 var econda;
 (function(econda) {
-  var env;
-  (function(env) {
-    var LocalStorage = function(_super) {
-      __extends(LocalStorage, _super);
-      function LocalStorage() {
-        return _super !== null && _super.apply(this, arguments) || this
-      }
-      LocalStorage.prototype.storage = function() {
-        return window.localStorage
-      };
-      LocalStorage.isAvailable = function() {
-        return(new LocalStorage).isAvailable()
-      };
-      LocalStorage.setItem = function(key, data) {
-        (new LocalStorage).setItem(key, data)
-      };
-      LocalStorage.getItem = function(key) {
-        return(new LocalStorage).getItem(key)
-      };
-      LocalStorage.removeItem = function(key) {
-        (new LocalStorage).removeItem(key)
-      };
-      return LocalStorage
-    }(econda.env.AbstractStorage);
-    env.LocalStorage = LocalStorage
-  })(env = econda.env || (econda.env = {}))
-})(econda || (econda = {}));
-var econda;
-(function(econda) {
   var util;
   (function(util) {
     var Json = function() {
@@ -2695,7 +2666,7 @@ var econda;
   (function(recengine) {
     var visitor;
     (function(visitor) {
-      var LocalStorage = econda.env.LocalStorage;
+      var SessionStorage = econda.env.SessionStorage;
       var VisitorData = function(_super) {
         __extends(VisitorData, _super);
         function VisitorData(cfg) {
@@ -2817,14 +2788,14 @@ var econda;
             clearTimeout(this._triggerSaveTimeout)
           }
           var s = new econda.serialization.JsonSerializer;
-          LocalStorage.setItem(VisitorData.STORAGE_KEY, s.serialize(this))
+          SessionStorage.setItem(VisitorData.STORAGE_KEY, s.serialize(this))
         };
         VisitorData.prototype.loadFromBrowser = function() {
           if(this._triggerSaveTimeout !== null) {
             clearTimeout(this._triggerSaveTimeout)
           }
           var s = new econda.serialization.JsonSerializer;
-          var item = LocalStorage.getItem(VisitorData.STORAGE_KEY);
+          var item = SessionStorage.getItem(VisitorData.STORAGE_KEY);
           if(item) {
             s.deserialize(item, this)
           }
@@ -2981,6 +2952,9 @@ var econda;
           return true
         }
         return false
+      };
+      VisitorProfile.prototype.getIds = function() {
+        return this._persistentData.getIds()
       };
       VisitorProfile.prototype.getLoginState = function() {
         return this._persistentData.getLoginState() || VisitorProfile.LOGIN_STATE_UNKNOWN
@@ -3162,6 +3136,35 @@ var econda;
     }(econda.base.BaseClass);
     storage.Variable = Variable
   })(storage = econda.storage || (econda.storage = {}))
+})(econda || (econda = {}));
+var econda;
+(function(econda) {
+  var env;
+  (function(env) {
+    var LocalStorage = function(_super) {
+      __extends(LocalStorage, _super);
+      function LocalStorage() {
+        return _super !== null && _super.apply(this, arguments) || this
+      }
+      LocalStorage.prototype.storage = function() {
+        return window.localStorage
+      };
+      LocalStorage.isAvailable = function() {
+        return(new LocalStorage).isAvailable()
+      };
+      LocalStorage.setItem = function(key, data) {
+        (new LocalStorage).setItem(key, data)
+      };
+      LocalStorage.getItem = function(key) {
+        return(new LocalStorage).getItem(key)
+      };
+      LocalStorage.removeItem = function(key) {
+        (new LocalStorage).removeItem(key)
+      };
+      return LocalStorage
+    }(econda.env.AbstractStorage);
+    env.LocalStorage = LocalStorage
+  })(env = econda.env || (econda.env = {}))
 })(econda || (econda = {}));
 var econda;
 (function(econda) {
@@ -4012,11 +4015,11 @@ var econda;
           }
         };
         Post.prototype.init = function() {
-          var cmp = this;
           this.initWriterInstance();
           this.initXmlHttpRequestInstance();
           this.appendCallbacks();
           this._xhr.open("POST", this.getRequestUriWithParams(), true);
+          this._xhr.timeout = this._request.getTimeoutMilliseconds();
           if(this._request.isXDomainRequest() && this._request.getWithCredentials() && this._xhr instanceof XMLHttpRequest) {
             this._xhr.withCredentials = true
           }
@@ -4117,7 +4120,6 @@ var econda;
               }
             }
           }
-          this._xhr.timeout = this._request.getTimeoutMilliseconds()
         };
         Post.prototype.getRequestUriWithParams = function() {
           var uri = this._request.getUri();
@@ -6502,7 +6504,7 @@ var econda;
       }
       ThirdPartyVisitorIdPlugIn.prototype.onAfterRequest = function(requestProperties, config) {
         var _this = this;
-        if(config.isTrackThirdParty() && !config.doNotTrack() && !config.isSyncCacheId()) {
+        if(config.isTrackThirdParty() && !config.doNotTrack() && !config.isSyncCacheId() && config.VCL > 0) {
           this.requestThirdPartyVisitorId(function(thirdPartyVisitorId) {
             if(typeof thirdPartyVisitorId === "string" && thirdPartyVisitorId.length > 6) {
               VisitorId.update(thirdPartyVisitorId, {domain:config.getCookieDomain(), expires:config.getClientCookieLifetime()})
@@ -6542,5 +6544,243 @@ var econda;
       econda.tracking.PluginManager.registerPlugin(new ThirdPartyVisitorIdPlugIn)
     }
   })(tracking = econda.tracking || (econda.tracking = {}))
+})(econda || (econda = {}));
+var econda;
+(function(econda) {
+  var privacyprotection;
+  (function(privacyprotection) {
+    privacyprotection.STATE_UNKNOWN = "UNKNOWN";
+    privacyprotection.STATE_ALLOW = "ALLOW";
+    privacyprotection.STATE_DENY = "DENY";
+    var Profile = function() {
+      function Profile() {
+        this.timestamp = 0
+      }
+      return Profile
+    }();
+    privacyprotection.Profile = Profile
+  })(privacyprotection = econda.privacyprotection || (econda.privacyprotection = {}))
+})(econda || (econda = {}));
+var econda;
+(function(econda) {
+  var privacyprotection;
+  (function(privacyprotection) {
+    var ProfilePermission = function() {
+      function ProfilePermission() {
+        this.profile = null;
+        this.channels = {};
+        this.profile = new privacyprotection.Profile
+      }
+      return ProfilePermission
+    }();
+    privacyprotection.ProfilePermission = ProfilePermission
+  })(privacyprotection = econda.privacyprotection || (econda.privacyprotection = {}))
+})(econda || (econda = {}));
+var econda;
+(function(econda) {
+  var privacyprotection;
+  (function(privacyprotection) {
+    var LocalStorage = econda.env.LocalStorage;
+    var ProfilePermission = econda.privacyprotection.ProfilePermission;
+    var SessionStorage = econda.env.SessionStorage;
+    var Json = econda.util.Json;
+    var CookieStore = econda.cookie.Store;
+    var EmosPrivacy = function(_super) {
+      __extends(EmosPrivacy, _super);
+      function EmosPrivacy() {
+        return _super !== null && _super.apply(this, arguments) || this
+      }
+      EmosPrivacy.PRIVACY_PROTECTION_KEY = "econda.privacy.protection";
+      EmosPrivacy.PROFILE_STATE_KEY = "profile.state";
+      EmosPrivacy.PRIVACY_PROTECTION_UPDATED_HASH = "econda.privacy.updatehash";
+      return EmosPrivacy
+    }(econda.base.BaseClass);
+    privacyprotection.EmosPrivacy = EmosPrivacy;
+    privacyprotection.hasProfileOptIn = function() {
+      var permissions = privacyprotection.getPermissionsFromLocalStorage();
+      return permissions.profile.state === "ALLOW"
+    };
+    privacyprotection.getProfileOptInVersion = function() {
+      var permissions = privacyprotection.getPermissionsFromLocalStorage();
+      return permissions.profile.version
+    };
+    privacyprotection.hasChannelOptIn = function(channel) {
+      var permissions = privacyprotection.getPermissionsFromLocalStorage();
+      var state = permissions.channels[channel].state;
+      return state === "ALLOW"
+    };
+    privacyprotection.emptyIfNotProfileOptIn = function(value) {
+      var permission = privacyprotection.getPermissionsFromLocalStorage();
+      if(permission.profile.state === "ALLOW") {
+        return value
+      }else {
+        return""
+      }
+    };
+    privacyprotection.anonymiseIfNotProfileOptIn = function(value) {
+      var permission = privacyprotection.getPermissionsFromLocalStorage();
+      if(permission.profile.state === "ALLOW") {
+        return value
+      }else {
+        var anonymisedValue = SessionStorage.getItem("ecAnonValues." + value);
+        if(!anonymisedValue || anonymisedValue === "") {
+          anonymisedValue = "X-" + Date.now().toString(16) + Math.floor(Math.random() * 4294967296).toString(16);
+          SessionStorage.setItem("ecAnonValues." + value, anonymisedValue)
+        }
+        return anonymisedValue
+      }
+    };
+    privacyprotection.updatePrivacySettingsFromBackend = function(clientKey, endpointKey) {
+      if(!clientKey || typeof clientKey !== "string" || !endpointKey || typeof endpointKey !== "string") {
+        econda.debug.log("updatePrivacySettingsFromBackend called with incorrect input", clientKey, endpointKey);
+        return
+      }
+      if(!econda.data.visitor.getVisitorId()) {
+        return
+      }
+      var actualHash = SessionStorage.getItem(EmosPrivacy.PRIVACY_PROTECTION_UPDATED_HASH);
+      var currentIds = econda.data.visitor.getIds();
+      if(actualHash === privacyprotection._getHashCodeFor(currentIds)) {
+        return
+      }
+      privacyprotection._callProfileEndpoint(clientKey, endpointKey);
+      SessionStorage.setItem(EmosPrivacy.PRIVACY_PROTECTION_UPDATED_HASH, privacyprotection._getHashCodeFor(currentIds))
+    };
+    privacyprotection.getPermissionsFromLocalStorage = function() {
+      var permissions = new ProfilePermission;
+      if(LocalStorage.isAvailable()) {
+        var privacyProtectionData = LocalStorage.getItem(EmosPrivacy.PRIVACY_PROTECTION_KEY);
+        if(privacyProtectionData) {
+          try {
+            permissions = JSON.parse(privacyProtectionData)
+          }catch(error) {
+            console.log("Error parsing item from local storage")
+          }
+        }else {
+          permissions.profile.state = econda.privacyprotection.STATE_UNKNOWN
+        }
+      }else {
+        permissions.profile.state = econda.privacyprotection.STATE_UNKNOWN
+      }
+      return permissions
+    };
+    privacyprotection.applyAndStoreNewPrivacySettings = function(emosProps, externalPermissions) {
+      var newPermissions = privacyprotection._convertExternalPermissionsToProfilePermissions(externalPermissions);
+      var currentPermissions = privacyprotection.getPermissionsFromLocalStorage();
+      var mergedPermissions = privacyprotection._mergePermissions(currentPermissions, newPermissions);
+      LocalStorage.setItem(EmosPrivacy.PRIVACY_PROTECTION_KEY, JSON.stringify(mergedPermissions));
+      var isOptOutAction = newPermissions.profile.state == "DENY" && currentPermissions.profile.state == "ALLOW";
+      _setEmos3PrivacySettingsBasedOn(isOptOutAction ? currentPermissions : mergedPermissions);
+      if(!emosProps["arpprops"]) {
+        emosProps["arpprops"] = []
+      }
+      if(mergedPermissions.profile.state) {
+        var profilePermission = "profile/" + mergedPermissions.profile.state + "/" + mergedPermissions.profile.version + "/" + mergedPermissions.profile.source;
+        emosProps["arpprops"].push(["PERMISSION", profilePermission])
+      }
+      var channelKeys = Object.keys(mergedPermissions.channels);
+      for(var i = 0;i < channelKeys.length;i++) {
+        var channel = channelKeys[i];
+        var channelPermission = "channel/" + channel + "/" + mergedPermissions.channels[channel].state + "/" + mergedPermissions.channels[channel].version + "/" + mergedPermissions.channels[channel].source;
+        emosProps["arpprops"].push(["PERMISSION", channelPermission])
+      }
+    };
+    privacyprotection.setEmos3PrivacySettings = function() {
+      var permissions = privacyprotection.getPermissionsFromLocalStorage();
+      _setEmos3PrivacySettingsBasedOn(permissions)
+    };
+    var _setEmos3PrivacySettingsBasedOn = function(permissions) {
+      if(window["emos3"]) {
+        if(permissions.profile.state === "ALLOW") {
+          window["emos3"].VCL = 730;
+          window["emos3"].PARAM_TO_PROP_MERGE = {ecmUid:"newsuid"}
+        }else {
+          CookieStore.remove("emos_jcvid");
+          window["emos3"].VCL = 0;
+          window["emos3"].PARAM_TO_PROP_MERGE = {ecmUid:null}
+        }
+      }
+    };
+    privacyprotection._callProfileEndpoint = function(clientKey, endpointKey) {
+      var request = new econda.profileaccess.PublicEndpointRequest({accountId:clientKey, endpointKey:endpointKey, context:{appendVisitorData:true}, success:function(response) {
+        privacyprotection._endpointCallback(response)
+      }, error:function(error) {
+        econda.debug.log("Error calling profile endpoint to get permissions" + endpointKey, error)
+      }});
+      request.send()
+    };
+    privacyprotection._endpointCallback = function(response) {
+      var serverPermissions = privacyprotection._convertExternalPermissionsToProfilePermissions(response);
+      var browserPermissions = privacyprotection.getPermissionsFromLocalStorage();
+      var mergedPermissions = privacyprotection._mergePermissions(browserPermissions, serverPermissions);
+      LocalStorage.setItem(EmosPrivacy.PRIVACY_PROTECTION_KEY, JSON.stringify(mergedPermissions))
+    };
+    privacyprotection._convertExternalPermissionsToProfilePermissions = function(externalSettings) {
+      var permissionsToReturn = new ProfilePermission;
+      var responseProfile = externalSettings["permissions:profile"];
+      var parsePassedDateStringOrNow = function(responseTimestamp) {
+        return responseTimestamp ? Date.parse(responseTimestamp) : (new Date).getTime()
+      };
+      if(responseProfile) {
+        var timestamp = parsePassedDateStringOrNow(responseProfile.timestamp);
+        permissionsToReturn.profile = {state:responseProfile.state, version:responseProfile.version, source:responseProfile.source, timestamp:timestamp}
+      }
+      var responseChannels = externalSettings["permissions:channels"];
+      if(responseChannels) {
+        permissionsToReturn.channels = {};
+        var allProperties = Object.getOwnPropertyNames(responseChannels);
+        for(var i = 0;i < allProperties.length;i++) {
+          var channel = allProperties[i];
+          var timestamp = parsePassedDateStringOrNow(responseChannels[channel].timestamp);
+          permissionsToReturn.channels[channel] = {state:responseChannels[channel].state, version:responseChannels[channel].version, source:responseChannels[channel].source, timestamp:timestamp}
+        }
+      }
+      return permissionsToReturn
+    };
+    privacyprotection._mergePermissions = function(permissionsA, permissionsB) {
+      var mergedSettings = new ProfilePermission;
+      if(!permissionsB.profile.timestamp) {
+        mergedSettings.profile = permissionsA.profile
+      }else {
+        if(!permissionsA.profile.timestamp) {
+          mergedSettings.profile = permissionsB.profile
+        }else {
+          mergedSettings.profile = permissionsA.profile.timestamp > permissionsB.profile.timestamp ? permissionsA.profile : permissionsB.profile
+        }
+      }
+      mergedSettings.channels = {};
+      var permissionsAKeys = Object.keys(permissionsA.channels);
+      var permissionsBKeys = Object.keys(permissionsB.channels);
+      var allKeys = permissionsAKeys.concat(permissionsBKeys);
+      for(var i = 0;i < allKeys.length;i++) {
+        var key = allKeys[i];
+        if(!permissionsB.channels[key]) {
+          mergedSettings.channels[key] = permissionsA.channels[key]
+        }else {
+          if(!permissionsA.channels[key]) {
+            mergedSettings.channels[key] = permissionsB.channels[key]
+          }else {
+            mergedSettings.channels[key] = permissionsA.channels[key].timestamp > permissionsB.channels[key].timestamp ? permissionsA.channels[key] : permissionsB.channels[key]
+          }
+        }
+      }
+      return mergedSettings
+    };
+    privacyprotection._getHashCodeFor = function(obj) {
+      if(!obj) {
+        return
+      }
+      var objAsString = Json.stringify(obj);
+      var hash = 0;
+      var length = objAsString.length;
+      var i = 0;
+      if(length > 0) {
+        while(i < length) {
+          hash = (hash << 5) - hash + objAsString.charCodeAt(i++) | 0
+        }
+      }
+      return hash.toString()
+    }
+  })(privacyprotection = econda.privacyprotection || (econda.privacyprotection = {}))
 })(econda || (econda = {}));
 
