@@ -1,0 +1,72 @@
+#!/usr/bin/env php
+<?php
+/**
+ * Copyright © OXID eSales AG. All rights reserved.
+ * See LICENSE file for license details.
+ */
+
+$projectRoot = dirname(dirname(dirname(dirname(dirname(__FILE__)))));
+if (!file_exists($projectRoot . '/source/bootstrap.php')) {
+    $projectRoot = dirname(dirname(dirname(__FILE__)));
+}
+require_once $projectRoot . '/source/bootstrap.php';
+
+$config = getConfigurationParameters($argv);
+
+$_POST['iStart'] = $config['iStart'];
+$_POST['blExportVars'] = $config['blExportVars'];
+$_POST['blExportMainVars'] = $config['blExportMainVars'];
+$_POST['acat'] = $config['acat'];
+$_POST['sExportMinStock'] = $config['sExportMinStock'];
+
+$export = oxNew(OxidEsales\EcondaModule\Application\Feed\GenerateCSVExportsDo::class, $config['sOeEcondaExportPath']);
+
+$export->start();
+$export->run();
+
+exit(0);
+
+/**
+ * @param array $argv
+ *
+ * @return string
+ */
+function getConfigFile($argv)
+{
+    $configFile = dirname(__FILE__) . '/../config/params.php';
+    array_shift($argv);
+    if (isset($argv[0])) {
+        if ($argv[0] === '--config') {
+            $configFile = $argv[1];
+            if (!file_exists($configFile)) {
+                exit('File does not exist: ' . $configFile);
+            }
+        } else {
+            exit('Unknown command: ' . $argv[0]);
+        }
+    }
+
+    // read config && params
+    if (!file_exists($configFile)) {
+        exit('Config file is missing: ' . $configFile);
+    }
+    return $configFile;
+}
+
+/**
+ * @param array $argv
+ *
+ * @return array
+ */
+function getConfigurationParameters($argv)
+{
+    $configFile = getConfigFile($argv);
+
+    $config = include $configFile;
+
+    if (!is_array($config)) {
+        exit('Config file has wrong format.');
+    }
+
+    return $config;
+}

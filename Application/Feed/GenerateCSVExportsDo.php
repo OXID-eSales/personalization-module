@@ -62,10 +62,15 @@ class GenerateCSVExportsDo extends \OxidEsales\Eshop\Application\Controller\Admi
      */
     protected $_sThisTemplate = "oeecondaexportresult.tpl";
 
-    public function __construct()
+    /**
+     * GenerateCSVExportsDo constructor.
+     *
+     * @param string $exportPath
+     */
+    public function __construct($exportPath = null)
     {
         parent::__construct();
-        $this->sExportPath = $this->getConfig()->getConfigParam('sOeEcondaExportPath');
+        $this->sExportPath = ($exportPath) ? $exportPath : $this->getConfig()->getConfigParam('sOeEcondaExportPath');
         $this->oeEcondaPrepareExport();
     }
 
@@ -196,7 +201,7 @@ class GenerateCSVExportsDo extends \OxidEsales\Eshop\Application\Controller\Admi
             'New' => '0',
             'Stock' => $article->oxarticles__oxstock->value,
             'EAN' => $this->formatText($article->oxarticles__oxean->value),
-            'Brand' => $this->formatText($article->getManufacturer()->oxmanufacturers__oxtitle->value),
+            'Brand' => $this->formatText(($article->getManufacturer()) ? $article->getManufacturer()->oxmanufacturers__oxtitle->value : ''),
             'ProductCategory' => $this->joinArray($article->getCategoryIds())
         ]);
 

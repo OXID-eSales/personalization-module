@@ -22,6 +22,9 @@
         "symfony/filesystem": "^3.0",
         "econda/tracking": "^3.0.1"
     },
+    "bin": [
+        "bin/oe-personalization-data-feed"
+    ],
     "autoload": {
         "psr-4": {
             "OxidEsales\\EcondaModule\\": "../../../source/modules/oe/econda"
