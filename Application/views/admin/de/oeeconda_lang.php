@@ -20,5 +20,6 @@ $aLang = [
     'OEECONDA_VISUAL_EDITOR_WIDGET_ECONDA_WIDGET_ID' => 'Widget-ID',
     'OEECONDA_VISUAL_EDITOR_WIDGET_ECONDA_WIDGET_TEMPLATE' => 'Widget-Template',
     'OEECONDA_VISUAL_EDITOR_WIDGET_ECONDA_CHUNK_SIZE' => 'Ergebnis-Limitierung',
+    'OEECONDA_MESSAGE_CMS_SNIPPETS' => 'Sie müssen die CMS Snippets "oeecondaoptin", "oeecondaoptout", "oeecondaupdate" überprüfen und aktivieren, damit die Abfrage korrekt funktioniert.',
     'OEECONDA_EXPORT' => 'Export',
 ];

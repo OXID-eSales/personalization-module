@@ -30,6 +30,13 @@ $aLang = [
     'SHOP_MODULE_sOeEcondaWidgetIdThankYouPage'=> 'Widget Id',
     'SHOP_MODULE_sOeEcondaWidgetTemplateThankYouPage' => 'Widget template',
 
+    'SHOP_MODULE_blOeEcondaEnableTracking' => 'Enable Econda tracking',
+
+    'SHOP_MODULE_sOeEcondaTrackingShowNote' => 'Tracking Note',
+    'SHOP_MODULE_sOeEcondaTrackingShowNoteNo' => 'Do not show',
+    'SHOP_MODULE_sOeEcondaTrackingShowNoteOptIn' => 'Show "Allow tracking"',
+    'SHOP_MODULE_sOeEcondaTrackingShowNoteOptOut' => 'Show "Deny tracking"',
+
     'SHOP_MODULE_GROUP_oeeconda_export' => 'Export',
     'SHOP_MODULE_sOeEcondaExportPath'=> 'Export path',
 

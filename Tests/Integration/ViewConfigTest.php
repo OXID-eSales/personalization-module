@@ -65,6 +65,12 @@ class ViewConfigTest extends \OxidEsales\TestingLibrary\UnitTestCase
         $this->assertTrue($this->getViewConfig()->oeEcondaEnableWidgets());
     }
 
+    public function testShowTrackingNote()
+    {
+        Registry::getConfig()->setConfigParam('sOeEcondaTrackingShowNote', 'opt_in');
+        $this->assertEquals('opt_in', $this->getViewConfig()->oeEcondaShowTrackingNote());
+    }
+
     public function testGetExportPath()
     {
         Registry::getConfig()->setConfigParam('sOeEcondaExportPath', 'testExportPath');

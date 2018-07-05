@@ -26,6 +26,13 @@ To display products nicely it is needed to disable some of OXID eShop functional
   * In section *Enhanced Performance Settings* uncheck *Load "Customers who bought this product also purchased ..."*;
   * Click *Save*.
   
+### Privacy protection setup
+
+To comply with the privacy protection laws, the personalization module provides functionality.
+For the tracking, example texts are provided for the opt-in/opt-out notices.
+Be sure to review, update and activate them before using the tracking functionality.
+You can find the texts in "Customer Info" -> "CMS Pages", search for the idents "oeecondaoptin" and "oeecondaoptout".
+
 ### Econda tracking with OXID eShop on multiple servers
 
 In case module is being used in application on multiple servers, it is not enough just to upload `emos.js` file via

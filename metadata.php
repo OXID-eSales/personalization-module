@@ -41,6 +41,7 @@ $aModule = array(
     'templates' => [
         // Admin Templates
         'oeecondaadmin.tpl' => 'oe/econda/Application/views/admin/tpl/oeecondaadmin.tpl',
+        'oeecondacookienote.tpl' => 'oe/econda/Application/views/widget/header/cookienote.tpl',
         'oeecondaexportresult.tpl' => 'oe/econda/Application/views/admin/tpl/oeecondaexportresult.tpl'
     ],
     'blocks' => [

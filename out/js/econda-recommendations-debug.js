@@ -6671,20 +6671,33 @@ var econda;
       LocalStorage.setItem(EmosPrivacy.PRIVACY_PROTECTION_KEY, JSON.stringify(mergedPermissions));
       var isOptOutAction = newPermissions.profile.state == "DENY" && currentPermissions.profile.state == "ALLOW";
       _setEmos3PrivacySettingsBasedOn(isOptOutAction ? currentPermissions : mergedPermissions);
+      _setEmosArpProps(mergedPermissions, emosProps)
+    };
+    function _setEmosArpProps(mergedPermissions, emosProps) {
+      if(!mergedPermissions) {
+        return
+      }
       if(!emosProps["arpprops"]) {
         emosProps["arpprops"] = []
       }
-      if(mergedPermissions.profile.state) {
-        var profilePermission = "profile/" + mergedPermissions.profile.state + "/" + mergedPermissions.profile.version + "/" + mergedPermissions.profile.source;
+      if(mergedPermissions.profile) {
+        var state = mergedPermissions.profile.state ? mergedPermissions.profile.state : "";
+        var version = mergedPermissions.profile.version ? mergedPermissions.profile.version : "";
+        var source = mergedPermissions.profile.source ? mergedPermissions.profile.source : "";
+        var profilePermission = "profile/" + state + "/" + version + "/" + source;
         emosProps["arpprops"].push(["PERMISSION", profilePermission])
       }
       var channelKeys = Object.keys(mergedPermissions.channels);
       for(var i = 0;i < channelKeys.length;i++) {
         var channel = channelKeys[i];
-        var channelPermission = "channel/" + channel + "/" + mergedPermissions.channels[channel].state + "/" + mergedPermissions.channels[channel].version + "/" + mergedPermissions.channels[channel].source;
+        var state = mergedPermissions.channels[channel].state ? mergedPermissions.channels[channel].state : "";
+        var version = mergedPermissions.channels[channel].version ? mergedPermissions.channels[channel].version : "";
+        var source = mergedPermissions.channels[channel].source ? mergedPermissions.channels[channel].source : "";
+        var channelPermission = "channel/" + channel + "/" + state + "/" + version + "/" + source;
         emosProps["arpprops"].push(["PERMISSION", channelPermission])
       }
-    };
+    }
+    privacyprotection._setEmosArpProps = _setEmosArpProps;
     privacyprotection.setEmos3PrivacySettings = function() {
       var permissions = privacyprotection.getPermissionsFromLocalStorage();
       _setEmos3PrivacySettingsBasedOn(permissions)

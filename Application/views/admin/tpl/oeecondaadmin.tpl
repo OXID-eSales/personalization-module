@@ -134,6 +134,17 @@
         <input type="checkbox" name="confbools[blOeEcondaTracking]" value=true [{if ($blOeEcondaTracking)}]checked[{/if}]>
         [{oxmultilang ident="SHOP_MODULE_blOeEcondaEnableTracking"}]
     </div>
+    <h4>[{oxmultilang ident="SHOP_MODULE_sOeEcondaTrackingShowNote"}]</h4>
+    <div class="messagebox">
+        [{oxmultilang ident="OEECONDA_MESSAGE_CMS_SNIPPETS"}]
+    </div>
+    <div>
+        <select size="1" name="confstrs[sOeEcondaTrackingShowNote]">
+            <option value="no"[{if $sOeEcondaTrackingShowNote == 'no'}] selected[{/if}]>[{oxmultilang ident="SHOP_MODULE_sOeEcondaTrackingShowNoteNo"}]</option>
+            <option value="opt_in"[{if $sOeEcondaTrackingShowNote == 'opt_in'}] selected[{/if}]>[{oxmultilang ident="SHOP_MODULE_sOeEcondaTrackingShowNoteOptIn"}]</option>
+            <option value="opt_out"[{if $sOeEcondaTrackingShowNote == 'opt_out'}] selected[{/if}]>[{oxmultilang ident="SHOP_MODULE_sOeEcondaTrackingShowNoteOptOut"}]</option>
+        </select>
+    </div>
     <br/>
     <div>
         <input type="submit" value="[{oxmultilang ident="GENERAL_SAVE"}]">
