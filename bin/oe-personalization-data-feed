@@ -5,25 +5,28 @@
  * See LICENSE file for license details.
  */
 
-$projectRoot = dirname(dirname(dirname(dirname(dirname(__FILE__)))));
-if (!file_exists($projectRoot . '/source/bootstrap.php')) {
-    $projectRoot = dirname(dirname(dirname(__FILE__)));
+bootstrapShop();
+
+if (!\OxidEsales\Eshop\Core\Registry::getConfig()->getActiveView()->getViewConfig()->isModuleActive('oeeconda')) {
+    exit('Please activate the "OXID personalization powered by Econda" module before running the script.' . "\n");
 }
-require_once $projectRoot . '/source/bootstrap.php';
 
 $config = getConfigurationParameters($argv);
 
-$_POST['iStart'] = $config['iStart'];
-$_POST['blExportVars'] = $config['blExportVars'];
-$_POST['blExportMainVars'] = $config['blExportMainVars'];
-$_POST['acat'] = $config['acat'];
-$_POST['sExportMinStock'] = $config['sExportMinStock'];
+$_POST['iStart'] = 1;
+$_POST['blExportVars'] = (isset($config['exportVariants'])) ? $config['exportVariants'] : false;
+$_POST['blExportMainVars'] = (isset($config['exportVariantsParentProduct'])) ? $config['exportVariantsParentProduct'] : true;
+$_POST['acat'] = (isset($config['exportCategories'])) ? $config['exportCategories'] : [];
+$_POST['sExportMinStock'] = (isset($config['exportMinStock'])) ? $config['exportMinStock'] : 1;
+$exportPath = (isset($config['exportPath'])) ? $config['exportPath'] : null;
 
-$export = oxNew(OxidEsales\EcondaModule\Application\Feed\GenerateCSVExportsDo::class, $config['sOeEcondaExportPath']);
+$export = oxNew(OxidEsales\EcondaModule\Application\Feed\GenerateCSVExportsDo::class, $exportPath);
 
 $export->start();
 $export->run();
 
+$exportMessage = getExportMessage($export);
+print($exportMessage . "\n");
 exit(0);
 
 /**
@@ -33,22 +36,25 @@ exit(0);
  */
 function getConfigFile($argv)
 {
-    $configFile = dirname(__FILE__) . '/../config/params.php';
+    $configFile = \OxidEsales\Eshop\Core\Registry::getConfig()->getActiveView()->getViewConfig()->getModulePath('oeeconda', 'config/params.php');
     array_shift($argv);
     if (isset($argv[0])) {
         if ($argv[0] === '--config') {
-            $configFile = $argv[1];
+            $configFile = (isset($argv[1])) ? $argv[1] : '';
             if (!file_exists($configFile)) {
-                exit('File does not exist: ' . $configFile);
+                exit('File does not exist: ' . $configFile . "\n");
             }
         } else {
-            exit('Unknown command: ' . $argv[0]);
+            $message = 'Unknown command: ' . $argv[0] .
+                '. If you want to override the configuration file for the export, please, use the "--config" command' .
+                "\n";
+            exit($message);
         }
     }
 
     // read config && params
     if (!file_exists($configFile)) {
-        exit('Config file is missing: ' . $configFile);
+        exit('Config file is missing: ' . $configFile . "\n");
     }
     return $configFile;
 }
@@ -65,8 +71,65 @@ function getConfigurationParameters($argv)
     $config = include $configFile;
 
     if (!is_array($config)) {
-        exit('Config file has wrong format.');
+        exit('Config file has wrong format.'."\n");
     }
 
     return $config;
+}
+
+/**
+ * @param \OxidEsales\EcondaModule\Application\Feed\GenerateCSVExportsDo $export
+ *
+ * @return string
+ */
+function getExportMessage($export)
+{
+    $message = 'Export was not started.';
+    $viewData = $export->getViewData();
+    if (isset($viewData['iError'])) {
+        if ($viewData['iError'] == ERR_SUCCESS) {
+            $message = 'Export completed.';
+        } elseif ($viewData['iError'] == ERR_FILEIO) {
+            $message = 'Not able to write to export file!';
+        } else {
+            $message = 'Unbekannter Fehler!';
+        }
+    }
+    return $message;
+}
+
+/**
+ * Try to call eShop bootstrap.php file
+ */
+function bootstrapShop()
+{
+    $bootstrapFileName = getenv('ESHOP_BOOTSTRAP_PATH');
+    if (!empty($bootstrapFileName)) {
+        $bootstrapFileName = realpath(trim(getenv('ESHOP_BOOTSTRAP_PATH')));
+    } else {
+        $count = 0;
+        $bootstrapFileName = 'source/bootstrap.php';
+        $currentDirectory = __DIR__ . '/';
+        while ($count < 5) {
+            $count++;
+            if (file_exists($currentDirectory . $bootstrapFileName)) {
+                $bootstrapFileName = $currentDirectory . $bootstrapFileName;
+                break;
+            }
+            $bootstrapFileName = '../' . $bootstrapFileName;
+        }
+    }
+
+    if (!(file_exists($bootstrapFileName) && !is_dir($bootstrapFileName))) {
+        $items = [
+            "Unable to find eShop bootstrap.php file.",
+            "You can override the path by using ESHOP_BOOTSTRAP_PATH environment variable.",
+            "\n"
+        ];
+
+        $message = implode(" ", $items);
+
+        die($message);
+    }
+    require_once($bootstrapFileName);
 }
