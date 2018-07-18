@@ -43,10 +43,14 @@ Module provides functionality which allows:
 
 A widget is provided for the Visual CMS module.
 After installation of the Econda personalization module, the widget will be available
-in the Visual CMS editor. You can find it by the name "Econda".
-To add it, just fill in the required settings for widget id and widget template.
+in the Visual CMS editor. You can find it by the name "AI Content".
+To add it, just fill in the required settings for widget id and widget template (options described bellow).
 There is an optionally setting to limit the number of results; if it is left blank,
 no limit will be applied.
+
+There are 2 template files prepared for Visual CMS widget:
+* `Component/views/vcms_banner.ejs.html` - To display banner images with links.
+* `Component/views/vcms_recommendations.ejs.html` - To display products within widget.
 
 ## License
 

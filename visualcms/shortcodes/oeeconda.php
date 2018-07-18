@@ -14,7 +14,7 @@ class oeeconda_shortcode extends VisualEditorShortcode
 
     protected $_sBackgroundColor = '#e74c3c';
 
-    protected $_sIcon = 'fa-newspaper-o';
+    protected $_sIcon = 'fa-magic';
 
     public function install()
     {
@@ -34,8 +34,8 @@ class oeeconda_shortcode extends VisualEditorShortcode
                 'widgetTemplate' => [
                     'type'        => 'text',
                     'label'       => $language->translateString('OEECONDA_VISUAL_EDITOR_WIDGET_ECONDA_WIDGET_TEMPLATE'),
-                    'placeholder' => 'Component/views/vcms_recommendations.ejs.html',
-                    'value'       => 'Component/views/vcms_recommendations.ejs.html',
+                    'placeholder' => 'Component/views/vcms_banner.ejs.html',
+                    'value'       => 'Component/views/vcms_banner.ejs.html',
                     'preview'     => false
                 ],
                 'chunkSize' => [

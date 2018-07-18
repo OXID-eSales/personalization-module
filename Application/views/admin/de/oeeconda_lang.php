@@ -16,7 +16,7 @@ $aLang = [
     'OEECONDA_MESSAGE_FILE_IS_NOT_PRESENT' => 'Die Datei <b>%s</b> ist momentan nicht vorhanden.'
     .' Es ist erforderlich, die Datei hochzuladen, bevor das Tracking aktiviert wird.',
     'OEECONDA_MESSAGE_FILE_IS_PRESENT' => 'Die Datei <b>%s</b> ist vorhanden.',
-    'OEECONDA_VISUAL_EDITOR_SHORTCODE_ECONDA' => 'Econda',
+    'OEECONDA_VISUAL_EDITOR_SHORTCODE_ECONDA' => 'AI Content',
     'OEECONDA_VISUAL_EDITOR_WIDGET_ECONDA_WIDGET_ID' => 'Widget-ID',
     'OEECONDA_VISUAL_EDITOR_WIDGET_ECONDA_WIDGET_TEMPLATE' => 'Widget-Template',
     'OEECONDA_VISUAL_EDITOR_WIDGET_ECONDA_CHUNK_SIZE' => 'Ergebnis-Limitierung',

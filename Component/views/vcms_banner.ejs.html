@@ -1,0 +1,9 @@
+<div class="row">
+    <% for (ip = 0; ip < products.length; ip++) { %>
+    <div class="picture text-center">
+        <a href="<%= products[ip].deeplink %>" title="<%= products[ip].name %>">
+            <img class="img-responsive" src="<%= products[ip].iconurl %>" alt="<%= products[ip].name %>" />
+        </a>
+    </div>
+    <% } %>
+</div>
