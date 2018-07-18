@@ -7,7 +7,7 @@
 /**
  * Metadata version
  */
-$sMetadataVersion = '2.0';
+$sMetadataVersion = '2.1';
 
 /**
  * Module information.
@@ -29,8 +29,6 @@ $aModule = array(
         \OxidEsales\Eshop\Application\Controller\ArticleListController::class => \OxidEsales\EcondaModule\Application\Controller\ArticleListController::class,
         \OxidEsales\Eshop\Application\Component\Widget\ArticleDetails::class => \OxidEsales\EcondaModule\Application\Component\Widget\ArticleDetails::class,
         \OxidEsales\Eshop\Application\Controller\ThankYouController::class => \OxidEsales\EcondaModule\Application\Controller\ThankYouController::class,
-        // To extend smarty plugin.
-        \OxidEsales\Eshop\Core\UtilsView::class => \OxidEsales\EcondaModule\Application\Core\UtilsView::class,
     ],
     'controllers' => [
         'oeecondaadmin' => \OxidEsales\EcondaModule\Application\Controller\Admin\EcondaAdminController::class,
@@ -76,5 +74,8 @@ $aModule = array(
             'block'=>'checkout_thankyou_info',
             'file'=>'Application/views/blocks/widgets/checkout_thankyou_info.tpl'
         ],
-    ]
+    ],
+    'smartyPluginDirectories' => [
+        'Application/Core/Smarty/Plugin'
+    ],
 );
