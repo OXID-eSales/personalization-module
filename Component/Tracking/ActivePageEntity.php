@@ -91,7 +91,7 @@ class ActivePageEntity implements ActivePageEntityInterface
     private $loginUserId = null;
 
     /**
-     * Login result
+     * Login result.
      *
      * @var string
      */

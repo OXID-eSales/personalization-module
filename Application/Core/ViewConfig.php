@@ -6,8 +6,9 @@
 
 namespace OxidEsales\EcondaModule\Application\Core;
 
-use OxidEsales\EcondaModule\Application\Factory;
 use OxidEsales\EcondaModule\Component\DemoAccountData;
+use OxidEsales\Eshop\Application\Model\User;
+use OxidEsales\Eshop\Core\Registry;
 
 /**
  * @mixin \OxidEsales\Eshop\Core\ViewConfig
@@ -95,5 +96,72 @@ class ViewConfig extends ViewConfig_parent
     public function oeEcondaGetExportPath()
     {
         return $this->getConfig()->getConfigParam('sOeEcondaExportPath');
+    }
+
+    /**
+     * Returns if user just logged in.
+     *
+     * @return bool
+     */
+    public function oeEcondaIsLoginAction()
+    {
+        $isLoginAction = false;
+        if ('login_noredirect' == $this->oeEcondaGetRequestActiveFunctionName()) {
+            $isLoginAction = true;
+        }
+
+        return $isLoginAction;
+    }
+
+    /**
+     * Returns if user just logged out.
+     *
+     * @return bool
+     */
+    public function oeEcondaIsLogoutAction()
+    {
+        $isLogoutAction = false;
+        if ('logout' == $this->oeEcondaGetRequestActiveFunctionName()) {
+            $isLogoutAction = true;
+        }
+
+        return $isLogoutAction;
+    }
+
+    /**
+     * Returns user hashed ID.
+     *
+     * @return string
+     */
+    public function oeEcondaGetLoggedInUserHashedId()
+    {
+        $activeUser = oxNew(User::class);
+        $activeUser->loadActiveUser();
+
+        return md5($activeUser->oxuser__oxid->value);
+    }
+
+    /**
+     * Returns user hashed email.
+     *
+     * @return string
+     */
+    public function oeEcondaGetLoggedInUserHashedEmail()
+    {
+        $activeUser = oxNew(User::class);
+        $activeUser->loadActiveUser();
+
+        return md5($activeUser->oxuser__oxusername->value);
+    }
+
+    /**
+     * @return string
+     */
+    private function oeEcondaGetRequestActiveFunctionName()
+    {
+        $currentView = Registry::getConfig()->getActiveView();
+        $functionName = $currentView->getFncName();
+
+        return $functionName;
     }
 }
