@@ -362,7 +362,7 @@ class TrackingTest extends BaseAcceptanceTestCase
 
     protected function prepareElementTarget($value)
     {
-        return "\"target\":$value";
+        return "\"Target\":$value";
     }
 
     protected function prepareElementForLoginEvent($value)
