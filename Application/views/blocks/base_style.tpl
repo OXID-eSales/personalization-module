@@ -7,7 +7,7 @@
             [{if $oViewConf->oeEcondaIsLoginAction()}]
                 <script type="text/javascript">
                     econda.data.visitor.login({
-                        ids: {customerId: '[{$oViewConf->oeEcondaGetLoggedInUserHashedId()}]', emailHash: '[{$oViewConf->oeEcondaGetLoggedInUserHashedEmail()}]'}
+                        ids: {userId: '[{$oViewConf->oeEcondaGetLoggedInUserHashedId()}]', emailHash: '[{$oViewConf->oeEcondaGetLoggedInUserHashedEmail()}]'}
                     });
                 </script>
             [{/if}]

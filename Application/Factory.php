@@ -7,6 +7,7 @@
 namespace OxidEsales\EcondaModule\Application;
 
 use OxidEsales\EcondaModule\Application\Tracking\Helper\ActiveControllerCategoryPathBuilder;
+use OxidEsales\EcondaModule\Application\Tracking\Helper\ActiveUserDataProvider;
 use OxidEsales\EcondaModule\Application\Tracking\Helper\CategoryPathBuilder;
 use OxidEsales\EcondaModule\Application\Tracking\Modifiers\OrderStepsMapModifier;
 use OxidEsales\EcondaModule\Application\Tracking\Modifiers\PageMapModifier;
@@ -125,7 +126,8 @@ class Factory
             $pageMapModifier,
             $trackingCodeGeneratorModifier,
             $orderStepsMapModifier,
-            $trackingCodeGeneratorModifierForBasketEvents
+            $trackingCodeGeneratorModifierForBasketEvents,
+            oxNew(ActiveUserDataProvider::class)
         );
 
         return $trackingCodePreparator;

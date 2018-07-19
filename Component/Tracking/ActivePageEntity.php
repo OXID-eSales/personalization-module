@@ -303,7 +303,7 @@ class ActivePageEntity implements ActivePageEntityInterface
      */
     public function setLoginUserId($loginUserId)
     {
-        $this->loginUserId = md5($loginUserId);
+        $this->loginUserId = $loginUserId;
     }
 
     /**

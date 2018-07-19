@@ -6,6 +6,7 @@
 
 namespace OxidEsales\EcondaModule\Application\Tracking;
 
+use OxidEsales\EcondaModule\Application\Tracking\Helper\ActiveUserDataProvider;
 use OxidEsales\EcondaModule\Application\Tracking\Modifiers\EntityModifierByCurrentAction;
 use OxidEsales\EcondaModule\Application\Tracking\Modifiers\OrderStepsMapModifier;
 use OxidEsales\EcondaModule\Application\Tracking\Modifiers\PageMapModifier;
@@ -58,6 +59,11 @@ class ActivePageEntityPreparator extends \OxidEsales\Eshop\Core\Base
     private $entityModifierByCurrentBasketAction;
 
     /**
+     * @var ActiveUserDataProvider
+     */
+    private $activeUserDataProvider;
+
+    /**
      * @param ActivePageEntityInterface           $activePageEntity
      * @param PageIdentifiers                     $pageIdentifiers
      * @param User                                $activeUser
@@ -65,6 +71,7 @@ class ActivePageEntityPreparator extends \OxidEsales\Eshop\Core\Base
      * @param EntityModifierByCurrentAction       $entityModifierByCurrentAction
      * @param OrderStepsMapModifier               $orderStepsMapModifier
      * @param EntityModifierByCurrentBasketAction $trackingCodeGeneratorModifierForBasketEvents
+     * @param ActiveUserDataProvider              $activeUserDataProvider
      */
     public function __construct(
         ActivePageEntityInterface $activePageEntity,
@@ -73,7 +80,8 @@ class ActivePageEntityPreparator extends \OxidEsales\Eshop\Core\Base
         $pageMapModifier,
         $entityModifierByCurrentAction,
         $orderStepsMapModifier,
-        $trackingCodeGeneratorModifierForBasketEvents
+        $trackingCodeGeneratorModifierForBasketEvents,
+        $activeUserDataProvider
     ) {
         $this->activePageEntity = $activePageEntity;
         $this->pageIdentifiers = $pageIdentifiers;
@@ -82,6 +90,7 @@ class ActivePageEntityPreparator extends \OxidEsales\Eshop\Core\Base
         $this->entityModifierByCurrentAction = $entityModifierByCurrentAction;
         $this->orderStepsMapModifier = $orderStepsMapModifier;
         $this->entityModifierByCurrentBasketAction = $trackingCodeGeneratorModifierForBasketEvents;
+        $this->activeUserDataProvider = $activeUserDataProvider;
 
         parent::__construct();
     }
@@ -143,8 +152,8 @@ class ActivePageEntityPreparator extends \OxidEsales\Eshop\Core\Base
         $currentView = Registry::getConfig()->getActiveView();
         $functionName = $currentView->getFncName();
         if ('login_noredirect' == $functionName) {
-            $this->activePageEntity->setLoginUserId(Registry::getRequest()->getRequestEscapedParameter('lgn_usr'));
-            $this->activePageEntity->setLoginResult($this->getActiveUser()->isLoaded() ? '0' : '1');
+            $this->activePageEntity->setLoginUserId($this->activeUserDataProvider->getActiveUserHashedId());
+            $this->activePageEntity->setLoginResult($this->activeUserDataProvider->isLoaded() ? '0' : '1');
         }
     }
 

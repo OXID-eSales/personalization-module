@@ -6,8 +6,8 @@
 
 namespace OxidEsales\EcondaModule\Application\Core;
 
+use OxidEsales\EcondaModule\Application\Tracking\Helper\ActiveUserDataProvider;
 use OxidEsales\EcondaModule\Component\DemoAccountData;
-use OxidEsales\Eshop\Application\Model\User;
 use OxidEsales\Eshop\Core\Registry;
 
 /**
@@ -135,10 +135,7 @@ class ViewConfig extends ViewConfig_parent
      */
     public function oeEcondaGetLoggedInUserHashedId()
     {
-        $activeUser = oxNew(User::class);
-        $activeUser->loadActiveUser();
-
-        return md5($activeUser->oxuser__oxid->value);
+        return $this->getActiveUserDataProvider()->getActiveUserHashedId();
     }
 
     /**
@@ -148,10 +145,7 @@ class ViewConfig extends ViewConfig_parent
      */
     public function oeEcondaGetLoggedInUserHashedEmail()
     {
-        $activeUser = oxNew(User::class);
-        $activeUser->loadActiveUser();
-
-        return md5($activeUser->oxuser__oxusername->value);
+        return $this->getActiveUserDataProvider()->getActiveUserHashedEmail();
     }
 
     /**
@@ -163,5 +157,13 @@ class ViewConfig extends ViewConfig_parent
         $functionName = $currentView->getFncName();
 
         return $functionName;
+    }
+
+    /**
+     * @return ActiveUserDataProvider
+     */
+    private function getActiveUserDataProvider()
+    {
+        return oxNew(ActiveUserDataProvider::class);
     }
 }
