@@ -4,13 +4,13 @@
  * See LICENSE file for license details.
  */
 
-namespace OxidEsales\EcondaModule\Component\Tracking\File;
+namespace OxidEsales\PersonalizationModule\Component\Tracking\File;
 
 use Webmozart\PathUtil\Path;
 
 class JsFileLocator
 {
-    const TRACKING_CODE_DIRECTORY_NAME = 'oeeconda';
+    const TRACKING_CODE_DIRECTORY_NAME = 'oepersonalization';
 
     const TRACKING_CODE_FILE_NAME = 'emos.js';
 

@@ -4,10 +4,10 @@
  * See LICENSE file for license details.
  */
 
-namespace OxidEsales\EcondaModule\Tests\Integration;
+namespace OxidEsales\PersonalizationModule\Tests\Integration;
 
-use \OxidEsales\EcondaModule\Application\Core\ViewConfig;
-use \OxidEsales\EcondaModule\Component\DemoAccountData;
+use \OxidEsales\PersonalizationModule\Application\Core\ViewConfig;
+use \OxidEsales\PersonalizationModule\Component\DemoAccountData;
 use \OxidEsales\Eshop\Core\Registry;
 
 class ViewConfigDemoModeTest extends \OxidEsales\TestingLibrary\UnitTestCase
@@ -15,37 +15,37 @@ class ViewConfigDemoModeTest extends \OxidEsales\TestingLibrary\UnitTestCase
     public function setUp()
     {
         parent::setUp();
-        Registry::getConfig()->setConfigParam('blOeEcondaUseDemoAccount', '1');
+        Registry::getConfig()->setConfigParam('blOePersonalizationUseDemoAccount', '1');
     }
 
     public function testGetAccountId()
     {
-        $this->assertEquals(DemoAccountData::getAccountId(), $this->getViewConfig()->oeEcondaGetAccountId());
+        $this->assertEquals(DemoAccountData::getAccountId(), $this->getViewConfig()->oePersonalizationGetAccountId());
     }
 
     public function testGetWidgetIdStartPageBargainArticles()
     {
-        $this->assertEquals(DemoAccountData::getStartPageBestOffersWidgetId(), $this->getViewConfig()->oeEcondaGetStartPageBargainArticlesWidgetId());
+        $this->assertEquals(DemoAccountData::getStartPageBestOffersWidgetId(), $this->getViewConfig()->oePersonalizationGetStartPageBargainArticlesWidgetId());
     }
 
     public function testGetWidgetIdStartPageTopArticles()
     {
-        $this->assertEquals(DemoAccountData::getStartPageBestSellerWidgetId(), $this->getViewConfig()->oeEcondaGetStartPageTopArticlesWidgetId());
+        $this->assertEquals(DemoAccountData::getStartPageBestSellerWidgetId(), $this->getViewConfig()->oePersonalizationGetStartPageTopArticlesWidgetId());
     }
 
     public function testGetWidgetIdListPage()
     {
-        $this->assertEquals(DemoAccountData::getListPageWidgetId(), $this->getViewConfig()->oeEcondaGetListPageWidgetId());
+        $this->assertEquals(DemoAccountData::getListPageWidgetId(), $this->getViewConfig()->oePersonalizationGetListPageWidgetId());
     }
 
     public function testGetWidgetIdDetailsPage()
     {
-        $this->assertEquals(DemoAccountData::getDetailsPageWidgetId(), $this->getViewConfig()->oeEcondaGetDetailsPageWidgetId());
+        $this->assertEquals(DemoAccountData::getDetailsPageWidgetId(), $this->getViewConfig()->oePersonalizationGetDetailsPageWidgetId());
     }
 
     public function testGetWidgetIdThankYouPage()
     {
-        $this->assertEquals(DemoAccountData::getThankYouPageWidgetId(), $this->getViewConfig()->oeEcondaGetThankYouPageWidgetId());
+        $this->assertEquals(DemoAccountData::getThankYouPageWidgetId(), $this->getViewConfig()->oePersonalizationGetThankYouPageWidgetId());
     }
 
     /**

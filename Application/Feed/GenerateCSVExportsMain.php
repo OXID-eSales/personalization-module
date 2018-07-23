@@ -4,9 +4,9 @@
  * See LICENSE file for license details.
  */
 
-namespace OxidEsales\EcondaModule\Application\Feed;
+namespace OxidEsales\PersonalizationModule\Application\Feed;
 
-use OxidEsales\EcondaModule\Application\Factory;
+use OxidEsales\PersonalizationModule\Application\Factory;
 use OxidEsales\Eshop\Core\Registry;
 
 class GenerateCSVExportsMain extends \OxidEsales\Eshop\Application\Controller\Admin\GenericExportMain
@@ -24,7 +24,7 @@ class GenerateCSVExportsMain extends \OxidEsales\Eshop\Application\Controller\Ad
     /**
      * @inheritdoc
      */
-    protected $_sThisTemplate = "oeecondaadmin.tpl";
+    protected $_sThisTemplate = "oepersonalizationadmin.tpl";
 
     protected $_aSkipMultiline = ['aHomeCountry'];
     protected $_aParseFloat = ['iMinOrderPrice'];
@@ -79,7 +79,7 @@ class GenerateCSVExportsMain extends \OxidEsales\Eshop\Application\Controller\Ad
     {
         $message = '';
         if ($this->factory->getFileSystem()->isFilePresent($this->factory->getJsFileLocator()->getJsFileLocation())) {
-            $message = sprintf(Registry::getLang()->translateString("OEECONDA_MESSAGE_FILE_IS_PRESENT"), $this->factory->getJsFileLocator()->getFileName());
+            $message = sprintf(Registry::getLang()->translateString("OEPERSONALIZATION_MESSAGE_FILE_IS_PRESENT"), $this->factory->getJsFileLocator()->getFileName());
         }
 
         return $message;
@@ -92,7 +92,7 @@ class GenerateCSVExportsMain extends \OxidEsales\Eshop\Application\Controller\Ad
     {
         $message = '';
         if (!$this->factory->getFileSystem()->isFilePresent($this->factory->getJsFileLocator()->getJsFileLocation())) {
-            $message = sprintf(Registry::getLang()->translateString("OEECONDA_MESSAGE_FILE_IS_NOT_PRESENT"), $this->factory->getJsFileLocator()->getFileName());
+            $message = sprintf(Registry::getLang()->translateString("OEPERSONALIZATION_MESSAGE_FILE_IS_NOT_PRESENT"), $this->factory->getJsFileLocator()->getFileName());
         }
 
         return $message;
@@ -105,7 +105,7 @@ class GenerateCSVExportsMain extends \OxidEsales\Eshop\Application\Controller\Ad
      */
     protected function _getModuleForConfigVars()
     {
-        return 'module:oeeconda';
+        return 'module:oepersonalization';
     }
 
     /**

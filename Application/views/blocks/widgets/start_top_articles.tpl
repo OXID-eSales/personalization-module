@@ -1,7 +1,7 @@
 [{$smarty.block.parent}]
 
-[{if $oViewConf->oeEcondaEnableWidgets() && $oViewConf->oeEcondaGetStartPageTopArticlesWidgetId()}]
-    [{block name="oeeconda_start_top_articles"}]
+[{if $oViewConf->oePersonalizationEnableWidgets() && $oViewConf->oePersonalizationGetStartPageTopArticlesWidgetId()}]
+    [{block name="oepersonalization_start_top_articles"}]
         <div class="boxwrapper">
             <div class="page-header">
                 <h2>
@@ -10,21 +10,21 @@
                 <small class="subhead">[{"START_TOP_PRODUCTS_SUBHEADER"|oxmultilangassign:4}]</small>
             </div>
 
-            <div id="oeEcondaTopArticles">
+            <div id="oePersonalizationTopArticles">
                 <div class="inner list-container">
-                    [{include file=$oViewConf->getModulePath('oeeconda','Application/views/blocks/widgets/includes/preloader.tpl')}]
+                    [{include file=$oViewConf->getModulePath('oepersonalization','Application/views/blocks/widgets/includes/preloader.tpl')}]
                 </div>
             </div>
             <script type="text/javascript">
                 var lang_MORE_INFO = '[{oxmultilang ident="MORE_INFO"}]';
                 var widget = new econda.recengine.Widget({
-                    element: '#oeEcondaTopArticles .inner',
+                    element: '#oePersonalizationTopArticles .inner',
                     renderer: {
                         type: 'template',
-                        uri: '[{$oViewConf->getModuleUrl('oeeconda', $oViewConf->oeEcondaGetStartPageTopArticlesTemplate())}]'
+                        uri: '[{$oViewConf->getModuleUrl('oepersonalization', $oViewConf->oePersonalizationGetStartPageTopArticlesTemplate())}]'
                     },
-                    accountId: '[{$oViewConf->oeEcondaGetAccountId()}]',
-                    id: '[{$oViewConf->oeEcondaGetStartPageTopArticlesWidgetId()}]',
+                    accountId: '[{$oViewConf->oePersonalizationGetAccountId()}]',
+                    id: '[{$oViewConf->oePersonalizationGetStartPageTopArticlesWidgetId()}]',
                     chunkSize: 4
                 });
                 widget.render();

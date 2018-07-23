@@ -15,5 +15,5 @@ return [
     // export products with given minimum stock quantity
     'exportMinStock' => 1,
     // the data will be exported to given directory
-    'exportPath' => 'export/oeeconda',
+    'exportPath' => 'export/oepersonalization',
 ];

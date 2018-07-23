@@ -4,9 +4,9 @@
  * See LICENSE file for license details.
  */
 
-namespace OxidEsales\EcondaModule\Tests\Integration;
+namespace OxidEsales\PersonalizationModule\Tests\Integration;
 
-use OxidEsales\EcondaModule\Component\DemoAccountData;
+use OxidEsales\PersonalizationModule\Component\DemoAccountData;
 use OxidEsales\Eshop\Application\Component\Widget\ArticleDetails;
 use OxidEsales\Eshop\Application\Model\Article;
 use OxidEsales\Eshop\Application\Model\Category;
@@ -17,10 +17,10 @@ class ArticleDetailsDemoModeTest extends \OxidEsales\TestingLibrary\UnitTestCase
     public function setUp()
     {
         parent::setUp();
-        Registry::getConfig()->setConfigParam('blOeEcondaUseDemoAccount', '1');
+        Registry::getConfig()->setConfigParam('blOePersonalizationUseDemoAccount', '1');
     }
 
-    public function testOeEcondaGetProductNumber()
+    public function testOePersonalizationGetProductNumber()
     {
         $article = oxNew(Article::class);
         $article->setId('__testId');
@@ -28,16 +28,16 @@ class ArticleDetailsDemoModeTest extends \OxidEsales\TestingLibrary\UnitTestCase
         $articleDetails = oxNew(ArticleDetails::class);
         $articleDetails->setViewProduct($article);
 
-        $this->assertEquals(DemoAccountData::getProductId(), $articleDetails->oeEcondaGetProductNumber());
+        $this->assertEquals(DemoAccountData::getProductId(), $articleDetails->oePersonalizationGetProductNumber());
     }
 
-    public function testOeEcondaGetCategoryId()
+    public function testOePersonalizationGetCategoryId()
     {
         $category = oxNew(Category::class);
         $category->setId('__testId');
         $articleDetails = oxNew(ArticleDetails::class);
         $articleDetails->setActiveCategory($category);
 
-        $this->assertEquals(DemoAccountData::getCategoryId(), $articleDetails->oeEcondaGetCategoryId());
+        $this->assertEquals(DemoAccountData::getCategoryId(), $articleDetails->oePersonalizationGetCategoryId());
     }
 }

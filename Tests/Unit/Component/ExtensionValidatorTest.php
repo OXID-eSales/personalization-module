@@ -4,10 +4,10 @@
  * See LICENSE file for license details.
  */
 
-namespace OxidEsales\EcondaModule\Tests\Unit\Component;
+namespace OxidEsales\PersonalizationModule\Tests\Unit\Component;
 
 use FileUpload\File;
-use OxidEsales\EcondaModule\Component\Tracking\File\Validator\ExtensionValidator;
+use OxidEsales\PersonalizationModule\Component\Tracking\File\Validator\ExtensionValidator;
 
 class ExtensionValidatorTest extends \OxidEsales\TestingLibrary\UnitTestCase
 {

@@ -4,10 +4,10 @@
  * See LICENSE file for license details.
  */
 
-namespace OxidEsales\EcondaModule\Application\Tracking\Modifiers;
+namespace OxidEsales\PersonalizationModule\Application\Tracking\Modifiers;
 
-use OxidEsales\EcondaModule\Application\Emos\Page\PageIdentifiers;
-use OxidEsales\EcondaModule\Application\Tracking\Page\PageMap;
+use OxidEsales\PersonalizationModule\Application\Emos\Page\PageIdentifiers;
+use OxidEsales\PersonalizationModule\Application\Tracking\Page\PageMap;
 use OxidEsales\Eshop\Core\Registry;
 
 /**

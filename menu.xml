@@ -2,7 +2,7 @@
 <OX>
     <OXMENU id="NAVIGATION_ESHOPADMIN">
         <MAINMENU id="mxpersonalization">
-            <SUBMENU id="mxpersonalizationeconda" cl="oeecondaadmin">
+            <SUBMENU id="mxpersonalizationeconda" cl="oepersonalizationadmin">
             </SUBMENU>
         </MAINMENU>
     </OXMENU>

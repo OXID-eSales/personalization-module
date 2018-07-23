@@ -4,9 +4,9 @@
  * See LICENSE file for license details.
  */
 
-namespace OxidEsales\EcondaModule\Tests\Unit\Component;
+namespace OxidEsales\PersonalizationModule\Tests\Unit\Component;
 
-use OxidEsales\EcondaModule\Component\Tracking\File\JsFileUploadFactory;
+use OxidEsales\PersonalizationModule\Component\Tracking\File\JsFileUploadFactory;
 
 class JsFileUploadFactoryTest extends \OxidEsales\TestingLibrary\UnitTestCase
 {

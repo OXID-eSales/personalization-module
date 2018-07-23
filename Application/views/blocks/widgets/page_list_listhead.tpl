@@ -1,30 +1,30 @@
 [{$smarty.block.parent}]
 
-[{if $oViewConf->oeEcondaEnableWidgets() && $oViewConf->oeEcondaGetListPageWidgetId()}]
-    [{block name="oeeconda_page_list_listhead"}]
+[{if $oViewConf->oePersonalizationEnableWidgets() && $oViewConf->oePersonalizationGetListPageWidgetId()}]
+    [{block name="oepersonalization_page_list_listhead"}]
         <div class="boxwrapper">
             <div class="page-header">
-                <h2>[{oxmultilang ident="OEECONDA_TOP_SELLER"}]</h2>
+                <h2>[{oxmultilang ident="OEPERSONALIZATION_TOP_SELLER"}]</h2>
             </div>
-            <div id="oeEcondaListHead">
+            <div id="oePersonalizationListHead">
                 <div class="inner list-container">
-                    [{include file=$oViewConf->getModulePath('oeeconda','Application/views/blocks/widgets/includes/preloader.tpl')}]
+                    [{include file=$oViewConf->getModulePath('oepersonalization','Application/views/blocks/widgets/includes/preloader.tpl')}]
                 </div>
             </div>
             <script type="text/javascript">
                 var lang_MORE_INFO = '[{oxmultilang ident="MORE_INFO"}]';
                 var widget = new econda.recengine.Widget({
-                    element: '#oeEcondaListHead .inner',
+                    element: '#oePersonalizationListHead .inner',
                     renderer: {
                         type: 'template',
-                        uri: '[{$oViewConf->getModuleUrl('oeeconda', $oViewConf->oeEcondaGetListPageTemplate())}]'
+                        uri: '[{$oViewConf->getModuleUrl('oepersonalization', $oViewConf->oePersonalizationGetListPageTemplate())}]'
                     },
-                    accountId: '[{$oViewConf->oeEcondaGetAccountId()}]',
-                    id: '[{$oViewConf->oeEcondaGetListPageWidgetId()}]',
+                    accountId: '[{$oViewConf->oePersonalizationGetAccountId()}]',
+                    id: '[{$oViewConf->oePersonalizationGetListPageWidgetId()}]',
                     context: {
                         categories: new Array({
                             type: 'productcategory',
-                            id: '[{$oView->oeEcondaGetCategoryId()}]'
+                            id: '[{$oView->oePersonalizationGetCategoryId()}]'
                         })
                     },
                     chunkSize: 4

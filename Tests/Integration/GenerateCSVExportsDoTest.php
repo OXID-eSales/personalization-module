@@ -4,9 +4,9 @@
  * See LICENSE file for license details.
  */
 
-namespace OxidEsales\EcondaModule\Tests\Integration;
+namespace OxidEsales\PersonalizationModule\Tests\Integration;
 
-use OxidEsales\EcondaModule\Application\Feed\GenerateCSVExportsDo;
+use OxidEsales\PersonalizationModule\Application\Feed\GenerateCSVExportsDo;
 use OxidEsales\Eshop\Core\Registry;
 
 class GenerateCSVExportsDoTest extends ExportDataInCSVTest
@@ -33,7 +33,7 @@ class GenerateCSVExportsDoTest extends ExportDataInCSVTest
         $this->setRequestParameter('blExportMainVars', $exportParentProducts);
         $this->setRequestParameter('blExportVars', $exportVars);
         $this->setRequestParameter("iStart", 1);
-        Registry::getConfig()->setConfigParam('sOeEcondaExportPath', $exportPath);
+        Registry::getConfig()->setConfigParam('sOePersonalizationExportPath', $exportPath);
     }
 
     /**
@@ -69,11 +69,11 @@ class GenerateCSVExportsDoTest extends ExportDataInCSVTest
     public function testCreateFolderOnInitialization()
     {
         $shopDir = $this->prepareShopStructureForExport();
-        Registry::getConfig()->setConfigParam('sOeEcondaExportPath', 'export/oeeconda');
+        Registry::getConfig()->setConfigParam('sOePersonalizationExportPath', 'export/oepersonalization');
 
         oxNew(GenerateCSVExportsDo::class);
 
-        $this->assertFileExists($shopDir . 'export/oeeconda');
+        $this->assertFileExists($shopDir . 'export/oepersonalization');
     }
 
     public function testUseExportPathFromConfig()
@@ -82,7 +82,7 @@ class GenerateCSVExportsDoTest extends ExportDataInCSVTest
         $vfsWrapper->createStructure(['export_test' => []]);
 
         Registry::getConfig()->setConfigParam('sShopDir', $vfsWrapper->getRootPath());
-        Registry::getConfig()->setConfigParam('sOeEcondaExportPath', 'export_test/custom_test');
+        Registry::getConfig()->setConfigParam('sOePersonalizationExportPath', 'export_test/custom_test');
 
         oxNew(GenerateCSVExportsDo::class);
 

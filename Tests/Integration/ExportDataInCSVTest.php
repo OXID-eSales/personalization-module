@@ -4,11 +4,11 @@
  * See LICENSE file for license details.
  */
 
-namespace OxidEsales\EcondaModule\Tests\Integration;
+namespace OxidEsales\PersonalizationModule\Tests\Integration;
 
 abstract class ExportDataInCSVTest extends \OxidEsales\TestingLibrary\UnitTestCase
 {
-    protected $exportPath = 'export/oeeconda';
+    protected $exportPath = 'export/oepersonalization';
 
     /**
      * Prepare the structure and return the shop dir

@@ -4,29 +4,29 @@
  * See LICENSE file for license details.
  */
 
-namespace OxidEsales\EcondaModule\Tests\Acceptance;
+namespace OxidEsales\PersonalizationModule\Tests\Acceptance;
 
 use OxidEsales\Eshop\Core\Config;
 
 abstract class BaseAcceptanceTestCase extends \OxidEsales\TestingLibrary\AcceptanceTestCase
 {
-    const BARGAIN_ARTICLES_WIDGET_ID = 'oeEcondaBargainArticles';
+    const BARGAIN_ARTICLES_WIDGET_ID = 'oePersonalizationBargainArticles';
 
-    const TOP_ARTICLES_WIDGET_ID = 'oeEcondaTopArticles';
+    const TOP_ARTICLES_WIDGET_ID = 'oePersonalizationTopArticles';
 
-    const LIST_WIDGET_ID = 'oeEcondaListHead';
+    const LIST_WIDGET_ID = 'oePersonalizationListHead';
 
-    const CROSS_SELLING_WIDGET_ID = 'oeEcondaRelatedProductsCrossSelling';
+    const CROSS_SELLING_WIDGET_ID = 'oePersonalizationRelatedProductsCrossSelling';
 
-    const THANK_YOU_INFO_WIDGET_ID = 'oeEcondaThankYouInfo';
+    const THANK_YOU_INFO_WIDGET_ID = 'oePersonalizationThankYouInfo';
 
     protected function activateDemoMode()
     {
         $this->callShopSC('oxConfig', null, null, [
-            'blOeEcondaUseDemoAccount' => [
+            'blOePersonalizationUseDemoAccount' => [
                 'type' => 'bool',
                 'value' => true,
-                'module' => 'module:oeeconda'
+                'module' => 'module:oepersonalization'
             ]
         ]);
     }
@@ -34,10 +34,10 @@ abstract class BaseAcceptanceTestCase extends \OxidEsales\TestingLibrary\Accepta
     protected function deactivateDemoMode()
     {
         $this->callShopSC('oxConfig', null, null, [
-            'blOeEcondaUseDemoAccount' => [
+            'blOePersonalizationUseDemoAccount' => [
                 'type' => 'bool',
                 'value' => false,
-                'module' => 'module:oeeconda'
+                'module' => 'module:oepersonalization'
             ]
         ]);
     }
@@ -69,10 +69,10 @@ abstract class BaseAcceptanceTestCase extends \OxidEsales\TestingLibrary\Accepta
     protected function enableWidgets()
     {
         $this->callShopSC('oxConfig', null, null, [
-            'blOeEcondaEnableWidgets' => [
+            'blOePersonalizationEnableWidgets' => [
                 'type' => 'bool',
                 'value' => true,
-                'module' => 'module:oeeconda'
+                'module' => 'module:oepersonalization'
             ]
         ]);
     }
@@ -80,10 +80,10 @@ abstract class BaseAcceptanceTestCase extends \OxidEsales\TestingLibrary\Accepta
     protected function disableWidgets()
     {
         $this->callShopSC('oxConfig', null, null, [
-            'blOeEcondaEnableWidgets' => [
+            'blOePersonalizationEnableWidgets' => [
                 'type' => 'bool',
                 'value' => false,
-                'module' => 'module:oeeconda'
+                'module' => 'module:oepersonalization'
             ]
         ]);
     }
@@ -91,38 +91,38 @@ abstract class BaseAcceptanceTestCase extends \OxidEsales\TestingLibrary\Accepta
     protected function setWidgetsIds()
     {
         $this->callShopSC('oxConfig', null, null, [
-            'sOeEcondaWidgetIdThankYouPage' => [
+            'sOePersonalizationWidgetIdThankYouPage' => [
                 'type' => 'string',
                 'value' => '1',
-                'module' => 'module:oeeconda'
+                'module' => 'module:oepersonalization'
             ]
         ]);
         $this->callShopSC('oxConfig', null, null, [
-            'sOeEcondaWidgetIdDetailsPage' => [
+            'sOePersonalizationWidgetIdDetailsPage' => [
                 'type' => 'string',
                 'value' => '1',
-                'module' => 'module:oeeconda'
+                'module' => 'module:oepersonalization'
             ]
         ]);
         $this->callShopSC('oxConfig', null, null, [
-            'sOeEcondaWidgetIdListPage' => [
+            'sOePersonalizationWidgetIdListPage' => [
                 'type' => 'string',
                 'value' => '1',
-                'module' => 'module:oeeconda'
+                'module' => 'module:oepersonalization'
             ]
         ]);
         $this->callShopSC('oxConfig', null, null, [
-            'sOeEcondaWidgetIdStartPageBargainArticles' => [
+            'sOePersonalizationWidgetIdStartPageBargainArticles' => [
                 'type' => 'string',
                 'value' => '1',
-                'module' => 'module:oeeconda'
+                'module' => 'module:oepersonalization'
             ]
         ]);
         $this->callShopSC('oxConfig', null, null, [
-            'sOeEcondaWidgetIdStartPageTopArticles' => [
+            'sOePersonalizationWidgetIdStartPageTopArticles' => [
                 'type' => 'string',
                 'value' => '1',
-                'module' => 'module:oeeconda'
+                'module' => 'module:oepersonalization'
             ]
         ]);
     }
@@ -130,10 +130,10 @@ abstract class BaseAcceptanceTestCase extends \OxidEsales\TestingLibrary\Accepta
     protected function enableTracking()
     {
         $this->callShopSC('oxConfig', null, null, [
-            'blOeEcondaTracking' => [
+            'blOePersonalizationTracking' => [
                 'type' => 'bool',
                 'value' => true,
-                'module' => 'module:oeeconda'
+                'module' => 'module:oepersonalization'
             ]
         ]);
     }

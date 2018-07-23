@@ -4,7 +4,7 @@
  * See LICENSE file for license details.
  */
 
-namespace OxidEsales\EcondaModule\Application\Tracking\Helper;
+namespace OxidEsales\PersonalizationModule\Application\Tracking\Helper;
 
 use OxidEsales\Eshop\Core\Registry;
 

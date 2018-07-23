@@ -4,9 +4,9 @@
  * See LICENSE file for license details.
  */
 
-namespace OxidEsales\EcondaModule\Tests\Unit\Component;
+namespace OxidEsales\PersonalizationModule\Tests\Unit\Component;
 
-use OxidEsales\EcondaModule\Component\Tracking\File\JsFileLocator;
+use OxidEsales\PersonalizationModule\Component\Tracking\File\JsFileLocator;
 
 class JsFileLocatorTest extends \OxidEsales\TestingLibrary\UnitTestCase
 {

@@ -4,30 +4,30 @@
  * See LICENSE file for license details.
  */
 
-namespace OxidEsales\EcondaModule\Application\Component\Widget;
+namespace OxidEsales\PersonalizationModule\Application\Component\Widget;
 
-use OxidEsales\EcondaModule\Component\DemoAccountData;
+use OxidEsales\PersonalizationModule\Component\DemoAccountData;
 
 /**
  * @mixin \OxidEsales\Eshop\Application\Component\Widget\ArticleDetails
  */
 class ArticleDetails extends ArticleDetails_parent
 {
-    public function oeEcondaGetCategoryId()
+    public function oePersonalizationGetCategoryId()
     {
         $activeCategoryId = $this->getActiveCategory()->getId();
-        if ($this->getConfig()->getConfigParam('blOeEcondaUseDemoAccount')) {
+        if ($this->getConfig()->getConfigParam('blOePersonalizationUseDemoAccount')) {
             $activeCategoryId = DemoAccountData::getCategoryId();
         }
 
         return $activeCategoryId;
     }
 
-    public function oeEcondaGetProductNumber()
+    public function oePersonalizationGetProductNumber()
     {
         $product = $this->getProduct();
         $productId = (isset($product->oxarticles__oxartnum->value) && $product->oxarticles__oxartnum->value) ? $product->oxarticles__oxartnum->value : $product->getId();
-        if ($this->getConfig()->getConfigParam('blOeEcondaUseDemoAccount')) {
+        if ($this->getConfig()->getConfigParam('blOePersonalizationUseDemoAccount')) {
             $productId = DemoAccountData::getProductId();
         }
 

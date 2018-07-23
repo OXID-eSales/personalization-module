@@ -4,7 +4,7 @@
  * See LICENSE file for license details.
  */
 
-namespace OxidEsales\EcondaModule\Tests\Integration;
+namespace OxidEsales\PersonalizationModule\Tests\Integration;
 
 use OxidEsales\Eshop\Core\Registry;
 
@@ -12,7 +12,7 @@ class ExportCmdFeedTest extends ExportDataInCSVTest
 {
     private $configFile = null;
 
-    protected $exportPath = 'export/test_oeeconda';
+    protected $exportPath = 'export/test_oepersonalization';
 
     protected function tearDown()
     {

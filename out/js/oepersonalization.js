@@ -1,4 +1,4 @@
-function oeEcondaOptIn() {
+function oePersonalizationOptIn() {
     econda.privacyprotection.applyAndStoreNewPrivacySettings(
         { },
         {
@@ -9,7 +9,7 @@ function oeEcondaOptIn() {
     );
 }
 
-function oeEcondaOptOut() {
+function oePersonalizationOptOut() {
     econda.privacyprotection.applyAndStoreNewPrivacySettings(
         { },
         {
@@ -21,28 +21,28 @@ function oeEcondaOptOut() {
 }
 
 $(document).ready(function() {
-    $('#cookieNote .oeeconda-optout').on('click', function() {
-        oeEcondaOptOut();
+    $('#cookieNote .oepersonalization-optout').on('click', function() {
+        oePersonalizationOptOut();
     });
-    $('#cookieNote .oeeconda-optin').on('click', function() {
-        oeEcondaOptIn();
+    $('#cookieNote .oepersonalization-optin').on('click', function() {
+        oePersonalizationOptIn();
     });
-    if ($('#oeeconda-update').length) {
+    if ($('#oepersonalization-update').length) {
         switch (econda.privacyprotection.getPermissionsFromLocalStorage().profile.state) {
             case 'ALLOW':
-                $('#oeeconda-update input[value="ALLOW"]').attr('checked', true);
+                $('#oepersonalization-update input[value="ALLOW"]').attr('checked', true);
                 break;
             case 'DENY':
-                $('#oeeconda-update input[value="DENY"]').attr('checked', true);
+                $('#oepersonalization-update input[value="DENY"]').attr('checked', true);
                 break;
         }
-        $('#oeeconda-update button').on('click', function() {
-            switch($('#oeeconda-update input:checked').val()) {
+        $('#oepersonalization-update button').on('click', function() {
+            switch($('#oepersonalization-update input:checked').val()) {
                 case 'ALLOW':
-                    oeEcondaOptIn();
+                    oePersonalizationOptIn();
                     break;
                 case 'DENY':
-                    oeEcondaOptOut();
+                    oePersonalizationOptOut();
                     break;
             }
         });

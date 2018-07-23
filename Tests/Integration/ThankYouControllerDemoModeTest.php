@@ -4,20 +4,20 @@
  * See LICENSE file for license details.
  */
 
-namespace OxidEsales\EcondaModule\Tests\Integration;
+namespace OxidEsales\PersonalizationModule\Tests\Integration;
 
 use OxidEsales\Eshop\Application\Controller\ThankYouController;
 use OxidEsales\Eshop\Application\Model\Category;
 
 class ThankYouControllerTest extends \OxidEsales\TestingLibrary\UnitTestCase
 {
-    public function testOeEcondaGetCategoryId()
+    public function testOePersonalizationGetCategoryId()
     {
         $category = oxNew(Category::class);
         $category->setId('testId');
         $articleDetails = oxNew(ThankYouController::class);
         $articleDetails->setActiveCategory($category);
 
-        $this->assertEquals('testId', $articleDetails->oeEcondaGetCategoryId());
+        $this->assertEquals('testId', $articleDetails->oePersonalizationGetCategoryId());
     }
 }

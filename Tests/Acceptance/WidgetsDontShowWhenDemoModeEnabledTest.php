@@ -4,7 +4,7 @@
  * See LICENSE file for license details.
  */
 
-namespace OxidEsales\EcondaModule\Tests\Acceptance;
+namespace OxidEsales\PersonalizationModule\Tests\Acceptance;
 
 class WidgetsDontShowWhenDemoModeEnabledTest extends BaseAcceptanceTestCase
 {

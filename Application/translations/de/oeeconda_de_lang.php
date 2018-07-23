@@ -7,7 +7,7 @@
 $sLangName = 'Deutsch';
 $aLang = [
     'charset' => 'UTF-8',
-    'OEECONDA_LOADING' => "Lade ...",
-    'OEECONDA_TOP_SELLER' => "Topseller",
-    'OEECONDA_MIGHT_INTEREST' => "Könnte Sie ebenfalls interessieren",
+    'OEPERSONALIZATION_LOADING' => "Lade ...",
+    'OEPERSONALIZATION_TOP_SELLER' => "Topseller",
+    'OEPERSONALIZATION_MIGHT_INTEREST' => "Könnte Sie ebenfalls interessieren",
 ];

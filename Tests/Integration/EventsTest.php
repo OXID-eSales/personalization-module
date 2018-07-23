@@ -4,13 +4,13 @@
  * See LICENSE file for license details.
  */
 
-namespace OxidEsales\EcondaModule\Tests\Integration;
+namespace OxidEsales\PersonalizationModule\Tests\Integration;
 
 use OxidEsales\Eshop\Core\Field;
 use OxidEsales\Eshop\Core\Registry;
 use OxidEsales\Eshop\Core\DatabaseProvider;
 use OxidEsales\Eshop\Application\Model\Content;
-use OxidEsales\EcondaModule\Application\Core\Events;
+use OxidEsales\PersonalizationModule\Application\Core\Events;
 
 class EventsTest extends \OxidEsales\TestingLibrary\UnitTestCase
 {
@@ -20,7 +20,7 @@ class EventsTest extends \OxidEsales\TestingLibrary\UnitTestCase
 
         $this->assertEquals(
             false,
-            Registry::getConfig()->getConfigParam('blOeEcondaEnableWidgets')
+            Registry::getConfig()->getConfigParam('blOePersonalizationEnableWidgets')
         );
     }
 
@@ -30,19 +30,19 @@ class EventsTest extends \OxidEsales\TestingLibrary\UnitTestCase
 
         $this->assertEquals(
             'no',
-            Registry::getConfig()->getConfigParam('sOeEcondaTrackingShowNote')
+            Registry::getConfig()->getConfigParam('sOePersonalizationTrackingShowNote')
         );
     }
 
     public function testDoesNotOverwriteAlreadySetTrackingShowNoteOnActivate()
     {
-        Registry::getConfig()->setConfigParam('sOeEcondaTrackingShowNote', 'opt_in');
+        Registry::getConfig()->setConfigParam('sOePersonalizationTrackingShowNote', 'opt_in');
 
         Events::onActivate();
 
         $this->assertEquals(
             'opt_in',
-            Registry::getConfig()->getConfigParam('sOeEcondaTrackingShowNote')
+            Registry::getConfig()->getConfigParam('sOePersonalizationTrackingShowNote')
         );
     }
 
@@ -51,8 +51,8 @@ class EventsTest extends \OxidEsales\TestingLibrary\UnitTestCase
         Events::onActivate();
 
         $this->assertEquals(
-            'export/oeeconda',
-            Registry::getConfig()->getConfigParam('sOeEcondaExportPath')
+            'export/oepersonalization',
+            Registry::getConfig()->getConfigParam('sOePersonalizationExportPath')
         );
     }
 
@@ -73,23 +73,23 @@ class EventsTest extends \OxidEsales\TestingLibrary\UnitTestCase
     {
         return [
             'start page bargain articles' => [
-                'sOeEcondaWidgetTemplateStartPageBargainArticles',
+                'sOePersonalizationWidgetTemplateStartPageBargainArticles',
                 'Component/views/list.ejs.html'
             ],
             'start page top articles' => [
-                'sOeEcondaWidgetTemplateStartPageTopArticles',
+                'sOePersonalizationWidgetTemplateStartPageTopArticles',
                 'Component/views/list.ejs.html'
             ],
             'list page' => [
-                'sOeEcondaWidgetTemplateListPage',
+                'sOePersonalizationWidgetTemplateListPage',
                 'Component/views/list.ejs.html'
             ],
             'details page' => [
-                'sOeEcondaWidgetTemplateDetailsPage',
+                'sOePersonalizationWidgetTemplateDetailsPage',
                 'Component/views/list.ejs.html'
             ],
             'thank you page' => [
-                'sOeEcondaWidgetTemplateThankYouPage',
+                'sOePersonalizationWidgetTemplateThankYouPage',
                 'Component/views/list.ejs.html'
             ],
         ];
@@ -114,23 +114,23 @@ class EventsTest extends \OxidEsales\TestingLibrary\UnitTestCase
     {
         return [
             'start page bargain articles' => [
-                'sOeEcondaWidgetTemplateStartPageBargainArticles',
+                'sOePersonalizationWidgetTemplateStartPageBargainArticles',
                 'testBargainTemplate'
             ],
             'start page top articles' => [
-                'sOeEcondaWidgetTemplateStartPageTopArticles',
+                'sOePersonalizationWidgetTemplateStartPageTopArticles',
                 'testTopArticleTemplate'
             ],
             'list page' => [
-                'sOeEcondaWidgetTemplateListPage',
+                'sOePersonalizationWidgetTemplateListPage',
                 'testListTemplate'
             ],
             'details page' => [
-                'sOeEcondaWidgetTemplateDetailsPage',
+                'sOePersonalizationWidgetTemplateDetailsPage',
                 'testDetailsTemplate'
             ],
             'thank you page' => [
-                'sOeEcondaWidgetTemplateThankYouPage',
+                'sOePersonalizationWidgetTemplateThankYouPage',
                 'testThankYouTemplate'
             ],
         ];
@@ -140,25 +140,25 @@ class EventsTest extends \OxidEsales\TestingLibrary\UnitTestCase
     {
         Events::onActivate();
 
-        $sql = "select oxid from `oxcontents` where oxloadid = 'oeecondaoptin'";
+        $sql = "select oxid from `oxcontents` where oxloadid = 'oepersonalizationoptin'";
         $result = DatabaseProvider::getDb()->getCol($sql);
         $id = $result[0];
 
         $content = oxNew(Content::class);
         $content->load($id);
 
-        $this->assertEquals('oeecondaoptin', $content->oxcontents__oxloadid->value);
+        $this->assertEquals('oepersonalizationoptin', $content->oxcontents__oxloadid->value);
     }
 
     public function testDoesNotOverwriteAlreadySetSnippetForOptIn()
     {
-        $sql = "delete from `oxcontents` where OXLOADID = 'oeecondaoptin'";
+        $sql = "delete from `oxcontents` where OXLOADID = 'oepersonalizationoptin'";
         DatabaseProvider::getDb()->execute($sql);
 
         $id = Registry::getUtilsObject()->generateUId();
         $content = oxNew(Content::class);
         $content->setId($id);
-        $content->oxcontents__oxloadid = new Field('oeecondaoptin');
+        $content->oxcontents__oxloadid = new Field('oepersonalizationoptin');
         $content->oxcontents__oxcontent = new Field('test content');
         $content->save();
 
@@ -174,25 +174,25 @@ class EventsTest extends \OxidEsales\TestingLibrary\UnitTestCase
     {
         Events::onActivate();
 
-        $sql = "select oxid from `oxcontents` where oxloadid = 'oeecondaoptout'";
+        $sql = "select oxid from `oxcontents` where oxloadid = 'oepersonalizationoptout'";
         $result = DatabaseProvider::getDb()->getCol($sql);
         $id = $result[0];
 
         $content = oxNew(Content::class);
         $content->load($id);
 
-        $this->assertEquals('oeecondaoptout', $content->oxcontents__oxloadid->value);
+        $this->assertEquals('oepersonalizationoptout', $content->oxcontents__oxloadid->value);
     }
 
     public function testDoesNotOverwriteAlreadySetSnippetForOptOut()
     {
-        $sql = "delete from `oxcontents` where OXLOADID = 'oeecondaoptout'";
+        $sql = "delete from `oxcontents` where OXLOADID = 'oepersonalizationoptout'";
         DatabaseProvider::getDb()->execute($sql);
 
         $id = Registry::getUtilsObject()->generateUId();
         $content = oxNew(Content::class);
         $content->setId($id);
-        $content->oxcontents__oxloadid = new Field('oeecondaoptout');
+        $content->oxcontents__oxloadid = new Field('oepersonalizationoptout');
         $content->oxcontents__oxcontent = new Field('test content');
         $content->save();
 
@@ -208,25 +208,25 @@ class EventsTest extends \OxidEsales\TestingLibrary\UnitTestCase
     {
         Events::onActivate();
 
-        $sql = "select oxid from `oxcontents` where oxloadid = 'oeecondaupdate'";
+        $sql = "select oxid from `oxcontents` where oxloadid = 'oepersonalizationupdate'";
         $result = DatabaseProvider::getDb()->getCol($sql);
         $id = $result[0];
 
         $content = oxNew(Content::class);
         $content->load($id);
 
-        $this->assertEquals('oeecondaupdate', $content->oxcontents__oxloadid->value);
+        $this->assertEquals('oepersonalizationupdate', $content->oxcontents__oxloadid->value);
     }
 
     public function testDoesNotOverwriteAlreadySetSnippetForUpdate()
     {
-        $sql = "delete from `oxcontents` where OXLOADID = 'oeecondaupdate'";
+        $sql = "delete from `oxcontents` where OXLOADID = 'oepersonalizationupdate'";
         DatabaseProvider::getDb()->execute($sql);
 
         $id = Registry::getUtilsObject()->generateUId();
         $content = oxNew(Content::class);
         $content->setId($id);
-        $content->oxcontents__oxloadid = new Field('oeecondaupdate');
+        $content->oxcontents__oxloadid = new Field('oepersonalizationupdate');
         $content->oxcontents__oxcontent = new Field('test content');
         $content->save();
 

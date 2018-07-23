@@ -4,7 +4,7 @@
  * See LICENSE file for license details.
  */
 
-namespace OxidEsales\EcondaModule\Application\Tracking\Page;
+namespace OxidEsales\PersonalizationModule\Application\Tracking\Page;
 
 /**
  * Class responsible for having page maps.

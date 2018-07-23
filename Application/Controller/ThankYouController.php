@@ -4,19 +4,19 @@
  * See LICENSE file for license details.
  */
 
-namespace OxidEsales\EcondaModule\Application\Controller;
+namespace OxidEsales\PersonalizationModule\Application\Controller;
 
-use OxidEsales\EcondaModule\Component\DemoAccountData;
+use OxidEsales\PersonalizationModule\Component\DemoAccountData;
 
 /**
  * @mixin \OxidEsales\Eshop\Application\Controller\ThankYouController
  */
 class ThankYouController extends ThankYouController_parent
 {
-    public function oeEcondaGetCategoryId()
+    public function oePersonalizationGetCategoryId()
     {
         $activeCategoryId = $this->getActiveCategory()->getId();
-        if ($this->getConfig()->getConfigParam('blOeEcondaUseDemoAccount')) {
+        if ($this->getConfig()->getConfigParam('blOePersonalizationUseDemoAccount')) {
             $activeCategoryId = DemoAccountData::getCategoryId();
         }
 

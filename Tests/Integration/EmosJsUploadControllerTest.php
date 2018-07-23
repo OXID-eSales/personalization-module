@@ -4,13 +4,13 @@
  * See LICENSE file for license details.
  */
 
-namespace OxidEsales\EcondaModule\Tests\Integration;
+namespace OxidEsales\PersonalizationModule\Tests\Integration;
 
 use FileUpload\FileUpload;
-use OxidEsales\EcondaModule\Application\Controller\Admin\EcondaAdminController;
-use OxidEsales\EcondaModule\Application\Controller\Admin\EmosJsUploadController;
-use OxidEsales\EcondaModule\Application\Factory;
-use OxidEsales\EcondaModule\Component\Tracking\File\FileSystem;
+use OxidEsales\PersonalizationModule\Application\Controller\Admin\PersonalizationAdminController;
+use OxidEsales\PersonalizationModule\Application\Controller\Admin\EmosJsUploadController;
+use OxidEsales\PersonalizationModule\Application\Factory;
+use OxidEsales\PersonalizationModule\Component\Tracking\File\FileSystem;
 use stdClass;
 
 class EmosJsUploadControllerTest extends \OxidEsales\TestingLibrary\UnitTestCase
@@ -22,7 +22,7 @@ class EmosJsUploadControllerTest extends \OxidEsales\TestingLibrary\UnitTestCase
         $errors = \OxidEsales\Eshop\Core\Registry::getSession()->getVariable('Errors');
 
         $this->assertNotNull($errors, 'Error must be set when unable to create directory.');
-        $this->assertSame(EcondaAdminController::class, $redirectToControllerName);
+        $this->assertSame(PersonalizationAdminController::class, $redirectToControllerName);
     }
 
     public function testUploadFailureWhenUploadingFile()
@@ -32,7 +32,7 @@ class EmosJsUploadControllerTest extends \OxidEsales\TestingLibrary\UnitTestCase
 
         $errors = \OxidEsales\Eshop\Core\Registry::getSession()->getVariable('Errors');
         $this->assertNotNull($errors, 'Error must be set when unable to upload file.');
-        $this->assertSame(EcondaAdminController::class, $redirectToControllerName);
+        $this->assertSame(PersonalizationAdminController::class, $redirectToControllerName);
     }
 
     public function testUploadSuccess()
@@ -42,7 +42,7 @@ class EmosJsUploadControllerTest extends \OxidEsales\TestingLibrary\UnitTestCase
 
         $errors = \OxidEsales\Eshop\Core\Registry::getSession()->getVariable('Errors');
         $this->assertNull($errors, 'Some error appeared during file upload.');
-        $this->assertSame(EcondaAdminController::class, $redirectToControllerName);
+        $this->assertSame(PersonalizationAdminController::class, $redirectToControllerName);
     }
 
     protected function getFactoryStubWhenNotPossibleToCreateDirectory()

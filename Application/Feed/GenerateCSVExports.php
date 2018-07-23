@@ -4,7 +4,7 @@
  * See LICENSE file for license details.
  */
 
-namespace OxidEsales\EcondaModule\Application\Feed;
+namespace OxidEsales\PersonalizationModule\Application\Feed;
 
 class GenerateCSVExports extends \OxidEsales\Eshop\Application\Controller\Admin\GenericExport
 {

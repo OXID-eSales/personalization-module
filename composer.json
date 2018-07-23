@@ -1,6 +1,6 @@
 {
-    "name": "oxid-esales/econda-module",
-    "description": "This is the Econda module for the OXID eShop.",
+    "name": "oxid-esales/personalization-module",
+    "description": "This is the Personalization module for the OXID eShop.",
     "type": "oxideshop-module",
     "keywords": ["oxid", "modules", "eShop"],
     "homepage": "https://www.oxid-esales.com/en/home.html",
@@ -12,7 +12,7 @@
             "blacklist-filter": [
                 "documentation/**/*.*"
             ],
-            "target-directory": "oe/econda"
+            "target-directory": "oe/personalization"
         }
     },
     "require": {
@@ -27,7 +27,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "OxidEsales\\EcondaModule\\": "../../../source/modules/oe/econda"
+            "OxidEsales\\PersonalizationModule\\": "../../../source/modules/oe/personalization"
         }
     }
 }

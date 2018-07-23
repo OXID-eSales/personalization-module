@@ -4,11 +4,11 @@
  * See LICENSE file for license details.
  */
 
-namespace OxidEsales\EcondaModule\Tests\Integration;
+namespace OxidEsales\PersonalizationModule\Tests\Integration;
 
-use OxidEsales\EcondaModule\Application\Feed\GenerateCSVExportsMain;
-use OxidEsales\EcondaModule\Application\Factory;
-use OxidEsales\EcondaModule\Component\Tracking\File\FileSystem;
+use OxidEsales\PersonalizationModule\Application\Feed\GenerateCSVExportsMain;
+use OxidEsales\PersonalizationModule\Application\Factory;
+use OxidEsales\PersonalizationModule\Component\Tracking\File\FileSystem;
 
 class GenerateCSVExportsMainTest extends \OxidEsales\TestingLibrary\UnitTestCase
 {

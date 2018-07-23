@@ -1,10 +1,10 @@
 [{$smarty.block.parent}]
 
-[{block name="oeeconda_add_js"}]
+[{block name="oepersonalization_add_js"}]
     [{capture append="oxidBlock_pageHead"}]
-        <script type="text/javascript" src="[{$oViewConf->getModuleUrl('oeeconda', 'out/js/econda-recommendations.js')}]"></script>
+        <script type="text/javascript" src="[{$oViewConf->getModuleUrl('oepersonalization', 'out/js/econda-recommendations.js')}]"></script>
         <script type="text/javascript">
-            [{if $oViewConf->oeEcondaShowTrackingNote() == 'opt_in'}]
+            [{if $oViewConf->oePersonalizationShowTrackingNote() == 'opt_in'}]
             if (econda.privacyprotection.getPermissionsFromLocalStorage().profile.state === 'UNKNOWN') {
                 econda.privacyprotection.applyAndStoreNewPrivacySettings(
                     { },
@@ -16,7 +16,7 @@
                 );
             }
             [{/if}]
-            [{if $oViewConf->oeEcondaShowTrackingNote() == 'opt_out'}]
+            [{if $oViewConf->oePersonalizationShowTrackingNote() == 'opt_out'}]
             if (econda.privacyprotection.getPermissionsFromLocalStorage().profile.state === 'UNKNOWN') {
                 econda.privacyprotection.applyAndStoreNewPrivacySettings(
                     { },
@@ -30,16 +30,16 @@
             [{/if}]
         </script>
     [{/capture}]
-    [{oxscript include=$oViewConf->getModuleUrl('oeeconda','out/js/oeeconda.js')}]
-    [{if $oViewConf->oeEcondaEnableWidgets()}]
-        [{if $oViewConf->oeEcondaIsLoginAction()}]
+    [{oxscript include=$oViewConf->getModuleUrl('oepersonalization','out/js/oepersonalization.js')}]
+    [{if $oViewConf->oePersonalizationEnableWidgets()}]
+        [{if $oViewConf->oePersonalizationIsLoginAction()}]
         <script type="text/javascript">
             econda.data.visitor.login({
-                ids: {userId: '[{$oViewConf->oeEcondaGetLoggedInUserHashedId()}]', emailHash: '[{$oViewConf->oeEcondaGetLoggedInUserHashedEmail()}]'}
+                ids: {userId: '[{$oViewConf->oePersonalizationGetLoggedInUserHashedId()}]', emailHash: '[{$oViewConf->oePersonalizationGetLoggedInUserHashedEmail()}]'}
             });
         </script>
         [{/if}]
-        [{if $oViewConf->oeEcondaIsLogoutAction()}]
+        [{if $oViewConf->oePersonalizationIsLogoutAction()}]
         <script type="text/javascript">
             econda.data.visitor.logout();
         </script>

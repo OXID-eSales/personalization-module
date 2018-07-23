@@ -4,12 +4,12 @@
  * See LICENSE file for license details.
  */
 
-namespace OxidEsales\EcondaModule\Tests\Integration;
+namespace OxidEsales\PersonalizationModule\Tests\Integration;
 
 use FileUpload\FileUpload;
-use OxidEsales\EcondaModule\Application\Factory;
-use OxidEsales\EcondaModule\Component\Tracking\File\FileSystem;
-use OxidEsales\EcondaModule\Component\Tracking\File\JsFileLocator;
+use OxidEsales\PersonalizationModule\Application\Factory;
+use OxidEsales\PersonalizationModule\Component\Tracking\File\FileSystem;
+use OxidEsales\PersonalizationModule\Component\Tracking\File\JsFileLocator;
 
 class FactoryTest extends \OxidEsales\TestingLibrary\UnitTestCase
 {

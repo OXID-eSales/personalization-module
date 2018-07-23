@@ -4,10 +4,10 @@
  * See LICENSE file for license details.
  */
 
-namespace OxidEsales\EcondaModule\Application\Core;
+namespace OxidEsales\PersonalizationModule\Application\Core;
 
-use OxidEsales\EcondaModule\Application\Tracking\Helper\ActiveUserDataProvider;
-use OxidEsales\EcondaModule\Component\DemoAccountData;
+use OxidEsales\PersonalizationModule\Application\Tracking\Helper\ActiveUserDataProvider;
+use OxidEsales\PersonalizationModule\Component\DemoAccountData;
 use OxidEsales\Eshop\Core\Registry;
 
 /**
@@ -15,92 +15,92 @@ use OxidEsales\Eshop\Core\Registry;
  */
 class ViewConfig extends ViewConfig_parent
 {
-    public function oeEcondaGetAccountId()
+    public function oePersonalizationGetAccountId()
     {
-        if ($this->getConfig()->getConfigParam('blOeEcondaUseDemoAccount')) {
+        if ($this->getConfig()->getConfigParam('blOePersonalizationUseDemoAccount')) {
             return DemoAccountData::getAccountId();
         }
-        return $this->getConfig()->getConfigParam('sOeEcondaAccountId');
+        return $this->getConfig()->getConfigParam('sOePersonalizationAccountId');
     }
 
-    public function oeEcondaEnableWidgets()
+    public function oePersonalizationEnableWidgets()
     {
-        return $this->getConfig()->getConfigParam('blOeEcondaEnableWidgets');
+        return $this->getConfig()->getConfigParam('blOePersonalizationEnableWidgets');
     }
 
-    public function oeEcondaGetListPageWidgetId()
+    public function oePersonalizationGetListPageWidgetId()
     {
-        if ($this->getConfig()->getConfigParam('blOeEcondaUseDemoAccount')) {
+        if ($this->getConfig()->getConfigParam('blOePersonalizationUseDemoAccount')) {
             return DemoAccountData::getListPageWidgetId();
         }
-        return $this->getConfig()->getConfigParam('sOeEcondaWidgetIdListPage');
+        return $this->getConfig()->getConfigParam('sOePersonalizationWidgetIdListPage');
     }
 
-    public function oeEcondaGetListPageTemplate()
+    public function oePersonalizationGetListPageTemplate()
     {
-        return $this->getConfig()->getConfigParam('sOeEcondaWidgetTemplateListPage');
+        return $this->getConfig()->getConfigParam('sOePersonalizationWidgetTemplateListPage');
     }
 
-    public function oeEcondaGetDetailsPageWidgetId()
+    public function oePersonalizationGetDetailsPageWidgetId()
     {
-        if ($this->getConfig()->getConfigParam('blOeEcondaUseDemoAccount')) {
+        if ($this->getConfig()->getConfigParam('blOePersonalizationUseDemoAccount')) {
             return DemoAccountData::getDetailsPageWidgetId();
         }
-        return $this->getConfig()->getConfigParam('sOeEcondaWidgetIdDetailsPage');
+        return $this->getConfig()->getConfigParam('sOePersonalizationWidgetIdDetailsPage');
     }
 
-    public function oeEcondaGetDetailsPageTemplate()
+    public function oePersonalizationGetDetailsPageTemplate()
     {
-        return $this->getConfig()->getConfigParam('sOeEcondaWidgetTemplateDetailsPage');
+        return $this->getConfig()->getConfigParam('sOePersonalizationWidgetTemplateDetailsPage');
     }
 
-    public function oeEcondaGetThankYouPageWidgetId()
+    public function oePersonalizationGetThankYouPageWidgetId()
     {
-        if ($this->getConfig()->getConfigParam('blOeEcondaUseDemoAccount')) {
+        if ($this->getConfig()->getConfigParam('blOePersonalizationUseDemoAccount')) {
             return DemoAccountData::getThankYouPageWidgetId();
         }
-        return $this->getConfig()->getConfigParam('sOeEcondaWidgetIdThankYouPage');
+        return $this->getConfig()->getConfigParam('sOePersonalizationWidgetIdThankYouPage');
     }
 
-    public function oeEcondaGetThankYouPageTemplate()
+    public function oePersonalizationGetThankYouPageTemplate()
     {
-        return $this->getConfig()->getConfigParam('sOeEcondaWidgetTemplateThankYouPage');
+        return $this->getConfig()->getConfigParam('sOePersonalizationWidgetTemplateThankYouPage');
     }
 
-    public function oeEcondaGetStartPageBargainArticlesWidgetId()
+    public function oePersonalizationGetStartPageBargainArticlesWidgetId()
     {
-        if ($this->getConfig()->getConfigParam('blOeEcondaUseDemoAccount')) {
+        if ($this->getConfig()->getConfigParam('blOePersonalizationUseDemoAccount')) {
             return DemoAccountData::getStartPageBestOffersWidgetId();
         }
-        return $this->getConfig()->getConfigParam('sOeEcondaWidgetIdStartPageBargainArticles');
+        return $this->getConfig()->getConfigParam('sOePersonalizationWidgetIdStartPageBargainArticles');
     }
 
-    public function oeEcondaGetStartPageBargainArticlesTemplate()
+    public function oePersonalizationGetStartPageBargainArticlesTemplate()
     {
-        return $this->getConfig()->getConfigParam('sOeEcondaWidgetTemplateStartPageBargainArticles');
+        return $this->getConfig()->getConfigParam('sOePersonalizationWidgetTemplateStartPageBargainArticles');
     }
 
-    public function oeEcondaGetStartPageTopArticlesWidgetId()
+    public function oePersonalizationGetStartPageTopArticlesWidgetId()
     {
-        if ($this->getConfig()->getConfigParam('blOeEcondaUseDemoAccount')) {
+        if ($this->getConfig()->getConfigParam('blOePersonalizationUseDemoAccount')) {
             return DemoAccountData::getStartPageBestSellerWidgetId();
         }
-        return $this->getConfig()->getConfigParam('sOeEcondaWidgetIdStartPageTopArticles');
+        return $this->getConfig()->getConfigParam('sOePersonalizationWidgetIdStartPageTopArticles');
     }
 
-    public function oeEcondaGetStartPageTopArticlesTemplate()
+    public function oePersonalizationGetStartPageTopArticlesTemplate()
     {
-        return $this->getConfig()->getConfigParam('sOeEcondaWidgetTemplateStartPageTopArticles');
+        return $this->getConfig()->getConfigParam('sOePersonalizationWidgetTemplateStartPageTopArticles');
     }
 
-    public function oeEcondaShowTrackingNote()
+    public function oePersonalizationShowTrackingNote()
     {
-        return $this->getConfig()->getConfigParam('sOeEcondaTrackingShowNote');
+        return $this->getConfig()->getConfigParam('sOePersonalizationTrackingShowNote');
     }
 
-    public function oeEcondaGetExportPath()
+    public function oePersonalizationGetExportPath()
     {
-        return $this->getConfig()->getConfigParam('sOeEcondaExportPath');
+        return $this->getConfig()->getConfigParam('sOePersonalizationExportPath');
     }
 
     /**
@@ -108,10 +108,10 @@ class ViewConfig extends ViewConfig_parent
      *
      * @return bool
      */
-    public function oeEcondaIsLoginAction()
+    public function oePersonalizationIsLoginAction()
     {
         $isLoginAction = false;
-        if ('login_noredirect' == $this->oeEcondaGetRequestActiveFunctionName()) {
+        if ('login_noredirect' == $this->oePersonalizationGetRequestActiveFunctionName()) {
             $isLoginAction = true;
         }
 
@@ -123,10 +123,10 @@ class ViewConfig extends ViewConfig_parent
      *
      * @return bool
      */
-    public function oeEcondaIsLogoutAction()
+    public function oePersonalizationIsLogoutAction()
     {
         $isLogoutAction = false;
-        if ('logout' == $this->oeEcondaGetRequestActiveFunctionName()) {
+        if ('logout' == $this->oePersonalizationGetRequestActiveFunctionName()) {
             $isLogoutAction = true;
         }
 
@@ -138,7 +138,7 @@ class ViewConfig extends ViewConfig_parent
      *
      * @return string
      */
-    public function oeEcondaGetLoggedInUserHashedId()
+    public function oePersonalizationGetLoggedInUserHashedId()
     {
         return $this->getActiveUserDataProvider()->getActiveUserHashedId();
     }
@@ -148,7 +148,7 @@ class ViewConfig extends ViewConfig_parent
      *
      * @return string
      */
-    public function oeEcondaGetLoggedInUserHashedEmail()
+    public function oePersonalizationGetLoggedInUserHashedEmail()
     {
         return $this->getActiveUserDataProvider()->getActiveUserHashedEmail();
     }
@@ -156,7 +156,7 @@ class ViewConfig extends ViewConfig_parent
     /**
      * @return string
      */
-    private function oeEcondaGetRequestActiveFunctionName()
+    private function oePersonalizationGetRequestActiveFunctionName()
     {
         $currentView = Registry::getConfig()->getActiveView();
         $functionName = $currentView->getFncName();

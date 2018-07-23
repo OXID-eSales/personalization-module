@@ -4,7 +4,7 @@
  * See LICENSE file for license details.
  */
 
-namespace OxidEsales\EcondaModule\Tests\Integration\Component;
+namespace OxidEsales\PersonalizationModule\Tests\Integration\Component;
 
 use org\bovigo\vfs\vfsStream;
 use Symfony\Component\Filesystem\Filesystem;
@@ -14,7 +14,7 @@ class FileSystemTest extends \OxidEsales\TestingLibrary\UnitTestCase
     public function testDirectorySuccessfulCreation()
     {
         $pathToCreateDirectory = $this->createVirtualDirectory();
-        $fileSystem = new \OxidEsales\EcondaModule\Component\Tracking\File\FileSystem(new Filesystem());
+        $fileSystem = new \OxidEsales\PersonalizationModule\Component\Tracking\File\FileSystem(new Filesystem());
 
         $this->assertTrue($fileSystem->createDirectory($pathToCreateDirectory.'/testDirectory'));
         $this->assertTrue(is_dir($pathToCreateDirectory.'/testDirectory'));
@@ -23,7 +23,7 @@ class FileSystemTest extends \OxidEsales\TestingLibrary\UnitTestCase
     public function testDirectoryUnsuccessfulCreation()
     {
         $pathToCreateDirectory = $this->createVirtualDirectory();
-        $fileSystem = new \OxidEsales\EcondaModule\Component\Tracking\File\FileSystem(new Filesystem());
+        $fileSystem = new \OxidEsales\PersonalizationModule\Component\Tracking\File\FileSystem(new Filesystem());
         chmod($pathToCreateDirectory, 555);
 
         $this->assertFalse($fileSystem->createDirectory($pathToCreateDirectory.'/testDirectory'));
@@ -33,7 +33,7 @@ class FileSystemTest extends \OxidEsales\TestingLibrary\UnitTestCase
     public function testIfPathNotWritable()
     {
         $pathToCreateDirectory = $this->createVirtualDirectory();
-        $fileSystem = new \OxidEsales\EcondaModule\Component\Tracking\File\FileSystem(new Filesystem());
+        $fileSystem = new \OxidEsales\PersonalizationModule\Component\Tracking\File\FileSystem(new Filesystem());
         chmod($pathToCreateDirectory, 555);
 
         $this->assertFalse($fileSystem->isWritable($pathToCreateDirectory.'/testDirectory'));
@@ -42,7 +42,7 @@ class FileSystemTest extends \OxidEsales\TestingLibrary\UnitTestCase
     public function testFileDoesNotExists()
     {
         $pathToCreateDirectory = $this->createVirtualDirectory();
-        $fileSystem = new \OxidEsales\EcondaModule\Component\Tracking\File\FileSystem(new Filesystem());
+        $fileSystem = new \OxidEsales\PersonalizationModule\Component\Tracking\File\FileSystem(new Filesystem());
 
         $this->assertFalse($fileSystem->isFilePresent($pathToCreateDirectory . '/any_file'));
     }
@@ -50,7 +50,7 @@ class FileSystemTest extends \OxidEsales\TestingLibrary\UnitTestCase
     public function testFileExists()
     {
         $pathToCreateDirectory = $this->createVirtualDirectory();
-        $fileSystem = new \OxidEsales\EcondaModule\Component\Tracking\File\FileSystem(new Filesystem());
+        $fileSystem = new \OxidEsales\PersonalizationModule\Component\Tracking\File\FileSystem(new Filesystem());
 
         $this->assertTrue($fileSystem->isFilePresent($pathToCreateDirectory.'/file.js'));
     }

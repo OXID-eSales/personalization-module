@@ -1,26 +1,26 @@
 [{$smarty.block.parent}]
 
-[{if $oViewConf->oeEcondaEnableWidgets() && $oViewConf->oeEcondaGetThankYouPageWidgetId()}]
-    [{block name="oeeconda_checkout_thankyou_info"}]
+[{if $oViewConf->oePersonalizationEnableWidgets() && $oViewConf->oePersonalizationGetThankYouPageWidgetId()}]
+    [{block name="oepersonalization_checkout_thankyou_info"}]
         <div class="boxwrapper">
             <div class="page-header">
-                <h2>[{oxmultilang ident="OEECONDA_MIGHT_INTEREST"}]</h2>
+                <h2>[{oxmultilang ident="OEPERSONALIZATION_MIGHT_INTEREST"}]</h2>
             </div>
-            <div id="oeEcondaThankYouInfo">
+            <div id="oePersonalizationThankYouInfo">
                 <div class="inner list-container">
-                    [{include file=$oViewConf->getModulePath('oeeconda','Application/views/blocks/widgets/includes/preloader.tpl')}]
+                    [{include file=$oViewConf->getModulePath('oepersonalization','Application/views/blocks/widgets/includes/preloader.tpl')}]
                 </div>
             </div>
             <script type="text/javascript">
                 var lang_MORE_INFO = '[{oxmultilang ident="MORE_INFO"}]';
                 var widget = new econda.recengine.Widget({
-                    element: '#oeEcondaThankYouInfo .inner',
+                    element: '#oePersonalizationThankYouInfo .inner',
                     renderer: {
                         type: 'template',
-                        uri: '[{$oViewConf->getModuleUrl('oeeconda', $oViewConf->oeEcondaGetThankYouPageTemplate())}]'
+                        uri: '[{$oViewConf->getModuleUrl('oepersonalization', $oViewConf->oePersonalizationGetThankYouPageTemplate())}]'
                     },
-                    accountId: '[{$oViewConf->oeEcondaGetAccountId()}]',
-                    id: '[{$oViewConf->oeEcondaGetThankYouPageWidgetId()}]',
+                    accountId: '[{$oViewConf->oePersonalizationGetAccountId()}]',
+                    id: '[{$oViewConf->oePersonalizationGetThankYouPageWidgetId()}]',
                     chunkSize: 4,
                     autoContext: true
                 });

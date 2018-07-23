@@ -4,19 +4,19 @@
  * See LICENSE file for license details.
  */
 
-namespace OxidEsales\EcondaModule\Tests\Integration;
+namespace OxidEsales\PersonalizationModule\Tests\Integration;
 
 use \OxidEsales\Eshop\Application\Controller\ArticleListController;
 use OxidEsales\Eshop\Application\Model\Category;
 use \OxidEsales\Eshop\Core\Registry;
-use \OxidEsales\EcondaModule\Component\DemoAccountData;
+use \OxidEsales\PersonalizationModule\Component\DemoAccountData;
 
 class ArticleListControllerDemoModeTest extends \OxidEsales\TestingLibrary\UnitTestCase
 {
     public function setUp()
     {
         parent::setUp();
-        Registry::getConfig()->setConfigParam('blOeEcondaUseDemoAccount', '1');
+        Registry::getConfig()->setConfigParam('blOePersonalizationUseDemoAccount', '1');
     }
 
     public function testGetCategoryId()
@@ -26,6 +26,6 @@ class ArticleListControllerDemoModeTest extends \OxidEsales\TestingLibrary\UnitT
         $controller = oxNew(ArticleListController::class);
         $controller->setActiveCategory($category);
 
-        $this->assertEquals(DemoAccountData::getCategoryId(), $controller->oeEcondaGetCategoryId());
+        $this->assertEquals(DemoAccountData::getCategoryId(), $controller->oePersonalizationGetCategoryId());
     }
 }

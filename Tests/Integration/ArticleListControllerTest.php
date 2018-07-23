@@ -4,7 +4,7 @@
  * See LICENSE file for license details.
  */
 
-namespace OxidEsales\EcondaModule\Tests\Integration;
+namespace OxidEsales\PersonalizationModule\Tests\Integration;
 
 use \OxidEsales\Eshop\Application\Model\Category;
 use \OxidEsales\Eshop\Application\Controller\ArticleListController;
@@ -18,6 +18,6 @@ class ArticleListControllerTest extends \OxidEsales\TestingLibrary\UnitTestCase
         $controller = oxNew(ArticleListController::class);
         $controller->setActiveCategory($category);
 
-        $this->assertEquals('categoryId', $controller->oeEcondaGetCategoryId());
+        $this->assertEquals('categoryId', $controller->oePersonalizationGetCategoryId());
     }
 }

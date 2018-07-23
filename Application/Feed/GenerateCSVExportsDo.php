@@ -4,7 +4,7 @@
  * See LICENSE file for license details.
  */
 
-namespace OxidEsales\EcondaModule\Application\Feed;
+namespace OxidEsales\PersonalizationModule\Application\Feed;
 
 use OxidEsales\Eshop\Application\Model\Article;
 use OxidEsales\Eshop\Core\Registry;
@@ -60,7 +60,7 @@ class GenerateCSVExportsDo extends \OxidEsales\Eshop\Application\Controller\Admi
     /**
      * @inheritdoc
      */
-    protected $_sThisTemplate = "oeecondaexportresult.tpl";
+    protected $_sThisTemplate = "oepersonalizationexportresult.tpl";
 
     /**
      * GenerateCSVExportsDo constructor.
@@ -70,8 +70,8 @@ class GenerateCSVExportsDo extends \OxidEsales\Eshop\Application\Controller\Admi
     public function __construct($exportPath = null)
     {
         parent::__construct();
-        $this->sExportPath = ($exportPath) ? $exportPath : $this->getConfig()->getConfigParam('sOeEcondaExportPath');
-        $this->oeEcondaPrepareExport();
+        $this->sExportPath = ($exportPath) ? $exportPath : $this->getConfig()->getConfigParam('sOePersonalizationExportPath');
+        $this->oePersonalizationPrepareExport();
     }
 
     /**
@@ -80,12 +80,12 @@ class GenerateCSVExportsDo extends \OxidEsales\Eshop\Application\Controller\Admi
     public function nextTick($pos)
     {
         if ($pos == 1) {
-            $this->oeEcondaPrepareProductExport();
-            $this->oeEcondaPrepareCategoryExport();
+            $this->oePersonalizationPrepareProductExport();
+            $this->oePersonalizationPrepareCategoryExport();
 
-            $this->oeEcondaExportCategories();
+            $this->oePersonalizationExportCategories();
 
-            $productsHeader = $this->oeEcondaGetProductsHeader();
+            $productsHeader = $this->oePersonalizationGetProductsHeader();
             $this->writeToFile($this->productFilename, $productsHeader);
         }
 
@@ -93,7 +93,7 @@ class GenerateCSVExportsDo extends \OxidEsales\Eshop\Application\Controller\Admi
 
         $article = $this->getOneArticle($pos, $continueExport);
         if ($article) {
-            $productsBody = $this->oeEcondaGetProductsRow($article);
+            $productsBody = $this->oePersonalizationGetProductsRow($article);
             $this->writeToFile($this->productFilename, $productsBody);
             $continueExport = $pos;
         }
@@ -114,7 +114,7 @@ class GenerateCSVExportsDo extends \OxidEsales\Eshop\Application\Controller\Admi
     /**
      * Create export folder, if not existent
      */
-    private function oeEcondaPrepareExport()
+    private function oePersonalizationPrepareExport()
     {
         $directory = rtrim($this->getConfig()->getConfigParam('sShopDir') . $this->sExportPath, "/");
         if (!file_exists($directory)) {
@@ -125,7 +125,7 @@ class GenerateCSVExportsDo extends \OxidEsales\Eshop\Application\Controller\Admi
     /**
      * Set filename for product export, delete file if already present
      */
-    private function oeEcondaPrepareProductExport()
+    private function oePersonalizationPrepareProductExport()
     {
         $directory = rtrim($this->getConfig()->getConfigParam('sShopDir') . $this->sExportPath, '/');
         $this->productFilename = $directory . '/products.csv';
@@ -137,7 +137,7 @@ class GenerateCSVExportsDo extends \OxidEsales\Eshop\Application\Controller\Admi
     /**
      * Set filename for category export, delete file if already present
      */
-    private function oeEcondaPrepareCategoryExport()
+    private function oePersonalizationPrepareCategoryExport()
     {
         $directory = rtrim($this->getConfig()->getConfigParam('sShopDir') . $this->sExportPath, '/');
         $this->categoryFilename = $directory . '/categories.csv';
@@ -151,7 +151,7 @@ class GenerateCSVExportsDo extends \OxidEsales\Eshop\Application\Controller\Admi
      *
      * @return string
      */
-    protected function oeEcondaGetProductsHeader()
+    protected function oePersonalizationGetProductsHeader()
     {
         $fields = [
             'ID',
@@ -177,7 +177,7 @@ class GenerateCSVExportsDo extends \OxidEsales\Eshop\Application\Controller\Admi
      *
      * @return string
      */
-    protected function oeEcondaGetProductsRow($article)
+    protected function oePersonalizationGetProductsRow($article)
     {
         $articleForDescription = $article;
 
@@ -192,9 +192,9 @@ class GenerateCSVExportsDo extends \OxidEsales\Eshop\Application\Controller\Admi
 
         $fields = array_values([
             'ID' => (isset($article->oxarticles__oxartnum->value) && $article->oxarticles__oxartnum->value) ? $article->oxarticles__oxartnum->value : $article->getId(),
-            'Name' => $this->joinArray($this->oeEcondaGetArticleTitles($articleForDescription->oxarticles__oxid->value)),
-            'Description' => $this->joinArray($this->oeEcondaGetArticleDescriptions($articleForDescription->oxarticles__oxid->value)),
-            'ProductUrl' => $this->joinArray($this->oeEcondaGetArticleLinks($article)),
+            'Name' => $this->joinArray($this->oePersonalizationGetArticleTitles($articleForDescription->oxarticles__oxid->value)),
+            'Description' => $this->joinArray($this->oePersonalizationGetArticleDescriptions($articleForDescription->oxarticles__oxid->value)),
+            'ProductUrl' => $this->joinArray($this->oePersonalizationGetArticleLinks($article)),
             'ImageUrl' => $this->formatText($article->getPictureUrl(1)),
             'Price' => $article->getPrice()->getBruttoPrice(),
             'OldPrice' => $oldPrice,
@@ -215,7 +215,7 @@ class GenerateCSVExportsDo extends \OxidEsales\Eshop\Application\Controller\Admi
      *
      * @return array
      */
-    private function oeEcondaGetArticleTitles($articleId)
+    private function oePersonalizationGetArticleTitles($articleId)
     {
         $titles = [];
 
@@ -223,7 +223,7 @@ class GenerateCSVExportsDo extends \OxidEsales\Eshop\Application\Controller\Admi
 
         $sql = "SELECT oxtitle FROM :table WHERE oxid=':oxid'";
 
-        foreach ($this->oeEcondaGetLanguages() as $language) {
+        foreach ($this->oePersonalizationGetLanguages() as $language) {
             $titles[] = $this->formatText(
                 DatabaseProvider::getDb()->getOne(strtr($sql, [
                     ':table' => $viewNameGenerator->getViewName('oxarticles', $language->id),
@@ -242,7 +242,7 @@ class GenerateCSVExportsDo extends \OxidEsales\Eshop\Application\Controller\Admi
      *
      * @return array
      */
-    private function oeEcondaGetArticleDescriptions($articleId)
+    private function oePersonalizationGetArticleDescriptions($articleId)
     {
         $descriptions = [];
 
@@ -250,7 +250,7 @@ class GenerateCSVExportsDo extends \OxidEsales\Eshop\Application\Controller\Admi
 
         $sql = "SELECT oxshortdesc FROM :table WHERE oxid=':oxid'";
 
-        foreach ($this->oeEcondaGetLanguages() as $language) {
+        foreach ($this->oePersonalizationGetLanguages() as $language) {
             $descriptions[] = $this->formatText(
                 DatabaseProvider::getDb()->getOne(strtr($sql, [
                     ':table' => $viewNameGenerator->getViewName('oxarticles', $language->id),
@@ -269,11 +269,11 @@ class GenerateCSVExportsDo extends \OxidEsales\Eshop\Application\Controller\Admi
      *
      * @return array
      */
-    private function oeEcondaGetArticleLinks($article)
+    private function oePersonalizationGetArticleLinks($article)
     {
         $links = [];
 
-        foreach ($this->oeEcondaGetLanguages() as $language) {
+        foreach ($this->oePersonalizationGetLanguages() as $language) {
             $links[] = $this->formatText($article->getLink($language->id));
         }
 
@@ -290,7 +290,7 @@ class GenerateCSVExportsDo extends \OxidEsales\Eshop\Application\Controller\Admi
     private function getLanguageVariation($fieldname)
     {
         $values = [$fieldname];
-        $languagesCount = count($this->oeEcondaGetLanguages());
+        $languagesCount = count($this->oePersonalizationGetLanguages());
         if ($languagesCount > 1) {
             $index = 1;
             while ($index < $languagesCount) {
@@ -305,12 +305,12 @@ class GenerateCSVExportsDo extends \OxidEsales\Eshop\Application\Controller\Admi
     /**
      * Build a list of categories with parents
      */
-    private function oeEcondaExportCategories()
+    private function oePersonalizationExportCategories()
     {
-        $headers = $this->oeEcondaGetCategoriesHeader();
+        $headers = $this->oePersonalizationGetCategoriesHeader();
         $this->writeToFile($this->categoryFilename, $headers);
 
-        $body = $this->oeEcondaGetCategoriesBody();
+        $body = $this->oePersonalizationGetCategoriesBody();
         $this->writeToFile($this->categoryFilename, $body);
     }
 
@@ -319,7 +319,7 @@ class GenerateCSVExportsDo extends \OxidEsales\Eshop\Application\Controller\Admi
      *
      * @return string
      */
-    protected function oeEcondaGetCategoriesHeader()
+    protected function oePersonalizationGetCategoriesHeader()
     {
         $fields = [
             'ID',
@@ -334,11 +334,11 @@ class GenerateCSVExportsDo extends \OxidEsales\Eshop\Application\Controller\Admi
      *
      * @return string
      */
-    protected function oeEcondaGetCategoriesBody()
+    protected function oePersonalizationGetCategoriesBody()
     {
         $rows = [];
 
-        $languages = $this->oeEcondaGetLanguages();
+        $languages = $this->oePersonalizationGetLanguages();
 
         $categoryList = oxNew(CategoryList::class);
         $categoryList->loadList();
@@ -383,7 +383,7 @@ class GenerateCSVExportsDo extends \OxidEsales\Eshop\Application\Controller\Admi
      *
      * @return array
      */
-    private function oeEcondaGetLanguages()
+    private function oePersonalizationGetLanguages()
     {
         return Registry::getLang()->getLanguageArray(null, true, true);
     }

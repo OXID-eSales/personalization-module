@@ -7,7 +7,7 @@
 
 bootstrapShop();
 
-if (!\OxidEsales\Eshop\Core\Registry::getConfig()->getActiveView()->getViewConfig()->isModuleActive('oeeconda')) {
+if (!\OxidEsales\Eshop\Core\Registry::getConfig()->getActiveView()->getViewConfig()->isModuleActive('oepersonalization')) {
     exit('Please activate the "OXID personalization powered by Econda" module before running the script.' . "\n");
 }
 
@@ -20,7 +20,7 @@ $_POST['acat'] = (isset($config['exportCategories'])) ? $config['exportCategorie
 $_POST['sExportMinStock'] = (isset($config['exportMinStock'])) ? $config['exportMinStock'] : 1;
 $exportPath = (isset($config['exportPath'])) ? $config['exportPath'] : null;
 
-$export = oxNew(OxidEsales\EcondaModule\Application\Feed\GenerateCSVExportsDo::class, $exportPath);
+$export = oxNew(OxidEsales\PersonalizationModule\Application\Feed\GenerateCSVExportsDo::class, $exportPath);
 
 $export->start();
 $export->run();
@@ -36,7 +36,7 @@ exit(0);
  */
 function getConfigFile($argv)
 {
-    $configFile = \OxidEsales\Eshop\Core\Registry::getConfig()->getActiveView()->getViewConfig()->getModulePath('oeeconda', 'config/params.php');
+    $configFile = \OxidEsales\Eshop\Core\Registry::getConfig()->getActiveView()->getViewConfig()->getModulePath('oepersonalization', 'config/params.php');
     array_shift($argv);
     if (isset($argv[0])) {
         if ($argv[0] === '--config') {
@@ -78,7 +78,7 @@ function getConfigurationParameters($argv)
 }
 
 /**
- * @param \OxidEsales\EcondaModule\Application\Feed\GenerateCSVExportsDo $export
+ * @param \OxidEsales\PersonalizationModule\Application\Feed\GenerateCSVExportsDo $export
  *
  * @return string
  */

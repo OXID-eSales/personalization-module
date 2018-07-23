@@ -4,15 +4,15 @@
  * See LICENSE file for license details.
  */
 
-namespace OxidEsales\EcondaModule\Application\Tracking;
+namespace OxidEsales\PersonalizationModule\Application\Tracking;
 
-use OxidEsales\EcondaModule\Application\Tracking\Helper\ActiveUserDataProvider;
-use OxidEsales\EcondaModule\Application\Tracking\Modifiers\EntityModifierByCurrentAction;
-use OxidEsales\EcondaModule\Application\Tracking\Modifiers\OrderStepsMapModifier;
-use OxidEsales\EcondaModule\Application\Tracking\Modifiers\PageMapModifier;
-use OxidEsales\EcondaModule\Application\Tracking\Modifiers\EntityModifierByCurrentBasketAction;
-use OxidEsales\EcondaModule\Application\Tracking\Page\PageIdentifiers;
-use OxidEsales\EcondaModule\Component\Tracking\ActivePageEntityInterface;
+use OxidEsales\PersonalizationModule\Application\Tracking\Helper\ActiveUserDataProvider;
+use OxidEsales\PersonalizationModule\Application\Tracking\Modifiers\EntityModifierByCurrentAction;
+use OxidEsales\PersonalizationModule\Application\Tracking\Modifiers\OrderStepsMapModifier;
+use OxidEsales\PersonalizationModule\Application\Tracking\Modifiers\PageMapModifier;
+use OxidEsales\PersonalizationModule\Application\Tracking\Modifiers\EntityModifierByCurrentBasketAction;
+use OxidEsales\PersonalizationModule\Application\Tracking\Page\PageIdentifiers;
+use OxidEsales\PersonalizationModule\Component\Tracking\ActivePageEntityInterface;
 use OxidEsales\Eshop\Application\Model\User;
 use OxidEsales\Eshop\Core\Registry;
 use OxidEsales\Eshop\Core\Str;

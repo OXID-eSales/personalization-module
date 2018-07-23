@@ -4,9 +4,9 @@
  * See LICENSE file for license details.
  */
 
-namespace OxidEsales\EcondaModule\Tests\Integration;
+namespace OxidEsales\PersonalizationModule\Tests\Integration;
 
-use \OxidEsales\EcondaModule\Application\Core\ViewConfig;
+use \OxidEsales\PersonalizationModule\Application\Core\ViewConfig;
 use OxidEsales\Eshop\Application\Controller\FrontendController;
 use OxidEsales\Eshop\Core\Config;
 use \OxidEsales\Eshop\Core\Registry;
@@ -15,87 +15,87 @@ class ViewConfigTest extends \OxidEsales\TestingLibrary\UnitTestCase
 {
     public function testGetAccountId()
     {
-        Registry::getConfig()->setConfigParam('sOeEcondaAccountId', 'testAccountId');
-        $this->assertEquals('testAccountId', $this->getViewConfig()->oeEcondaGetAccountId());
+        Registry::getConfig()->setConfigParam('sOePersonalizationAccountId', 'testAccountId');
+        $this->assertEquals('testAccountId', $this->getViewConfig()->oePersonalizationGetAccountId());
     }
 
     public function testGetWidgetIdStartPageBargainArticles()
     {
-        Registry::getConfig()->setConfigParam('sOeEcondaWidgetIdStartPageBargainArticles', 'testBargainId');
-        Registry::getConfig()->setConfigParam('sOeEcondaWidgetTemplateStartPageBargainArticles', 'testBargainTemplate');
-        $this->assertEquals('testBargainId', $this->getViewConfig()->oeEcondaGetStartPageBargainArticlesWidgetId());
-        $this->assertEquals('testBargainTemplate', $this->getViewConfig()->oeEcondaGetStartPageBargainArticlesTemplate());
+        Registry::getConfig()->setConfigParam('sOePersonalizationWidgetIdStartPageBargainArticles', 'testBargainId');
+        Registry::getConfig()->setConfigParam('sOePersonalizationWidgetTemplateStartPageBargainArticles', 'testBargainTemplate');
+        $this->assertEquals('testBargainId', $this->getViewConfig()->oePersonalizationGetStartPageBargainArticlesWidgetId());
+        $this->assertEquals('testBargainTemplate', $this->getViewConfig()->oePersonalizationGetStartPageBargainArticlesTemplate());
     }
 
     public function testGetWidgetIdStartPageTopArticles()
     {
-        Registry::getConfig()->setConfigParam('sOeEcondaWidgetIdStartPageTopArticles', 'testTopArticleId');
-        Registry::getConfig()->setConfigParam('sOeEcondaWidgetTemplateStartPageTopArticles', 'testTopArticleTemplate');
-        $this->assertEquals('testTopArticleId', $this->getViewConfig()->oeEcondaGetStartPageTopArticlesWidgetId());
-        $this->assertEquals('testTopArticleTemplate', $this->getViewConfig()->oeEcondaGetStartPageTopArticlesTemplate());
+        Registry::getConfig()->setConfigParam('sOePersonalizationWidgetIdStartPageTopArticles', 'testTopArticleId');
+        Registry::getConfig()->setConfigParam('sOePersonalizationWidgetTemplateStartPageTopArticles', 'testTopArticleTemplate');
+        $this->assertEquals('testTopArticleId', $this->getViewConfig()->oePersonalizationGetStartPageTopArticlesWidgetId());
+        $this->assertEquals('testTopArticleTemplate', $this->getViewConfig()->oePersonalizationGetStartPageTopArticlesTemplate());
     }
 
     public function testGetWidgetIdListPage()
     {
-        Registry::getConfig()->setConfigParam('sOeEcondaWidgetIdListPage', 'testListId');
-        Registry::getConfig()->setConfigParam('sOeEcondaWidgetTemplateListPage', 'testListTemplate');
-        $this->assertEquals('testListId', $this->getViewConfig()->oeEcondaGetListPageWidgetId());
-        $this->assertEquals('testListTemplate', $this->getViewConfig()->oeEcondaGetListPageTemplate());
+        Registry::getConfig()->setConfigParam('sOePersonalizationWidgetIdListPage', 'testListId');
+        Registry::getConfig()->setConfigParam('sOePersonalizationWidgetTemplateListPage', 'testListTemplate');
+        $this->assertEquals('testListId', $this->getViewConfig()->oePersonalizationGetListPageWidgetId());
+        $this->assertEquals('testListTemplate', $this->getViewConfig()->oePersonalizationGetListPageTemplate());
     }
 
     public function testGetWidgetIdDetailsPage()
     {
-        Registry::getConfig()->setConfigParam('sOeEcondaWidgetIdDetailsPage', 'testDetailsId');
-        Registry::getConfig()->setConfigParam('sOeEcondaWidgetTemplateDetailsPage', 'testDetailsTemplate');
-        $this->assertEquals('testDetailsId', $this->getViewConfig()->oeEcondaGetDetailsPageWidgetId());
-        $this->assertEquals('testDetailsTemplate', $this->getViewConfig()->oeEcondaGetDetailsPageTemplate());
+        Registry::getConfig()->setConfigParam('sOePersonalizationWidgetIdDetailsPage', 'testDetailsId');
+        Registry::getConfig()->setConfigParam('sOePersonalizationWidgetTemplateDetailsPage', 'testDetailsTemplate');
+        $this->assertEquals('testDetailsId', $this->getViewConfig()->oePersonalizationGetDetailsPageWidgetId());
+        $this->assertEquals('testDetailsTemplate', $this->getViewConfig()->oePersonalizationGetDetailsPageTemplate());
     }
 
     public function testGetWidgetIdThankYouPage()
     {
-        Registry::getConfig()->setConfigParam('sOeEcondaWidgetIdThankYouPage', 'testThankYouId');
-        Registry::getConfig()->setConfigParam('sOeEcondaWidgetTemplateThankYouPage', 'testThankYouTemplate');
-        $this->assertEquals('testThankYouId', $this->getViewConfig()->oeEcondaGetThankYouPageWidgetId());
-        $this->assertEquals('testThankYouTemplate', $this->getViewConfig()->oeEcondaGetThankYouPageTemplate());
+        Registry::getConfig()->setConfigParam('sOePersonalizationWidgetIdThankYouPage', 'testThankYouId');
+        Registry::getConfig()->setConfigParam('sOePersonalizationWidgetTemplateThankYouPage', 'testThankYouTemplate');
+        $this->assertEquals('testThankYouId', $this->getViewConfig()->oePersonalizationGetThankYouPageWidgetId());
+        $this->assertEquals('testThankYouTemplate', $this->getViewConfig()->oePersonalizationGetThankYouPageTemplate());
     }
 
-    public function testoeEcondaEnableWidgets()
+    public function testoePersonalizationEnableWidgets()
     {
-        Registry::getConfig()->setConfigParam('blOeEcondaEnableWidgets', true);
-        $this->assertTrue($this->getViewConfig()->oeEcondaEnableWidgets());
+        Registry::getConfig()->setConfigParam('blOePersonalizationEnableWidgets', true);
+        $this->assertTrue($this->getViewConfig()->oePersonalizationEnableWidgets());
     }
 
     public function testShowTrackingNote()
     {
-        Registry::getConfig()->setConfigParam('sOeEcondaTrackingShowNote', 'opt_in');
-        $this->assertEquals('opt_in', $this->getViewConfig()->oeEcondaShowTrackingNote());
+        Registry::getConfig()->setConfigParam('sOePersonalizationTrackingShowNote', 'opt_in');
+        $this->assertEquals('opt_in', $this->getViewConfig()->oePersonalizationShowTrackingNote());
     }
 
     public function testGetExportPath()
     {
-        Registry::getConfig()->setConfigParam('sOeEcondaExportPath', 'testExportPath');
-        $this->assertEquals('testExportPath', $this->getViewConfig()->oeEcondaGetExportPath());
+        Registry::getConfig()->setConfigParam('sOePersonalizationExportPath', 'testExportPath');
+        $this->assertEquals('testExportPath', $this->getViewConfig()->oePersonalizationGetExportPath());
     }
 
     public function testIsLoginAction()
     {
         $this->prepareActiveView('login_noredirect');
 
-        $this->assertTrue($this->getViewConfig()->oeEcondaIsLoginAction());
+        $this->assertTrue($this->getViewConfig()->oePersonalizationIsLoginAction());
     }
 
     public function testIsLogoutAction()
     {
         $this->prepareActiveView('logout');
 
-        $this->assertTrue($this->getViewConfig()->oeEcondaIsLogoutAction());
+        $this->assertTrue($this->getViewConfig()->oePersonalizationIsLogoutAction());
     }
 
     public function testWhenIsNotLoginAction()
     {
         $this->prepareActiveView('home');
 
-        $this->assertFalse($this->getViewConfig()->oeEcondaIsLoginAction());
+        $this->assertFalse($this->getViewConfig()->oePersonalizationIsLoginAction());
     }
 
     protected function prepareActiveView($functionName)

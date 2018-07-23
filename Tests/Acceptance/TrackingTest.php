@@ -4,7 +4,7 @@
  * See LICENSE file for license details.
  */
 
-namespace OxidEsales\EcondaModule\Tests\Acceptance;
+namespace OxidEsales\PersonalizationModule\Tests\Acceptance;
 
 class TrackingTest extends BaseAcceptanceTestCase
 {
@@ -229,7 +229,7 @@ class TrackingTest extends BaseAcceptanceTestCase
         $this->checkCommonElements();
         $this->checkIfElementInPage($this->prepareElementForContent('Login\/Uebersicht'));
         $this->checkIfElementInPage($this->prepareElementForPageId('1accountpage/account/dashboard.tpl'));
-        $this->checkIfElementInPage($this->prepareElementForLoginEvent('"'.md5('oeecondatestuser').'",0'));
+        $this->checkIfElementInPage($this->prepareElementForLoginEvent('"'.md5('oepersonalizationtestuser').'",0'));
 
         $this->open($this->getTestConfig()->getShopUrl() .'/index.php?cl=account&fnc=logout&redirect=1');
 

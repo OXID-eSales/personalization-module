@@ -4,7 +4,7 @@
  * See LICENSE file for license details.
  */
 
-namespace OxidEsales\EcondaModule\Application\Core;
+namespace OxidEsales\PersonalizationModule\Application\Core;
 
 use OxidEsales\Eshop\Core\Registry;
 use OxidEsales\Eshop\Core\DatabaseProvider;
@@ -13,7 +13,7 @@ use OxidEsales\Eshop\Application\Model\Content;
 
 class Events
 {
-    const MODULE_NAME = 'module:oeeconda';
+    const MODULE_NAME = 'module:oepersonalization';
 
     /**
      * Execute action on activate event
@@ -57,16 +57,16 @@ sodass für Sie relevante Produkte angezeigt und uninteressante Angebote ausgebl
 Die Verarbeitung erfolgt gemäß Art. 6 Abs. 1 lit. f DSGVO und Sie können jederzeit von Ihren Betroffenenrechten Gebrauch machen.
 Wenn Sie dies nicht möchten, können Sie hier widersprechen. Wenn Sie unsicher sind, finden Sie hier die gesamten Datenschutzhinweise.
 <div>
-    <a class="oeeconda-optin" href="#" data-dismiss="alert">Tracking zulassen</a>
+    <a class="oepersonalization-optin" href="#" data-dismiss="alert">Tracking zulassen</a>
 </div>
 EOT;
-        $sql = "select count(oxid) from `oxcontents` where oxloadid = 'oeecondaoptin'";
+        $sql = "select count(oxid) from `oxcontents` where oxloadid = 'oepersonalizationoptin'";
         $result = DatabaseProvider::getDb()->getCol($sql);
         if ($result[0] == 0) {
             $id = Registry::getUtilsObject()->generateUId();
             $content = oxNew(Content::class);
             $content->setId($id);
-            $content->oxcontents__oxloadid = new Field('oeecondaoptin');
+            $content->oxcontents__oxloadid = new Field('oepersonalizationoptin');
             $content->oxcontents__oxtitle = new Field('Cookie "Tracking zulassen" Hinweis');
             $content->oxcontents__oxcontent = new Field($text);
             $content->save();
@@ -86,16 +86,16 @@ sodass für Sie relevante Produkte angezeigt und uninteressante Angebote ausgebl
 Die Verarbeitung erfolgt gemäß Art. 6 Abs. 1 lit. f DSGVO und Sie können jederzeit von Ihren Betroffenenrechten Gebrauch machen.
 Wenn Sie dies nicht möchten, können Sie hier widersprechen. Wenn Sie unsicher sind, finden Sie hier die gesamten Datenschutzhinweise.
 <div>
-    <a class="oeeconda-optout" href="#" data-dismiss="alert">Tracking verbieten</a>
+    <a class="oepersonalization-optout" href="#" data-dismiss="alert">Tracking verbieten</a>
 </div>
 EOT;
-        $sql = "select count(oxid) from `oxcontents` where oxloadid = 'oeecondaoptout'";
+        $sql = "select count(oxid) from `oxcontents` where oxloadid = 'oepersonalizationoptout'";
         $result = DatabaseProvider::getDb()->getCol($sql);
         if ($result[0] == 0) {
             $id = Registry::getUtilsObject()->generateUId();
             $content = oxNew(Content::class);
             $content->setId($id);
-            $content->oxcontents__oxloadid = new Field('oeecondaoptout');
+            $content->oxcontents__oxloadid = new Field('oepersonalizationoptout');
             $content->oxcontents__oxtitle = new Field('Cookie "Tracking verbieten" Hinweis');
             $content->oxcontents__oxcontent = new Field($text);
             $content->save();
@@ -108,20 +108,20 @@ EOT;
     protected static function addContentSnippetUpdate()
     {
         $text = <<<'EOT'
-<div id="oeeconda-update">
+<div id="oepersonalization-update">
     <h4>Tracking</h4>
-    <input type="radio" name="oeeconda-state" value="ALLOW"> Zulassen
-    <input type="radio" name="oeeconda-state" value="DENY"> Verbieten
+    <input type="radio" name="oepersonalization-state" value="ALLOW"> Zulassen
+    <input type="radio" name="oepersonalization-state" value="DENY"> Verbieten
     <div><button type="button" class="btn btn-primary">Aktualisieren</button></div>
 </div>
 EOT;
-        $sql = "select count(oxid) from `oxcontents` where oxloadid = 'oeecondaupdate'";
+        $sql = "select count(oxid) from `oxcontents` where oxloadid = 'oepersonalizationupdate'";
         $result = DatabaseProvider::getDb()->getCol($sql);
         if ($result[0] == 0) {
             $id = Registry::getUtilsObject()->generateUId();
             $content = oxNew(Content::class);
             $content->setId($id);
-            $content->oxcontents__oxloadid = new Field('oeecondaupdate');
+            $content->oxcontents__oxloadid = new Field('oepersonalizationupdate');
             $content->oxcontents__oxtitle = new Field('Privacy Protection-Einstellungen');
             $content->oxcontents__oxcontent = new Field($text);
             $content->save();
@@ -137,100 +137,100 @@ EOT;
     {
         return [
             [
-                'group' => 'oeeconda_account',
-                'name' => 'sOeEcondaAccountId',
+                'group' => 'oepersonalization_account',
+                'name' => 'sOePersonalizationAccountId',
                 'type' => 'str',
                 'value' => ''
             ],
             [
-                'group' => 'oeeconda_account',
-                'name' => 'blOeEcondaUseDemoAccount',
+                'group' => 'oepersonalization_account',
+                'name' => 'blOePersonalizationUseDemoAccount',
                 'type' => 'bool',
                 'value' => ''
             ],
             [
-                'group' => 'oeeconda_account',
-                'name' => 'blOeEcondaEnableWidgets',
+                'group' => 'oepersonalization_account',
+                'name' => 'blOePersonalizationEnableWidgets',
                 'type' => 'bool',
                 'value' => 'false'
             ],
             [
-                'group' => 'oeeconda_start_page_widgets',
-                'name' => 'sOeEcondaWidgetIdStartPageBargainArticles',
+                'group' => 'oepersonalization_start_page_widgets',
+                'name' => 'sOePersonalizationWidgetIdStartPageBargainArticles',
                 'type' => 'str',
                 'value' => ''
             ],
             [
-                'group' => 'oeeconda_start_page_widgets',
-                'name' => 'sOeEcondaWidgetTemplateStartPageBargainArticles',
+                'group' => 'oepersonalization_start_page_widgets',
+                'name' => 'sOePersonalizationWidgetTemplateStartPageBargainArticles',
                 'type' => 'str',
                 'value' => 'Component/views/list.ejs.html'
             ],
             [
-                'group' => 'oeeconda_start_page_widgets',
-                'name' => 'sOeEcondaWidgetIdStartPageTopArticles',
+                'group' => 'oepersonalization_start_page_widgets',
+                'name' => 'sOePersonalizationWidgetIdStartPageTopArticles',
                 'type' => 'str',
                 'value' => ''
             ],
             [
-                'group' => 'oeeconda_start_page_widgets',
-                'name' => 'sOeEcondaWidgetTemplateStartPageTopArticles',
+                'group' => 'oepersonalization_start_page_widgets',
+                'name' => 'sOePersonalizationWidgetTemplateStartPageTopArticles',
                 'type' => 'str',
                 'value' => 'Component/views/list.ejs.html'
             ],
             [
-                'group' => 'oeeconda_list_page_widgets',
-                'name' => 'sOeEcondaWidgetIdListPage',
+                'group' => 'oepersonalization_list_page_widgets',
+                'name' => 'sOePersonalizationWidgetIdListPage',
                 'type' => 'str',
                 'value' => ''
             ],
             [
-                'group' => 'oeeconda_list_page_widgets',
-                'name' => 'sOeEcondaWidgetTemplateListPage',
+                'group' => 'oepersonalization_list_page_widgets',
+                'name' => 'sOePersonalizationWidgetTemplateListPage',
                 'type' => 'str',
                 'value' => 'Component/views/list.ejs.html'
             ],
             [
-                'group' => 'oeeconda_details_page_widgets',
-                'name' => 'sOeEcondaWidgetIdDetailsPage',
+                'group' => 'oepersonalization_details_page_widgets',
+                'name' => 'sOePersonalizationWidgetIdDetailsPage',
                 'type' => 'str',
                 'value' => ''
             ],
             [
-                'group' => 'oeeconda_details_page_widgets',
-                'name' => 'sOeEcondaWidgetTemplateDetailsPage',
+                'group' => 'oepersonalization_details_page_widgets',
+                'name' => 'sOePersonalizationWidgetTemplateDetailsPage',
                 'type' => 'str',
                 'value' => 'Component/views/list.ejs.html'
             ],
             [
-                'group' => 'oeeconda_thank_you_page_widgets',
-                'name' => 'sOeEcondaWidgetIdThankYouPage',
+                'group' => 'oepersonalization_thank_you_page_widgets',
+                'name' => 'sOePersonalizationWidgetIdThankYouPage',
                 'type' => 'str',
                 'value' => ''
             ],
             [
-                'group' => 'oeeconda_thank_you_page_widgets',
-                'name' => 'sOeEcondaWidgetTemplateThankYouPage',
+                'group' => 'oepersonalization_thank_you_page_widgets',
+                'name' => 'sOePersonalizationWidgetTemplateThankYouPage',
                 'type' => 'str',
                 'value' => 'Component/views/list.ejs.html'
             ],
             [
                 'group' => '',
-                'name' => 'blOeEcondaTracking',
+                'name' => 'blOePersonalizationTracking',
                 'type' => 'bool',
                 'value' => ''
             ],
             [
                 'group' => '',
-                'name' => 'sOeEcondaTrackingShowNote',
+                'name' => 'sOePersonalizationTrackingShowNote',
                 'type' => 'str',
                 'value' => 'no'
             ],
             [
-                'group' => 'oeeconda_export',
-                'name' => 'sOeEcondaExportPath',
+                'group' => 'oepersonalization_export',
+                'name' => 'sOePersonalizationExportPath',
                 'type' => 'str',
-                'value' => 'export/oeeconda'
+                'value' => 'export/oepersonalization'
             ],
         ];
     }

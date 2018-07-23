@@ -4,9 +4,9 @@
  * See LICENSE file for license details.
  */
 
-namespace OxidEsales\EcondaModule\Tests\Integration;
+namespace OxidEsales\PersonalizationModule\Tests\Integration;
 
-use OxidEsales\EcondaModule\Component\DemoAccountData;
+use OxidEsales\PersonalizationModule\Component\DemoAccountData;
 use OxidEsales\Eshop\Application\Controller\ThankYouController;
 use OxidEsales\Eshop\Application\Model\Category;
 use OxidEsales\Eshop\Core\Registry;
@@ -16,16 +16,16 @@ class ThankYouControllerDemoModeTest extends \OxidEsales\TestingLibrary\UnitTest
     public function setUp()
     {
         parent::setUp();
-        Registry::getConfig()->setConfigParam('blOeEcondaUseDemoAccount', '1');
+        Registry::getConfig()->setConfigParam('blOePersonalizationUseDemoAccount', '1');
     }
 
-    public function testOeEcondaGetCategoryId()
+    public function testOePersonalizationGetCategoryId()
     {
         $category = oxNew(Category::class);
         $category->setId('testId');
         $articleDetails = oxNew(ThankYouController::class);
         $articleDetails->setActiveCategory($category);
 
-        $this->assertEquals(DemoAccountData::getCategoryId(), $articleDetails->oeEcondaGetCategoryId());
+        $this->assertEquals(DemoAccountData::getCategoryId(), $articleDetails->oePersonalizationGetCategoryId());
     }
 }

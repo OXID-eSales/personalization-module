@@ -4,26 +4,26 @@
  * See LICENSE file for license details.
  */
 
-namespace OxidEsales\EcondaModule\Application;
+namespace OxidEsales\PersonalizationModule\Application;
 
-use OxidEsales\EcondaModule\Application\Tracking\Helper\ActiveControllerCategoryPathBuilder;
-use OxidEsales\EcondaModule\Application\Tracking\Helper\ActiveUserDataProvider;
-use OxidEsales\EcondaModule\Application\Tracking\Helper\CategoryPathBuilder;
-use OxidEsales\EcondaModule\Application\Tracking\Modifiers\OrderStepsMapModifier;
-use OxidEsales\EcondaModule\Application\Tracking\Modifiers\PageMapModifier;
-use OxidEsales\EcondaModule\Application\Tracking\Modifiers\EntityModifierByCurrentAction;
-use OxidEsales\EcondaModule\Application\Tracking\Modifiers\EntityModifierByCurrentBasketAction;
-use OxidEsales\EcondaModule\Application\Tracking\Page\PageIdentifiers;
-use OxidEsales\EcondaModule\Application\Tracking\Page\PageMap;
-use OxidEsales\EcondaModule\Application\Tracking\ProductPreparation\ProductDataPreparator;
-use OxidEsales\EcondaModule\Application\Tracking\ProductPreparation\ProductTitlePreparator;
-use OxidEsales\EcondaModule\Application\Tracking\ActivePageEntityPreparator;
-use OxidEsales\EcondaModule\Component\Tracking\ActivePageEntity;
-use OxidEsales\EcondaModule\Component\Tracking\ActivePageEntityInterface;
-use OxidEsales\EcondaModule\Component\Tracking\TrackingCodeGenerator;
-use OxidEsales\EcondaModule\Component\Tracking\File\FileSystem;
-use OxidEsales\EcondaModule\Component\Tracking\File\JsFileLocator;
-use OxidEsales\EcondaModule\Component\Tracking\File\JsFileUploadFactory;
+use OxidEsales\PersonalizationModule\Application\Tracking\Helper\ActiveControllerCategoryPathBuilder;
+use OxidEsales\PersonalizationModule\Application\Tracking\Helper\ActiveUserDataProvider;
+use OxidEsales\PersonalizationModule\Application\Tracking\Helper\CategoryPathBuilder;
+use OxidEsales\PersonalizationModule\Application\Tracking\Modifiers\OrderStepsMapModifier;
+use OxidEsales\PersonalizationModule\Application\Tracking\Modifiers\PageMapModifier;
+use OxidEsales\PersonalizationModule\Application\Tracking\Modifiers\EntityModifierByCurrentAction;
+use OxidEsales\PersonalizationModule\Application\Tracking\Modifiers\EntityModifierByCurrentBasketAction;
+use OxidEsales\PersonalizationModule\Application\Tracking\Page\PageIdentifiers;
+use OxidEsales\PersonalizationModule\Application\Tracking\Page\PageMap;
+use OxidEsales\PersonalizationModule\Application\Tracking\ProductPreparation\ProductDataPreparator;
+use OxidEsales\PersonalizationModule\Application\Tracking\ProductPreparation\ProductTitlePreparator;
+use OxidEsales\PersonalizationModule\Application\Tracking\ActivePageEntityPreparator;
+use OxidEsales\PersonalizationModule\Component\Tracking\ActivePageEntity;
+use OxidEsales\PersonalizationModule\Component\Tracking\ActivePageEntityInterface;
+use OxidEsales\PersonalizationModule\Component\Tracking\TrackingCodeGenerator;
+use OxidEsales\PersonalizationModule\Component\Tracking\File\FileSystem;
+use OxidEsales\PersonalizationModule\Component\Tracking\File\JsFileLocator;
+use OxidEsales\PersonalizationModule\Component\Tracking\File\JsFileUploadFactory;
 use OxidEsales\Eshop\Application\Model\User;
 use OxidEsales\Eshop\Core\Registry;
 use Smarty;

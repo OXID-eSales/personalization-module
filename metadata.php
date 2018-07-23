@@ -13,7 +13,7 @@ $sMetadataVersion = '2.1';
  * Module information.
  */
 $aModule = array(
-    'id'           => 'oeeconda',
+    'id'           => 'oepersonalization',
     'title'        => 'OXID personalization powered by Econda',
     'description'  => [
         'de' => 'Modul fügt Econda Service-Funktionalität hinzu.',
@@ -25,24 +25,24 @@ $aModule = array(
     'url' => 'http://www.oxid-esales.com',
     'email' => 'info@oxid-esales.com',
     'extend' => [
-        \OxidEsales\Eshop\Core\ViewConfig::class => \OxidEsales\EcondaModule\Application\Core\ViewConfig::class,
-        \OxidEsales\Eshop\Application\Controller\ArticleListController::class => \OxidEsales\EcondaModule\Application\Controller\ArticleListController::class,
-        \OxidEsales\Eshop\Application\Component\Widget\ArticleDetails::class => \OxidEsales\EcondaModule\Application\Component\Widget\ArticleDetails::class,
-        \OxidEsales\Eshop\Application\Controller\ThankYouController::class => \OxidEsales\EcondaModule\Application\Controller\ThankYouController::class,
+        \OxidEsales\Eshop\Core\ViewConfig::class => \OxidEsales\PersonalizationModule\Application\Core\ViewConfig::class,
+        \OxidEsales\Eshop\Application\Controller\ArticleListController::class => \OxidEsales\PersonalizationModule\Application\Controller\ArticleListController::class,
+        \OxidEsales\Eshop\Application\Component\Widget\ArticleDetails::class => \OxidEsales\PersonalizationModule\Application\Component\Widget\ArticleDetails::class,
+        \OxidEsales\Eshop\Application\Controller\ThankYouController::class => \OxidEsales\PersonalizationModule\Application\Controller\ThankYouController::class,
     ],
     'controllers' => [
-        'oeecondaadmin' => \OxidEsales\EcondaModule\Application\Controller\Admin\EcondaAdminController::class,
-        'oeecondaemosjsupload' => \OxidEsales\EcondaModule\Application\Controller\Admin\EmosJsUploadController::class,
-        'oeecondaexport' => \OxidEsales\EcondaModule\Application\Feed\GenerateCSVExports::class,
+        'oepersonalizationadmin' => \OxidEsales\PersonalizationModule\Application\Controller\Admin\PersonalizationAdminController::class,
+        'oepersonalizationemosjsupload' => \OxidEsales\PersonalizationModule\Application\Controller\Admin\EmosJsUploadController::class,
+        'oepersonalizationexport' => \OxidEsales\PersonalizationModule\Application\Feed\GenerateCSVExports::class,
     ],
     'events' => [
-        'onActivate'   => '\OxidEsales\EcondaModule\Application\Core\Events::onActivate',
+        'onActivate'   => \OxidEsales\PersonalizationModule\Application\Core\Events::class . '::onActivate',
     ],
     'templates' => [
         // Admin Templates
-        'oeecondaadmin.tpl' => 'oe/econda/Application/views/admin/tpl/oeecondaadmin.tpl',
-        'oeecondacookienote.tpl' => 'oe/econda/Application/views/widget/header/cookienote.tpl',
-        'oeecondaexportresult.tpl' => 'oe/econda/Application/views/admin/tpl/oeecondaexportresult.tpl'
+        'oepersonalizationadmin.tpl' => 'oe/personalization/Application/views/admin/tpl/oepersonalizationadmin.tpl',
+        'oepersonalizationcookienote.tpl' => 'oe/personalization/Application/views/widget/header/cookienote.tpl',
+        'oepersonalizationexportresult.tpl' => 'oe/personalization/Application/views/admin/tpl/oepersonalizationexportresult.tpl'
     ],
     'blocks' => [
         [

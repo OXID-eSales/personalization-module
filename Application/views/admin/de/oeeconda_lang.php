@@ -11,15 +11,15 @@ $aLang = [
 
     'mxpersonalization' => 'Personalisierung',
     'mxpersonalizationeconda' => 'Econda',
-    'OEECONDA_UPLOAD_BUTTON_TITLE' => 'Hochladen',
-    'OEECONDA_TRACKING_SECTION_TITLE' => 'Econda Tracking',
-    'OEECONDA_MESSAGE_FILE_IS_NOT_PRESENT' => 'Die Datei <b>%s</b> ist momentan nicht vorhanden.'
+    'OEPERSONALIZATION_UPLOAD_BUTTON_TITLE' => 'Hochladen',
+    'OEPERSONALIZATION_TRACKING_SECTION_TITLE' => 'Econda Tracking',
+    'OEPERSONALIZATION_MESSAGE_FILE_IS_NOT_PRESENT' => 'Die Datei <b>%s</b> ist momentan nicht vorhanden.'
     .' Es ist erforderlich, die Datei hochzuladen, bevor das Tracking aktiviert wird.',
-    'OEECONDA_MESSAGE_FILE_IS_PRESENT' => 'Die Datei <b>%s</b> ist vorhanden.',
-    'OEECONDA_VISUAL_EDITOR_SHORTCODE_ECONDA' => 'AI Content',
-    'OEECONDA_VISUAL_EDITOR_WIDGET_ECONDA_WIDGET_ID' => 'Widget-ID',
-    'OEECONDA_VISUAL_EDITOR_WIDGET_ECONDA_WIDGET_TEMPLATE' => 'Widget-Template',
-    'OEECONDA_VISUAL_EDITOR_WIDGET_ECONDA_CHUNK_SIZE' => 'Ergebnis-Limitierung',
-    'OEECONDA_MESSAGE_CMS_SNIPPETS' => 'Sie müssen die CMS Snippets "oeecondaoptin", "oeecondaoptout", "oeecondaupdate" überprüfen und aktivieren, damit die Abfrage korrekt funktioniert.',
-    'OEECONDA_EXPORT' => 'Export',
+    'OEPERSONALIZATION_MESSAGE_FILE_IS_PRESENT' => 'Die Datei <b>%s</b> ist vorhanden.',
+    'OEPERSONALIZATION_VISUAL_EDITOR_SHORTCODE_ECONDA' => 'AI Content',
+    'OEPERSONALIZATION_VISUAL_EDITOR_WIDGET_ECONDA_WIDGET_ID' => 'Widget-ID',
+    'OEPERSONALIZATION_VISUAL_EDITOR_WIDGET_ECONDA_WIDGET_TEMPLATE' => 'Widget-Template',
+    'OEPERSONALIZATION_VISUAL_EDITOR_WIDGET_ECONDA_CHUNK_SIZE' => 'Ergebnis-Limitierung',
+    'OEPERSONALIZATION_MESSAGE_CMS_SNIPPETS' => 'Sie müssen die CMS Snippets "oepersonalizationoptin", "oepersonalizationoptout", "oepersonalizationupdate" überprüfen und aktivieren, damit die Abfrage korrekt funktioniert.',
+    'OEPERSONALIZATION_EXPORT' => 'Export',
 ];

@@ -4,7 +4,7 @@
  * See LICENSE file for license details.
  */
 
-namespace OxidEsales\EcondaModule\Component;
+namespace OxidEsales\PersonalizationModule\Component;
 
 /**
  * Class contains Econda demo shop information.

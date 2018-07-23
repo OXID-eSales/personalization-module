@@ -4,7 +4,7 @@ UPDATE `oxconfig` SET `OXVARVALUE` = 0x07 WHERE `OXVARNAME` = 'sDefaultLang';
 # Add test user data.
 REPLACE INTO `oxuser`
 SET
-  `OXID` = 'oeecondatestuser',
+  `OXID` = 'oepersonalizationtestuser',
   `OXACTIVE` = 1,
   `OXRIGHTS` = 'user',
   `OXSHOPID` = 1,
@@ -58,11 +58,11 @@ SET
 # Add categories demo data.
 REPLACE INTO `oxcategories`
 SET
-  `OXID` = 'oeecondacategoryid',
+  `OXID` = 'oepersonalizationcategoryid',
   `OXPARENTID` = 'oxrootid',
   `OXLEFT` = 1,
   `OXRIGHT` = 4,
-  `OXROOTID` = 'oeecondacategoryid',
+  `OXROOTID` = 'oepersonalizationcategoryid',
   `OXSORT` = 1,
   `OXACTIVE` = 1,
   `OXHIDDEN` = 0,
@@ -84,8 +84,8 @@ SET
 
 REPLACE INTO `oxobject2category`
 SET
-  `OXID` = 'oeecondaid',
+  `OXID` = 'oepersonalizationid',
   `OXOBJECTID` = '1000',
-  `OXCATNID` = 'oeecondacategoryid',
+  `OXCATNID` = 'oepersonalizationcategoryid',
   `OXPOS` = 0,
   `OXTIME` = 1202134861;

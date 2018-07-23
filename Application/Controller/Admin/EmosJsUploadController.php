@@ -4,9 +4,9 @@
  * See LICENSE file for license details.
  */
 
-namespace OxidEsales\EcondaModule\Application\Controller\Admin;
+namespace OxidEsales\PersonalizationModule\Application\Controller\Admin;
 
-use OxidEsales\EcondaModule\Application\Factory;
+use OxidEsales\PersonalizationModule\Application\Factory;
 
 /**
  * Controller responsible for .js file upload.
@@ -47,7 +47,7 @@ class EmosJsUploadController extends \OxidEsales\Eshop\Application\Controller\Ad
                 . '. Add write permissions for web user or create this '
                 . ' directory with write permissions manually.'
             );
-            return EcondaAdminController::class;
+            return PersonalizationAdminController::class;
         }
 
         $fileUploader = $this->factory->getFileUploader();
@@ -59,7 +59,7 @@ class EmosJsUploadController extends \OxidEsales\Eshop\Application\Controller\Ad
             }
         }
 
-        return EcondaAdminController::class;
+        return PersonalizationAdminController::class;
     }
 
     /**

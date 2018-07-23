@@ -8,9 +8,9 @@ use OxidEsales\VisualCmsModule\Application\Model\VisualEditorShortcode;
 
 use OxidEsales\Eshop\Core\Registry;
 
-class oeeconda_shortcode extends VisualEditorShortcode
+class oepersonalization_shortcode extends VisualEditorShortcode
 {
-    protected $_sTitle = 'OEECONDA_VISUAL_EDITOR_SHORTCODE_ECONDA';
+    protected $_sTitle = 'OEPERSONALIZATION_VISUAL_EDITOR_SHORTCODE_ECONDA';
 
     protected $_sBackgroundColor = '#e74c3c';
 
@@ -26,21 +26,21 @@ class oeeconda_shortcode extends VisualEditorShortcode
             [
                 'widgetId' => [
                     'type'        => 'text',
-                    'label'       => $language->translateString('OEECONDA_VISUAL_EDITOR_WIDGET_ECONDA_WIDGET_ID'),
+                    'label'       => $language->translateString('OEPERSONALIZATION_VISUAL_EDITOR_WIDGET_ECONDA_WIDGET_ID'),
                     'placeholder' => '6',
                     'value'       => '',
                     'preview'     => true
                 ],
                 'widgetTemplate' => [
                     'type'        => 'text',
-                    'label'       => $language->translateString('OEECONDA_VISUAL_EDITOR_WIDGET_ECONDA_WIDGET_TEMPLATE'),
+                    'label'       => $language->translateString('OEPERSONALIZATION_VISUAL_EDITOR_WIDGET_ECONDA_WIDGET_TEMPLATE'),
                     'placeholder' => 'Component/views/vcms_banner.ejs.html',
                     'value'       => 'Component/views/vcms_banner.ejs.html',
                     'preview'     => false
                 ],
                 'chunkSize' => [
                     'type'        => 'text',
-                    'label'       => $language->translateString('OEECONDA_VISUAL_EDITOR_WIDGET_ECONDA_CHUNK_SIZE'),
+                    'label'       => $language->translateString('OEPERSONALIZATION_VISUAL_EDITOR_WIDGET_ECONDA_CHUNK_SIZE'),
                     'placeholder' => '4',
                     'value'       => '',
                     'preview'     => false
@@ -53,24 +53,24 @@ class oeeconda_shortcode extends VisualEditorShortcode
     {
         $output = '';
 
-        if ($this->getViewConfig()->oeEcondaEnableWidgets()) {
+        if ($this->getViewConfig()->oePersonalizationEnableWidgets()) {
 
             $language = Registry::getLang();
             $lang_MORE_INFO = $language->translateString('MORE_INFO');
 
-            $elementId = 'oeeconda-widget-' . $parameters['widgetId'] . '-' . uniqid();
-            $accountId = $this->getViewConfig()->oeEcondaGetAccountId();
+            $elementId = 'oepersonalization-widget-' . $parameters['widgetId'] . '-' . uniqid();
+            $accountId = $this->getViewConfig()->oePersonalizationGetAccountId();
 
             $widgetId = $parameters['widgetId'];
             $widgetTemplate = $this->getViewConfig()->getModuleUrl(
-                'oeeconda',
+                'oepersonalization',
                 $parameters['widgetTemplate']
             );
             $chunkSize = $parameters['chunkSize'];
 
-            $loadingText = $language->translateString('OEECONDA_LOADING');
+            $loadingText = $language->translateString('OEPERSONALIZATION_LOADING');
             $loadingImage = $this->getViewConfig()->getModuleUrl(
-                'oeeconda',
+                'oepersonalization',
                 'out/pictures/spinner.gif'
             );
 

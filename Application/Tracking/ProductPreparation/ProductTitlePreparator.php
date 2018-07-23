@@ -4,7 +4,7 @@
  * See LICENSE file for license details.
  */
 
-namespace OxidEsales\EcondaModule\Application\Tracking\ProductPreparation;
+namespace OxidEsales\PersonalizationModule\Application\Tracking\ProductPreparation;
 
 /**
  * Class responsible for preparing product title for sending to Econda.

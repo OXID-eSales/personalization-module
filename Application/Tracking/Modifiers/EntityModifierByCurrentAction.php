@@ -4,13 +4,13 @@
  * See LICENSE file for license details.
  */
 
-namespace OxidEsales\EcondaModule\Application\Tracking\Modifiers;
+namespace OxidEsales\PersonalizationModule\Application\Tracking\Modifiers;
 
-use OxidEsales\EcondaModule\Application\Tracking\Helper\CategoryPathBuilder;
-use OxidEsales\EcondaModule\Application\Tracking\Page\PageIdentifiers;
-use OxidEsales\EcondaModule\Application\Tracking\ProductPreparation\ProductDataPreparator;
-use OxidEsales\EcondaModule\Application\Tracking\ProductPreparation\ProductTitlePreparator;
-use OxidEsales\EcondaModule\Component\Tracking\ActivePageEntityInterface;
+use OxidEsales\PersonalizationModule\Application\Tracking\Helper\CategoryPathBuilder;
+use OxidEsales\PersonalizationModule\Application\Tracking\Page\PageIdentifiers;
+use OxidEsales\PersonalizationModule\Application\Tracking\ProductPreparation\ProductDataPreparator;
+use OxidEsales\PersonalizationModule\Application\Tracking\ProductPreparation\ProductTitlePreparator;
+use OxidEsales\PersonalizationModule\Component\Tracking\ActivePageEntityInterface;
 use OxidEsales\Eshop\Application\Model\Article;
 use OxidEsales\Eshop\Application\Model\Basket;
 use OxidEsales\Eshop\Application\Model\Order;

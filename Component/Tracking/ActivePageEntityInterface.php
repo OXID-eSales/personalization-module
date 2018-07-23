@@ -4,7 +4,7 @@
  * See LICENSE file for license details.
  */
 
-namespace OxidEsales\EcondaModule\Component\Tracking;
+namespace OxidEsales\PersonalizationModule\Component\Tracking;
 
 /**
  * Class responsible for storing/providing customer's active page data.
