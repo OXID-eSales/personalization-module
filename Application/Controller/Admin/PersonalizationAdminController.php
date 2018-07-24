@@ -6,6 +6,9 @@
 
 namespace OxidEsales\PersonalizationModule\Application\Controller\Admin;
 
+/**
+ * Class used for export functionality.
+ */
 class PersonalizationAdminController extends \OxidEsales\Eshop\Application\Controller\Admin\ShopConfiguration
 {
     /**

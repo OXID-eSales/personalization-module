@@ -13,9 +13,12 @@ use OxidEsales\PersonalizationModule\Component\DemoAccountData;
  */
 class ArticleListController extends ArticleListController_parent
 {
+    /**
+     * @return string
+     */
     public function oePersonalizationGetCategoryId()
     {
-        $activeCategoryId = $this->getActiveCategory()->getId();;
+        $activeCategoryId = $this->getActiveCategory()->getId();
         if ($this->getConfig()->getConfigParam('blOePersonalizationUseDemoAccount')) {
             $activeCategoryId = DemoAccountData::getCategoryId();
         }

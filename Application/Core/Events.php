@@ -11,6 +11,9 @@ use OxidEsales\Eshop\Core\DatabaseProvider;
 use OxidEsales\Eshop\Core\Field;
 use OxidEsales\Eshop\Application\Model\Content;
 
+/**
+ * Module events while activating/deactivating module.
+ */
 class Events
 {
     const MODULE_NAME = 'module:oepersonalization';

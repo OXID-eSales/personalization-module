@@ -15,6 +15,9 @@ use OxidEsales\Eshop\Core\Registry;
  */
 class ViewConfig extends ViewConfig_parent
 {
+    /**
+     * @return string
+     */
     public function oePersonalizationGetAccountId()
     {
         if ($this->getConfig()->getConfigParam('blOePersonalizationUseDemoAccount')) {
@@ -23,11 +26,17 @@ class ViewConfig extends ViewConfig_parent
         return $this->getConfig()->getConfigParam('sOePersonalizationAccountId');
     }
 
+    /**
+     * @return bool
+     */
     public function oePersonalizationEnableWidgets()
     {
         return $this->getConfig()->getConfigParam('blOePersonalizationEnableWidgets');
     }
 
+    /**
+     * @return string
+     */
     public function oePersonalizationGetListPageWidgetId()
     {
         if ($this->getConfig()->getConfigParam('blOePersonalizationUseDemoAccount')) {
@@ -36,11 +45,17 @@ class ViewConfig extends ViewConfig_parent
         return $this->getConfig()->getConfigParam('sOePersonalizationWidgetIdListPage');
     }
 
+    /**
+     * @return string
+     */
     public function oePersonalizationGetListPageTemplate()
     {
         return $this->getConfig()->getConfigParam('sOePersonalizationWidgetTemplateListPage');
     }
 
+    /**
+     * @return string
+     */
     public function oePersonalizationGetDetailsPageWidgetId()
     {
         if ($this->getConfig()->getConfigParam('blOePersonalizationUseDemoAccount')) {
@@ -49,11 +64,17 @@ class ViewConfig extends ViewConfig_parent
         return $this->getConfig()->getConfigParam('sOePersonalizationWidgetIdDetailsPage');
     }
 
+    /**
+     * @return string
+     */
     public function oePersonalizationGetDetailsPageTemplate()
     {
         return $this->getConfig()->getConfigParam('sOePersonalizationWidgetTemplateDetailsPage');
     }
 
+    /**
+     * @return string
+     */
     public function oePersonalizationGetThankYouPageWidgetId()
     {
         if ($this->getConfig()->getConfigParam('blOePersonalizationUseDemoAccount')) {
@@ -62,11 +83,17 @@ class ViewConfig extends ViewConfig_parent
         return $this->getConfig()->getConfigParam('sOePersonalizationWidgetIdThankYouPage');
     }
 
+    /**
+     * @return string
+     */
     public function oePersonalizationGetThankYouPageTemplate()
     {
         return $this->getConfig()->getConfigParam('sOePersonalizationWidgetTemplateThankYouPage');
     }
 
+    /**
+     * @return string
+     */
     public function oePersonalizationGetStartPageBargainArticlesWidgetId()
     {
         if ($this->getConfig()->getConfigParam('blOePersonalizationUseDemoAccount')) {
@@ -75,11 +102,17 @@ class ViewConfig extends ViewConfig_parent
         return $this->getConfig()->getConfigParam('sOePersonalizationWidgetIdStartPageBargainArticles');
     }
 
+    /**
+     * @return string
+     */
     public function oePersonalizationGetStartPageBargainArticlesTemplate()
     {
         return $this->getConfig()->getConfigParam('sOePersonalizationWidgetTemplateStartPageBargainArticles');
     }
 
+    /**
+     * @return string
+     */
     public function oePersonalizationGetStartPageTopArticlesWidgetId()
     {
         if ($this->getConfig()->getConfigParam('blOePersonalizationUseDemoAccount')) {
@@ -88,16 +121,25 @@ class ViewConfig extends ViewConfig_parent
         return $this->getConfig()->getConfigParam('sOePersonalizationWidgetIdStartPageTopArticles');
     }
 
+    /**
+     * @return string
+     */
     public function oePersonalizationGetStartPageTopArticlesTemplate()
     {
         return $this->getConfig()->getConfigParam('sOePersonalizationWidgetTemplateStartPageTopArticles');
     }
 
+    /**
+     * @return string
+     */
     public function oePersonalizationShowTrackingNote()
     {
         return $this->getConfig()->getConfigParam('sOePersonalizationTrackingShowNote');
     }
 
+    /**
+     * @return string
+     */
     public function oePersonalizationGetExportPath()
     {
         return $this->getConfig()->getConfigParam('sOePersonalizationExportPath');

@@ -112,7 +112,7 @@ class GenerateCSVExportsDo extends \OxidEsales\Eshop\Application\Controller\Admi
     }
 
     /**
-     * Create export folder, if not existent
+     * Create export folder, if not existent.
      */
     private function oePersonalizationPrepareExport()
     {
@@ -123,7 +123,7 @@ class GenerateCSVExportsDo extends \OxidEsales\Eshop\Application\Controller\Admi
     }
 
     /**
-     * Set filename for product export, delete file if already present
+     * Set filename for product export, delete file if already present.
      */
     private function oePersonalizationPrepareProductExport()
     {
@@ -135,7 +135,7 @@ class GenerateCSVExportsDo extends \OxidEsales\Eshop\Application\Controller\Admi
     }
 
     /**
-     * Set filename for category export, delete file if already present
+     * Set filename for category export, delete file if already present.
      */
     private function oePersonalizationPrepareCategoryExport()
     {
@@ -147,7 +147,7 @@ class GenerateCSVExportsDo extends \OxidEsales\Eshop\Application\Controller\Admi
     }
 
     /**
-     * Get header row for product export
+     * Get header row for product export.
      *
      * @return string
      */
@@ -171,9 +171,9 @@ class GenerateCSVExportsDo extends \OxidEsales\Eshop\Application\Controller\Admi
     }
 
     /**
-     * Get single row for product export
+     * Get single row for product export.
      *
-     * @param Article $article Article to use for export
+     * @param Article $article Article to use for export.
      *
      * @return string
      */
@@ -209,9 +209,9 @@ class GenerateCSVExportsDo extends \OxidEsales\Eshop\Application\Controller\Admi
     }
 
     /**
-     * Get the title of an article in all available active languages
+     * Get the title of an article in all available active languages.
      *
-     * @param string $articleId Id of article to get titles from
+     * @param string $articleId Id of article to get titles from.
      *
      * @return array
      */
@@ -236,9 +236,9 @@ class GenerateCSVExportsDo extends \OxidEsales\Eshop\Application\Controller\Admi
     }
 
     /**
-     * Get the description of a article in all available active languages
+     * Get the description of a article in all available active languages.
      *
-     * @param string $articleId Id of article to get the descriptions from
+     * @param string $articleId Id of article to get the descriptions from.
      *
      * @return array
      */
@@ -263,9 +263,9 @@ class GenerateCSVExportsDo extends \OxidEsales\Eshop\Application\Controller\Admi
     }
 
     /**
-     * Get the links of a article in all available active languages
+     * Get the links of a article in all available active languages.
      *
-     * @param Article $article Article to get the links from
+     * @param Article $article Article to get the links from.
      *
      * @return array
      */
@@ -281,9 +281,9 @@ class GenerateCSVExportsDo extends \OxidEsales\Eshop\Application\Controller\Admi
     }
 
     /**
-     * Gets the field names depending on available languages
+     * Gets the field names depending on available languages.
      *
-     * @param string $fieldname Name of field
+     * @param string $fieldname Name of field.
      *
      * @return string
      */
@@ -303,7 +303,7 @@ class GenerateCSVExportsDo extends \OxidEsales\Eshop\Application\Controller\Admi
     }
 
     /**
-     * Build a list of categories with parents
+     * Build a list of categories with parents.
      */
     private function oePersonalizationExportCategories()
     {
@@ -330,7 +330,7 @@ class GenerateCSVExportsDo extends \OxidEsales\Eshop\Application\Controller\Admi
     }
 
     /**
-     * Get rows for category export
+     * Get rows for category export.
      *
      * @return string
      */
@@ -366,10 +366,10 @@ class GenerateCSVExportsDo extends \OxidEsales\Eshop\Application\Controller\Admi
     }
 
     /**
-     * Appends content to the given file
+     * Appends content to the given file.
      *
      * @param string $filename Name of file
-     * @param string $content Content to append to file
+     * @param string $content  Content to append to file.
      */
     private function writeToFile($filename, $content)
     {
@@ -389,7 +389,7 @@ class GenerateCSVExportsDo extends \OxidEsales\Eshop\Application\Controller\Admi
     }
 
     /**
-     * Join elements of an array by delimiter
+     * Join elements of an array by delimiter.
      *
      * @param array $array Array to join
      *
@@ -401,7 +401,7 @@ class GenerateCSVExportsDo extends \OxidEsales\Eshop\Application\Controller\Admi
     }
 
     /**
-     * Format a text value in compliance with CSV
+     * Format a text value in compliance with CSV.
      *
      * @param string $value Text value to format
      *

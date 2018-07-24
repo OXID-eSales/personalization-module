@@ -42,7 +42,8 @@ class EmosJsUploadController extends \OxidEsales\Eshop\Application\Controller\Ad
         );
 
         if ($isCreated === false) {
-            $this->addErrorToDisplay('Unable to create directory '
+            $this->addErrorToDisplay(
+                'Unable to create directory '
                 . $this->factory->getJsFileLocator()->getJsDirectoryLocation()
                 . '. Add write permissions for web user or create this '
                 . ' directory with write permissions manually.'

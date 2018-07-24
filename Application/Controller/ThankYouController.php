@@ -13,6 +13,9 @@ use OxidEsales\PersonalizationModule\Component\DemoAccountData;
  */
 class ThankYouController extends ThankYouController_parent
 {
+    /**
+     * @return string
+     */
     public function oePersonalizationGetCategoryId()
     {
         $activeCategoryId = $this->getActiveCategory()->getId();
