@@ -33,6 +33,17 @@ class WidgetsTest extends BaseAcceptanceTestCase
         $this->assertElementPresent(static::LIST_WIDGET_ID);
     }
 
+    /**
+     * Test is needed to check logic, as category page and manufacturer page uses same controller.
+     */
+    public function testWidgetIsNotPresentOnManufacturerPage()
+    {
+        $this->openShop();
+        $this->open((new TestConfig)->getShopUrl() . 'en/By-manufacturer/Big-Matsol/');
+
+        $this->assertElementNotPresent(static::LIST_WIDGET_ID);
+    }
+
     public function testWidgetIsPresentOnDetailsPage()
     {
         $this->openShop();
