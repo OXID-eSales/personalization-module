@@ -21,7 +21,7 @@
                     element: '#oePersonalizationBargainArticles .inner',
                     renderer: {
                         type: 'template',
-                        uri: '[{$oViewConf->getModuleUrl('oepersonalization', $oViewConf->oePersonalizationGetStartPageBargainArticlesTemplate())}]'
+                        uri: '[{$oViewConf->oePersonalizationGetStartPageBargainArticlesTemplateUrl()}]'
                     },
                     accountId: '[{$oViewConf->oePersonalizationGetAccountId()}]',
                     id: '[{$oViewConf->oePersonalizationGetStartPageBargainArticlesWidgetId()}]',

@@ -21,7 +21,7 @@
                     element: '#oePersonalizationTopArticles .inner',
                     renderer: {
                         type: 'template',
-                        uri: '[{$oViewConf->getModuleUrl('oepersonalization', $oViewConf->oePersonalizationGetStartPageTopArticlesTemplate())}]'
+                        uri: '[{$oViewConf->oePersonalizationGetStartPageTopArticlesTemplateUrl()}]'
                     },
                     accountId: '[{$oViewConf->oePersonalizationGetAccountId()}]',
                     id: '[{$oViewConf->oePersonalizationGetStartPageTopArticlesWidgetId()}]',

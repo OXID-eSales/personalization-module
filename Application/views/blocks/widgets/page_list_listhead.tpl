@@ -19,7 +19,7 @@
                         element: '#oePersonalizationListHead .inner',
                         renderer: {
                             type: 'template',
-                            uri: '[{$oViewConf->oePersonalizationGetListPageTemplate()}]'
+                            uri: '[{$oViewConf->oePersonalizationGetListPageTemplateUrl()}]'
                         },
                         accountId: '[{$oViewConf->oePersonalizationGetAccountId()}]',
                         id: '[{$oViewConf->oePersonalizationGetListPageWidgetId()}]',

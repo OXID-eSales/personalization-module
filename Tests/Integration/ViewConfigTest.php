@@ -24,7 +24,7 @@ class ViewConfigTest extends \OxidEsales\TestingLibrary\UnitTestCase
         Registry::getConfig()->setConfigParam('sOePersonalizationWidgetIdStartPageBargainArticles', 'testBargainId');
         Registry::getConfig()->setConfigParam('sOePersonalizationWidgetTemplateStartPageBargainArticles', 'testBargainTemplate');
         $this->assertEquals('testBargainId', $this->getViewConfig()->oePersonalizationGetStartPageBargainArticlesWidgetId());
-        $this->assertEquals('testBargainTemplate', $this->getViewConfig()->oePersonalizationGetStartPageBargainArticlesTemplate());
+        $this->assertEquals($this->getConfig()->getShopUrl() . 'testBargainTemplate', $this->getViewConfig()->oePersonalizationGetStartPageBargainArticlesTemplateUrl());
     }
 
     public function testGetWidgetIdStartPageTopArticles()
@@ -32,7 +32,7 @@ class ViewConfigTest extends \OxidEsales\TestingLibrary\UnitTestCase
         Registry::getConfig()->setConfigParam('sOePersonalizationWidgetIdStartPageTopArticles', 'testTopArticleId');
         Registry::getConfig()->setConfigParam('sOePersonalizationWidgetTemplateStartPageTopArticles', 'testTopArticleTemplate');
         $this->assertEquals('testTopArticleId', $this->getViewConfig()->oePersonalizationGetStartPageTopArticlesWidgetId());
-        $this->assertEquals('testTopArticleTemplate', $this->getViewConfig()->oePersonalizationGetStartPageTopArticlesTemplate());
+        $this->assertEquals($this->getConfig()->getShopUrl() . 'testTopArticleTemplate', $this->getViewConfig()->oePersonalizationGetStartPageTopArticlesTemplateUrl());
     }
 
     public function testGetWidgetIdListPage()
@@ -40,7 +40,7 @@ class ViewConfigTest extends \OxidEsales\TestingLibrary\UnitTestCase
         Registry::getConfig()->setConfigParam('sOePersonalizationWidgetIdListPage', 'testListId');
         Registry::getConfig()->setConfigParam('sOePersonalizationWidgetTemplateListPage', 'testListTemplate');
         $this->assertEquals('testListId', $this->getViewConfig()->oePersonalizationGetListPageWidgetId());
-        $this->assertEquals('testListTemplate', $this->getViewConfig()->oePersonalizationGetListPageTemplate());
+        $this->assertEquals($this->getConfig()->getShopUrl() . 'testListTemplate', $this->getViewConfig()->oePersonalizationGetListPageTemplateUrl());
     }
 
     public function testGetWidgetIdDetailsPage()
@@ -48,7 +48,7 @@ class ViewConfigTest extends \OxidEsales\TestingLibrary\UnitTestCase
         Registry::getConfig()->setConfigParam('sOePersonalizationWidgetIdDetailsPage', 'testDetailsId');
         Registry::getConfig()->setConfigParam('sOePersonalizationWidgetTemplateDetailsPage', 'testDetailsTemplate');
         $this->assertEquals('testDetailsId', $this->getViewConfig()->oePersonalizationGetDetailsPageWidgetId());
-        $this->assertEquals('testDetailsTemplate', $this->getViewConfig()->oePersonalizationGetDetailsPageTemplate());
+        $this->assertEquals($this->getConfig()->getShopUrl() . 'testDetailsTemplate', $this->getViewConfig()->oePersonalizationGetDetailsPageTemplateUrl());
     }
 
     public function testGetWidgetIdThankYouPage()
@@ -56,7 +56,7 @@ class ViewConfigTest extends \OxidEsales\TestingLibrary\UnitTestCase
         Registry::getConfig()->setConfigParam('sOePersonalizationWidgetIdThankYouPage', 'testThankYouId');
         Registry::getConfig()->setConfigParam('sOePersonalizationWidgetTemplateThankYouPage', 'testThankYouTemplate');
         $this->assertEquals('testThankYouId', $this->getViewConfig()->oePersonalizationGetThankYouPageWidgetId());
-        $this->assertEquals('testThankYouTemplate', $this->getViewConfig()->oePersonalizationGetThankYouPageTemplate());
+        $this->assertEquals($this->getConfig()->getShopUrl() . 'testThankYouTemplate', $this->getViewConfig()->oePersonalizationGetThankYouPageTemplateUrl());
     }
 
     public function testoePersonalizationEnableWidgets()

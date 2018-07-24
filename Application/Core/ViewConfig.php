@@ -48,9 +48,9 @@ class ViewConfig extends ViewConfig_parent
     /**
      * @return string
      */
-    public function oePersonalizationGetListPageTemplate()
+    public function oePersonalizationGetListPageTemplateUrl()
     {
-        return $this->getConfig()->getConfigParam('sOePersonalizationWidgetTemplateListPage');
+        return Registry::getUtils()->checkUrlEndingSlash(Registry::getConfig()->getShopUrl()) . $this->getConfig()->getConfigParam('sOePersonalizationWidgetTemplateListPage');
     }
 
     /**
@@ -67,9 +67,9 @@ class ViewConfig extends ViewConfig_parent
     /**
      * @return string
      */
-    public function oePersonalizationGetDetailsPageTemplate()
+    public function oePersonalizationGetDetailsPageTemplateUrl()
     {
-        return $this->getConfig()->getConfigParam('sOePersonalizationWidgetTemplateDetailsPage');
+        return Registry::getUtils()->checkUrlEndingSlash(Registry::getConfig()->getShopUrl()) . $this->getConfig()->getConfigParam('sOePersonalizationWidgetTemplateDetailsPage');
     }
 
     /**
@@ -86,9 +86,9 @@ class ViewConfig extends ViewConfig_parent
     /**
      * @return string
      */
-    public function oePersonalizationGetThankYouPageTemplate()
+    public function oePersonalizationGetThankYouPageTemplateUrl()
     {
-        return $this->getConfig()->getConfigParam('sOePersonalizationWidgetTemplateThankYouPage');
+        return Registry::getUtils()->checkUrlEndingSlash(Registry::getConfig()->getShopUrl()) . $this->getConfig()->getConfigParam('sOePersonalizationWidgetTemplateThankYouPage');
     }
 
     /**
@@ -105,9 +105,9 @@ class ViewConfig extends ViewConfig_parent
     /**
      * @return string
      */
-    public function oePersonalizationGetStartPageBargainArticlesTemplate()
+    public function oePersonalizationGetStartPageBargainArticlesTemplateUrl()
     {
-        return $this->getConfig()->getConfigParam('sOePersonalizationWidgetTemplateStartPageBargainArticles');
+        return Registry::getUtils()->checkUrlEndingSlash(Registry::getConfig()->getShopUrl()) . $this->getConfig()->getConfigParam('sOePersonalizationWidgetTemplateStartPageBargainArticles');
     }
 
     /**
@@ -124,9 +124,9 @@ class ViewConfig extends ViewConfig_parent
     /**
      * @return string
      */
-    public function oePersonalizationGetStartPageTopArticlesTemplate()
+    public function oePersonalizationGetStartPageTopArticlesTemplateUrl()
     {
-        return $this->getConfig()->getConfigParam('sOePersonalizationWidgetTemplateStartPageTopArticles');
+        return Registry::getUtils()->checkUrlEndingSlash(Registry::getConfig()->getShopUrl()) . $this->getConfig()->getConfigParam('sOePersonalizationWidgetTemplateStartPageTopArticles');
     }
 
     /**

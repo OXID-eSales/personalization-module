@@ -17,7 +17,7 @@
                     element: '#oePersonalizationThankYouInfo .inner',
                     renderer: {
                         type: 'template',
-                        uri: '[{$oViewConf->getModuleUrl('oepersonalization', $oViewConf->oePersonalizationGetThankYouPageTemplate())}]'
+                        uri: '[{$oViewConf->oePersonalizationGetThankYouPageTemplateUrl()}]'
                     },
                     accountId: '[{$oViewConf->oePersonalizationGetAccountId()}]',
                     id: '[{$oViewConf->oePersonalizationGetThankYouPageWidgetId()}]',

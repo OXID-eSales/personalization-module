@@ -19,7 +19,7 @@
                         element: '#oePersonalizationRelatedProductsCrossSelling .inner',
                         renderer: {
                             type: 'template',
-                            uri: '[{$oViewConf->getModuleUrl('oepersonalization', $oViewConf->oePersonalizationGetDetailsPageTemplate())}]'
+                            uri: '[{$oViewConf->oePersonalizationGetDetailsPageTemplateUrl()}]'
                         },
                         accountId: '[{$oViewConf->oePersonalizationGetAccountId()}]',
                         id: '[{$oViewConf->oePersonalizationGetDetailsPageWidgetId()}]',

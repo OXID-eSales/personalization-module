@@ -74,23 +74,23 @@ class EventsTest extends \OxidEsales\TestingLibrary\UnitTestCase
         return [
             'start page bargain articles' => [
                 'sOePersonalizationWidgetTemplateStartPageBargainArticles',
-                'Component/views/list.ejs.html'
+                'modules/oe/personalization/Component/views/list.ejs.html'
             ],
             'start page top articles' => [
                 'sOePersonalizationWidgetTemplateStartPageTopArticles',
-                'Component/views/list.ejs.html'
+                'modules/oe/personalization/Component/views/list.ejs.html'
             ],
             'list page' => [
                 'sOePersonalizationWidgetTemplateListPage',
-                'Component/views/list.ejs.html'
+                'modules/oe/personalization/Component/views/list.ejs.html'
             ],
             'details page' => [
                 'sOePersonalizationWidgetTemplateDetailsPage',
-                'Component/views/list.ejs.html'
+                'modules/oe/personalization/Component/views/list.ejs.html'
             ],
             'thank you page' => [
                 'sOePersonalizationWidgetTemplateThankYouPage',
-                'Component/views/list.ejs.html'
+                'modules/oe/personalization/Component/views/list.ejs.html'
             ],
         ];
     }

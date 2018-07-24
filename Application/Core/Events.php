@@ -167,7 +167,7 @@ EOT;
                 'group' => 'oepersonalization_start_page_widgets',
                 'name' => 'sOePersonalizationWidgetTemplateStartPageBargainArticles',
                 'type' => 'str',
-                'value' => 'Component/views/list.ejs.html'
+                'value' => 'modules/oe/personalization/Component/views/list.ejs.html'
             ],
             [
                 'group' => 'oepersonalization_start_page_widgets',
@@ -179,7 +179,7 @@ EOT;
                 'group' => 'oepersonalization_start_page_widgets',
                 'name' => 'sOePersonalizationWidgetTemplateStartPageTopArticles',
                 'type' => 'str',
-                'value' => 'Component/views/list.ejs.html'
+                'value' => 'modules/oe/personalization/Component/views/list.ejs.html'
             ],
             [
                 'group' => 'oepersonalization_list_page_widgets',
@@ -191,7 +191,7 @@ EOT;
                 'group' => 'oepersonalization_list_page_widgets',
                 'name' => 'sOePersonalizationWidgetTemplateListPage',
                 'type' => 'str',
-                'value' => 'Component/views/list.ejs.html'
+                'value' => 'modules/oe/personalization/Component/views/list.ejs.html'
             ],
             [
                 'group' => 'oepersonalization_details_page_widgets',
@@ -203,7 +203,7 @@ EOT;
                 'group' => 'oepersonalization_details_page_widgets',
                 'name' => 'sOePersonalizationWidgetTemplateDetailsPage',
                 'type' => 'str',
-                'value' => 'Component/views/list.ejs.html'
+                'value' => 'modules/oe/personalization/Component/views/list.ejs.html'
             ],
             [
                 'group' => 'oepersonalization_thank_you_page_widgets',
@@ -215,7 +215,7 @@ EOT;
                 'group' => 'oepersonalization_thank_you_page_widgets',
                 'name' => 'sOePersonalizationWidgetTemplateThankYouPage',
                 'type' => 'str',
-                'value' => 'Component/views/list.ejs.html'
+                'value' => 'modules/oe/personalization/Component/views/list.ejs.html'
             ],
             [
                 'group' => '',
