@@ -59,6 +59,10 @@ There are 2 template files prepared for Visual CMS widget:
 * `Component/views/vcms_banner.ejs.html` - To display banner images with links.
 * `Component/views/vcms_recommendations.ejs.html` - To display products within widget.
 
+## Bugs and Issues
+
+If you experience any bugs or issues, please report them in the section **Module OXID Personalization** of https://bugs.oxid-esales.com.
+
 ## License
 
 See LICENSE file for license details.
