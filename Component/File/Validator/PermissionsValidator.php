@@ -4,7 +4,7 @@
  * See LICENSE file for license details.
  */
 
-namespace OxidEsales\PersonalizationModule\Component\Tracking\File\Validator;
+namespace OxidEsales\PersonalizationModule\Component\File\Validator;
 
 use FileUpload\File;
 use FileUpload\Validator\Validator;

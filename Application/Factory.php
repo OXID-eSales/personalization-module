@@ -21,10 +21,11 @@ use OxidEsales\PersonalizationModule\Application\Tracking\ProductPreparation\Pro
 use OxidEsales\PersonalizationModule\Application\Tracking\ActivePageEntityPreparator;
 use OxidEsales\PersonalizationModule\Component\Tracking\ActivePageEntity;
 use OxidEsales\PersonalizationModule\Component\Tracking\ActivePageEntityInterface;
+use OxidEsales\PersonalizationModule\Component\Tracking\File\EmosFileData;
 use OxidEsales\PersonalizationModule\Component\Tracking\TrackingCodeGenerator;
-use OxidEsales\PersonalizationModule\Component\Tracking\File\FileSystem;
-use OxidEsales\PersonalizationModule\Component\Tracking\File\JsFileLocator;
-use OxidEsales\PersonalizationModule\Component\Tracking\File\JsFileUploadFactory;
+use OxidEsales\PersonalizationModule\Component\File\FileSystem;
+use OxidEsales\PersonalizationModule\Component\File\JsFileLocator;
+use OxidEsales\PersonalizationModule\Component\File\JsFileUploadFactory;
 use OxidEsales\Eshop\Application\Model\User;
 use OxidEsales\Eshop\Core\Registry;
 use Smarty;
@@ -39,7 +40,7 @@ class Factory
      */
     public function makeJsFileLocator()
     {
-        return oxNew(JsFileLocator::class, Registry::getConfig()->getOutDir(), Registry::getConfig()->getOutUrl());
+        return oxNew(JsFileLocator::class, Registry::getConfig()->getOutDir(), EmosFileData::TRACKING_CODE_FILE_NAME, Registry::getConfig()->getOutUrl());
     }
 
     /**

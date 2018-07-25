@@ -7,7 +7,7 @@
 namespace OxidEsales\PersonalizationModule\Tests\Unit\Component;
 
 use FileUpload\File;
-use OxidEsales\PersonalizationModule\Component\Tracking\File\Validator\ContentValidator;
+use OxidEsales\PersonalizationModule\Component\File\Validator\ContentValidator;
 
 class ContentValidatorTest extends \OxidEsales\TestingLibrary\UnitTestCase
 {

@@ -6,14 +6,15 @@
 
 namespace OxidEsales\PersonalizationModule\Tests\Unit\Component;
 
-use OxidEsales\PersonalizationModule\Component\Tracking\File\JsFileLocator;
+use OxidEsales\PersonalizationModule\Component\File\JsFileLocator;
+use OxidEsales\PersonalizationModule\Component\Tracking\File\EmosFileData;
 
 class JsFileLocatorTest extends \OxidEsales\TestingLibrary\UnitTestCase
 {
     public function testGetFileName()
     {
         $locator = new JsFileLocator('root_path', '');
-        $this->assertSame(JsFileLocator::TRACKING_CODE_FILE_NAME, $locator->getFileName());
+        $this->assertSame(EmosFileData::TRACKING_CODE_FILE_NAME, $locator->getFileName());
     }
 
     public function testGetDirectoryName()
@@ -33,7 +34,7 @@ class JsFileLocatorTest extends \OxidEsales\TestingLibrary\UnitTestCase
         $locator = new JsFileLocator('root_path', '');
         $expectedLocation = 'root_path'
             . '/' . JsFileLocator::TRACKING_CODE_DIRECTORY_NAME
-            . '/' . JsFileLocator::TRACKING_CODE_FILE_NAME;
+            . '/' . EmosFileData::TRACKING_CODE_FILE_NAME;
 
         $this->assertSame($expectedLocation, $locator->getJsFileLocation());
     }
@@ -43,7 +44,7 @@ class JsFileLocatorTest extends \OxidEsales\TestingLibrary\UnitTestCase
         $locator = new JsFileLocator('root_path', 'oxideshop.local/out');
         $expectedUrl = 'oxideshop.local/out'
             . '/' . JsFileLocator::TRACKING_CODE_DIRECTORY_NAME
-            . '/' . JsFileLocator::TRACKING_CODE_FILE_NAME;
+            . '/' . EmosFileData::TRACKING_CODE_FILE_NAME;
 
 
         $this->assertSame($expectedUrl, $locator->getJsFileUrl());

@@ -4,11 +4,11 @@
  * See LICENSE file for license details.
  */
 
-namespace OxidEsales\PersonalizationModule\Component\Tracking\File;
+namespace OxidEsales\PersonalizationModule\Component\File;
 
-use OxidEsales\PersonalizationModule\Component\Tracking\File\Validator\ContentValidator;
-use OxidEsales\PersonalizationModule\Component\Tracking\File\Validator\ExtensionValidator;
-use OxidEsales\PersonalizationModule\Component\Tracking\File\Validator\PermissionsValidator;
+use OxidEsales\PersonalizationModule\Component\File\Validator\ContentValidator;
+use OxidEsales\PersonalizationModule\Component\File\Validator\ExtensionValidator;
+use OxidEsales\PersonalizationModule\Component\File\Validator\PermissionsValidator;
 
 class JsFileUploadFactory
 {

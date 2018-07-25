@@ -29,4 +29,5 @@ $aLang = [
     'OEPERSONALIZATION_EXPOSTVARS' => 'Export Variants',
     'OEPERSONALIZATION_EXPORTMAINVARS' => 'Export Variant of Base Product',
     'OEPERSONALIZATION_EXPORTMINSTOCK' => 'Min Stock Quantity',
+    'OEPERSONALIZATION_TAG_MANAGER_SECTION_TITLE' => 'Econda tag manager',
 ];

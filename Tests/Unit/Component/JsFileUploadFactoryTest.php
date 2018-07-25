@@ -6,7 +6,7 @@
 
 namespace OxidEsales\PersonalizationModule\Tests\Unit\Component;
 
-use OxidEsales\PersonalizationModule\Component\Tracking\File\JsFileUploadFactory;
+use OxidEsales\PersonalizationModule\Component\File\JsFileUploadFactory;
 
 class JsFileUploadFactoryTest extends \OxidEsales\TestingLibrary\UnitTestCase
 {

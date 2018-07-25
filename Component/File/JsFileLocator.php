@@ -4,7 +4,7 @@
  * See LICENSE file for license details.
  */
 
-namespace OxidEsales\PersonalizationModule\Component\Tracking\File;
+namespace OxidEsales\PersonalizationModule\Component\File;
 
 use Webmozart\PathUtil\Path;
 
@@ -12,8 +12,6 @@ use Webmozart\PathUtil\Path;
 class JsFileLocator
 {
     const TRACKING_CODE_DIRECTORY_NAME = 'oepersonalization';
-
-    const TRACKING_CODE_FILE_NAME = 'emos.js';
 
     /**
      * @var string
@@ -26,12 +24,19 @@ class JsFileLocator
     private $applicationUrl;
 
     /**
+     * @var string
+     */
+    private $jsFileName;
+
+    /**
      * @param string $documentRootPath
+     * @param string $jsFileName
      * @param string $applicationUrl
      */
-    public function __construct($documentRootPath, $applicationUrl)
+    public function __construct($documentRootPath, $jsFileName, $applicationUrl)
     {
         $this->documentRootPath = $documentRootPath;
+        $this->jsFileName = $jsFileName;
         $this->applicationUrl = $applicationUrl;
     }
 
@@ -40,9 +45,12 @@ class JsFileLocator
      */
     public function getFileName()
     {
-        return static::TRACKING_CODE_FILE_NAME;
+        return $this->jsFileName;
     }
 
+    /**
+     * @return string
+     */
     public function getDirectoryName()
     {
         return static::TRACKING_CODE_DIRECTORY_NAME;
@@ -64,6 +72,9 @@ class JsFileLocator
         return Path::join([$this->getJsDirectoryLocation(), $this->getFileName()]);
     }
 
+    /**
+     * @return string
+     */
     public function getJsFileUrl()
     {
         return $this->applicationUrl . '/' . Path::join([$this->getDirectoryName(), $this->getFileName()]);

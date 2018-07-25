@@ -9,7 +9,7 @@ namespace OxidEsales\PersonalizationModule\Tests\Integration\Application;
 use FileUpload\FileUpload;
 use OxidEsales\PersonalizationModule\Application\Controller\Admin\Tab\TrackingTabController;
 use OxidEsales\PersonalizationModule\Application\Factory;
-use OxidEsales\PersonalizationModule\Component\Tracking\File\FileSystem;
+use OxidEsales\PersonalizationModule\Component\File\FileSystem;
 use stdClass;
 
 class TrackingTabControllerTest extends \OxidEsales\TestingLibrary\UnitTestCase
@@ -102,10 +102,10 @@ class TrackingTabControllerTest extends \OxidEsales\TestingLibrary\UnitTestCase
         $fileUploader->method('processAll')->willReturn([[]]);
 
         $factory = $this->getMockBuilder(Factory::class)
-            ->setMethods(['makeFileUploader'])
+            ->setMethods(['makeEmosJsFileUploader', 'makeFileSystem'])
             ->getMock();
         $factory->method('makeFileSystem')->willReturn($fileSystem);
-        $factory->method('makeFileUploader')->willReturn($fileUploader);
+        $factory->method('makeEmosJsFileUploader')->willReturn($fileUploader);
 
         return $factory;
     }
@@ -125,10 +125,10 @@ class TrackingTabControllerTest extends \OxidEsales\TestingLibrary\UnitTestCase
         $fileUploader->method('processAll')->willReturn([[$errorObject]]);
 
         $factory = $this->getMockBuilder(Factory::class)
-            ->setMethods(['makeFileUploader'])
+            ->setMethods(['makeEmosJsFileUploader', 'makeFileSystem'])
             ->getMock();
         $factory->method('makeFileSystem')->willReturn($fileSystem);
-        $factory->method('makeFileUploader')->willReturn($fileUploader);
+        $factory->method('makeEmosJsFileUploader')->willReturn($fileUploader);
 
         return $factory;
     }

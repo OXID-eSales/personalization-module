@@ -29,4 +29,5 @@ $aLang = [
     'OEPERSONALIZATION_EXPOSTVARS' => 'Varianten exportieren',
     'OEPERSONALIZATION_EXPORTMAINVARS' => 'Vaterartikel von Varianten exportieren',
     'OEPERSONALIZATION_EXPORTMINSTOCK' => 'Export ab min. Lagerbestand',
+    'OEPERSONALIZATION_TAG_MANAGER_SECTION_TITLE' => 'Econda Tag Manager',
 ];
