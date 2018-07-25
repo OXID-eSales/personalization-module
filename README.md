@@ -1,5 +1,5 @@
-Econda module
-=============
+OXID personalization module powered by Econda
+=============================================
 
 Module adds Econda service functionality.
 
@@ -14,7 +14,7 @@ Module adds Econda service functionality.
 
 ### Avoid conflicts with existing OXID eShop functionality
 
-Econda personalization module displays widgets which conflicts with OXID eShop default promotions.
+Personalization module displays widgets which conflicts with OXID eShop default promotions.
 To display products nicely it is needed to disable some of OXID eShop functionality:
 
 * Login to admin
@@ -49,7 +49,7 @@ Module provides functionality which allows:
 ### Visual CMS Widget
 
 A widget is provided for the Visual CMS module.
-After installation of the Econda personalization module, the widget will be available
+After installation of the personalization module, the widget will be available
 in the Visual CMS editor. You can find it by the name "AI Content".
 To add it, just fill in the required settings for widget id and widget template (options described bellow).
 There is an optionally setting to limit the number of results; if it is left blank,

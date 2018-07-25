@@ -39,6 +39,4 @@ $aLang = [
 
     'SHOP_MODULE_GROUP_oepersonalization_export' => 'Export',
     'SHOP_MODULE_sOePersonalizationExportPath'=> 'Export-Pfad',
-
-    'SHOP_MODULE_blOePersonalizationEnableTracking' => 'Econda Tracking aktivieren'
 ];

@@ -16,19 +16,20 @@ $aModule = array(
     'id'           => 'oepersonalization',
     'title'        => 'OXID personalization powered by Econda',
     'description'  => [
-        'de' => 'Modul fügt Econda Service-Funktionalität hinzu.',
-        'en' => 'Module adds Econda service functionality.',
+        'de' => 'Modul fügt Personalisierungs-Funktionalität hinzu.',
+        'en' => 'Module adds personalization functionality.',
     ],
     'thumbnail' => '/out/pictures/logo.png',
     'version' => '1.0.0',
     'author' => 'OXID eSales AG',
-    'url' => 'http://www.oxid-esales.com',
+    'url' => 'https://www.oxid-esales.com',
     'email' => 'info@oxid-esales.com',
     'extend' => [
         \OxidEsales\Eshop\Core\ViewConfig::class => \OxidEsales\PersonalizationModule\Application\Core\ViewConfig::class,
         \OxidEsales\Eshop\Application\Controller\ArticleListController::class => \OxidEsales\PersonalizationModule\Application\Controller\ArticleListController::class,
         \OxidEsales\Eshop\Application\Component\Widget\ArticleDetails::class => \OxidEsales\PersonalizationModule\Application\Component\Widget\ArticleDetails::class,
         \OxidEsales\Eshop\Application\Controller\ThankYouController::class => \OxidEsales\PersonalizationModule\Application\Controller\ThankYouController::class,
+        \OxidEsales\Eshop\Application\Component\Widget\CookieNote::class => \OxidEsales\PersonalizationModule\Application\Component\Widget\CookieNote::class,
     ],
     'controllers' => [
         'oepersonalizationadmin' => \OxidEsales\PersonalizationModule\Application\Controller\Admin\PersonalizationAdminController::class,
@@ -39,7 +40,6 @@ $aModule = array(
         'onActivate'   => \OxidEsales\PersonalizationModule\Application\Core\Events::class . '::onActivate',
     ],
     'templates' => [
-        // Admin Templates
         'oepersonalizationadmin.tpl' => 'oe/personalization/Application/views/admin/tpl/oepersonalizationadmin.tpl',
         'oepersonalizationcookienote.tpl' => 'oe/personalization/Application/views/widget/header/cookienote.tpl',
         'oepersonalizationexportresult.tpl' => 'oe/personalization/Application/views/admin/tpl/oepersonalizationexportresult.tpl'
