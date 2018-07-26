@@ -6,8 +6,9 @@
         <script type="text/javascript">
             [{if $oViewConf->oePersonalizationShowTrackingNote() == 'opt_in'}]
             if (econda.privacyprotection.getPermissionsFromLocalStorage().profile.state === 'UNKNOWN') {
+                var emosProps = {};
                 econda.privacyprotection.applyAndStoreNewPrivacySettings(
-                    { },
+                    emosProps,
                     {
                         "permissions:profile": {
                             state: "DENY"
@@ -18,8 +19,9 @@
             [{/if}]
             [{if $oViewConf->oePersonalizationShowTrackingNote() == 'opt_out'}]
             if (econda.privacyprotection.getPermissionsFromLocalStorage().profile.state === 'UNKNOWN') {
+                var emosProps = {};
                 econda.privacyprotection.applyAndStoreNewPrivacySettings(
-                    { },
+                    emosProps,
                     {
                         "permissions:profile": {
                             state: "ALLOW"

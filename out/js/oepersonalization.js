@@ -1,23 +1,27 @@
 function oePersonalizationOptIn() {
+    var emosProps = {};
     econda.privacyprotection.applyAndStoreNewPrivacySettings(
-        { },
+        emosProps,
         {
             "permissions:profile": {
                 state: "ALLOW"
             }
         }
     );
+    window.emos3.send(emosProps);
 }
 
 function oePersonalizationOptOut() {
+    var emosProps = {};
     econda.privacyprotection.applyAndStoreNewPrivacySettings(
-        { },
+        emosProps,
         {
             "permissions:profile": {
                 state: "DENY"
             }
         }
     );
+    window.emos3.send(emosProps);
 }
 
 $(document).ready(function() {
