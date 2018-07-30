@@ -6,6 +6,7 @@
 
 namespace OxidEsales\PersonalizationModule\Application\Core;
 
+use OxidEsales\PersonalizationModule\Application\Factory;
 use OxidEsales\PersonalizationModule\Application\Tracking\Helper\ActiveUserDataProvider;
 use OxidEsales\PersonalizationModule\Component\DemoAccountData;
 use OxidEsales\Eshop\Core\Registry;
@@ -15,6 +16,20 @@ use OxidEsales\Eshop\Core\Registry;
  */
 class ViewConfig extends ViewConfig_parent
 {
+    /**
+     * @var Factory
+     */
+    private $oePersonalizationfactory;
+
+    /**
+     * @inheritdoc
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->oePersonalizationfactory = oxNew(Factory::class);
+    }
+
     /**
      * @return string
      */
@@ -153,7 +168,8 @@ class ViewConfig extends ViewConfig_parent
     public function oePersonalizationIsLoginAction()
     {
         $isLoginAction = false;
-        if ('login_noredirect' == $this->oePersonalizationGetRequestActiveFunctionName()) {
+        $userActionIdentifier = $this->oePersonalizationfactory->makeUserActionIdentifier();
+        if ($userActionIdentifier->isSuccessfulLogin() || $userActionIdentifier->isSuccessfulRegister()) {
             $isLoginAction = true;
         }
 
@@ -167,12 +183,9 @@ class ViewConfig extends ViewConfig_parent
      */
     public function oePersonalizationIsLogoutAction()
     {
-        $isLogoutAction = false;
-        if ('logout' == $this->oePersonalizationGetRequestActiveFunctionName()) {
-            $isLogoutAction = true;
-        }
+        $userActionIdentifier = $this->oePersonalizationfactory->makeUserActionIdentifier();
 
-        return $isLogoutAction;
+        return $userActionIdentifier->isSuccessfulLogout();
     }
 
     /**

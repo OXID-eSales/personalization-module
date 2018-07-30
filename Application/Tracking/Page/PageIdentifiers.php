@@ -14,7 +14,7 @@ use OxidEsales\Eshop\Core\Registry;
 class PageIdentifiers
 {
     /**
-     * Returns purpose of this page (current view name)
+     * Returns purpose of this page (current view name).
      *
      * @return string
      */
@@ -24,6 +24,19 @@ class PageIdentifiers
         $className = $activeController->getClassKey();
 
         return $className ? strtolower($className) : 'start';
+    }
+
+    /**
+     * Returns name of current action function.
+     *
+     * @return string
+     */
+    public function getCurrentFunctionName()
+    {
+        $currentView = Registry::getConfig()->getActiveView();
+        $functionName = $currentView->getFncName();
+
+        return $functionName;
     }
 
     /**

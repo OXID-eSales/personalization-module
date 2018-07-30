@@ -107,7 +107,7 @@ interface ActivePageEntityInterface
     public function getRegisteredUserResult();
 
     /**
-     * @param string $registerResult
+     * @param int $registerResult
      */
     public function setRegisteredUserResult($registerResult);
 
@@ -127,7 +127,7 @@ interface ActivePageEntityInterface
     public function getLoginResult();
 
     /**
-     * @param string $loginResult
+     * @param int $loginResult
      */
     public function setLoginResult($loginResult);
 

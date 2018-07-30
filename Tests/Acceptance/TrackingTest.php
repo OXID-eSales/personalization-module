@@ -288,6 +288,21 @@ class TrackingTest extends BaseAcceptanceTestCase
         $this->checkCommonElements();
         $this->checkIfElementInPage($this->prepareElementForContent('Service\/Register'));
         $this->checkIfElementInPage($this->prepareElementForPageId('1registerpage/account/register.tpl'));
+
+        $this->type("//input[@id='userLoginName']", 'testing_account2@oxid-esales.local');
+        $this->type("//input[@id='userPassword']", 'test_password');
+        $this->type("//input[@id='userPasswordConfirm']", 'test_password');
+        $this->type("//input[@name='invadr[oxuser__oxfname]']", 'test');
+        $this->type("//input[@name='invadr[oxuser__oxlname]']", 'test');
+        $this->type("//input[@name='invadr[oxuser__oxstreet]']", 'test');
+        $this->type("//input[@name='invadr[oxuser__oxstreetnr]']", '11');
+        $this->type("//input[@name='invadr[oxuser__oxzip]']", 'test');
+        $this->type("//input[@name='invadr[oxuser__oxcity]']", 'test');
+        $this->type("//select[@name='invadr[oxuser__oxcountryid]']", 'a7c40f631fc920687.20179984');
+        $this->click("//button[@id='accUserSaveTop']");
+
+        $this->checkIfElementInPage($this->prepareElementForLoginEvent(''));
+        $this->checkIfElementInPage($this->prepareElementForRegisterEvent(''));
     }
 
     public function testContactsSuccess()
@@ -367,7 +382,12 @@ class TrackingTest extends BaseAcceptanceTestCase
 
     protected function prepareElementForLoginEvent($value)
     {
-        return "\"login\":[$value]";
+        return "\"login\":[$value";
+    }
+
+    protected function prepareElementForRegisterEvent($value)
+    {
+        return "\"register\":[$value";
     }
 
     protected function checkIfElementInPage($element)

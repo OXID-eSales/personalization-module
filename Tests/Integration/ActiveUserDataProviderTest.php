@@ -10,27 +10,21 @@ use OxidEsales\PersonalizationModule\Application\Tracking\Helper\ActiveUserDataP
 use OxidEsales\Eshop\Application\Model\User;
 use \OxidEsales\Eshop\Core\Registry;
 use OxidEsales\Eshop\Core\Field;
+use OxidEsales\PersonalizationModule\Tests\Helper\UserPreparationTrait;
 
 class ActiveUserDataProviderTest extends \OxidEsales\TestingLibrary\UnitTestCase
 {
+    use UserPreparationTrait;
+
     public function setUp()
     {
-        $user = oxNew(User::class);
-        $user->setId('userid');
-        $user->oxuser__oxusername = new Field('testemail@oxid-esales.com');
-        $user->oxuser__oxpassword = new Field('test');
-        $user->oxuser__oxbirthdate = new Field('any');
-        $user->save();
-
+        $this->createUser('userid');
         parent::setUp();
     }
 
     public function tearDown()
     {
-        $user = oxNew(User::class);
-        $user->load('userid');
-        $user->delete();
-
+        $this->deleteUser('userid');
         parent::tearDown();
     }
 

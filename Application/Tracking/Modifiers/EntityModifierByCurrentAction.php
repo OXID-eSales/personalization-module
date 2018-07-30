@@ -6,6 +6,7 @@
 
 namespace OxidEsales\PersonalizationModule\Application\Tracking\Modifiers;
 
+use OxidEsales\PersonalizationModule\Application\Tracking\Helper\ActiveUserDataProvider;
 use OxidEsales\PersonalizationModule\Application\Tracking\Helper\CategoryPathBuilder;
 use OxidEsales\PersonalizationModule\Application\Tracking\Page\PageIdentifiers;
 use OxidEsales\PersonalizationModule\Application\Tracking\ProductPreparation\ProductDataPreparator;
@@ -49,17 +50,29 @@ class EntityModifierByCurrentAction
     private $activePageEntity;
 
     /**
+     * @var ActiveUserDataProvider
+     */
+    private $activeUserDataProvider;
+
+    /**
      * @param CategoryPathBuilder    $categoryPathBuilder
      * @param ProductDataPreparator  $productDataPreparator
      * @param ProductTitlePreparator $productTitlePreparator
      * @param PageIdentifiers        $pageIdentifiers
+     * @param ActiveUserDataProvider $activeUserDataProvider
      */
-    public function __construct($categoryPathBuilder, $productDataPreparator, $productTitlePreparator, $pageIdentifiers)
-    {
+    public function __construct(
+        $categoryPathBuilder,
+        $productDataPreparator,
+        $productTitlePreparator,
+        $pageIdentifiers,
+        $activeUserDataProvider
+    ) {
         $this->categoryPathBuilder = $categoryPathBuilder;
         $this->productDataPreparator = $productDataPreparator;
         $this->productTitlePreparator = $productTitlePreparator;
         $this->pageIdentifiers = $pageIdentifiers;
+        $this->activeUserDataProvider = $activeUserDataProvider;
     }
 
     /**
@@ -230,13 +243,16 @@ class EntityModifierByCurrentAction
         $successCode = Registry::getRequest()->getRequestEscapedParameter('success');
 
         if ($errorCode && $errorCode < 0) {
-            $this->activePageEntity->setRegisteredUserId($user ? $user->getId() : 'NULL');
+            $this->activePageEntity->setRegisteredUserId($user ? md5($user->getId()) : 'NULL');
             $this->activePageEntity->setRegisteredUserResult(abs($errorCode));
         }
 
         if ($successCode && $successCode > 0 && $user) {
-            $this->activePageEntity->setRegisteredUserId($user->getId());
+            $this->activePageEntity->setRegisteredUserId(md5($user->getId()));
             $this->activePageEntity->setRegisteredUserResult(0);
+
+            $this->activePageEntity->setLoginUserId($this->activeUserDataProvider->getActiveUserHashedId());
+            $this->activePageEntity->setLoginResult($this->activeUserDataProvider->isLoaded() ? 0 : 1);
         }
     }
 }

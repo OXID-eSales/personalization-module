@@ -271,7 +271,7 @@ class ActivePageEntity implements ActivePageEntityInterface
      */
     public function setRegisteredUserId($registeredUserId)
     {
-        $this->registeredUserId = md5($registeredUserId);
+        $this->registeredUserId = $registeredUserId;
     }
 
     /**
@@ -283,7 +283,7 @@ class ActivePageEntity implements ActivePageEntityInterface
     }
 
     /**
-     * @param string $registerResult
+     * @param int $registerResult
      */
     public function setRegisteredUserResult($registerResult)
     {
@@ -315,7 +315,7 @@ class ActivePageEntity implements ActivePageEntityInterface
     }
 
     /**
-     * @param string $loginResult
+     * @param int $loginResult
      */
     public function setLoginResult($loginResult)
     {

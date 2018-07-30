@@ -6,13 +6,17 @@
 
 namespace OxidEsales\PersonalizationModule\Tests\Integration;
 
+use OxidEsales\Eshop\Core\UtilsObject;
 use \OxidEsales\PersonalizationModule\Application\Core\ViewConfig;
-use OxidEsales\Eshop\Application\Controller\FrontendController;
-use OxidEsales\Eshop\Core\Config;
 use \OxidEsales\Eshop\Core\Registry;
+use OxidEsales\PersonalizationModule\Application\Factory;
+use OxidEsales\PersonalizationModule\Application\Tracking\Helper\UserActionIdentifier;
+use OxidEsales\PersonalizationModule\Tests\Helper\ActiveControllerPreparatorTrait;
 
 class ViewConfigTest extends \OxidEsales\TestingLibrary\UnitTestCase
 {
+    use ActiveControllerPreparatorTrait;
+
     public function testGetAccountId()
     {
         Registry::getConfig()->setConfigParam('sOePersonalizationAccountId', 'testAccountId');
@@ -77,38 +81,45 @@ class ViewConfigTest extends \OxidEsales\TestingLibrary\UnitTestCase
         $this->assertEquals('testExportPath', $this->getViewConfig()->oePersonalizationGetExportPath());
     }
 
-    public function testIsLoginAction()
+    public function testIsLoginActionSuccessWhenUserOnlyLogsIn()
     {
-        $this->prepareActiveView('login_noredirect');
+        $factoryMock = $this->prepareFactoryStubForUserLoginAction(false, true);
+
+        UtilsObject::setClassInstance(Factory::class, $factoryMock);
 
         $this->assertTrue($this->getViewConfig()->oePersonalizationIsLoginAction());
     }
 
+    public function testIsLoginActionSuccessWhenUserRegisters()
+    {
+        $factoryMock = $this->prepareFactoryStubForUserLoginAction(true, false);
+
+        UtilsObject::setClassInstance(Factory::class, $factoryMock);
+
+        $this->assertTrue($this->getViewConfig()->oePersonalizationIsLoginAction());
+    }
+
+    public function testIsNotLoginAction()
+    {
+        $factoryMock = $this->prepareFactoryStubForUserLoginAction(false, false);
+
+        UtilsObject::setClassInstance(Factory::class, $factoryMock);
+
+        $this->assertFalse($this->getViewConfig()->oePersonalizationIsLoginAction());
+    }
+
     public function testIsLogoutAction()
     {
-        $this->prepareActiveView('logout');
+        $this->prepareActiveControllerToSetFunctionName('logout');
 
         $this->assertTrue($this->getViewConfig()->oePersonalizationIsLogoutAction());
     }
 
     public function testWhenIsNotLoginAction()
     {
-        $this->prepareActiveView('home');
+        $this->prepareActiveControllerToSetFunctionName('home');
 
         $this->assertFalse($this->getViewConfig()->oePersonalizationIsLoginAction());
-    }
-
-    protected function prepareActiveView($functionName)
-    {
-        $activeView = $this->getMockBuilder(FrontendController::class)
-            ->setMethods(['getFncName'])
-            ->getMock();
-        $activeView->method('getFncName')->willReturn($functionName);
-
-        $config = new Config();
-        $config->setActiveView($activeView);
-
-        Registry::set(Config::class, $config);
     }
 
     /**
@@ -117,5 +128,22 @@ class ViewConfigTest extends \OxidEsales\TestingLibrary\UnitTestCase
     protected function getViewConfig()
     {
         return oxNew(\OxidEsales\Eshop\Core\ViewConfig::class);
+    }
+
+    /**
+     * @return \PHPUnit_Framework_MockObject_MockObject|Factory
+     */
+    private function prepareFactoryStubForUserLoginAction($isSuccessfulLogin, $isSuccessfulRegister)
+    {
+        $userActionIdentifier = $this->getMockBuilder(UserActionIdentifier::class)
+            ->setMethods(['isSuccessfulLogin', 'isSuccessfulRegister'])
+            ->disableOriginalConstructor()
+            ->getMock();
+        $userActionIdentifier->method('isSuccessfulLogin')->willReturn($isSuccessfulLogin);
+        $userActionIdentifier->method('isSuccessfulRegister')->willReturn($isSuccessfulRegister);
+        $factoryMock = $this->getMockBuilder(Factory::class)->setMethods(['makeUserActionIdentifier'])->getMock();
+        $factoryMock->method('makeUserActionIdentifier')->willReturn($userActionIdentifier);
+
+        return $factoryMock;
     }
 }

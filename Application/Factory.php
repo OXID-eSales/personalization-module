@@ -9,6 +9,7 @@ namespace OxidEsales\PersonalizationModule\Application;
 use OxidEsales\PersonalizationModule\Application\Tracking\Helper\ActiveControllerCategoryPathBuilder;
 use OxidEsales\PersonalizationModule\Application\Tracking\Helper\ActiveUserDataProvider;
 use OxidEsales\PersonalizationModule\Application\Tracking\Helper\CategoryPathBuilder;
+use OxidEsales\PersonalizationModule\Application\Tracking\Helper\UserActionIdentifier;
 use OxidEsales\PersonalizationModule\Application\Tracking\Modifiers\OrderStepsMapModifier;
 use OxidEsales\PersonalizationModule\Application\Tracking\Modifiers\PageMapModifier;
 use OxidEsales\PersonalizationModule\Application\Tracking\Modifiers\EntityModifierByCurrentAction;
@@ -81,6 +82,18 @@ class Factory
     }
 
     /**
+     * @return UserActionIdentifier
+     */
+    public function makeUserActionIdentifier()
+    {
+        return oxNew(
+            UserActionIdentifier::class,
+            oxNew(User::class),
+            oxNew(PageIdentifiers::class)
+        );
+    }
+
+    /**
      * @return ActivePageEntityPreparator
      */
     public function getActivePageEntityPreparator()
@@ -106,7 +119,8 @@ class Factory
             $categoryPathBuilder,
             $productDataPreparator,
             oxNew(ProductTitlePreparator::class),
-            oxNew(PageIdentifiers::class)
+            oxNew(PageIdentifiers::class),
+            oxNew(ActiveUserDataProvider::class)
         );
         $orderStepsMapModifier = oxNew(
             OrderStepsMapModifier::class,
