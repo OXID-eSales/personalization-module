@@ -13,19 +13,19 @@ use OxidEsales\PersonalizationModule\Component\Tracking\File\JsFileLocator;
 
 class FactoryTest extends \OxidEsales\TestingLibrary\UnitTestCase
 {
-    public function testGetJsFileLocator()
+    public function testmakeJsFileLocator()
     {
-        $this->assertInstanceOf(JsFileLocator::class, $this->getFactory()->getJsFileLocator());
+        $this->assertInstanceOf(JsFileLocator::class, $this->getFactory()->makeJsFileLocator());
     }
 
     public function testGetFileUploader()
     {
-        $this->assertInstanceOf(FileUpload::class, $this->getFactory()->getFileUploader());
+        $this->assertInstanceOf(FileUpload::class, $this->getFactory()->makeFileUploader());
     }
 
     public function testGetFileSystem()
     {
-        $this->assertInstanceOf(FileSystem::class, $this->getFactory()->getFileSystem());
+        $this->assertInstanceOf(FileSystem::class, $this->getFactory()->makeFileSystem());
     }
 
     protected function getFactory()

@@ -37,21 +37,21 @@ class EmosJsUploadController extends \OxidEsales\Eshop\Application\Controller\Ad
      */
     public function upload()
     {
-        $isCreated = $this->factory->getFileSystem()->createDirectory(
-            $this->factory->getJsFileLocator()->getJsDirectoryLocation()
+        $isCreated = $this->factory->makeFileSystem()->createDirectory(
+            $this->factory->makeJsFileLocator()->getJsDirectoryLocation()
         );
 
         if ($isCreated === false) {
             $this->addErrorToDisplay(
                 'Unable to create directory '
-                . $this->factory->getJsFileLocator()->getJsDirectoryLocation()
+                . $this->factory->makeJsFileLocator()->getJsDirectoryLocation()
                 . '. Add write permissions for web user or create this '
                 . ' directory with write permissions manually.'
             );
             return PersonalizationAdminController::class;
         }
 
-        $fileUploader = $this->factory->getFileUploader();
+        $fileUploader = $this->factory->makeFileUploader();
 
         $dataAfterFileUpload = $fileUploader->processAll();
         foreach ($dataAfterFileUpload[0] as $fileData) {

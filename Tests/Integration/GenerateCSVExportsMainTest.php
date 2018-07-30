@@ -14,7 +14,7 @@ class GenerateCSVExportsMainTest extends \OxidEsales\TestingLibrary\UnitTestCase
 {
     public function testGetTrackingScriptMessageIfEnabledWhenFileIsPresent()
     {
-        $jsFileLocatorStub = $this->getFileSystemStub(true);
+        $jsFileLocatorStub = $this->makeFileSystemStub(true);
 
         $controller = $this->getGenerateCSVExportsMain($jsFileLocatorStub);
         $this->assertNotEmpty($controller->getTrackingScriptMessageIfEnabled());
@@ -22,7 +22,7 @@ class GenerateCSVExportsMainTest extends \OxidEsales\TestingLibrary\UnitTestCase
 
     public function testGetTrackingScriptMessageIfEnabledWhenFileIsNotPresent()
     {
-        $jsFileLocatorStub = $this->getFileSystemStub(false);
+        $jsFileLocatorStub = $this->makeFileSystemStub(false);
 
         $controller = $this->getGenerateCSVExportsMain($jsFileLocatorStub);
         $this->assertEmpty($controller->getTrackingScriptMessageIfEnabled());
@@ -30,7 +30,7 @@ class GenerateCSVExportsMainTest extends \OxidEsales\TestingLibrary\UnitTestCase
 
     public function testGetTrackingScriptMessageIfDisabledWhenFileIsPresent()
     {
-        $jsFileLocatorStub = $this->getFileSystemStub(true);
+        $jsFileLocatorStub = $this->makeFileSystemStub(true);
 
         $controller = $this->getGenerateCSVExportsMain($jsFileLocatorStub);
         $this->assertEmpty($controller->getTrackingScriptMessageIfDisabled());
@@ -38,7 +38,7 @@ class GenerateCSVExportsMainTest extends \OxidEsales\TestingLibrary\UnitTestCase
 
     public function testGetTrackingScriptMessageIfDisabledWhenFileIsNotPresent()
     {
-        $jsFileLocatorStub = $this->getFileSystemStub(false);
+        $jsFileLocatorStub = $this->makeFileSystemStub(false);
 
         $controller = $this->getGenerateCSVExportsMain($jsFileLocatorStub);
         $this->assertNotEmpty($controller->getTrackingScriptMessageIfDisabled());
@@ -51,9 +51,9 @@ class GenerateCSVExportsMainTest extends \OxidEsales\TestingLibrary\UnitTestCase
     protected function getGenerateCSVExportsMain($fileSystem)
     {
         $factory = $this->getMockBuilder(Factory::class)
-            ->setMethods(['getFileSystem'])
+            ->setMethods(['makeFileSystem'])
             ->getMock();
-        $factory->method('getFileSystem')->willReturn($fileSystem);
+        $factory->method('makeFileSystem')->willReturn($fileSystem);
         $controller = oxNew(GenerateCSVExportsMain::class, $factory);
 
         return $controller;
@@ -64,7 +64,7 @@ class GenerateCSVExportsMainTest extends \OxidEsales\TestingLibrary\UnitTestCase
      *
      * @return \PHPUnit_Framework_MockObject_MockObject|FileSystem
      */
-    protected function getFileSystemStub($isFilePresent)
+    protected function makeFileSystemStub($isFilePresent)
     {
         $fileSystemStub = $this->getMockBuilder(FileSystem::class)
             ->disableOriginalConstructor()

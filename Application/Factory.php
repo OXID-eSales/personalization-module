@@ -37,7 +37,7 @@ class Factory
     /**
      * @return JsFileLocator
      */
-    public function getJsFileLocator()
+    public function makeJsFileLocator()
     {
         return oxNew(JsFileLocator::class, Registry::getConfig()->getOutDir(), Registry::getConfig()->getOutUrl());
     }
@@ -45,7 +45,7 @@ class Factory
     /**
      * @return FileSystem
      */
-    public function getFileSystem()
+    public function makeFileSystem()
     {
         return oxNew(FileSystem::class, oxNew(\Symfony\Component\Filesystem\Filesystem::class));
     }
@@ -53,15 +53,15 @@ class Factory
     /**
      * @return \FileUpload\FileUpload
      */
-    public function getFileUploader()
+    public function makeFileUploader()
     {
         $jsFileUploadFactory = oxNew(
             JsFileUploadFactory::class,
-            $this->getJsFileLocator()->getJsDirectoryLocation(),
-            $this->getJsFileLocator()->getFileName()
+            $this->makeJsFileLocator()->getJsDirectoryLocation(),
+            $this->makeJsFileLocator()->getFileName()
         );
 
-        return $jsFileUploadFactory->getFileUploader();
+        return $jsFileUploadFactory->makeFileUploader();
     }
 
     /**
@@ -71,12 +71,12 @@ class Factory
      *
      * @return TrackingCodeGenerator
      */
-    public function getTrackingCodeGenerator(ActivePageEntityInterface $activePageEntity, $pluginParameters, $smarty)
+    public function makeTrackingCodeGenerator(ActivePageEntityInterface $activePageEntity, $pluginParameters, $smarty)
     {
         return oxNew(
             TrackingCodeGenerator::class,
             $activePageEntity,
-            $this->getJsFileLocator()->getJsFileUrl(),
+            $this->makeJsFileLocator()->getJsFileUrl(),
             $this->getActivePageEntityPreparator()->prepareEntity($pluginParameters, $smarty)
         );
     }

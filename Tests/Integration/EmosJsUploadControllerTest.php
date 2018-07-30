@@ -53,9 +53,9 @@ class EmosJsUploadControllerTest extends \OxidEsales\TestingLibrary\UnitTestCase
         $fileSystem->method('createDirectory')->willReturn(false);
 
         $factory = $this->getMockBuilder(Factory::class)
-            ->setMethods(['getFileSystem'])
+            ->setMethods(['makeFileSystem'])
             ->getMock();
-        $factory->method('getFileSystem')->willReturn($fileSystem);
+        $factory->method('makeFileSystem')->willReturn($fileSystem);
 
         return $factory;
     }
@@ -73,10 +73,10 @@ class EmosJsUploadControllerTest extends \OxidEsales\TestingLibrary\UnitTestCase
         $fileUploader->method('processAll')->willReturn([[]]);
 
         $factory = $this->getMockBuilder(Factory::class)
-            ->setMethods(['getFileUploader'])
+            ->setMethods(['makeFileUploader'])
             ->getMock();
-        $factory->method('getFileSystem')->willReturn($fileSystem);
-        $factory->method('getFileUploader')->willReturn($fileUploader);
+        $factory->method('makeFileSystem')->willReturn($fileSystem);
+        $factory->method('makeFileUploader')->willReturn($fileUploader);
 
         return $factory;
     }
@@ -96,10 +96,10 @@ class EmosJsUploadControllerTest extends \OxidEsales\TestingLibrary\UnitTestCase
         $fileUploader->method('processAll')->willReturn([[$errorObject]]);
 
         $factory = $this->getMockBuilder(Factory::class)
-            ->setMethods(['getFileUploader'])
+            ->setMethods(['makeFileUploader'])
             ->getMock();
-        $factory->method('getFileSystem')->willReturn($fileSystem);
-        $factory->method('getFileUploader')->willReturn($fileUploader);
+        $factory->method('makeFileSystem')->willReturn($fileSystem);
+        $factory->method('makeFileUploader')->willReturn($fileUploader);
 
         return $factory;
     }

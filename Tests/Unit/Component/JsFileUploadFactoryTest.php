@@ -14,6 +14,6 @@ class JsFileUploadFactoryTest extends \OxidEsales\TestingLibrary\UnitTestCase
     {
         $factory = new JsFileUploadFactory('test_dir_path', 'test_file.js');
 
-        $this->assertInstanceOf(\FileUpload\FileUpload::class, $factory->getFileUploader());
+        $this->assertInstanceOf(\FileUpload\FileUpload::class, $factory->makeFileUploader());
     }
 }

@@ -25,7 +25,7 @@ class JsFileUploadFactory
     /**
      * @return \FileUpload\FileUpload
      */
-    public function getFileUploader()
+    public function makeFileUploader()
     {
         $fileForUpload = $_FILES['file_to_upload'];
 
