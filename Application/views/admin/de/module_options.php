@@ -34,8 +34,8 @@ $aLang = [
 
     'SHOP_MODULE_sOePersonalizationTrackingShowNote' => 'Tracking-Hinweis',
     'SHOP_MODULE_sOePersonalizationTrackingShowNoteNo' => 'Nicht anzeigen',
-    'SHOP_MODULE_sOePersonalizationTrackingShowNoteOptIn' => '"Tracking zulassen" anzeigen',
-    'SHOP_MODULE_sOePersonalizationTrackingShowNoteOptOut' => '"Tracking verbieten" anzeigen',
+    'SHOP_MODULE_sOePersonalizationTrackingShowNoteOptIn' => '"Ich bin einverstanden (Personalisierung aktivieren)" anzeigen',
+    'SHOP_MODULE_sOePersonalizationTrackingShowNoteOptOut' => '"Widerspruch (Personalisierung deaktivieren)" anzeigen',
 
     'SHOP_MODULE_GROUP_oepersonalization_export' => 'Export',
     'SHOP_MODULE_sOePersonalizationExportPath'=> 'Export-Pfad',

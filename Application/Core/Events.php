@@ -60,7 +60,7 @@ sodass für Sie relevante Produkte angezeigt und uninteressante Angebote ausgebl
 Die Verarbeitung erfolgt gemäß Art. 6 Abs. 1 lit. f DSGVO und Sie können jederzeit von Ihren Betroffenenrechten Gebrauch machen.
 Wenn Sie dies nicht möchten, können Sie hier widersprechen. Wenn Sie unsicher sind, finden Sie hier die gesamten Datenschutzhinweise.
 <div>
-    <a class="oepersonalization-optin" href="#" data-dismiss="alert">Tracking zulassen</a>
+    <a class="oepersonalization-optin" href="#" data-dismiss="alert">Ich bin einverstanden (Personalisierung aktivieren)</a>
 </div>
 EOT;
         $sql = "select count(oxid) from `oxcontents` where oxloadid = 'oepersonalizationoptin'";
@@ -70,7 +70,7 @@ EOT;
             $content = oxNew(Content::class);
             $content->setId($id);
             $content->oxcontents__oxloadid = new Field('oepersonalizationoptin');
-            $content->oxcontents__oxtitle = new Field('Cookie "Tracking zulassen" Hinweis');
+            $content->oxcontents__oxtitle = new Field('Cookie "Ich bin einverstanden (Personalisierung aktivieren)" Hinweis');
             $content->oxcontents__oxcontent = new Field($text);
             $content->save();
         }
@@ -89,7 +89,7 @@ sodass für Sie relevante Produkte angezeigt und uninteressante Angebote ausgebl
 Die Verarbeitung erfolgt gemäß Art. 6 Abs. 1 lit. f DSGVO und Sie können jederzeit von Ihren Betroffenenrechten Gebrauch machen.
 Wenn Sie dies nicht möchten, können Sie hier widersprechen. Wenn Sie unsicher sind, finden Sie hier die gesamten Datenschutzhinweise.
 <div>
-    <a class="oepersonalization-optout" href="#" data-dismiss="alert">Tracking verbieten</a>
+    <a class="oepersonalization-optout" href="#" data-dismiss="alert">Widerspruch (Personalisierung deaktivieren)</a>
 </div>
 EOT;
         $sql = "select count(oxid) from `oxcontents` where oxloadid = 'oepersonalizationoptout'";
@@ -99,7 +99,7 @@ EOT;
             $content = oxNew(Content::class);
             $content->setId($id);
             $content->oxcontents__oxloadid = new Field('oepersonalizationoptout');
-            $content->oxcontents__oxtitle = new Field('Cookie "Tracking verbieten" Hinweis');
+            $content->oxcontents__oxtitle = new Field('Cookie "Widerspruch (Personalisierung deaktivieren)" Hinweis');
             $content->oxcontents__oxcontent = new Field($text);
             $content->save();
         }
