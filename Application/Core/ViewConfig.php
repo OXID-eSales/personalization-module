@@ -42,6 +42,25 @@ class ViewConfig extends ViewConfig_parent
     }
 
     /**
+     * @return string
+     */
+    public function oePersonalizationGetClientKey()
+    {
+        $accountId = $this->oePersonalizationGetAccountId();
+        $clientKey = $accountId;
+
+        $accountIdInBlocks = explode('-', $accountId);
+        $lastBlock = end($accountIdInBlocks);
+        $lastBlockKey  = key($accountIdInBlocks);
+        if (ctype_digit($lastBlock)) {
+            unset($accountIdInBlocks[$lastBlockKey]);
+            $clientKey = implode('-', $accountIdInBlocks);
+        }
+
+        return $clientKey;
+    }
+
+    /**
      * @return bool
      */
     public function oePersonalizationEnableWidgets()
@@ -189,6 +208,16 @@ class ViewConfig extends ViewConfig_parent
     }
 
     /**
+     * @return bool
+     */
+    public function isStartPage()
+    {
+        $userIdentifier = $this->oePersonalizationfactory->makeUserActionIdentifier();
+
+        return $userIdentifier->isInStartPage();
+    }
+
+    /**
      * Returns user hashed ID.
      *
      * @return string
@@ -206,17 +235,6 @@ class ViewConfig extends ViewConfig_parent
     public function oePersonalizationGetLoggedInUserHashedEmail()
     {
         return $this->getActiveUserDataProvider()->getActiveUserHashedEmail();
-    }
-
-    /**
-     * @return string
-     */
-    private function oePersonalizationGetRequestActiveFunctionName()
-    {
-        $currentView = Registry::getConfig()->getActiveView();
-        $functionName = $currentView->getFncName();
-
-        return $functionName;
     }
 
     /**

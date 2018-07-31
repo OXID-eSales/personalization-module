@@ -46,5 +46,10 @@
             econda.data.visitor.logout();
         </script>
         [{/if}]
+        [{if $oViewConf->oePersonalizationIsLoginAction() || $oViewConf->isStartPage()}]
+        <script type="text/javascript">
+            econda.privacyprotection.updatePrivacySettingsFromBackend('[{$oViewConf->oePersonalizationGetClientKey()}]', 'privacy_protection');
+        </script>
+        [{/if}]
     [{/if}]
 [{/block}]

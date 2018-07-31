@@ -122,6 +122,34 @@ class ViewConfigTest extends \OxidEsales\TestingLibrary\UnitTestCase
         $this->assertFalse($this->getViewConfig()->oePersonalizationIsLoginAction());
     }
 
+    public function clientKeyProvider()
+    {
+        return [
+            ['aaaaa', 'aaaaa'],
+            ['aaaaa-1', 'aaaaa'],
+            ['aaaaa-5', 'aaaaa'],
+            ['aaaaa-5-9', 'aaaaa-5'],
+            ['a-a-a/a-a-5-9', 'a-a-a/a-a-5'],
+            ['00000cec-d98025a8-912b-46a4-a57d-7a691ba7a376-7', '00000cec-d98025a8-912b-46a4-a57d-7a691ba7a376'],
+            ['00000cec-d98025a8-912b-46a4-a57d-7a691ba7a376-7a', '00000cec-d98025a8-912b-46a4-a57d-7a691ba7a376-7a'],
+            ['00000cec-d98025a8-912b-46a4-a57d-7a691ba7a376-7121', '00000cec-d98025a8-912b-46a4-a57d-7a691ba7a376'],
+            ['', ''],
+            [null, null],
+        ];
+    }
+
+    /**
+     * @param string $accountId
+     * @param string $clientKey
+     *
+     * @dataProvider clientKeyProvider
+     */
+    public function testClientKey($accountId, $clientKey)
+    {
+        Registry::getConfig()->setConfigParam('sOePersonalizationAccountId', $accountId);
+        $this->assertEquals($clientKey, $this->getViewConfig()->oePersonalizationGetClientKey());
+    }
+
     /**
      * @return object|\OxidEsales\Eshop\Core\ViewConfig|ViewConfig
      */

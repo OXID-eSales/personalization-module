@@ -79,4 +79,17 @@ class UserActionIdentifier
 
         return $isLogoutAction;
     }
+
+    /**
+     * @return bool
+     */
+    public function isInStartPage()
+    {
+        $isInStartPage = false;
+        if ($this->pageIdentifiers->getCurrentControllerName() === 'start') {
+            $isInStartPage = true;
+        }
+
+        return $isInStartPage;
+    }
 }

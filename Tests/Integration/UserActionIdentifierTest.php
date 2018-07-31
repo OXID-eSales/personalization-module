@@ -101,6 +101,22 @@ class UserActionIdentifierTest extends \OxidEsales\TestingLibrary\UnitTestCase
         $this->assertFalse($userActionIdentifier->isSuccessfulLogout());
     }
 
+    public function testIsInStartPage()
+    {
+        $pageIdentifiersStub = $this->makePageIdentifierStub('start');
+        $userActionIdentifier = oxNew(UserActionIdentifier::class, oxNew(User::class), $pageIdentifiersStub);
+
+        $this->assertTrue($userActionIdentifier->isInStartPage());
+    }
+
+    public function testIsNotInStartPage()
+    {
+        $pageIdentifiersStub = $this->makePageIdentifierStub('not_start');
+        $userActionIdentifier = oxNew(UserActionIdentifier::class, oxNew(User::class), $pageIdentifiersStub);
+
+        $this->assertFalse($userActionIdentifier->isInStartPage());
+    }
+
     private function prepareRequestAndSessionDataForUserLogin()
     {
         $this->prepareActiveControllerToSetFunctionName('login_noredirect');
@@ -117,5 +133,17 @@ class UserActionIdentifierTest extends \OxidEsales\TestingLibrary\UnitTestCase
     {
         $this->prepareActiveControllerToSetFunctionName('not_login_noredirect');
         Registry::getSession()->setVariable('usr', 'userid');
+    }
+
+    /**
+     * @return \PHPUnit_Framework_MockObject_MockObject|PageIdentifiers
+     */
+    private function makePageIdentifierStub($controllerName)
+    {
+        $pageIdentifiersStub = $this->getMockBuilder(PageIdentifiers::class)
+            ->setMethods(['getCurrentControllerName'])
+            ->getMock();
+        $pageIdentifiersStub->method('getCurrentControllerName')->willReturn($controllerName);
+        return $pageIdentifiersStub;
     }
 }
