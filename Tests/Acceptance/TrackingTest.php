@@ -91,6 +91,7 @@ class TrackingTest extends BaseAcceptanceTestCase
         $this->checkIfElementInPage($this->prepareElementForContent('Shop\/Kaufprozess\/Zahlungsoptionen'));
         $this->checkIfElementInPage($this->prepareElementForPageId('1paymentpage/checkout/payment.tpl'));
         $this->checkIfElementInPage($this->prepareElementForOrderProcess('3_Zahlungsoptionen'));
+        $this->checkIfElementInPage($this->prepareElementForEmailShowEvent('testing_account@oxid-esales.local'));
     }
 
     public function testCheckoutStep4()
@@ -105,6 +106,7 @@ class TrackingTest extends BaseAcceptanceTestCase
         $this->checkIfElementInPage($this->prepareElementForContent('Shop\/Kaufprozess\/Bestelluebersicht'));
         $this->checkIfElementInPage($this->prepareElementForPageId('1orderpage/checkout/order.tpl'));
         $this->checkIfElementInPage($this->prepareElementForOrderProcess('4_Bestelluebersicht'));
+        $this->checkIfElementInPage($this->prepareElementForEmailShowEvent('testing_account@oxid-esales.local'));
     }
 
     public function testCheckThankYouPage()
@@ -121,6 +123,7 @@ class TrackingTest extends BaseAcceptanceTestCase
         $this->checkIfElementInPage($this->prepareElementForPageId('1thankyoupage/checkout/thankyou.tpl'));
         $this->checkIfElementInPage($this->prepareElementForOrderProcess('5_Bestaetigung'));
         $this->checkIfElementInPage($this->prepareEvent('[{"type":"buy","count":1,"pid":"1000","sku":"1000","name":"Test product","group":"Test category\/Test product","price":10,"var1":"NULL","var2":"NULL","var3":"1000"}]'));
+        $this->checkIfElementInPage($this->prepareElementForEmailShowEvent('testing_account@oxid-esales.local'));
     }
 
     public function testCheckSearch()
@@ -142,6 +145,7 @@ class TrackingTest extends BaseAcceptanceTestCase
         $this->checkCommonElements();
         $this->checkIfElementInPage($this->prepareElementForContent('Service\/Wunschzettel'));
         $this->checkIfElementInPage($this->prepareElementForPageId('1account_wishlistpage/account/wishlist.tpl'));
+        $this->checkIfElementInPage($this->prepareElementForEmailShowEvent('testing_account@oxid-esales.local'));
     }
 
     public function testHelp()
@@ -230,12 +234,14 @@ class TrackingTest extends BaseAcceptanceTestCase
         $this->checkIfElementInPage($this->prepareElementForContent('Login\/Uebersicht'));
         $this->checkIfElementInPage($this->prepareElementForPageId('1accountpage/account/dashboard.tpl'));
         $this->checkIfElementInPage($this->prepareElementForLoginEvent('"'.md5('oepersonalizationtestuser').'",0'));
+        $this->checkIfElementInPage($this->prepareElementForEmailShowEvent('testing_account@oxid-esales.local'));
 
         $this->open($this->getTestConfig()->getShopUrl() .'/index.php?cl=account&fnc=logout&redirect=1');
 
         $this->checkCommonElements();
         $this->checkIfElementInPage($this->prepareElementForContent('Login\/Formular\/Logout'));
         $this->checkIfElementInPage($this->prepareElementForPageId('1accountpage/account/login.tpl'));
+        $this->checkIfElementNotInPage($this->prepareElementForEmailShowEvent('testing_account@oxid-esales.local'));
     }
 
     public function testUserAccountPagesBrowsing()
@@ -270,6 +276,7 @@ class TrackingTest extends BaseAcceptanceTestCase
         $this->checkCommonElements();
         $this->checkIfElementInPage($this->prepareElementForContent('Service\/Wunschzettel'));
         $this->checkIfElementInPage($this->prepareElementForPageId('1account_wishlistpage/account/wishlist.tpl'));
+        $this->checkIfElementInPage($this->prepareElementForEmailShowEvent('testing_account@oxid-esales.local'));
     }
 
     public function testUserForgotPassword()
@@ -303,6 +310,7 @@ class TrackingTest extends BaseAcceptanceTestCase
 
         $this->checkIfElementInPage($this->prepareElementForLoginEvent(''));
         $this->checkIfElementInPage($this->prepareElementForRegisterEvent(''));
+        $this->checkIfElementInPage($this->prepareElementForEmailShowEvent('testing_account2@oxid-esales.local'));
     }
 
     public function testContactsSuccess()
@@ -390,12 +398,26 @@ class TrackingTest extends BaseAcceptanceTestCase
         return "\"register\":[$value";
     }
 
+    protected function prepareElementForEmailShowEvent($value)
+    {
+        $value = md5($value);
+        return "\"hashedvalue\":[[\"$value\"]]";
+    }
+
     protected function checkIfElementInPage($element)
     {
         $minkSession = $this->getMinkSession();
         $page = $minkSession->getPage();
         $html = $page->getHtml();
         $this->assertTrue(strpos($html, $element) !== false, "Element $element was not found in page.");
+    }
+
+    protected function checkIfElementNotInPage($element)
+    {
+        $minkSession = $this->getMinkSession();
+        $page = $minkSession->getPage();
+        $html = $page->getHtml();
+        $this->assertFalse(strpos($html, $element) !== false, "Element $element was not found in page.");
     }
 
     protected function addToBasketProductAndGotToCheckoutPage()

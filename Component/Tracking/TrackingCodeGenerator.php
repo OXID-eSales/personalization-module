@@ -13,6 +13,8 @@ use Econda\Tracking\ProductDetailView;
 use Econda\Tracking\Registration;
 use Econda\Tracking\Target;
 use Econda\Tracking\TransactionProduct;
+use OxidEsales\PersonalizationModule\Component\Tracking\SdkExtension\Email;
+use OxidEsales\PersonalizationModule\Component\Tracking\SdkExtension\PageView;
 
 /**
  * Class responsible for generating Econda tracking script.
@@ -63,6 +65,7 @@ class TrackingCodeGenerator
         $this->addCartDataToPageView();
         $this->addContactFormDataToPageView();
         $this->addNewsletterSubscriptionDataToPageView();
+        $this->addEmailToPageView();
 
         $jsCode = "<script type=\"text/javascript\" " .
             "src=\"" . $this->url . "\" async=\"async\">" . " </script>";
@@ -179,6 +182,14 @@ class TrackingCodeGenerator
                 'value' => 1
             ]);
             $this->pageView->add($target);
+        }
+    }
+
+    private function addEmailToPageView()
+    {
+        $email = $this->activePageEntity->getEmail();
+        if (!empty($email)) {
+            $this->pageView->add(new Email($email));
         }
     }
 }

@@ -130,6 +130,11 @@ class ActivePageEntity implements ActivePageEntityInterface
     private $newsletterMessage = '';
 
     /**
+     * @var string
+     */
+    private $email = '';
+
+    /**
      * @return string
      */
     public function getContent()
@@ -447,5 +452,21 @@ class ActivePageEntity implements ActivePageEntityInterface
     public function setNewsletterMessage($newsletterMessage)
     {
         $this->newsletterMessage = $newsletterMessage;
+    }
+
+    /**
+     * @param string $email
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
     }
 }

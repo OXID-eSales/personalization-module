@@ -195,4 +195,14 @@ interface ActivePageEntityInterface
      * @param string $newsletterMessage
      */
     public function setNewsletterMessage($newsletterMessage);
+
+    /**
+     * @param string $email
+     */
+    public function setEmail($email);
+
+    /**
+     * @return string
+     */
+    public function getEmail();
 }

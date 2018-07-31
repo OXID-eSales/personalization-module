@@ -111,6 +111,7 @@ class ActivePageEntityPreparator extends \OxidEsales\Eshop\Core\Base
         $this->setControllerInfo($parameters, $smarty);
 
         $this->setLoginsTracking();
+        $this->setEmailTracking();
 
         $this->activePageEntity = $this->getEntityModifierByCurrentBasketAction()->modifyEntity($this->activePageEntity);
 
@@ -154,6 +155,17 @@ class ActivePageEntityPreparator extends \OxidEsales\Eshop\Core\Base
         if ('login_noredirect' == $functionName) {
             $this->activePageEntity->setLoginUserId($this->activeUserDataProvider->getActiveUserHashedId());
             $this->activePageEntity->setLoginResult($this->activeUserDataProvider->isLoaded() ? '0' : '1');
+        }
+    }
+
+    /**
+     * Sets email for tracking.
+     */
+    private function setEmailTracking()
+    {
+        $hashedEmail = $this->activeUserDataProvider->getActiveUserHashedEmail();
+        if (!is_null($hashedEmail)) {
+            $this->activePageEntity->setEmail($hashedEmail);
         }
     }
 

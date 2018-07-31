@@ -4,7 +4,7 @@
  * See LICENSE file for license details.
  */
 
-namespace OxidEsales\PersonalizationModule\Component\Tracking;
+namespace OxidEsales\PersonalizationModule\Component\Tracking\SdkExtension;
 
 class PageView extends \Econda\Tracking\PageView
 {
@@ -25,21 +25,22 @@ class PageView extends \Econda\Tracking\PageView
             '      var pageDefaults = ' . $this->jsonEncode($globalData) . ';',
             '      for(var p in pageDefaults) { emos.defaults[p] = pageDefaults[p]; }',
             '      var requestData = ' . ($requestData ? $this->jsonEncode($requestData) : '{}') . ';',
-            '      if(econda.privacyprotection.getPermissionsFromLocalStorage().profile.state === "DENY") {',
-            '          if(requestData.login) {',
-            '              requestData.login = [econda.privacyprotection.emptyIfNotProfileOptIn(requestData.login[0]), requestData.login[1]]',
-            '          }',
-            '          if(requestData.register) {',
-            '              requestData.register = [econda.privacyprotection.emptyIfNotProfileOptIn(requestData.register[0]), requestData.register[1]]',
-            '          }',
-            '          if(requestData.billing) {',
-            '              requestData.billing = [',
-            '                  econda.privacyprotection.anonymiseIfNotProfileOptIn(requestData.billing[0]),',
-            '                  econda.privacyprotection.emptyIfNotProfileOptIn(requestData.billing[1]),',
-            '                  requestData.billing[2],',
-            '                  requestData.billing[3]',
-            '              ]',
-            '          }',
+            '      if(requestData.login) {',
+            '          requestData.login = [econda.privacyprotection.emptyIfNotProfileOptIn(requestData.login[0]), requestData.login[1]]',
+            '      }',
+            '      if(requestData.register) {',
+            '          requestData.register = [econda.privacyprotection.emptyIfNotProfileOptIn(requestData.register[0]), requestData.register[1]]',
+            '      }',
+            '      if(requestData.hashedvalue) {',
+            '          requestData.hashedvalue = [econda.privacyprotection.emptyIfNotProfileOptIn(requestData.hashedvalue[0])]',
+            '      }',
+            '      if(requestData.billing) {',
+            '          requestData.billing = [',
+            '              econda.privacyprotection.anonymiseIfNotProfileOptIn(requestData.billing[0]),',
+            '              econda.privacyprotection.emptyIfNotProfileOptIn(requestData.billing[1]),',
+            '              requestData.billing[2],',
+            '              requestData.billing[3]',
+            '          ]',
             '      }',
             '      if (emosProps) {',
             '          Object.assign(requestData, emosProps);',
