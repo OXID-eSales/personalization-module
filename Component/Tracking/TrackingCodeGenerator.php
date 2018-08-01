@@ -112,10 +112,9 @@ class TrackingCodeGenerator
         }
     }
 
-
     private function addCurrentProductDataToPageView()
     {
-        if (!empty($this->activePageEntity->getProductData())) {
+        if (!empty($this->activePageEntity->getProductData() && empty($this->activePageEntity->getProductToBasket()))) {
             $product = new Product($this->activePageEntity->getProductData());
             $this->pageView->add(new ProductDetailView($product));
         }

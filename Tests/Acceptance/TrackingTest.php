@@ -31,6 +31,8 @@ class TrackingTest extends BaseAcceptanceTestCase
         $this->checkIfElementInPage($this->prepareElementForContent('Start'));
         $this->checkIfElementInPage($this->prepareElementForPageId('1startpage/shop/start.tpl1000'));
         $this->checkIfElementInPage($this->prepareEvent('[{"type":"c_add","count":"1","pid":"1000","sku":"1000","name":"Test product","group":"Test category\/Test product","price":10,"var1":"NULL","var2":"NULL","var3":"1000"}]'));
+
+        $this->checkIfInPageThereIsNoDoubleEvent();
     }
 
     public function testCheckoutStep2()
@@ -441,5 +443,16 @@ class TrackingTest extends BaseAcceptanceTestCase
     {
         $this->checkIfElementInPage($this->prepareElementForSiteId($this->getSiteId()));
         $this->checkIfElementInPage($this->prepareElementForLanguageId(1));
+    }
+
+    /**
+     * Checks if there is c_add event and not view event.
+     */
+    private function checkIfInPageThereIsNoDoubleEvent()
+    {
+        $this->open($this->getTestConfig()->getShopUrl() . 'en/Test-category/Test-product.html');
+        $this->click("//button[@id='toBasket']");
+        $this->checkIfElementNotInPage('{"type":"view"');
+        $this->checkIfElementInPage($this->prepareEvent('[{"type":"c_add","count":"1","pid":"1000","sku":"1000","name":"Test product","group":"Test category\/Test product","price":10,"var1":"NULL","var2":"NULL","var3":"1000"}]'));
     }
 }
