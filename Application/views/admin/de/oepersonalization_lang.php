@@ -13,7 +13,7 @@ $aLang = [
     'mxpersonalizationeconda' => 'Econda',
     'OEPERSONALIZATION_UPLOAD_BUTTON_TITLE' => 'Hochladen',
     'OEPERSONALIZATION_TRACKING_SECTION_TITLE' => 'Econda Analytics',
-    'OEPERSONALIZATION_MESSAGE_FILE_IS_NOT_PRESENT' => 'Die Datei <b>%s</b> ist momentan nicht vorhanden.'
+    'OEPERSONALIZATION_MESSAGE_FILE_IS_NOT_PRESENT' => 'Die Analytics JS Bibliothek ist momentan nicht vorhanden.'
     .' Es ist erforderlich, die Datei hochzuladen, bevor das Tracking aktiviert wird.',
     'OEPERSONALIZATION_MESSAGE_FILE_IS_PRESENT' => 'Die Analytics JS Bibliothek ist vorhanden.',
     'OEPERSONALIZATION_VISUAL_EDITOR_SHORTCODE_ECONDA' => 'AI Content',

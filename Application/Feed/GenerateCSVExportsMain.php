@@ -79,7 +79,7 @@ class GenerateCSVExportsMain extends \OxidEsales\Eshop\Application\Controller\Ad
     {
         $message = '';
         if ($this->factory->makeFileSystem()->isFilePresent($this->factory->makeJsFileLocator()->getJsFileLocation())) {
-            $message = sprintf(Registry::getLang()->translateString("OEPERSONALIZATION_MESSAGE_FILE_IS_PRESENT"), $this->factory->makeJsFileLocator()->getFileName());
+            $message = Registry::getLang()->translateString("OEPERSONALIZATION_MESSAGE_FILE_IS_PRESENT");
         }
 
         return $message;
@@ -92,7 +92,7 @@ class GenerateCSVExportsMain extends \OxidEsales\Eshop\Application\Controller\Ad
     {
         $message = '';
         if (!$this->factory->makeFileSystem()->isFilePresent($this->factory->makeJsFileLocator()->getJsFileLocation())) {
-            $message = sprintf(Registry::getLang()->translateString("OEPERSONALIZATION_MESSAGE_FILE_IS_NOT_PRESENT"), $this->factory->makeJsFileLocator()->getFileName());
+            $message = Registry::getLang()->translateString("OEPERSONALIZATION_MESSAGE_FILE_IS_NOT_PRESENT");
         }
 
         return $message;

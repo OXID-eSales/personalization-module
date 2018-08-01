@@ -13,7 +13,7 @@ $aLang = [
     'mxpersonalizationeconda' => 'Econda',
     'OEPERSONALIZATION_UPLOAD_BUTTON_TITLE' => 'Upload',
     'OEPERSONALIZATION_TRACKING_SECTION_TITLE' => 'Econda analytics',
-    'OEPERSONALIZATION_MESSAGE_FILE_IS_NOT_PRESENT' => 'At the moment the file <b>%s</b> is not present.'
+    'OEPERSONALIZATION_MESSAGE_FILE_IS_NOT_PRESENT' => 'At the moment the analytics JS library is not present.'
     .' It is required to upload the file before enabling tracking.',
     'OEPERSONALIZATION_MESSAGE_FILE_IS_PRESENT' => 'The analytics JS library is present.',
     'OEPERSONALIZATION_VISUAL_EDITOR_SHORTCODE_ECONDA' => 'AI Content',
