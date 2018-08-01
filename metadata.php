@@ -33,6 +33,9 @@ $aModule = array(
     ],
     'controllers' => [
         'oepersonalizationadmin' => \OxidEsales\PersonalizationModule\Application\Controller\Admin\PersonalizationAdminController::class,
+        'oepersonalizationgeneral' => \OxidEsales\PersonalizationModule\Application\Controller\Admin\PersonalizationGeneralController::class,
+        'oepersonalizationtracking' => \OxidEsales\PersonalizationModule\Application\Controller\Admin\PersonalizationTrackingController::class,
+        'oepersonalizationwidgets' => \OxidEsales\PersonalizationModule\Application\Controller\Admin\PersonalizationWidgetsController::class,
         'oepersonalizationemosjsupload' => \OxidEsales\PersonalizationModule\Application\Controller\Admin\EmosJsUploadController::class,
         'oepersonalizationexport' => \OxidEsales\PersonalizationModule\Application\Feed\GenerateCSVExports::class,
     ],
@@ -40,7 +43,11 @@ $aModule = array(
         'onActivate'   => \OxidEsales\PersonalizationModule\Application\Core\Events::class . '::onActivate',
     ],
     'templates' => [
+        'oepersonalization.tpl' => 'oe/personalization/Application/views/admin/tpl/oepersonalization.tpl',
         'oepersonalizationadmin.tpl' => 'oe/personalization/Application/views/admin/tpl/oepersonalizationadmin.tpl',
+        'oepersonalizationgeneral.tpl' => 'oe/personalization/Application/views/admin/tpl/oepersonalizationgeneral.tpl',
+        'oepersonalizationtracking.tpl' => 'oe/personalization/Application/views/admin/tpl/oepersonalizationtracking.tpl',
+        'oepersonalizationwidgets.tpl' => 'oe/personalization/Application/views/admin/tpl/oepersonalizationwidgets.tpl',
         'oepersonalizationcookienote.tpl' => 'oe/personalization/Application/views/widget/header/cookienote.tpl',
         'oepersonalizationexportresult.tpl' => 'oe/personalization/Application/views/admin/tpl/oepersonalizationexportresult.tpl'
     ],

@@ -48,7 +48,7 @@ class EmosJsUploadController extends \OxidEsales\Eshop\Application\Controller\Ad
                 . '. Add write permissions for web user or create this '
                 . ' directory with write permissions manually.'
             );
-            return PersonalizationAdminController::class;
+            return PersonalizationTrackingController::class;
         }
 
         $fileUploader = $this->factory->makeFileUploader();
@@ -60,7 +60,7 @@ class EmosJsUploadController extends \OxidEsales\Eshop\Application\Controller\Ad
             }
         }
 
-        return PersonalizationAdminController::class;
+        return PersonalizationTrackingController::class;
     }
 
     /**

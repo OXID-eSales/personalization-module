@@ -7,7 +7,7 @@
 namespace OxidEsales\PersonalizationModule\Tests\Integration;
 
 use FileUpload\FileUpload;
-use OxidEsales\PersonalizationModule\Application\Controller\Admin\PersonalizationAdminController;
+use OxidEsales\PersonalizationModule\Application\Controller\Admin\PersonalizationTrackingController;
 use OxidEsales\PersonalizationModule\Application\Controller\Admin\EmosJsUploadController;
 use OxidEsales\PersonalizationModule\Application\Factory;
 use OxidEsales\PersonalizationModule\Component\Tracking\File\FileSystem;
@@ -22,7 +22,7 @@ class EmosJsUploadControllerTest extends \OxidEsales\TestingLibrary\UnitTestCase
         $errors = \OxidEsales\Eshop\Core\Registry::getSession()->getVariable('Errors');
 
         $this->assertNotNull($errors, 'Error must be set when unable to create directory.');
-        $this->assertSame(PersonalizationAdminController::class, $redirectToControllerName);
+        $this->assertSame(PersonalizationTrackingController::class, $redirectToControllerName);
     }
 
     public function testUploadFailureWhenUploadingFile()
@@ -32,7 +32,7 @@ class EmosJsUploadControllerTest extends \OxidEsales\TestingLibrary\UnitTestCase
 
         $errors = \OxidEsales\Eshop\Core\Registry::getSession()->getVariable('Errors');
         $this->assertNotNull($errors, 'Error must be set when unable to upload file.');
-        $this->assertSame(PersonalizationAdminController::class, $redirectToControllerName);
+        $this->assertSame(PersonalizationTrackingController::class, $redirectToControllerName);
     }
 
     public function testUploadSuccess()
@@ -42,7 +42,7 @@ class EmosJsUploadControllerTest extends \OxidEsales\TestingLibrary\UnitTestCase
 
         $errors = \OxidEsales\Eshop\Core\Registry::getSession()->getVariable('Errors');
         $this->assertNull($errors, 'Some error appeared during file upload.');
-        $this->assertSame(PersonalizationAdminController::class, $redirectToControllerName);
+        $this->assertSame(PersonalizationTrackingController::class, $redirectToControllerName);
     }
 
     protected function getFactoryStubWhenNotPossibleToCreateDirectory()
