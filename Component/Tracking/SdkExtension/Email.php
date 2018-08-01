@@ -15,17 +15,18 @@ use Econda\Util\BaseObject;
  *
  * @property string $email.
  */
-class Email extends BaseObject implements TrackingItemInterface {
-    
+class Email extends BaseObject implements TrackingItemInterface
+{
     protected $email;
     
     /**
      * Constructor
      * @param type $nameOrPropertiesArray Name of download or an assoc array of property values.
      */
-    public function __construct($nameOrPropertiesArray = null) {
-        if(!empty($nameOrPropertiesArray)) {
-            if(is_string($nameOrPropertiesArray)) {
+    public function __construct($nameOrPropertiesArray = null)
+    {
+        if (!empty($nameOrPropertiesArray)) {
+            if (is_string($nameOrPropertiesArray)) {
                 $this->email = trim($nameOrPropertiesArray);
             } else {
                 parent::__construct($nameOrPropertiesArray);

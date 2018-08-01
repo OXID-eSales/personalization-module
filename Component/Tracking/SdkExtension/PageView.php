@@ -6,12 +6,17 @@
 
 namespace OxidEsales\PersonalizationModule\Component\Tracking\SdkExtension;
 
+/**
+ * @inheritdoc
+ */
 class PageView extends \Econda\Tracking\PageView
 {
     /**
      * @inheritdoc
+     * @return string
      */
-    public function getAsJavaScriptNode() {
+    public function getAsJavaScriptNode()
+    {
         $globalData = $this->getGlobalDataLayer();
         $requestData = $this->getRequestDataLayer();
 
