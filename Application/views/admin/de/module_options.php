@@ -30,7 +30,7 @@ $aLang = [
     'SHOP_MODULE_sOePersonalizationWidgetIdThankYouPage'=> 'Widget Id',
     'SHOP_MODULE_sOePersonalizationWidgetTemplateThankYouPage' => 'Widget Template',
 
-    'SHOP_MODULE_blOePersonalizationEnableTracking' => 'Econda Tracking aktivieren',
+    'SHOP_MODULE_blOePersonalizationEnableTracking' => 'Econda Analytics aktivieren',
 
     'SHOP_MODULE_sOePersonalizationTrackingShowNote' => 'Tracking-Hinweis',
     'SHOP_MODULE_sOePersonalizationTrackingShowNoteNo' => 'Nicht anzeigen',
