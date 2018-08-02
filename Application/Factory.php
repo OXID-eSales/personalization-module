@@ -22,6 +22,7 @@ use OxidEsales\PersonalizationModule\Application\Tracking\ActivePageEntityPrepar
 use OxidEsales\PersonalizationModule\Component\Tracking\ActivePageEntity;
 use OxidEsales\PersonalizationModule\Component\Tracking\ActivePageEntityInterface;
 use OxidEsales\PersonalizationModule\Component\Tracking\File\EmosFileData;
+use OxidEsales\PersonalizationModule\Component\Tracking\File\TagManagerFileData;
 use OxidEsales\PersonalizationModule\Component\Tracking\TrackingCodeGenerator;
 use OxidEsales\PersonalizationModule\Component\File\FileSystem;
 use OxidEsales\PersonalizationModule\Component\File\JsFileLocator;
@@ -38,9 +39,17 @@ class Factory
     /**
      * @return JsFileLocator
      */
-    public function makeJsFileLocator()
+    public function makeEmosJsFileLocator()
     {
         return oxNew(JsFileLocator::class, Registry::getConfig()->getOutDir(), EmosFileData::TRACKING_CODE_FILE_NAME, Registry::getConfig()->getOutUrl());
+    }
+
+    /**
+     * @return JsFileLocator
+     */
+    public function makeTagManagerJsFileLocator()
+    {
+        return oxNew(JsFileLocator::class, Registry::getConfig()->getOutDir(), TagManagerFileData::TRACKING_CODE_FILE_NAME, Registry::getConfig()->getOutUrl());
     }
 
     /**
@@ -54,12 +63,28 @@ class Factory
     /**
      * @return \FileUpload\FileUpload
      */
-    public function makeFileUploader()
+    public function makeEmosJsFileUploader()
     {
+        $fileLocator = $this->makeEmosJsFileLocator();
         $jsFileUploadFactory = oxNew(
             JsFileUploadFactory::class,
-            $this->makeJsFileLocator()->getJsDirectoryLocation(),
-            $this->makeJsFileLocator()->getFileName()
+            $fileLocator->getJsDirectoryLocation(),
+            $fileLocator->getFileName()
+        );
+
+        return $jsFileUploadFactory->makeFileUploader();
+    }
+
+    /**
+     * @return \FileUpload\FileUpload
+     */
+    public function makeTagManagerFileUploader()
+    {
+        $fileLocator = $this->makeTagManagerJsFileLocator();
+        $jsFileUploadFactory = oxNew(
+            JsFileUploadFactory::class,
+            $fileLocator->getJsDirectoryLocation(),
+            $fileLocator->getFileName()
         );
 
         return $jsFileUploadFactory->makeFileUploader();
@@ -77,7 +102,7 @@ class Factory
         return oxNew(
             TrackingCodeGenerator::class,
             $activePageEntity,
-            $this->makeJsFileLocator()->getJsFileUrl(),
+            $this->makeEmosJsFileLocator()->getJsFileUrl(),
             $this->getActivePageEntityPreparator()->prepareEntity($pluginParameters, $smarty)
         );
     }

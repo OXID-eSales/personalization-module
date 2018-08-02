@@ -31,7 +31,7 @@ class JsFileUploadFactory
 
         $pathResolver = new \FileUpload\PathResolver\Simple($this->pathToUpload);
         $filesystem = new \FileUpload\FileSystem\Simple();
-        $validatorSimple = new \FileUpload\Validator\Simple('1M', ['text/plain']);
+        $validatorSimple = new \FileUpload\Validator\Simple('1M', []);
         $permissionsValidator = new PermissionsValidator($this->pathToUpload, $this->fileName);
         $contentValidator = new ContentValidator();
         $extensionValidator = new ExtensionValidator($fileForUpload['name']);

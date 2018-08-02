@@ -16,6 +16,9 @@ $aLang = [
     'OEPERSONALIZATION_MESSAGE_FILE_IS_NOT_PRESENT' => 'Die Analytics JS Bibliothek ist momentan nicht vorhanden.'
     .' Es ist erforderlich, die Datei hochzuladen, bevor das Tracking aktiviert wird.',
     'OEPERSONALIZATION_MESSAGE_FILE_IS_PRESENT' => 'Die Analytics JS Bibliothek ist vorhanden.',
+    'OEPERSONALIZATION_MESSAGE_TAG_MANAGER_FILE_IS_PRESENT' => 'Die Tag Manager Datei ist vorhanden.',
+    'OEPERSONALIZATION_MESSAGE_TAG_MANAGER_FILE_IS_NOT_PRESENT' => 'Die Tag Manager Datei ist momentan nicht vorhanden.'
+        .' Es ist erforderlich, die Datei hochzuladen, bevor die Funktion aktiviert wird.',
     'OEPERSONALIZATION_VISUAL_EDITOR_SHORTCODE_ECONDA' => 'AI Content',
     'OEPERSONALIZATION_VISUAL_EDITOR_WIDGET_ECONDA_WIDGET_ID' => 'Widget-ID',
     'OEPERSONALIZATION_VISUAL_EDITOR_WIDGET_ECONDA_WIDGET_TEMPLATE' => 'Widget-Template',

@@ -40,6 +40,7 @@ $aModule = array(
         'oepersonalizationgeneral' => \OxidEsales\PersonalizationModule\Application\Controller\Admin\Tab\Container\TabsListController::class,
         'oepersonalizationemosjsupload' => \OxidEsales\PersonalizationModule\Application\Controller\Admin\EmosJsUploadController::class,
         'oepersonalizationexportconfiguration' => \OxidEsales\PersonalizationModule\Application\Controller\Admin\ExportConfigurationController::class,
+        'oepersonalizationtagmanagerjsupload' => \OxidEsales\PersonalizationModule\Application\Controller\Admin\TagManagerJsUploadController::class,
     ],
     'events' => [
         'onActivate'   => \OxidEsales\PersonalizationModule\Application\Core\Events::class . '::onActivate',

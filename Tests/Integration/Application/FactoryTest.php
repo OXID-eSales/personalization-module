@@ -15,12 +15,12 @@ class FactoryTest extends \OxidEsales\TestingLibrary\UnitTestCase
 {
     public function testmakeJsFileLocator()
     {
-        $this->assertInstanceOf(JsFileLocator::class, $this->getFactory()->makeJsFileLocator());
+        $this->assertInstanceOf(JsFileLocator::class, $this->getFactory()->makeEmosJsFileLocator());
     }
 
     public function testGetFileUploader()
     {
-        $this->assertInstanceOf(FileUpload::class, $this->getFactory()->makeFileUploader());
+        $this->assertInstanceOf(FileUpload::class, $this->getFactory()->makeEmosJsFileUploader());
     }
 
     public function testGetFileSystem()
