@@ -12,7 +12,15 @@ class ExportCmdFeedTest extends ExportDataInCSVTest
 {
     private $configFile = null;
 
+    private $phpBin;
+
     protected $exportPath = 'export/test_oepersonalization';
+
+    public function __construct($name = null, array $data = array(), $dataName = '')
+    {
+        $this->phpBin = getenv('PHPBIN') ? getenv('PHPBIN') . ' ': '';
+        parent::__construct($name, $data, $dataName);
+    }
 
     protected function tearDown()
     {
@@ -60,7 +68,7 @@ class ExportCmdFeedTest extends ExportDataInCSVTest
     {
         $addArguments = ($this->configFile ) ? ' --config ' . escapeshellarg($this->configFile) : '';
         $feedFile = VENDOR_PATH. '/bin/oe-personalization-data-feed';
-        exec(escapeshellarg($feedFile) . $addArguments, $returnOutput);
+        exec($this->phpBin . ' ' . escapeshellarg($feedFile) . $addArguments, $returnOutput);
 
         $this->assertEquals('Export completed.', $returnOutput[0]);
     }
@@ -69,7 +77,7 @@ class ExportCmdFeedTest extends ExportDataInCSVTest
     {
         $configFile = __DIR__.'/../fixtures/config/params.php';
         $feedFile = VENDOR_PATH. '/bin/oe-personalization-data-feed';
-        exec(escapeshellarg($feedFile) . ' --configuration ' . escapeshellarg($configFile), $returnOutput);
+        exec($this->phpBin . ' ' . escapeshellarg($feedFile) . ' --configuration ' . escapeshellarg($configFile), $returnOutput);
 
         $message = 'Unknown command: --configuration'.
             '. If you want to override the configuration file for the export, please, use the "--config" command';
@@ -80,7 +88,7 @@ class ExportCmdFeedTest extends ExportDataInCSVTest
     {
         $configFile = __DIR__.'/../fixtures/config/wrong_name.php';
         $feedFile = VENDOR_PATH. '/bin/oe-personalization-data-feed';
-        exec(escapeshellarg($feedFile) . ' --config ' . escapeshellarg($configFile), $returnOutput);
+        exec($this->phpBin . ' ' . escapeshellarg($feedFile) . ' --config ' . escapeshellarg($configFile), $returnOutput);
 
         $message = 'File does not exist: ' . $configFile;
         $this->assertEquals($message, $returnOutput[0]);
@@ -90,7 +98,7 @@ class ExportCmdFeedTest extends ExportDataInCSVTest
     {
         $configFile = __DIR__.'/../fixtures/config/params.php';
         $feedFile = VENDOR_PATH. '/bin/oe-personalization-data-feed';
-        exec(escapeshellarg($feedFile) . ' --config ' . escapeshellarg($configFile), $returnOutput);
+        exec($this->phpBin . ' ' . escapeshellarg($feedFile) . ' --config ' . escapeshellarg($configFile), $returnOutput);
 
         $message = 'Config file has wrong format.';
         $this->assertEquals($message, $returnOutput[0]);
