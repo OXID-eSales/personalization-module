@@ -10,7 +10,10 @@
     "extra": {
         "oxideshop": {
             "blacklist-filter": [
-                "documentation/**/*.*"
+                "documentation/**/*.*",
+                "composer.json",
+                "README.md",
+                "LICENSE"
             ],
             "target-directory": "oe/personalization"
         }
