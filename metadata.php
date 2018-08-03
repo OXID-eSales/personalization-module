@@ -48,6 +48,7 @@ $aModule = array(
         'oepersonalizationgeneral.tpl' => 'oe/personalization/Application/views/admin/tpl/oepersonalizationgeneral.tpl',
         'oepersonalizationtracking.tpl' => 'oe/personalization/Application/views/admin/tpl/oepersonalizationtracking.tpl',
         'oepersonalizationwidgets.tpl' => 'oe/personalization/Application/views/admin/tpl/oepersonalizationwidgets.tpl',
+        'oepersonalizationexport.tpl' => 'oe/personalization/Application/views/admin/tpl/oepersonalizationexport.tpl',
         'oepersonalizationcookienote.tpl' => 'oe/personalization/Application/views/widget/header/cookienote.tpl',
         'oepersonalizationexportresult.tpl' => 'oe/personalization/Application/views/admin/tpl/oepersonalizationexportresult.tpl'
     ],

@@ -25,4 +25,8 @@ $aLang = [
     'tbcloepersonalizationgeneral' => 'General',
     'tbcloepersonalizationtracking' => 'Tracking',
     'tbcloepersonalizationwidgets' => 'Widgets',
+    'tbcloepersonalizationexport' => 'Export',
+    'OEPERSONALIZATION_EXPOSTVARS' => 'Export Variants',
+    'OEPERSONALIZATION_EXPORTMAINVARS' => 'Export Variant of Base Product',
+    'OEPERSONALIZATION_EXPORTMINSTOCK' => 'Min Stock Quantity',
 ];

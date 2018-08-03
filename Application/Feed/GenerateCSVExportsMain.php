@@ -6,9 +6,6 @@
 
 namespace OxidEsales\PersonalizationModule\Application\Feed;
 
-use OxidEsales\PersonalizationModule\Application\Factory;
-use OxidEsales\Eshop\Core\Registry;
-
 class GenerateCSVExportsMain extends \OxidEsales\Eshop\Application\Controller\Admin\GenericExportMain
 {
     /**
@@ -24,8 +21,7 @@ class GenerateCSVExportsMain extends \OxidEsales\Eshop\Application\Controller\Ad
     /**
      * @inheritdoc
      */
-//    protected $_sThisTemplate = "oepersonalizationadmin.tpl";
-    protected $_sThisTemplate = "oepersonalizationmain.tpl";
+    protected $_sThisTemplate = "oepersonalizationexport.tpl";
 
     protected $_aSkipMultiline = ['aHomeCountry'];
     protected $_aParseFloat = ['iMinOrderPrice'];
@@ -40,33 +36,10 @@ class GenerateCSVExportsMain extends \OxidEsales\Eshop\Application\Controller\Ad
     ];
 
     /**
-     * @var Factory
-     */
-    private $factory;
-
-    /**
-     * @param null|Factory $factory
-     */
-    public function __construct($factory = null)
-    {
-        $this->factory = $factory;
-        if (is_null($factory)) {
-            $this->factory = oxNew(Factory::class);
-        }
-        parent::__construct();
-    }
-
-    /**
      * @return string
      */
     public function render()
     {
-        // sets up navigation data
-//        $this->_setupNavigation(\OxidEsales\Eshop\Core\Registry::getConfig()->getRequestControllerId());
-        $this->_setupNavigation('oepersonalizationadmin_list');
-
-        $this->_aViewData['mydebug'] = '"' . \OxidEsales\Eshop\Core\Registry::getConfig()->getRequestControllerId() . '"';
-
         $aConfVars = $this->getConfVarsFromDatabase();
         foreach ($this->_aConfParams as $sType => $sParam) {
             if (is_array($aConfVars[$sType])) {
@@ -77,68 +50,6 @@ class GenerateCSVExportsMain extends \OxidEsales\Eshop\Application\Controller\Ad
         }
 
         return parent::render();
-    }
-
-    /**
-     * Sets-up navigation parameters
-     *
-     * @param string $node active view id
-     */
-    protected function _setupNavigation($node)
-    {
-        // navigation according to class
-        if ($node) {
-            $adminNavigation = $this->getNavigation();
-
-            $objectId = $this->getEditObjectId();
-
-            if ($objectId == -1) {
-                //on first call or when pressed creating new item button, resetting active tab
-                $activeTab = $this->_iDefEdit;
-            } else {
-                // active tab
-                $activeTab = \OxidEsales\Eshop\Core\Registry::getConfig()->getRequestParameter('actedit');
-                $activeTab = $activeTab ? $activeTab : $this->_iDefEdit;
-            }
-
-            // tabs
-            $this->_aViewData['editnavi'] = $adminNavigation->getTabs($node, $activeTab);
-
-            // active tab
-            $this->_aViewData['actlocation'] = $adminNavigation->getActiveTab($node, $activeTab);
-
-            // default tab
-            $this->_aViewData['default_edit'] = $adminNavigation->getActiveTab($node, $this->_iDefEdit);
-
-            // assign active tab number
-            $this->_aViewData['actedit'] = $activeTab;
-        }
-    }
-
-    /**
-     * @return string
-     */
-    public function getTrackingScriptMessageIfEnabled()
-    {
-        $message = '';
-        if ($this->factory->makeFileSystem()->isFilePresent($this->factory->makeJsFileLocator()->getJsFileLocation())) {
-            $message = Registry::getLang()->translateString("OEPERSONALIZATION_MESSAGE_FILE_IS_PRESENT");
-        }
-
-        return $message;
-    }
-
-    /**
-     * @return string
-     */
-    public function getTrackingScriptMessageIfDisabled()
-    {
-        $message = '';
-        if (!$this->factory->makeFileSystem()->isFilePresent($this->factory->makeJsFileLocator()->getJsFileLocation())) {
-            $message = Registry::getLang()->translateString("OEPERSONALIZATION_MESSAGE_FILE_IS_NOT_PRESENT");
-        }
-
-        return $message;
     }
 
     /**

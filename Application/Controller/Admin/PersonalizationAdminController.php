@@ -7,9 +7,9 @@
 namespace OxidEsales\PersonalizationModule\Application\Controller\Admin;
 
 /**
- * Class used for export functionality.
+ * Class used to create admin frameset of personalization module.
  */
-class PersonalizationAdminController extends \OxidEsales\Eshop\Application\Controller\Admin\AdminController //ShopConfiguration
+class PersonalizationAdminController extends \OxidEsales\Eshop\Application\Controller\Admin\AdminController
 {
     protected $_sThisTemplate = 'oepersonalization.tpl';
 }

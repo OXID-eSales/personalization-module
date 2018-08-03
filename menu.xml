@@ -6,6 +6,7 @@
                 <TAB id="tbcloepersonalizationgeneral" cl="oepersonalizationgeneral" />
                 <TAB id="tbcloepersonalizationtracking" cl="oepersonalizationtracking" />
                 <TAB id="tbcloepersonalizationwidgets" cl="oepersonalizationwidgets" />
+                <TAB id="tbcloepersonalizationexport" cl="oepersonalizationexport" />
             </SUBMENU>
         </MAINMENU>
     </OXMENU>

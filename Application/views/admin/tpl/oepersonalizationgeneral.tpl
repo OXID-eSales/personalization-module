@@ -62,5 +62,4 @@
 
 [{include file="pagetabsnippet.tpl" noOXIDCheck="true" sEditAction="changeEditBar"}]
 
-</body>
-</html>
+[{include file="bottomitem.tpl"}]
