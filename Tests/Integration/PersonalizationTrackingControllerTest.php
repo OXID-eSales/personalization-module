@@ -6,11 +6,11 @@
 
 namespace OxidEsales\PersonalizationModule\Tests\Integration;
 
-use OxidEsales\PersonalizationModule\Application\Controller\Admin\GenerateCSVExportsMainController;
+use OxidEsales\PersonalizationModule\Application\Controller\Admin\PersonalizationTrackingController;
 use OxidEsales\PersonalizationModule\Application\Factory;
 use OxidEsales\PersonalizationModule\Component\Tracking\File\FileSystem;
 
-class GenerateCSVExportsMainTest extends \OxidEsales\TestingLibrary\UnitTestCase
+class PersonalizationTrackingControllerTest extends \OxidEsales\TestingLibrary\UnitTestCase
 {
     public function testGetTrackingScriptMessageIfEnabledWhenFileIsPresent()
     {
@@ -46,7 +46,7 @@ class GenerateCSVExportsMainTest extends \OxidEsales\TestingLibrary\UnitTestCase
 
     /**
      * @param FileSystem $fileSystem
-     * @return GenerateCSVExportsMainController
+     * @return PersonalizationTrackingController
      */
     protected function getGenerateCSVExportsMain($fileSystem)
     {
@@ -54,7 +54,7 @@ class GenerateCSVExportsMainTest extends \OxidEsales\TestingLibrary\UnitTestCase
             ->setMethods(['makeFileSystem'])
             ->getMock();
         $factory->method('makeFileSystem')->willReturn($fileSystem);
-        $controller = oxNew(GenerateCSVExportsMainController::class, $factory);
+        $controller = oxNew(PersonalizationTrackingController::class, $factory);
 
         return $controller;
     }
