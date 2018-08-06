@@ -12,6 +12,9 @@ use OxidEsales\Eshop\Core\TableViewNameGenerator;
 use OxidEsales\Eshop\Core\DatabaseProvider;
 use OxidEsales\Eshop\Application\Model\CategoryList;
 
+/**
+ * Class used for export functionality.
+ */
 class GenerateCSVExportsDo extends \OxidEsales\Eshop\Application\Controller\Admin\GenericExportDo
 {
     /**
@@ -347,7 +350,7 @@ class GenerateCSVExportsDo extends \OxidEsales\Eshop\Application\Controller\Admi
             $id = $category->getId();
             $parent_id = "ROOT";
             $parent = $category->getParentCategory();
-            if ($parent != NULL) {
+            if ($parent != null) {
                 $parent_id = $parent->getId();
             }
             $categoryTitles = [];
