@@ -6,7 +6,7 @@
 
 namespace OxidEsales\PersonalizationModule\Tests\Integration;
 
-use OxidEsales\PersonalizationModule\Application\Feed\GenerateCSVExportsDo;
+use OxidEsales\PersonalizationModule\Application\Controller\Admin\GenerateCSVExportsDo;
 use OxidEsales\Eshop\Core\Registry;
 
 class GenerateCSVExportsDoTest extends ExportDataInCSVTest

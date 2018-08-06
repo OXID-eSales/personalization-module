@@ -6,7 +6,7 @@
 
 namespace OxidEsales\PersonalizationModule\Tests\Integration;
 
-use OxidEsales\PersonalizationModule\Application\Feed\GenerateCSVExportsMain;
+use OxidEsales\PersonalizationModule\Application\Controller\Admin\GenerateCSVExportsMain;
 use OxidEsales\PersonalizationModule\Application\Factory;
 use OxidEsales\PersonalizationModule\Component\Tracking\File\FileSystem;
 

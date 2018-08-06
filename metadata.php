@@ -37,7 +37,7 @@ $aModule = array(
         'oepersonalizationtracking' => \OxidEsales\PersonalizationModule\Application\Controller\Admin\PersonalizationTrackingController::class,
         'oepersonalizationwidgets' => \OxidEsales\PersonalizationModule\Application\Controller\Admin\PersonalizationWidgetsController::class,
         'oepersonalizationemosjsupload' => \OxidEsales\PersonalizationModule\Application\Controller\Admin\EmosJsUploadController::class,
-        'oepersonalizationexport' => \OxidEsales\PersonalizationModule\Application\Feed\GenerateCSVExports::class,
+        'oepersonalizationexport' => \OxidEsales\PersonalizationModule\Application\Controller\Admin\GenerateCSVExports::class,
     ],
     'events' => [
         'onActivate'   => \OxidEsales\PersonalizationModule\Application\Core\Events::class . '::onActivate',
