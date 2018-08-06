@@ -4,7 +4,7 @@
  * See LICENSE file for license details.
  */
 
-namespace OxidEsales\PersonalizationModule\Tests\Integration;
+namespace OxidEsales\PersonalizationModule\Tests\Integration\Application;
 
 use OxidEsales\Eshop\Core\Registry;
 

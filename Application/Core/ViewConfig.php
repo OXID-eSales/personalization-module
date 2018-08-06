@@ -238,6 +238,14 @@ class ViewConfig extends ViewConfig_parent
     }
 
     /**
+     * @return string
+     */
+    public function oePersonlalizationGetExportPath()
+    {
+        return $this->getConfig()->getConfigParam('sOePersonalizationExportPath');
+    }
+
+    /**
      * @return ActiveUserDataProvider
      */
     private function getActiveUserDataProvider()

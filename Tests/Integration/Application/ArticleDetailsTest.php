@@ -4,31 +4,25 @@
  * See LICENSE file for license details.
  */
 
-namespace OxidEsales\PersonalizationModule\Tests\Integration;
+namespace OxidEsales\PersonalizationModule\Tests\Integration\Application;
 
-use OxidEsales\PersonalizationModule\Component\DemoAccountData;
 use OxidEsales\Eshop\Application\Component\Widget\ArticleDetails;
 use OxidEsales\Eshop\Application\Model\Article;
 use OxidEsales\Eshop\Application\Model\Category;
-use OxidEsales\Eshop\Core\Registry;
+use OxidEsales\Eshop\Core\Field;
 
-class ArticleDetailsDemoModeTest extends \OxidEsales\TestingLibrary\UnitTestCase
+class ArticleDetailsTest extends \OxidEsales\TestingLibrary\UnitTestCase
 {
-    public function setUp()
-    {
-        parent::setUp();
-        Registry::getConfig()->setConfigParam('blOePersonalizationUseDemoAccount', '1');
-    }
-
     public function testOePersonalizationGetProductNumber()
     {
         $article = oxNew(Article::class);
         $article->setId('__testId');
+        $article->oxarticles__oxartnum = new Field('__testNumber');
         $article->save();
         $articleDetails = oxNew(ArticleDetails::class);
         $articleDetails->setViewProduct($article);
 
-        $this->assertEquals(DemoAccountData::getProductId(), $articleDetails->oePersonalizationGetProductNumber());
+        $this->assertEquals('__testNumber', $articleDetails->oePersonalizationGetProductNumber());
     }
 
     public function testOePersonalizationGetCategoryId()
@@ -38,6 +32,6 @@ class ArticleDetailsDemoModeTest extends \OxidEsales\TestingLibrary\UnitTestCase
         $articleDetails = oxNew(ArticleDetails::class);
         $articleDetails->setActiveCategory($category);
 
-        $this->assertEquals(DemoAccountData::getCategoryId(), $articleDetails->oePersonalizationGetCategoryId());
+        $this->assertEquals('__testId', $articleDetails->oePersonalizationGetCategoryId());
     }
 }

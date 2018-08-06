@@ -32,25 +32,27 @@ $aModule = array(
         \OxidEsales\Eshop\Application\Component\Widget\CookieNote::class => \OxidEsales\PersonalizationModule\Application\Component\Widget\CookieNote::class,
     ],
     'controllers' => [
-        'oepersonalizationadmin' => \OxidEsales\PersonalizationModule\Application\Controller\Admin\PersonalizationAdminController::class,
-        'oepersonalizationgeneral' => \OxidEsales\PersonalizationModule\Application\Controller\Admin\PersonalizationGeneralController::class,
-        'oepersonalizationtracking' => \OxidEsales\PersonalizationModule\Application\Controller\Admin\PersonalizationTrackingController::class,
-        'oepersonalizationwidgets' => \OxidEsales\PersonalizationModule\Application\Controller\Admin\PersonalizationWidgetsController::class,
+        'oepersonalizationadmin' => \OxidEsales\PersonalizationModule\Application\Controller\Admin\Tab\Container\TabsContainerController::class,
+        'oepersonalizationgeneraltab' => \OxidEsales\PersonalizationModule\Application\Controller\Admin\Tab\GeneralTabController::class,
+        'oepersonalizationtracking' => \OxidEsales\PersonalizationModule\Application\Controller\Admin\Tab\TrackingTabController::class,
+        'oepersonalizationwidgets' => \OxidEsales\PersonalizationModule\Application\Controller\Admin\Tab\WidgetsTabController::class,
+        'oepersonalizationexport' => \OxidEsales\PersonalizationModule\Application\Controller\Admin\Tab\ExportTabController::class,
+        'oepersonalizationgeneral' => \OxidEsales\PersonalizationModule\Application\Controller\Admin\Tab\Container\TabsListController::class,
         'oepersonalizationemosjsupload' => \OxidEsales\PersonalizationModule\Application\Controller\Admin\EmosJsUploadController::class,
-        'oepersonalizationexport' => \OxidEsales\PersonalizationModule\Application\Controller\Admin\GenerateCSVExportsController::class,
+        'oepersonalizationexportconfiguration' => \OxidEsales\PersonalizationModule\Application\Controller\Admin\ExportConfigurationController::class,
     ],
     'events' => [
         'onActivate'   => \OxidEsales\PersonalizationModule\Application\Core\Events::class . '::onActivate',
     ],
     'templates' => [
-        'oepersonalization.tpl' => 'oe/personalization/Application/views/admin/tpl/oepersonalization.tpl',
-        'oepersonalizationadmin.tpl' => 'oe/personalization/Application/views/admin/tpl/oepersonalizationadmin.tpl',
-        'oepersonalizationgeneral.tpl' => 'oe/personalization/Application/views/admin/tpl/oepersonalizationgeneral.tpl',
-        'oepersonalizationtracking.tpl' => 'oe/personalization/Application/views/admin/tpl/oepersonalizationtracking.tpl',
-        'oepersonalizationwidgets.tpl' => 'oe/personalization/Application/views/admin/tpl/oepersonalizationwidgets.tpl',
-        'oepersonalizationexport.tpl' => 'oe/personalization/Application/views/admin/tpl/oepersonalizationexport.tpl',
+        'oepersonalization_frameset.tpl' => 'oe/personalization/Application/views/admin/tpl/container/oepersonalization_frameset.tpl',
+        'oepersonalization_general.tpl' => 'oe/personalization/Application/views/admin/tpl/container/oepersonalization_general.tpl',
+        'oepersonalization_general_tab.tpl' => 'oe/personalization/Application/views/admin/tpl/oepersonalization_general_tab.tpl',
+        'oepersonalization_tracking_tab.tpl' => 'oe/personalization/Application/views/admin/tpl/oepersonalization_tracking_tab.tpl',
+        'oepersonalization_widgets_tab.tpl' => 'oe/personalization/Application/views/admin/tpl/oepersonalization_widgets_tab.tpl',
+        'oepersonalization_export_tab.tpl' => 'oe/personalization/Application/views/admin/tpl/oepersonalization_export_tab.tpl',
         'oepersonalizationcookienote.tpl' => 'oe/personalization/Application/views/widget/header/cookienote.tpl',
-        'oepersonalizationexportresult.tpl' => 'oe/personalization/Application/views/admin/tpl/oepersonalizationexportresult.tpl'
+        'oepersonalization_export_result.tpl' => 'oe/personalization/Application/views/admin/tpl/oepersonalization_export_result.tpl'
     ],
     'blocks' => [
         [

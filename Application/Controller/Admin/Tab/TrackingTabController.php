@@ -4,15 +4,19 @@
  * See LICENSE file for license details.
  */
 
-namespace OxidEsales\PersonalizationModule\Application\Controller\Admin;
+namespace OxidEsales\PersonalizationModule\Application\Controller\Admin\Tab;
 
+use OxidEsales\Eshop\Application\Controller\Admin\ShopConfiguration;
+use OxidEsales\PersonalizationModule\Application\Controller\Admin\ConfigurationTrait;
 use OxidEsales\PersonalizationModule\Application\Factory;
+use OxidEsales\Eshop\Core\Registry;
 
-/**
- * Controller responsible for .js file upload.
- */
-class EmosJsUploadController extends \OxidEsales\Eshop\Application\Controller\Admin\ShopConfiguration
+class TrackingTabController extends ShopConfiguration
 {
+    use ConfigurationTrait;
+
+    protected $_sThisTemplate = 'oepersonalization_tracking_tab.tpl';
+
     /**
      * @var Factory
      */
@@ -27,11 +31,38 @@ class EmosJsUploadController extends \OxidEsales\Eshop\Application\Controller\Ad
         if (is_null($factory)) {
             $this->factory = oxNew(Factory::class);
         }
+        $this->_aViewData['sClassMain'] = TrackingTabController::class;
         parent::__construct();
     }
 
     /**
-     * An action to upload file.
+     * @return string
+     */
+    public function getTrackingScriptMessageIfEnabled()
+    {
+        $message = '';
+        if ($this->factory->makeFileSystem()->isFilePresent($this->factory->makeJsFileLocator()->getJsFileLocation())) {
+            $message = sprintf(Registry::getLang()->translateString("OEPERSONALIZATION_MESSAGE_FILE_IS_PRESENT"), $this->factory->makeJsFileLocator()->getFileName());
+        }
+
+        return $message;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTrackingScriptMessageIfDisabled()
+    {
+        $message = '';
+        if (!$this->factory->makeFileSystem()->isFilePresent($this->factory->makeJsFileLocator()->getJsFileLocation())) {
+            $message = sprintf(Registry::getLang()->translateString("OEPERSONALIZATION_MESSAGE_FILE_IS_NOT_PRESENT"), $this->factory->makeJsFileLocator()->getFileName());
+        }
+
+        return $message;
+    }
+
+    /**
+     * An action to upload file emos.js file.
      *
      * @return string
      */
@@ -48,7 +79,7 @@ class EmosJsUploadController extends \OxidEsales\Eshop\Application\Controller\Ad
                 . '. Add write permissions for web user or create this '
                 . ' directory with write permissions manually.'
             );
-            return PersonalizationTrackingController::class;
+            return TrackingTabController::class;
         }
 
         $fileUploader = $this->factory->makeFileUploader();
@@ -59,8 +90,6 @@ class EmosJsUploadController extends \OxidEsales\Eshop\Application\Controller\Ad
                 $this->addErrorToDisplay($fileData->error . '.');
             }
         }
-
-        return PersonalizationTrackingController::class;
     }
 
     /**

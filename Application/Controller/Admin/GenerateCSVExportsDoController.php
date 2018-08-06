@@ -63,7 +63,7 @@ class GenerateCSVExportsDoController extends \OxidEsales\Eshop\Application\Contr
     /**
      * @inheritdoc
      */
-    protected $_sThisTemplate = "oepersonalizationexportresult.tpl";
+    protected $_sThisTemplate = "oepersonalization_export_result.tpl";
 
     /**
      * GenerateCSVExportsDo constructor.

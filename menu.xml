@@ -3,7 +3,7 @@
     <OXMENU id="NAVIGATION_ESHOPADMIN">
         <MAINMENU id="mxpersonalization">
             <SUBMENU id="mxpersonalizationeconda" cl="oepersonalizationadmin" list="oepersonalizationgeneral">
-                <TAB id="tbcloepersonalizationgeneral" cl="oepersonalizationgeneral" />
+                <TAB id="tbcloepersonalizationgeneral" cl="oepersonalizationgeneraltab" />
                 <TAB id="tbcloepersonalizationtracking" cl="oepersonalizationtracking" />
                 <TAB id="tbcloepersonalizationwidgets" cl="oepersonalizationwidgets" />
                 <TAB id="tbcloepersonalizationexport" cl="oepersonalizationexport" />

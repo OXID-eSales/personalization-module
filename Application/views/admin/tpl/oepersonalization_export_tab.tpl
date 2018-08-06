@@ -27,9 +27,9 @@
 <form action="[{$oViewConf->getSelfLink()}]" method="post">
     [{$oViewConf->getHiddenSid()}]
     <input type="hidden" name="cl" value="[{$sClassMain}]">
-    <input type="hidden" name="fnc" value="save">
+    <input type="hidden" name="fnc" value="oePersonalizationSave">
     <div>
-        <input type=text  class="txt" style="width: 250px;" name="confstrs[sOePersonalizationExportPath]" value="[{$sOePersonalizationExportPath}]">
+        <input type=text  class="txt" style="width: 250px;" name="sOePersonalizationExportPath" value="[{$oViewConf->oePersonlalizationGetExportPath()}]">
         [{oxmultilang ident="SHOP_MODULE_sOePersonalizationExportPath"}]
     </div>
     <br/>

@@ -32,15 +32,6 @@
 
 <br/>
 
-<form name="search" id="search" action="[{$oViewConf->getSelfLink()}]" method="post">
-    [{$oViewConf->getHiddenSid()}]
-    <input type="hidden" name="cl" value="oepersonalizationgeneral">
-    <input type="hidden" name="actedit" value="[{$actedit}]">
-    <input type="hidden" name="oxid" value="1">
-    <input type="hidden" name="fnc" value="">
-    <input type="hidden" name="menu" value="[{$menu}]">
-</form>
-
 <form action="[{$oViewConf->getSelfLink()}]" method="post">
     [{$oViewConf->getHiddenSid()}]
     <input type="hidden" name="cl" value="[{$sClassMain}]">

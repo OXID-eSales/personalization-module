@@ -35,8 +35,10 @@
     [{/if}]
 </div>
 
-<form action="[{$oViewConf->getSelfLink()}]cl=oepersonalizationemosjsupload&fnc=upload" method="post" enctype="multipart/form-data">
+<form action="[{$oViewConf->getSelfLink()}]" method="post" enctype="multipart/form-data">
     [{$oViewConf->getHiddenSid()}]
+    <input type="hidden" name="cl" value="[{$sClassMain}]">
+    <input type="hidden" name="fnc" value="upload">
     <input type="file" name="file_to_upload">
     <input type="submit" value="[{oxmultilang ident="OEPERSONALIZATION_UPLOAD_BUTTON_TITLE"}]">
 </form>
