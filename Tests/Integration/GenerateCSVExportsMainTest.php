@@ -6,7 +6,7 @@
 
 namespace OxidEsales\PersonalizationModule\Tests\Integration;
 
-use OxidEsales\PersonalizationModule\Application\Controller\Admin\GenerateCSVExportsMain;
+use OxidEsales\PersonalizationModule\Application\Controller\Admin\GenerateCSVExportsMainController;
 use OxidEsales\PersonalizationModule\Application\Factory;
 use OxidEsales\PersonalizationModule\Component\Tracking\File\FileSystem;
 
@@ -46,7 +46,7 @@ class GenerateCSVExportsMainTest extends \OxidEsales\TestingLibrary\UnitTestCase
 
     /**
      * @param FileSystem $fileSystem
-     * @return GenerateCSVExportsMain
+     * @return GenerateCSVExportsMainController
      */
     protected function getGenerateCSVExportsMain($fileSystem)
     {
@@ -54,7 +54,7 @@ class GenerateCSVExportsMainTest extends \OxidEsales\TestingLibrary\UnitTestCase
             ->setMethods(['makeFileSystem'])
             ->getMock();
         $factory->method('makeFileSystem')->willReturn($fileSystem);
-        $controller = oxNew(GenerateCSVExportsMain::class, $factory);
+        $controller = oxNew(GenerateCSVExportsMainController::class, $factory);
 
         return $controller;
     }

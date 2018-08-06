@@ -20,7 +20,7 @@ $_POST['acat'] = (isset($config['exportCategories'])) ? $config['exportCategorie
 $_POST['sExportMinStock'] = (isset($config['exportMinStock'])) ? $config['exportMinStock'] : 1;
 $exportPath = (isset($config['exportPath'])) ? $config['exportPath'] : null;
 
-$export = oxNew(OxidEsales\PersonalizationModule\Application\Controller\Admin\GenerateCSVExportsDo::class, $exportPath);
+$export = oxNew(OxidEsales\PersonalizationModule\Application\Controller\Admin\GenerateCSVExportsDoController::class, $exportPath);
 
 $export->start();
 $export->run();
@@ -78,7 +78,7 @@ function getConfigurationParameters($argv)
 }
 
 /**
- * @param \OxidEsales\PersonalizationModule\Application\Controller\Admin\GenerateCSVExportsDo $export
+ * @param \OxidEsales\PersonalizationModule\Application\Controller\Admin\GenerateCSVExportsDoController $export
  *
  * @return string
  */

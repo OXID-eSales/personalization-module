@@ -15,7 +15,7 @@ use OxidEsales\Eshop\Application\Model\CategoryList;
 /**
  * Class used for export functionality.
  */
-class GenerateCSVExportsDo extends \OxidEsales\Eshop\Application\Controller\Admin\GenericExportDo
+class GenerateCSVExportsDoController extends \OxidEsales\Eshop\Application\Controller\Admin\GenericExportDo
 {
     /**
      * @inheritdoc
@@ -25,7 +25,7 @@ class GenerateCSVExportsDo extends \OxidEsales\Eshop\Application\Controller\Admi
     /**
      * @inheritdoc
      */
-    public $sClassMain = GenerateCSVExportsMain::class;
+    public $sClassMain = GenerateCSVExportsMainController::class;
 
     /**
      * @inheritdoc

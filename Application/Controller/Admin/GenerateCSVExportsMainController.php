@@ -9,14 +9,14 @@ namespace OxidEsales\PersonalizationModule\Application\Controller\Admin;
 /**
  * Class used for export functionality.
  */
-class GenerateCSVExportsMain extends \OxidEsales\Eshop\Application\Controller\Admin\GenericExportMain
+class GenerateCSVExportsMainController extends \OxidEsales\Eshop\Application\Controller\Admin\GenericExportMain
 {
     use ConfigurationTrait;
 
     /**
      * @inheritdoc
      */
-    public $sClassDo = GenerateCSVExportsDo::class;
+    public $sClassDo = GenerateCSVExportsDoController::class;
 
     /**
      * @inheritdoc

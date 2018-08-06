@@ -6,7 +6,7 @@
 
 namespace OxidEsales\PersonalizationModule\Tests\Integration;
 
-use OxidEsales\PersonalizationModule\Application\Controller\Admin\GenerateCSVExportsDo;
+use OxidEsales\PersonalizationModule\Application\Controller\Admin\GenerateCSVExportsDoController;
 use OxidEsales\Eshop\Core\Registry;
 
 class GenerateCSVExportsDoTest extends ExportDataInCSVTest
@@ -60,7 +60,7 @@ class GenerateCSVExportsDoTest extends ExportDataInCSVTest
      */
     protected function runExport()
     {
-        $export = oxNew(GenerateCSVExportsDo::class);
+        $export = oxNew(GenerateCSVExportsDoController::class);
 
         $export->start();
         $export->run();
@@ -71,7 +71,7 @@ class GenerateCSVExportsDoTest extends ExportDataInCSVTest
         $shopDir = $this->prepareShopStructureForExport();
         Registry::getConfig()->setConfigParam('sOePersonalizationExportPath', 'export/oepersonalization');
 
-        oxNew(GenerateCSVExportsDo::class);
+        oxNew(GenerateCSVExportsDoController::class);
 
         $this->assertFileExists($shopDir . 'export/oepersonalization');
     }
@@ -84,7 +84,7 @@ class GenerateCSVExportsDoTest extends ExportDataInCSVTest
         Registry::getConfig()->setConfigParam('sShopDir', $vfsWrapper->getRootPath());
         Registry::getConfig()->setConfigParam('sOePersonalizationExportPath', 'export_test/custom_test');
 
-        oxNew(GenerateCSVExportsDo::class);
+        oxNew(GenerateCSVExportsDoController::class);
 
         $this->assertFileExists($vfsWrapper->getRootPath() . 'export_test/custom_test');
     }
