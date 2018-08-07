@@ -35,7 +35,7 @@ class ExportCmdFeedTest extends ExportDataInCSVTest
         if (file_exists($exportDir) && is_dir($exportDir)) {
             rmdir($exportDir);
         }
-        $configFile = __DIR__.'/../fixtures/config/params.php';
+        $configFile = __DIR__.'/../../fixtures/config/params.php';
         file_put_contents($configFile, '<?php ');
     }
 
@@ -53,7 +53,7 @@ class ExportCmdFeedTest extends ExportDataInCSVTest
             $exportPath.'", "exportMinStock" => '.
             json_encode($minStock).'];';
 
-        $configFile = __DIR__.'/../fixtures/config/params.php';
+        $configFile = __DIR__.'/../../fixtures/config/params.php';
         file_put_contents($configFile, $fileContent);
 
         $this->configFile = $configFile;
@@ -75,7 +75,7 @@ class ExportCmdFeedTest extends ExportDataInCSVTest
 
     public function testIfWrongCommandWillBeUsed()
     {
-        $configFile = __DIR__.'/../fixtures/config/params.php';
+        $configFile = __DIR__.'/../../fixtures/config/params.php';
         $feedFile = VENDOR_PATH. '/bin/oe-personalization-data-feed';
         exec($this->phpBin . ' ' . escapeshellarg($feedFile) . ' --configuration ' . escapeshellarg($configFile), $returnOutput);
 
@@ -86,7 +86,7 @@ class ExportCmdFeedTest extends ExportDataInCSVTest
 
     public function testIfNotExistingConfigFileWillBeUsed()
     {
-        $configFile = __DIR__.'/../fixtures/config/wrong_name.php';
+        $configFile = __DIR__.'/../../fixtures/config/wrong_name.php';
         $feedFile = VENDOR_PATH. '/bin/oe-personalization-data-feed';
         exec($this->phpBin . ' ' . escapeshellarg($feedFile) . ' --config ' . escapeshellarg($configFile), $returnOutput);
 
@@ -96,7 +96,7 @@ class ExportCmdFeedTest extends ExportDataInCSVTest
 
     public function testIfConfigFileIsEmpty()
     {
-        $configFile = __DIR__.'/../fixtures/config/params.php';
+        $configFile = __DIR__.'/../../fixtures/config/params.php';
         $feedFile = VENDOR_PATH. '/bin/oe-personalization-data-feed';
         exec($this->phpBin . ' ' . escapeshellarg($feedFile) . ' --config ' . escapeshellarg($configFile), $returnOutput);
 
