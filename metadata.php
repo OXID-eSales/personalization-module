@@ -59,7 +59,12 @@ $aModule = array(
         [
             'template' => 'layout/base.tpl',
             'block'=>'base_style',
-            'file'=>'Application/views/blocks/base_style.tpl'
+            'file'=>'Application/views/blocks/head_scripts.tpl'
+        ],
+        [
+            'template' => 'layout/base.tpl',
+            'block'=>'theme_svg_icons',
+            'file'=>'Application/views/blocks/body_scripts.tpl'
         ],
         [
             'template' => 'page/list/list.tpl',
@@ -85,11 +90,6 @@ $aModule = array(
             'template' => 'page/checkout/thankyou.tpl',
             'block'=>'checkout_thankyou_info',
             'file'=>'Application/views/blocks/widgets/checkout_thankyou_info.tpl'
-        ],
-        [
-            'template' => 'layout/base.tpl',
-            'block'=>'theme_svg_icons',
-            'file'=>'Application/views/blocks/theme_svg_icons.tpl'
         ],
     ],
     'smartyPluginDirectories' => [
