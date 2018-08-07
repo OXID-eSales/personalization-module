@@ -86,6 +86,11 @@ $aModule = array(
             'block'=>'checkout_thankyou_info',
             'file'=>'Application/views/blocks/widgets/checkout_thankyou_info.tpl'
         ],
+        [
+            'template' => 'layout/base.tpl',
+            'block'=>'theme_svg_icons',
+            'file'=>'Application/views/blocks/theme_svg_icons.tpl'
+        ],
     ],
     'smartyPluginDirectories' => [
         'Application/Core/Smarty/Plugin'

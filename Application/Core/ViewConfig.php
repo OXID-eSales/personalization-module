@@ -246,6 +246,23 @@ class ViewConfig extends ViewConfig_parent
     }
 
     /**
+     * @return bool
+     */
+    public function oePersonalizationIsTagManagerActive()
+    {
+        return (bool) $this->getConfig()->getConfigParam('blOePersonalizationTagManager');
+    }
+
+    /**
+     * @return string
+     */
+    public function oePersonalizationGetTagManagerJsFileUrl()
+    {
+        $fileLocator = $this->oePersonalizationfactory->makeTagManagerJsFileLocator();
+        return $fileLocator->getJsFileUrl();
+    }
+
+    /**
      * @return ActiveUserDataProvider
      */
     private function getActiveUserDataProvider()

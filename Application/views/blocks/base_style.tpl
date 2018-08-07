@@ -1,6 +1,6 @@
 [{$smarty.block.parent}]
 
-[{block name="oepersonalization_add_js"}]
+[{block name="oepersonalization_add_js_in_head"}]
     [{capture append="oxidBlock_pageHead"}]
         <script type="text/javascript" src="[{$oViewConf->getModuleUrl('oepersonalization', 'out/js/econda-recommendations.js')}]"></script>
         <script type="text/javascript">

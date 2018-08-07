@@ -150,6 +150,18 @@ class ViewConfigTest extends \OxidEsales\TestingLibrary\UnitTestCase
         $this->assertEquals($clientKey, $this->getViewConfig()->oePersonalizationGetClientKey());
     }
 
+    public function testIsTagManagerActive()
+    {
+        Registry::getConfig()->setConfigParam('blOePersonalizationTagManager', 1);
+        $this->assertTrue($this->getViewConfig()->oePersonalizationIsTagManagerActive());
+    }
+
+    public function testIsTagManagerInActive()
+    {
+        Registry::getConfig()->setConfigParam('blOePersonalizationTagManager', 0);
+        $this->assertFalse($this->getViewConfig()->oePersonalizationIsTagManagerActive());
+    }
+
     /**
      * @return object|\OxidEsales\Eshop\Core\ViewConfig|ViewConfig
      */
