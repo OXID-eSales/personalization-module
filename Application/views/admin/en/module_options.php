@@ -32,6 +32,8 @@ $aLang = [
 
     'SHOP_MODULE_blOePersonalizationEnableTracking' => 'Enable Econda Analytics',
 
+    'SHOP_MODULE_blOePersonalizationEnableTagManager' => 'Enable Tag Manager',
+
     'SHOP_MODULE_sOePersonalizationTrackingShowNote' => 'Tracking Note',
     'SHOP_MODULE_sOePersonalizationTrackingShowNoteNo' => 'Do not show',
     'SHOP_MODULE_sOePersonalizationTrackingShowNoteOptIn' => 'Show "Allow tracking"',

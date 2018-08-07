@@ -38,9 +38,8 @@ $aModule = array(
         'oepersonalizationwidgets' => \OxidEsales\PersonalizationModule\Application\Controller\Admin\Tab\WidgetsTabController::class,
         'oepersonalizationexport' => \OxidEsales\PersonalizationModule\Application\Controller\Admin\Tab\ExportTabController::class,
         'oepersonalizationgeneral' => \OxidEsales\PersonalizationModule\Application\Controller\Admin\Tab\Container\TabsListController::class,
-        'oepersonalizationemosjsupload' => \OxidEsales\PersonalizationModule\Application\Controller\Admin\EmosJsUploadController::class,
+        'oepersonalizationtagmanager' => \OxidEsales\PersonalizationModule\Application\Controller\Admin\Tab\TagManagerTabController::class,
         'oepersonalizationexportconfiguration' => \OxidEsales\PersonalizationModule\Application\Controller\Admin\ExportConfigurationController::class,
-        'oepersonalizationtagmanagerjsupload' => \OxidEsales\PersonalizationModule\Application\Controller\Admin\TagManagerJsUploadController::class,
     ],
     'events' => [
         'onActivate'   => \OxidEsales\PersonalizationModule\Application\Core\Events::class . '::onActivate',
@@ -52,6 +51,7 @@ $aModule = array(
         'oepersonalization_tracking_tab.tpl' => 'oe/personalization/Application/views/admin/tpl/oepersonalization_tracking_tab.tpl',
         'oepersonalization_widgets_tab.tpl' => 'oe/personalization/Application/views/admin/tpl/oepersonalization_widgets_tab.tpl',
         'oepersonalization_export_tab.tpl' => 'oe/personalization/Application/views/admin/tpl/oepersonalization_export_tab.tpl',
+        'oepersonalization_tag_manager_tab.tpl' => 'oe/personalization/Application/views/admin/tpl/oepersonalization_tag_manager_tab.tpl',
         'oepersonalizationcookienote.tpl' => 'oe/personalization/Application/views/widget/header/cookienote.tpl',
         'oepersonalization_export_result.tpl' => 'oe/personalization/Application/views/admin/tpl/oepersonalization_export_result.tpl'
     ],

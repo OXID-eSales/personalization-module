@@ -15,18 +15,18 @@ use OxidEsales\PersonalizationModule\Component\File\JsFileLocator;
 use FileUpload\FileUpload;
 
 /**
- * Used as tracking tab controller.
+ * Tag manager tab controller.
  */
-class TrackingTabController extends ShopConfiguration
+class TagManagerTabController extends ShopConfiguration
 {
     use ConfigurationTrait;
     use FileUploadTrait;
 
-    const TRANSLATION_WHEN_FILE_IS_PRESENT = 'OEPERSONALIZATION_MESSAGE_FILE_IS_PRESENT';
+    const TRANSLATION_WHEN_FILE_IS_PRESENT = 'OEPERSONALIZATION_MESSAGE_TAG_MANAGER_FILE_IS_PRESENT';
 
-    const TRANSLATION_WHEN_FILE_IS_NOT_PRESENT = 'OEPERSONALIZATION_MESSAGE_FILE_IS_NOT_PRESENT';
+    const TRANSLATION_WHEN_FILE_IS_NOT_PRESENT = 'OEPERSONALIZATION_MESSAGE_TAG_MANAGER_FILE_IS_NOT_PRESENT';
 
-    protected $_sThisTemplate = 'oepersonalization_tracking_tab.tpl';
+    protected $_sThisTemplate = 'oepersonalization_tag_manager_tab.tpl';
 
     /**
      * @var FileSystem
@@ -52,8 +52,8 @@ class TrackingTabController extends ShopConfiguration
             $factory = oxNew(Factory::class);
         }
         $this->fileSystem = $factory->makeFileSystem();
-        $this->fileLocator = $factory->makeEmosJsFileLocator();
-        $this->fileUploader = $factory->makeEmosJsFileUploader();
+        $this->fileLocator = $factory->makeTagManagerJsFileLocator();
+        $this->fileUploader = $factory->makeTagManagerFileUploader();
         $this->_aViewData['sClassMain'] = __CLASS__;
         parent::__construct();
     }

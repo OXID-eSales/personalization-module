@@ -49,17 +49,16 @@ class TrackingTabControllerTest extends \OxidEsales\TestingLibrary\UnitTestCase
     public function testUploadFailureWhenCreatingDirectory()
     {
         $controller = oxNew(TrackingTabController::class, $this->getFactoryStubWhenNotPossibleToCreateDirectory());
-        $redirectToControllerName = $controller->upload();
+        $controller->upload();
         $errors = \OxidEsales\Eshop\Core\Registry::getSession()->getVariable('Errors');
 
         $this->assertNotNull($errors, 'Error must be set when unable to create directory.');
-        $this->assertSame(TrackingTabController::class, $redirectToControllerName);
     }
 
     public function testUploadFailureWhenUploadingFile()
     {
         $controller = oxNew(TrackingTabController::class, $this->getFactoryStubWhenUploadingFileFailure());
-        $redirectToControllerName = $controller->upload();
+        $controller->upload();
 
         $errors = \OxidEsales\Eshop\Core\Registry::getSession()->getVariable('Errors');
         $this->assertNotNull($errors, 'Error must be set when unable to upload file.');

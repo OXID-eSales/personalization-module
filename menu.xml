@@ -5,6 +5,7 @@
             <SUBMENU id="mxpersonalizationeconda" cl="oepersonalizationadmin" list="oepersonalizationgeneral">
                 <TAB id="tbcloepersonalizationgeneral" cl="oepersonalizationgeneraltab" />
                 <TAB id="tbcloepersonalizationtracking" cl="oepersonalizationtracking" />
+                <TAB id="tbcloepersonalizationtagmanager" cl="oepersonalizationtagmanager" />
                 <TAB id="tbcloepersonalizationwidgets" cl="oepersonalizationwidgets" />
                 <TAB id="tbcloepersonalizationexport" cl="oepersonalizationexport" />
             </SUBMENU>

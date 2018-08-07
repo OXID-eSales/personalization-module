@@ -225,6 +225,12 @@ EOT;
             ],
             [
                 'group' => '',
+                'name' => 'blOePersonalizationTagManager',
+                'type' => 'bool',
+                'value' => ''
+            ],
+            [
+                'group' => '',
                 'name' => 'sOePersonalizationTrackingShowNote',
                 'type' => 'str',
                 'value' => 'no'

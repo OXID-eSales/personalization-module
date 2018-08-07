@@ -88,5 +88,4 @@ class GenerateCSVExportsDoTest extends ExportDataInCSVTest
 
         $this->assertFileExists($vfsWrapper->getRootPath() . 'export_test/custom_test');
     }
-
 }
