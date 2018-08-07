@@ -37,7 +37,7 @@ class PageView extends \Econda\Tracking\PageView
             '          requestData.register = [econda.privacyprotection.emptyIfNotProfileOptIn(requestData.register[0]), requestData.register[1]]',
             '      }',
             '      if(requestData.hashedvalue) {',
-            '          requestData.hashedvalue = [econda.privacyprotection.emptyIfNotProfileOptIn(requestData.hashedvalue[0])]',
+            '          requestData.hashedvalue = [econda.privacyprotection.emptyIfNotProfileOptIn(requestData.hashedvalue[0][0])]',
             '      }',
             '      if(requestData.billing) {',
             '          requestData.billing = [',
