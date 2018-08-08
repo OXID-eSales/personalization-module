@@ -9,6 +9,9 @@ namespace OxidEsales\PersonalizationModule\Component\Tracking\File\Validator;
 use FileUpload\File;
 use FileUpload\Validator\Validator;
 
+/**
+ * Checks file system permissions.
+ */
 class PermissionsValidator implements Validator
 {
     const BAD_PERMISSIONS_DIRECTORY = 0;

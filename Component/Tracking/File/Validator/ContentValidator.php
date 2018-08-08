@@ -10,6 +10,9 @@ use FileUpload\File;
 use FileUpload\Validator\Validator;
 use OxidEsales\PersonalizationModule\Component\Tracking\File\JsFileLocator;
 
+/**
+ * Checks if in provided file exists provided needle.
+ */
 class ContentValidator implements Validator
 {
     const NEEDLE = 'econda';

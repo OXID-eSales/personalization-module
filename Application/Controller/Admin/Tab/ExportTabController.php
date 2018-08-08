@@ -11,7 +11,7 @@ use OxidEsales\PersonalizationModule\Application\Controller\Admin\GenerateCSVExp
 use OxidEsales\PersonalizationModule\Application\Controller\Admin\GenerateCSVExportsMainController;
 
 /**
- * Class used for export functionality.
+ * Class used for export functionality and used as a export tab controller.
  */
 class ExportTabController extends \OxidEsales\Eshop\Application\Controller\Admin\GenericExport
 {

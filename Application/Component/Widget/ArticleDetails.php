@@ -13,6 +13,9 @@ use OxidEsales\PersonalizationModule\Component\DemoAccountData;
  */
 class ArticleDetails extends ArticleDetails_parent
 {
+    /**
+     * @return string
+     */
     public function oePersonalizationGetCategoryId()
     {
         $activeCategoryId = $this->getActiveCategory()->getId();
@@ -23,6 +26,9 @@ class ArticleDetails extends ArticleDetails_parent
         return $activeCategoryId;
     }
 
+    /**
+     * @return string
+     */
     public function oePersonalizationGetProductNumber()
     {
         $product = $this->getProduct();

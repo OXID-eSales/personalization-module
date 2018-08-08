@@ -6,7 +6,7 @@
 
 namespace OxidEsales\PersonalizationModule\Application\Tracking\Modifiers;
 
-use OxidEsales\PersonalizationModule\Application\Emos\Page\PageIdentifiers;
+use OxidEsales\PersonalizationModule\Application\Tracking\Page\PageIdentifiers;
 use OxidEsales\PersonalizationModule\Application\Tracking\Page\PageMap;
 use OxidEsales\Eshop\Core\Registry;
 

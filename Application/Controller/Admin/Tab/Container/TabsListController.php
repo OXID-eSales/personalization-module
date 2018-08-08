@@ -8,10 +8,16 @@ namespace OxidEsales\PersonalizationModule\Application\Controller\Admin\Tab\Cont
 
 use OxidEsales\Eshop\Application\Controller\Admin\AdminListController;
 
+/**
+ * @inheritdoc
+ */
 class TabsListController extends AdminListController
 {
     protected $_sThisTemplate = 'oepersonalization_general.tpl';
 
+    /**
+     * @inheritdoc
+     */
     public function __construct()
     {
         $this->_aViewData['sClassMain'] = __CLASS__;

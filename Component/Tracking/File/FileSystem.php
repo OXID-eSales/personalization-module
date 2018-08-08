@@ -9,6 +9,9 @@ namespace OxidEsales\PersonalizationModule\Component\Tracking\File;
 use Symfony\Component\Filesystem\Exception\IOException;
 use Symfony\Component\Filesystem\Filesystem as SymfonyFileSystem;
 
+/**
+ * Class responsible for file system actions.
+ */
 class FileSystem
 {
     private $filesystem;

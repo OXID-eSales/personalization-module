@@ -79,6 +79,9 @@ class GenerateCSVExportsDoController extends \OxidEsales\Eshop\Application\Contr
 
     /**
      * @inheritdoc
+     * @param integer $pos
+     *
+     * @return bool
      */
     public function nextTick($pos)
     {
@@ -106,6 +109,11 @@ class GenerateCSVExportsDoController extends \OxidEsales\Eshop\Application\Contr
 
     /**
      * @inheritdoc
+     *
+     * @param string $sHeapTable heap table name
+     * @param string $sCatAdd    category id filter (part of sql)
+     *
+     * @return bool
      */
     protected function _insertArticles($sHeapTable, $sCatAdd)
     {

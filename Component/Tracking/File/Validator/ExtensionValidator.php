@@ -9,6 +9,9 @@ namespace OxidEsales\PersonalizationModule\Component\Tracking\File\Validator;
 use FileUpload\File;
 use FileUpload\Validator\Validator;
 
+/**
+ * Checks if file haas javascript extension.
+ */
 class ExtensionValidator implements Validator
 {
     const EXTENSION = 'js';

@@ -11,6 +11,9 @@ use OxidEsales\PersonalizationModule\Application\Controller\Admin\ConfigurationT
 use OxidEsales\PersonalizationModule\Application\Factory;
 use OxidEsales\Eshop\Core\Registry;
 
+/**
+ * Used as tracking tab controller.
+ */
 class TrackingTabController extends ShopConfiguration
 {
     use ConfigurationTrait;
@@ -31,7 +34,7 @@ class TrackingTabController extends ShopConfiguration
         if (is_null($factory)) {
             $this->factory = oxNew(Factory::class);
         }
-        $this->_aViewData['sClassMain'] = TrackingTabController::class;
+        $this->_aViewData['sClassMain'] = __CLASS__;
         parent::__construct();
     }
 

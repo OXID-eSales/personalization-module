@@ -8,6 +8,7 @@ namespace OxidEsales\PersonalizationModule\Component\Tracking\File;
 
 use Webmozart\PathUtil\Path;
 
+
 class JsFileLocator
 {
     const TRACKING_CODE_DIRECTORY_NAME = 'oepersonalization';
