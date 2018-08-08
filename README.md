@@ -33,10 +33,10 @@ For the tracking, example texts are provided for the opt-in/opt-out notices.
 Be sure to review, update and activate them before using the tracking functionality.
 You can find the texts in "Customer Info" -> "CMS Pages", search for the idents "oepersonalizationoptin" and "oepersonalizationoptout".
 
-### Econda Analytics with OXID eShop on multiple servers
+### Econda Analytics/Tag Manager with OXID eShop on multiple servers
 
-In case module is being used in application on multiple servers, it is not enough just to upload `emos.js` file via
-OXID eShop admin panel. It's also necessary to replicate it through all application servers.
+In case module is being used in application on multiple servers, it is not enough just to upload `emos.js`
+or `tagmanager.js` files via OXID eShop admin panel.It's also necessary to replicate them through all application servers.
 If file was uploaded, it can be found in `out/oepersonalization` directory.
 
 ## Features
@@ -45,6 +45,7 @@ Module provides functionality which allows:
 * Add widgets
 * Provide widget for Visual CMS
 * Track visitors behaviour
+* Use Econda Tag Manager
 
 ### Visual CMS Widget
 
