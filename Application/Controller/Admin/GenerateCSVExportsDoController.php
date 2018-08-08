@@ -72,9 +72,9 @@ class GenerateCSVExportsDoController extends \OxidEsales\Eshop\Application\Contr
      */
     public function __construct($exportPath = null)
     {
-        parent::__construct();
         $this->sExportPath = ($exportPath) ? $exportPath : $this->getConfig()->getConfigParam('sOePersonalizationExportPath');
         $this->oePersonalizationPrepareExport();
+        parent::__construct();
     }
 
     /**

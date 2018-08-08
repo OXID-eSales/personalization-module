@@ -11,48 +11,50 @@ use Symfony\Component\Filesystem\Filesystem;
 
 class FileSystemTest extends \OxidEsales\TestingLibrary\UnitTestCase
 {
+    private $virtualDirectory;
+
+    public function setUp()
+    {
+        parent::setUp();
+        $this->virtualDirectory = $this->createVirtualDirectory();
+    }
+
     public function testDirectorySuccessfulCreation()
     {
-        $pathToCreateDirectory = $this->createVirtualDirectory();
         $fileSystem = new \OxidEsales\PersonalizationModule\Component\Tracking\File\FileSystem(new Filesystem());
 
-        $this->assertTrue($fileSystem->createDirectory($pathToCreateDirectory.'/testDirectory'));
-        $this->assertTrue(is_dir($pathToCreateDirectory.'/testDirectory'));
+        $this->assertTrue($fileSystem->createDirectory($this->virtualDirectory.'/testDirectory'));
+        $this->assertTrue(is_dir($this->virtualDirectory.'/testDirectory'));
     }
 
     public function testDirectoryUnsuccessfulCreation()
     {
-        $pathToCreateDirectory = $this->createVirtualDirectory();
         $fileSystem = new \OxidEsales\PersonalizationModule\Component\Tracking\File\FileSystem(new Filesystem());
-        chmod($pathToCreateDirectory, 555);
 
-        $this->assertFalse($fileSystem->createDirectory($pathToCreateDirectory.'/testDirectory'));
-        $this->assertFalse(is_dir($pathToCreateDirectory.'/testDirectory'));
+        $this->assertFalse($fileSystem->createDirectory('/not_existing_directory/testDirectory'));
+        $this->assertFalse(is_dir('/not_existing_directory/testDirectory'));
     }
 
     public function testIfPathNotWritable()
     {
-        $pathToCreateDirectory = $this->createVirtualDirectory();
         $fileSystem = new \OxidEsales\PersonalizationModule\Component\Tracking\File\FileSystem(new Filesystem());
-        chmod($pathToCreateDirectory, 555);
+        chmod($this->virtualDirectory, 555);
 
-        $this->assertFalse($fileSystem->isWritable($pathToCreateDirectory.'/testDirectory'));
+        $this->assertFalse($fileSystem->isWritable($this->virtualDirectory.'/testDirectory'));
     }
 
     public function testFileDoesNotExists()
     {
-        $pathToCreateDirectory = $this->createVirtualDirectory();
         $fileSystem = new \OxidEsales\PersonalizationModule\Component\Tracking\File\FileSystem(new Filesystem());
 
-        $this->assertFalse($fileSystem->isFilePresent($pathToCreateDirectory . '/any_file'));
+        $this->assertFalse($fileSystem->isFilePresent($this->virtualDirectory . '/any_file'));
     }
 
     public function testFileExists()
     {
-        $pathToCreateDirectory = $this->createVirtualDirectory();
         $fileSystem = new \OxidEsales\PersonalizationModule\Component\Tracking\File\FileSystem(new Filesystem());
 
-        $this->assertTrue($fileSystem->isFilePresent($pathToCreateDirectory.'/file.js'));
+        $this->assertTrue($fileSystem->isFilePresent($this->virtualDirectory.'/file.js'));
     }
 
     /**

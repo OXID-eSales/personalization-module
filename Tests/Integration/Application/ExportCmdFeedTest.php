@@ -69,8 +69,11 @@ class ExportCmdFeedTest extends ExportDataInCSVTest
         $addArguments = ($this->configFile ) ? ' --config ' . escapeshellarg($this->configFile) : '';
         $feedFile = VENDOR_PATH. '/bin/oe-personalization-data-feed';
         exec($this->phpBin . ' ' . escapeshellarg($feedFile) . $addArguments, $returnOutput);
-
-        $this->assertEquals('Export completed.', $returnOutput[0]);
+        $isFound = false;
+        if (array_search('Export completed.', $returnOutput) !== false) {
+            $isFound = true;
+        }
+        $this->assertTrue($isFound);
     }
 
     public function testIfWrongCommandWillBeUsed()
