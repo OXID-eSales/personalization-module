@@ -39,7 +39,6 @@ $aModule = array(
         'oepersonalizationexport' => \OxidEsales\PersonalizationModule\Application\Controller\Admin\Tab\ExportTabController::class,
         'oepersonalizationgeneral' => \OxidEsales\PersonalizationModule\Application\Controller\Admin\Tab\Container\TabsListController::class,
         'oepersonalizationtagmanager' => \OxidEsales\PersonalizationModule\Application\Controller\Admin\Tab\TagManagerTabController::class,
-        'oepersonalizationexportconfiguration' => \OxidEsales\PersonalizationModule\Application\Controller\Admin\ExportConfigurationController::class,
     ],
     'events' => [
         'onActivate'   => \OxidEsales\PersonalizationModule\Application\Core\Events::class . '::onActivate',

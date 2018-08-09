@@ -46,6 +46,7 @@ Module provides functionality which allows:
 * Provide widget for Visual CMS
 * Track visitors behaviour
 * Use Econda Tag Manager
+* Export products for Econda
 
 ### Visual CMS Widget
 
