@@ -97,18 +97,17 @@ class ActivePageEntityPreparator extends \OxidEsales\Eshop\Core\Base
 
     /**
      * @param array  $parameters Plugin parameters.
-     * @param smarty $smarty     Template engine object.
      *
      * @return ActivePageEntityInterface
      */
-    public function prepareEntity($parameters, $smarty)
+    public function prepareEntity($parameters)
     {
         $this->activePageEntity->setPageid($this->getPageIdentifiers()->getPageId());
         $this->activePageEntity->setLangid(Registry::getLang()->getBaseLanguage());
         $domain = str_ireplace('www.', '', parse_url($this->getConfig()->getShopUrl(), PHP_URL_HOST));
         $this->activePageEntity->setSiteid($domain);
 
-        $this->setControllerInfo($parameters, $smarty);
+        $this->setControllerInfo($parameters);
 
         $this->setLoginsTracking();
         $this->setEmailTracking();
@@ -120,14 +119,12 @@ class ActivePageEntityPreparator extends \OxidEsales\Eshop\Core\Base
 
     /**
      * @param array  $parameters
-     * @param Smarty $smarty
      */
-    private function setControllerInfo($parameters, $smarty)
+    private function setControllerInfo($parameters)
     {
         $pageMap = $this->getPageMapModifer()->modifyPagesMap($parameters);
         $this->activePageEntity = $this->getEntityModifierByCurrentAction()->modifyEntity(
             $parameters,
-            $smarty,
             $this->getActiveUser(),
             $this->activePageEntity
         );

@@ -8,6 +8,7 @@ namespace OxidEsales\PersonalizationModule\Application\Tracking\Modifiers;
 
 use OxidEsales\PersonalizationModule\Application\Tracking\Helper\ActiveUserDataProvider;
 use OxidEsales\PersonalizationModule\Application\Tracking\Helper\CategoryPathBuilder;
+use OxidEsales\PersonalizationModule\Application\Tracking\Helper\SearchDataProvider;
 use OxidEsales\PersonalizationModule\Application\Tracking\Page\PageIdentifiers;
 use OxidEsales\PersonalizationModule\Application\Tracking\ProductPreparation\ProductDataPreparator;
 use OxidEsales\PersonalizationModule\Application\Tracking\ProductPreparation\ProductTitlePreparator;
@@ -17,7 +18,6 @@ use OxidEsales\Eshop\Application\Model\Basket;
 use OxidEsales\Eshop\Application\Model\Order;
 use OxidEsales\Eshop\Application\Model\User;
 use OxidEsales\Eshop\Core\Registry;
-use Smarty;
 
 /**
  * Modifies given tracking code generator object.
@@ -55,6 +55,11 @@ class EntityModifierByCurrentAction
     private $activeUserDataProvider;
 
     /**
+     * @var SearchDataProvider
+     */
+    private $searchDataProvider;
+
+    /**
      * @param CategoryPathBuilder    $categoryPathBuilder
      * @param ProductDataPreparator  $productDataPreparator
      * @param ProductTitlePreparator $productTitlePreparator
@@ -66,24 +71,25 @@ class EntityModifierByCurrentAction
         $productDataPreparator,
         $productTitlePreparator,
         $pageIdentifiers,
-        $activeUserDataProvider
+        $activeUserDataProvider,
+        $searchDataProvider
     ) {
         $this->categoryPathBuilder = $categoryPathBuilder;
         $this->productDataPreparator = $productDataPreparator;
         $this->productTitlePreparator = $productTitlePreparator;
         $this->pageIdentifiers = $pageIdentifiers;
         $this->activeUserDataProvider = $activeUserDataProvider;
+        $this->searchDataProvider = $searchDataProvider;
     }
 
     /**
      * @param array                     $parameters
-     * @param Smarty                    $smarty
      * @param User                      $activeUser
      * @param ActivePageEntityInterface $activePageEntity
      *
      * @return ActivePageEntityInterface
      */
-    public function modifyEntity($parameters, $smarty, $activeUser, $activePageEntity)
+    public function modifyEntity($parameters, $activeUser, $activePageEntity)
     {
         $this->activePageEntity = $activePageEntity;
         $product = (isset($parameters['product']) && $parameters['product']) ? $parameters['product'] : null;
@@ -106,7 +112,7 @@ class EntityModifierByCurrentAction
                 $this->modifyByOxwArticleDetailsController($product);
                 break;
             case 'search':
-                $this->modifyBySearchController($smarty);
+                $this->modifyBySearchController();
                 break;
             case 'contact':
                 $this->modifyByContactController();
@@ -183,20 +189,14 @@ class EntityModifierByCurrentAction
      * Sets search page information to entity.
      * Only tracking first search page, not the following pages.
      * #4018: The emospro.search string is URL-encoded forwarded to econda instead of URL-escaped.
-     *
-     * @param Smarty $smarty
      */
-    protected function modifyBySearchController($smarty)
+    protected function modifyBySearchController()
     {
         $page = Registry::getRequest()->getRequestEscapedParameter('pgNr');
         if (!$page) {
             $searchParamForLink = Registry::getRequest()->getRequestParameter('searchparam');
-            $searchCount = 0;
-            if (($smarty->_tpl_vars['oView']) && $smarty->_tpl_vars['oView']->getArticleCount()) {
-                $searchCount = $smarty->_tpl_vars['oView']->getArticleCount();
-            }
             $this->activePageEntity->setSearchQuery($searchParamForLink);
-            $this->activePageEntity->setSearchNumberOfHits($searchCount);
+            $this->activePageEntity->setSearchNumberOfHits($this->searchDataProvider->getProductsCount());
         }
     }
 

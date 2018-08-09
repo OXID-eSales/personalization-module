@@ -9,6 +9,7 @@ namespace OxidEsales\PersonalizationModule\Application;
 use OxidEsales\PersonalizationModule\Application\Tracking\Helper\ActiveControllerCategoryPathBuilder;
 use OxidEsales\PersonalizationModule\Application\Tracking\Helper\ActiveUserDataProvider;
 use OxidEsales\PersonalizationModule\Application\Tracking\Helper\CategoryPathBuilder;
+use OxidEsales\PersonalizationModule\Application\Tracking\Helper\SearchDataProvider;
 use OxidEsales\PersonalizationModule\Application\Tracking\Helper\UserActionIdentifier;
 use OxidEsales\PersonalizationModule\Application\Tracking\Modifiers\OrderStepsMapModifier;
 use OxidEsales\PersonalizationModule\Application\Tracking\Modifiers\PageMapModifier;
@@ -92,18 +93,15 @@ class Factory
 
     /**
      * @param ActivePageEntityInterface $activePageEntity
-     * @param array                     $pluginParameters
-     * @param Smarty                    $smarty
      *
      * @return TrackingCodeGenerator
      */
-    public function makeTrackingCodeGenerator(ActivePageEntityInterface $activePageEntity, $pluginParameters, $smarty)
+    public function makeTrackingCodeGenerator(ActivePageEntityInterface $activePageEntity)
     {
         return oxNew(
             TrackingCodeGenerator::class,
             $activePageEntity,
-            $this->makeEmosJsFileLocator()->getJsFileUrl(),
-            $this->getActivePageEntityPreparator()->prepareEntity($pluginParameters, $smarty)
+            $this->makeEmosJsFileLocator()->getJsFileUrl()
         );
     }
 
@@ -120,9 +118,11 @@ class Factory
     }
 
     /**
+     * @param Smarty $templateEngine
+     *
      * @return ActivePageEntityPreparator
      */
-    public function getActivePageEntityPreparator()
+    public function getActivePageEntityPreparator($templateEngine)
     {
         $activeUser = oxNew(User::class);
         $activeUser->loadActiveUser();
@@ -146,7 +146,8 @@ class Factory
             $productDataPreparator,
             oxNew(ProductTitlePreparator::class),
             oxNew(PageIdentifiers::class),
-            oxNew(ActiveUserDataProvider::class)
+            oxNew(ActiveUserDataProvider::class),
+            oxNew(SearchDataProvider::class, $templateEngine)
         );
         $orderStepsMapModifier = oxNew(
             OrderStepsMapModifier::class,
