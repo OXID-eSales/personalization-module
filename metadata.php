@@ -58,12 +58,7 @@ $aModule = array(
         [
             'template' => 'layout/base.tpl',
             'block'=>'base_style',
-            'file'=>'Application/views/blocks/head_scripts.tpl'
-        ],
-        [
-            'template' => 'layout/base.tpl',
-            'block'=>'theme_svg_icons',
-            'file'=>'Application/views/blocks/body_scripts.tpl'
+            'file'=>'Application/views/blocks/scripts.tpl'
         ],
         [
             'template' => 'page/list/list.tpl',
