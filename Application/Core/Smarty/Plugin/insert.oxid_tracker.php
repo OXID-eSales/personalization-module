@@ -25,7 +25,7 @@ function smarty_insert_oxid_tracker($params, &$smarty)
     if ($config->getConfigParam('blOePersonalizationTracking')) {
         $factory = oxNew(\OxidEsales\PersonalizationModule\Application\Factory::class);
 
-        $entity = $factory->getActivePageEntityPreparator($smarty)->prepareEntity($params);
+        $entity = $factory->makeActivePageEntityPreparator($smarty)->prepareEntity($params);
         $trackingCodeGenerator = $factory->makeTrackingCodeGenerator($entity);
         $output = $trackingCodeGenerator->generateCode();
 

@@ -122,7 +122,7 @@ class Factory
      *
      * @return ActivePageEntityPreparator
      */
-    public function getActivePageEntityPreparator($templateEngine)
+    public function makeActivePageEntityPreparator($templateEngine)
     {
         $activeUser = oxNew(User::class);
         $activeUser->loadActiveUser();
