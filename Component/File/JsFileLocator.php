@@ -77,6 +77,6 @@ class JsFileLocator
      */
     public function getJsFileUrl()
     {
-        return $this->applicationUrl . '/' . Path::join([$this->getDirectoryName(), $this->getFileName()]);
+        return rtrim($this->applicationUrl, '/') . '/' . Path::join([$this->getDirectoryName(), $this->getFileName()]);
     }
 }
