@@ -42,7 +42,7 @@ class Factory
      */
     public function makeEmosJsFileLocator()
     {
-        return oxNew(JsFileLocator::class, Registry::getConfig()->getOutDir(), EmosFileData::TRACKING_CODE_FILE_NAME, Registry::getConfig()->getOutUrl());
+        return new JsFileLocator(Registry::getConfig()->getOutDir(), EmosFileData::TRACKING_CODE_FILE_NAME, Registry::getConfig()->getOutUrl());
     }
 
     /**
@@ -50,7 +50,7 @@ class Factory
      */
     public function makeTagManagerJsFileLocator()
     {
-        return oxNew(JsFileLocator::class, Registry::getConfig()->getOutDir(), TagManagerFileData::TRACKING_CODE_FILE_NAME, Registry::getConfig()->getOutUrl());
+        return new JsFileLocator(Registry::getConfig()->getOutDir(), TagManagerFileData::TRACKING_CODE_FILE_NAME, Registry::getConfig()->getOutUrl());
     }
 
     /**
@@ -58,7 +58,7 @@ class Factory
      */
     public function makeFileSystem()
     {
-        return oxNew(FileSystem::class, oxNew(\Symfony\Component\Filesystem\Filesystem::class));
+        return new FileSystem(new \Symfony\Component\Filesystem\Filesystem());
     }
 
     /**
@@ -67,8 +67,7 @@ class Factory
     public function makeEmosJsFileUploader()
     {
         $fileLocator = $this->makeEmosJsFileLocator();
-        $jsFileUploadFactory = oxNew(
-            JsFileUploadFactory::class,
+        $jsFileUploadFactory = new JsFileUploadFactory(
             $fileLocator->getJsDirectoryLocation(),
             $fileLocator->getFileName()
         );
@@ -82,8 +81,7 @@ class Factory
     public function makeTagManagerFileUploader()
     {
         $fileLocator = $this->makeTagManagerJsFileLocator();
-        $jsFileUploadFactory = oxNew(
-            JsFileUploadFactory::class,
+        $jsFileUploadFactory = new JsFileUploadFactory(
             $fileLocator->getJsDirectoryLocation(),
             $fileLocator->getFileName()
         );
@@ -98,8 +96,7 @@ class Factory
      */
     public function makeTrackingCodeGenerator(ActivePageEntityInterface $activePageEntity)
     {
-        return oxNew(
-            TrackingCodeGenerator::class,
+        return new TrackingCodeGenerator(
             $activePageEntity,
             $this->makeEmosJsFileLocator()->getJsFileUrl()
         );
