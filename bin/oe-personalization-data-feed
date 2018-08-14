@@ -13,17 +13,16 @@ if (!\OxidEsales\Eshop\Core\Registry::getConfig()->getActiveView()->getViewConfi
 
 $config = getConfigurationParameters($argv);
 
-$_POST['iStart'] = 1;
 $_POST['blExportVars'] = (isset($config['exportVariants'])) ? $config['exportVariants'] : false;
 $_POST['blExportMainVars'] = (isset($config['exportVariantsParentProduct'])) ? $config['exportVariantsParentProduct'] : true;
 $_POST['acat'] = (isset($config['exportCategories'])) ? $config['exportCategories'] : [];
 $_POST['sExportMinStock'] = (isset($config['exportMinStock'])) ? $config['exportMinStock'] : 1;
 $exportPath = (isset($config['exportPath'])) ? $config['exportPath'] : null;
 
-$export = oxNew(OxidEsales\PersonalizationModule\Application\Controller\Admin\GenerateCSVExportsDoController::class, $exportPath);
+/** @var OxidEsales\PersonalizationModule\Application\Controller\Admin\Tab\ExportTabController $export */
+$export = oxNew(OxidEsales\PersonalizationModule\Application\Controller\Admin\Tab\ExportTabController::class, null, $exportPath);
 
-$export->start();
-$export->run();
+$export->executeExport();
 
 $exportMessage = getExportMessage($export);
 print($exportMessage . "\n");
@@ -78,23 +77,19 @@ function getConfigurationParameters($argv)
 }
 
 /**
- * @param \OxidEsales\PersonalizationModule\Application\Controller\Admin\GenerateCSVExportsDoController $export
+ * @param \OxidEsales\PersonalizationModule\Application\Controller\Admin\Tab\ExportTabController $export
  *
  * @return string
  */
 function getExportMessage($export)
 {
-    $message = 'Export was not started.';
-    $viewData = $export->getViewData();
-    if (isset($viewData['iError'])) {
-        if ($viewData['iError'] == ERR_SUCCESS) {
-            $message = 'Export completed.';
-        } elseif ($viewData['iError'] == ERR_FILEIO) {
-            $message = 'Not able to write to export file!';
-        } else {
-            $message = 'Unbekannter Fehler!';
-        }
+    $isExportSuccessful = $export->isExportSuccessful();
+    if ($isExportSuccessful === true) {
+        $message = 'Export completed.';
+    } else {
+        $message = 'Not able to execute export.';
     }
+
     return $message;
 }
 

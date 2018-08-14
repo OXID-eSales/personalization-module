@@ -24,12 +24,18 @@
 
 <br/>
 
+[{if $oView->isExportSuccessful()}]
+    <div class="messagebox">
+        [{oxmultilang ident="OEPERSONALIZATION_EXPORT_SUCCESS"}]
+    </div>
+[{/if}]
+
 <form action="[{$oViewConf->getSelfLink()}]" method="post">
     [{$oViewConf->getHiddenSid()}]
     <input type="hidden" name="cl" value="[{$sClassMain}]">
-    <input type="hidden" name="fnc" value="oePersonalizationSave">
+    <input type="hidden" name="fnc" value="save">
     <div>
-        <input type=text  class="txt" style="width: 250px;" name="sOePersonalizationExportPath" value="[{$oViewConf->oePersonlalizationGetExportPath()}]">
+        <input type=text  class="txt" style="width: 250px;" name="confstrs[sOePersonalizationExportPath]" value="[{$oViewConf->oePersonlalizationGetExportPath()}]">
         [{oxmultilang ident="SHOP_MODULE_sOePersonalizationExportPath"}]
     </div>
     <br/>
@@ -38,18 +44,16 @@
     </div>
 </form>
 
-<br/>
-
-<form action="[{$oViewConf->getSelfLink()}]" method="post" target="dynexport_do">
+<form action="[{$oViewConf->getSelfLink()}]" method="post">
     [{$oViewConf->getHiddenSid()}]
-    <input type="hidden" name="cl" value="[{$sClassDo}]">
-    <input type="hidden" name="fnc" value="start">
+    <input type="hidden" name="cl" value="[{$sClassMain}]">
+    <input type="hidden" name="fnc" value="executeExport">
     <div>
         <div>
             <div>[{oxmultilang ident="GENERAL_CATEGORYSELECT"}]</div>
             <select name="acat[]" size="20" multiple style="width: 210px;">
-                [{foreach from=$cattree item=oCat}]
-                <option value="[{$oCat->getId()}]">[{$oCat->oxcategories__oxtitle->value}]</option>
+                [{foreach from=$oView->getCategoryList() item=category}]
+                    <option value="[{$category->getId()}]">[{$category->oxcategories__oxtitle->value}]</option>
                 [{/foreach}]
             </select>
         </div>

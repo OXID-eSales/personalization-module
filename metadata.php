@@ -52,7 +52,6 @@ $aModule = array(
         'oepersonalization_export_tab.tpl' => 'oe/personalization/Application/views/admin/tpl/oepersonalization_export_tab.tpl',
         'oepersonalization_tag_manager_tab.tpl' => 'oe/personalization/Application/views/admin/tpl/oepersonalization_tag_manager_tab.tpl',
         'oepersonalizationcookienote.tpl' => 'oe/personalization/Application/views/widget/header/cookienote.tpl',
-        'oepersonalization_export_result.tpl' => 'oe/personalization/Application/views/admin/tpl/oepersonalization_export_result.tpl'
     ],
     'blocks' => [
         [

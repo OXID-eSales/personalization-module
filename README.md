@@ -9,8 +9,12 @@ Module adds Econda service functionality.
 
 ## Installation
 
-* Register module repository in project root `composer.json` file.
-* Execute command: `composer require oxid-esales/personalization-module:^1.0.0`.
+Run the following commands to install OXID personalization module:
+
+```bash
+composer config repositories.oxid-esales/personalization-module composer https://personalization.packages.oxid-esales.com/
+composer require oxid-esales/personalization-module
+```
 
 ### Avoid conflicts with existing OXID eShop functionality
 

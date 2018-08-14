@@ -6,10 +6,10 @@
 
 namespace OxidEsales\PersonalizationModule\Tests\Integration\Application;
 
-use OxidEsales\PersonalizationModule\Application\Controller\Admin\GenerateCSVExportsDoController;
 use OxidEsales\Eshop\Core\Registry;
+use OxidEsales\PersonalizationModule\Application\Controller\Admin\Tab\ExportTabController;
 
-class GenerateCSVExportsDoTest extends ExportDataInCSVTest
+class ExportViaAdminTest extends AbstractExportDataInCSV
 {
     /**
      * @inheritdoc
@@ -17,7 +17,7 @@ class GenerateCSVExportsDoTest extends ExportDataInCSVTest
     protected function prepareShopStructureForExport()
     {
         $vfsWrapper = $this->getVfsStreamWrapper();
-        $vfsWrapper->createStructure(['export' => []]);
+        $vfsWrapper->createStructure(['export' => ['oepersonalization' => ['products.csv' => '']]]);
 
         Registry::getConfig()->setConfigParam('sShopDir', $vfsWrapper->getRootPath());
         return $vfsWrapper->getRootPath();
@@ -55,37 +55,9 @@ class GenerateCSVExportsDoTest extends ExportDataInCSVTest
         return $shopUrl;
     }
 
-    /**
-     * @inheritdoc
-     */
     protected function runExport()
     {
-        $export = oxNew(GenerateCSVExportsDoController::class);
-
-        $export->start();
-        $export->run();
-    }
-
-    public function testCreateFolderOnInitialization()
-    {
-        $shopDir = $this->prepareShopStructureForExport();
-        Registry::getConfig()->setConfigParam('sOePersonalizationExportPath', 'export/oepersonalization');
-
-        oxNew(GenerateCSVExportsDoController::class);
-
-        $this->assertFileExists($shopDir . 'export/oepersonalization');
-    }
-
-    public function testUseExportPathFromConfig()
-    {
-        $vfsWrapper = $this->getVfsStreamWrapper();
-        $vfsWrapper->createStructure(['export_test' => []]);
-
-        Registry::getConfig()->setConfigParam('sShopDir', $vfsWrapper->getRootPath());
-        Registry::getConfig()->setConfigParam('sOePersonalizationExportPath', 'export_test/custom_test');
-
-        oxNew(GenerateCSVExportsDoController::class);
-
-        $this->assertFileExists($vfsWrapper->getRootPath() . 'export_test/custom_test');
+        $controller = oxNew(ExportTabController::class);
+        $controller->executeExport();
     }
 }

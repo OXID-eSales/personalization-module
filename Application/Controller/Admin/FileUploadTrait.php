@@ -13,6 +13,8 @@ use OxidEsales\Eshop\Core\Registry;
  */
 trait FileUploadTrait
 {
+    use ErrorDisplayTrait;
+
     /**
      * An action to upload file emos.js file.
      */
@@ -63,15 +65,5 @@ trait FileUploadTrait
         }
 
         return $message;
-    }
-
-    /**
-     * @param string $errorMessage
-     */
-    protected function addErrorToDisplay($errorMessage)
-    {
-        $exception = oxNew(\OxidEsales\Eshop\Core\Exception\StandardException::class, $errorMessage);
-        $utilsView = \OxidEsales\Eshop\Core\Registry::getUtilsView();
-        $utilsView->addErrorToDisplay($exception);
     }
 }

@@ -29,6 +29,16 @@ trait ConfigurationTrait
     }
 
     /**
+     * Return theme filter for config variables.
+     *
+     * @return string
+     */
+    protected function _getModuleForConfigVars()
+    {
+        return 'module:oepersonalization';
+    }
+
+    /**
      * Get configuration variables from database.
      *
      * @return array
@@ -39,15 +49,5 @@ trait ConfigurationTrait
         $aDbVariables = $this->loadConfVars($sShopId, $this->_getModuleForConfigVars());
 
         return $aDbVariables['vars'];
-    }
-
-    /**
-     * Return theme filter for config variables.
-     *
-     * @return string
-     */
-    protected function _getModuleForConfigVars()
-    {
-        return 'module:oepersonalization';
     }
 }

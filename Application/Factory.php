@@ -6,6 +6,11 @@
 
 namespace OxidEsales\PersonalizationModule\Application;
 
+use OxidEsales\PersonalizationModule\Application\Export\CategoryDataPreparator;
+use OxidEsales\PersonalizationModule\Application\Export\CategoryRepository;
+use OxidEsales\PersonalizationModule\Application\Export\Helper\SqlGenerator;
+use OxidEsales\PersonalizationModule\Application\Export\Filter\ParentProductsFilter;
+use OxidEsales\PersonalizationModule\Application\Export\ProductRepository;
 use OxidEsales\PersonalizationModule\Application\Tracking\Helper\ActiveControllerCategoryPathBuilder;
 use OxidEsales\PersonalizationModule\Application\Tracking\Helper\ActiveUserDataProvider;
 use OxidEsales\PersonalizationModule\Application\Tracking\Helper\CategoryPathBuilder;
@@ -20,6 +25,9 @@ use OxidEsales\PersonalizationModule\Application\Tracking\Page\PageMap;
 use OxidEsales\PersonalizationModule\Application\Tracking\ProductPreparation\ProductDataPreparator;
 use OxidEsales\PersonalizationModule\Application\Tracking\ProductPreparation\ProductTitlePreparator;
 use OxidEsales\PersonalizationModule\Application\Tracking\ActivePageEntityPreparator;
+use OxidEsales\PersonalizationModule\Component\Export\ColumnNameVariationsGenerator;
+use OxidEsales\PersonalizationModule\Component\Export\CsvWriter;
+use OxidEsales\PersonalizationModule\Component\Export\ExportFilePathProvider;
 use OxidEsales\PersonalizationModule\Component\Tracking\ActivePageEntity;
 use OxidEsales\PersonalizationModule\Component\Tracking\ActivePageEntityInterface;
 use OxidEsales\PersonalizationModule\Component\Tracking\File\EmosFileData;
@@ -31,6 +39,7 @@ use OxidEsales\PersonalizationModule\Component\File\JsFileUploadFactory;
 use OxidEsales\Eshop\Application\Model\User;
 use OxidEsales\Eshop\Core\Registry;
 use Smarty;
+use OxidEsales\PersonalizationModule\Application\Export\ProductDataPreparator as ProductDataPreparatorForExport;
 
 /**
  * Class responsible for building objects.
@@ -169,5 +178,69 @@ class Factory
         );
 
         return $trackingCodePreparator;
+    }
+
+    /**
+     * @return ProductRepository
+     */
+    public function makeProductRepositoryForExport()
+    {
+        return oxNew(ProductRepository::class, oxNew(SqlGenerator::class));
+    }
+
+    /**
+     * @return ProductRepository
+     */
+    public function makeParentProductsFilterForExport()
+    {
+        return oxNew(ParentProductsFilter::class);
+    }
+
+    /**
+     * @return ProductDataPreparatorForExport
+     */
+    public function makeProductDataPreparatorForExport()
+    {
+        return oxNew(
+            ProductDataPreparatorForExport::class,
+            $this->makeProductRepositoryForExport(),
+            $this->makeColumnNameVariationsGeneratorForExport()
+        );
+    }
+
+    /**
+     * @return CategoryDataPreparator
+     */
+    public function makeCategoryDataPreparatorForExport()
+    {
+        return oxNew(
+            CategoryDataPreparator::class,
+            oxNew(CategoryRepository::class),
+            $this->makeColumnNameVariationsGeneratorForExport()
+        );
+    }
+
+    /**
+     * @return ExportFilePathProvider
+     */
+    public function makeExportFilePathProvider()
+    {
+        return new ExportFilePathProvider(Registry::getConfig()->getConfigParam('sShopDir'));
+    }
+
+    /**
+     * @return CsvWriter
+     */
+    public function makeCsvWriterForExport()
+    {
+        return new CsvWriter();
+    }
+
+    /**
+     * @return ColumnNameVariationsGenerator
+     */
+    public function makeColumnNameVariationsGeneratorForExport()
+    {
+        return new ColumnNameVariationsGenerator(count(Registry::getLang()->getLanguageArray(null, true, true)));
     }
 }

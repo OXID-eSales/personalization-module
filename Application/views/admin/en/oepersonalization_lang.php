@@ -31,7 +31,8 @@ $aLang = [
     'tbcloepersonalizationexport' => 'Export',
     'tbcloepersonalizationtagmanager' => 'Tag manager',
     'OEPERSONALIZATION_EXPOSTVARS' => 'Export Variants',
-    'OEPERSONALIZATION_EXPORTMAINVARS' => 'Export Variant of Base Product',
+    'OEPERSONALIZATION_EXPORTMAINVARS' => 'Export Base Products',
     'OEPERSONALIZATION_EXPORTMINSTOCK' => 'Min Stock Quantity',
     'OEPERSONALIZATION_TAG_MANAGER_SECTION_TITLE' => 'Econda tag manager',
+    'OEPERSONALIZATION_EXPORT_SUCCESS' => 'Export has been executed successfully!',
 ];

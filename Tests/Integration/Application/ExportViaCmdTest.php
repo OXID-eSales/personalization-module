@@ -8,7 +8,7 @@ namespace OxidEsales\PersonalizationModule\Tests\Integration\Application;
 
 use OxidEsales\Eshop\Core\Registry;
 
-class ExportCmdFeedTest extends ExportDataInCSVTest
+class ExportViaCmdTest extends AbstractExportDataInCSV
 {
     private $configFile = null;
 
@@ -106,5 +106,4 @@ class ExportCmdFeedTest extends ExportDataInCSVTest
         $message = 'Config file has wrong format.';
         $this->assertEquals($message, $returnOutput[0]);
     }
-
 }
