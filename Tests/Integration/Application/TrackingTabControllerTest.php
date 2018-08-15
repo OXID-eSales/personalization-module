@@ -18,7 +18,7 @@ class TrackingTabControllerTest extends \OxidEsales\TestingLibrary\UnitTestCase
     {
         $jsFileLocatorStub = $this->makeFileSystemStub(true);
 
-        $controller = $this->getGenerateCSVExportsMain($jsFileLocatorStub);
+        $controller = $this->getController($jsFileLocatorStub);
         $this->assertNotEmpty($controller->getTrackingScriptMessageIfEnabled());
     }
 
@@ -26,7 +26,7 @@ class TrackingTabControllerTest extends \OxidEsales\TestingLibrary\UnitTestCase
     {
         $jsFileLocatorStub = $this->makeFileSystemStub(false);
 
-        $controller = $this->getGenerateCSVExportsMain($jsFileLocatorStub);
+        $controller = $this->getController($jsFileLocatorStub);
         $this->assertEmpty($controller->getTrackingScriptMessageIfEnabled());
     }
 
@@ -34,7 +34,7 @@ class TrackingTabControllerTest extends \OxidEsales\TestingLibrary\UnitTestCase
     {
         $jsFileLocatorStub = $this->makeFileSystemStub(true);
 
-        $controller = $this->getGenerateCSVExportsMain($jsFileLocatorStub);
+        $controller = $this->getController($jsFileLocatorStub);
         $this->assertEmpty($controller->getTrackingScriptMessageIfDisabled());
     }
 
@@ -42,7 +42,7 @@ class TrackingTabControllerTest extends \OxidEsales\TestingLibrary\UnitTestCase
     {
         $jsFileLocatorStub = $this->makeFileSystemStub(false);
 
-        $controller = $this->getGenerateCSVExportsMain($jsFileLocatorStub);
+        $controller = $this->getController($jsFileLocatorStub);
         $this->assertNotEmpty($controller->getTrackingScriptMessageIfDisabled());
     }
 
@@ -136,7 +136,7 @@ class TrackingTabControllerTest extends \OxidEsales\TestingLibrary\UnitTestCase
      * @param FileSystem $fileSystem
      * @return TrackingTabController
      */
-    protected function getGenerateCSVExportsMain($fileSystem)
+    protected function getController($fileSystem)
     {
         $factory = $this->getMockBuilder(Factory::class)
             ->setMethods(['makeFileSystem'])
