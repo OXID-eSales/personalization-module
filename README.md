@@ -50,7 +50,7 @@ Module provides functionality which allows:
 * Provide widget for Visual CMS
 * Track visitors behaviour
 * Use Econda Tag Manager
-* Export products for Econda
+* Export data for Econda
 
 ### Visual CMS Widget
 
@@ -64,6 +64,21 @@ no limit will be applied.
 There are 2 template files prepared for Visual CMS widget:
 * `Component/views/vcms_banner.ejs.html` - To display banner images with links.
 * `Component/views/vcms_recommendations.ejs.html` - To display products within widget.
+
+### Export data for Econda
+
+There are 2 ways of exporting data:
+* Administration panel
+* CLI
+
+To export data via CLI execute command:
+```bash
+vendor/bin/oe-personalization-data-feed
+```
+or if there is a need to customize configuration parameters:
+```bash
+vendor/bin/oe-personalization-data-feed --config /path/to/your/config/file.php
+```
 
 ## Bugs and Issues
 

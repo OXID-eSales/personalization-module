@@ -35,7 +35,7 @@ exit(0);
  */
 function getConfigFile($argv)
 {
-    $configFile = \OxidEsales\Eshop\Core\Registry::getConfig()->getActiveView()->getViewConfig()->getModulePath('oepersonalization', 'config/params.php');
+    $configFile = \OxidEsales\Eshop\Core\Registry::getConfig()->getActiveView()->getViewConfig()->getModulePath('oepersonalization', 'config/default_params.php');
     array_shift($argv);
     if (isset($argv[0])) {
         if ($argv[0] === '--config') {
