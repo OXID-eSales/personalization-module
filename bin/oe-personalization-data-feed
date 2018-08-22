@@ -105,7 +105,7 @@ function bootstrapShop()
         $count = 0;
         $bootstrapFileName = 'source/bootstrap.php';
         $currentDirectory = __DIR__ . '/';
-        while ($count < 5) {
+        while ($count < 6) {
             $count++;
             if (file_exists($currentDirectory . $bootstrapFileName)) {
                 $bootstrapFileName = $currentDirectory . $bootstrapFileName;
