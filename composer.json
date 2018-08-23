@@ -3,7 +3,7 @@
     "description": "This is the Personalization module for the OXID eShop.",
     "type": "oxideshop-module",
     "keywords": ["oxid", "modules", "eShop"],
-    "homepage": "https://www.oxid-esales.com/en/home.html",
+    "homepage": "https://www.oxid-esales.com",
     "license": [
         "proprietary"
     ],
@@ -13,7 +13,8 @@
                 "documentation/**/*.*",
                 "composer.json",
                 "README.md",
-                "LICENSE"
+                "LICENSE",
+                "CHANGELOG.md"
             ],
             "target-directory": "oe/personalization"
         }
