@@ -26,7 +26,7 @@ class ExportViaAdminTest extends AbstractExportDataInCSV
     /**
      * @inheritdoc
      */
-    protected function setParametersForExport($exportParentProducts, $exportVars, $categories, $minStock, $exportPath)
+    protected function setParametersForExport($exportParentProducts, $exportVars, $categories, $minStock, $exportPath, $shopId)
     {
         $this->setRequestParameter('acat', $categories);
         $this->setRequestParameter('sExportMinStock', $minStock);

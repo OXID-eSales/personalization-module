@@ -77,17 +77,13 @@ class ExportTabController extends ShopConfiguration
 
     /**
      * @param null|Factory $factory
-     * @param string       $relativeExportPath
      */
-    public function __construct($factory = null, $relativeExportPath = '')
+    public function __construct($factory = null)
     {
         if (is_null($factory)) {
             $factory = oxNew(Factory::class);
         }
-        $this->relativeExportPath = $relativeExportPath;
-        if (empty($relativeExportPath)) {
-            $this->relativeExportPath = Registry::getConfig()->getConfigParam('sOePersonalizationExportPath');
-        }
+        $this->relativeExportPath = Registry::getConfig()->getConfigParam('sOePersonalizationExportPath');
         $this->productRepository = $factory->makeProductRepositoryForExport();
         $this->csvWriter = $factory->makeCsvWriterForExport();
         $this->parentProductsFilter = $factory->makeParentProductsFilterForExport();

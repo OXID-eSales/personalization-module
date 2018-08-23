@@ -44,10 +44,11 @@ class ExportViaCmdTest extends AbstractExportDataInCSV
         return Registry::getConfig()->getConfigParam('sShopDir');
     }
 
-    protected function setParametersForExport($exportParentProducts, $exportVars, $categories, $minStock, $exportPath)
+    protected function setParametersForExport($exportParentProducts, $exportVars, $categories, $minStock, $exportPath, $shopId)
     {
         $fileContent = '<?php return ["exportVariants" => '.
-            json_encode($exportVars).', "exportVariantsParentProduct" => '.
+            json_encode($exportVars).', "shopId" => '.
+            $shopId.', "exportVariantsParentProduct" => '.
             json_encode($exportParentProducts).', "exportCategories" => '.
             json_encode($categories).', "exportPath" => "'.
             $exportPath.'", "exportMinStock" => '.

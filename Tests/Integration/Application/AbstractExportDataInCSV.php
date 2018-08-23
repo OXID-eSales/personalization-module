@@ -6,6 +6,9 @@
 
 namespace OxidEsales\PersonalizationModule\Tests\Integration\Application;
 
+use OxidEsales\Eshop\Application\Model\Shop;
+use OxidEsales\Facts\Facts;
+
 abstract class AbstractExportDataInCSV extends \OxidEsales\TestingLibrary\UnitTestCase
 {
     protected $exportPath = 'export/oepersonalization';
@@ -18,13 +21,15 @@ abstract class AbstractExportDataInCSV extends \OxidEsales\TestingLibrary\UnitTe
     abstract protected function prepareShopStructureForExport();
 
     /**
-     * @param bool   $exportParentProducts
-     * @param bool   $exportVars
-     * @param array  $categories
-     * @param int    $minStock
+     * @param bool $exportParentProducts
+     * @param bool $exportVars
+     * @param array $categories
+     * @param int $minStock
      * @param string $exportPath
+     * @param int $shopId
+     * @return
      */
-    abstract protected function setParametersForExport($exportParentProducts, $exportVars, $categories, $minStock, $exportPath);
+    abstract protected function setParametersForExport($exportParentProducts, $exportVars, $categories, $minStock, $exportPath, $shopId);
 
     /**
      * Prepare the structure and return the shop url
@@ -43,16 +48,11 @@ abstract class AbstractExportDataInCSV extends \OxidEsales\TestingLibrary\UnitTe
      */
     public function testProductExportContent($categories, $minStock, $exportMainVars, $exportVars, $expectedContent)
     {
-        $this->setParametersForExport($exportMainVars, $exportVars, $categories, $minStock, $this->exportPath);
-
-        $shopDir = $this->prepareShopStructureForExport();
+        $this->setParametersForExport($exportMainVars, $exportVars, $categories, $minStock, $this->exportPath, 1);
 
         $shopUrl = $this->prepareShopUrlForExport();
 
-        $this->runExport();
-
-        $productFilename = $shopDir . $this->exportPath . '/products.csv';
-        $lines = array_map('trim', file($productFilename));
+        $lines = $this->prepareAndExecuteProductExport();
 
         array_walk($expectedContent, function(&$item) use ($shopUrl) {
             $item = str_replace('%shopUrl%', $shopUrl, $item);
@@ -149,7 +149,8 @@ abstract class AbstractExportDataInCSV extends \OxidEsales\TestingLibrary\UnitTe
                 '8a142c3e4d3253c95.46563530',
             ],
             1,
-            $this->exportPath
+            $this->exportPath,
+            1
         );
 
         $lines = $this->prepareAndExecuteCategoriesExport();
@@ -171,7 +172,8 @@ abstract class AbstractExportDataInCSV extends \OxidEsales\TestingLibrary\UnitTe
             true,
             [],
             1,
-            $this->exportPath
+            $this->exportPath,
+            1
         );
 
         $lines = $this->prepareAndExecuteCategoriesExport();
@@ -188,6 +190,63 @@ abstract class AbstractExportDataInCSV extends \OxidEsales\TestingLibrary\UnitTe
         $this->assertEquals($expectedContent, $lines);
     }
 
+    public function testCategoriesExportWithSubshop()
+    {
+        if (!$this->isEnterpriseEdition()) {
+            return;
+        }
+
+        $this->setParametersForExport(
+            true,
+            true,
+            [],
+            1,
+            $this->exportPath,
+            2
+        );
+
+        $this->prepareSubShop();
+
+        $lines = $this->prepareAndExecuteCategoriesExport();
+
+        $expectedContent = [
+            'ID|ParentId|Name|Name_var1',
+            'subshopcategoryid|ROOT|Geschenke|Gifts',
+        ];
+
+        $this->assertEquals($expectedContent, $lines);
+    }
+
+    public function testProductsExportWithSubshop()
+    {
+        if (!$this->isEnterpriseEdition()) {
+            return;
+        }
+
+        $this->setParametersForExport(
+            true,
+            true,
+            [],
+            1,
+            $this->exportPath,
+            2
+        );
+
+        $this->prepareSubShop();
+
+        $shopUrl = $this->prepareShopUrlForExport();
+        $lines = $this->prepareAndExecuteProductExport();
+        $expectedContent = [
+            'ID|Name|Name_var1|Description|Description_var1|ProductUrl|ProductUrl_var1|ImageUrl|Price|OldPrice|New|Stock|EAN|Brand|ProductCategory',
+            '8888|"Bar Butler 6 BOTTLES"|"Bar Butler 6 BOTTLES"|||%shopUrl%Geschenke/Bar-Butler-6-BOTTLES.html?shp=2|%shopUrl%en/Gifts/Bar-Butler-6-BOTTLES.html?shp=2|%shopUrl%out/pictures/generated/product/1/540_340_75/nopic.jpg|89.9|94|0|6|||subshopcategoryid'
+        ];
+        array_walk($expectedContent, function(&$item) use ($shopUrl) {
+            $item = str_replace('%shopUrl%', $shopUrl, $item);
+        });
+
+        $this->assertEquals($expectedContent, $lines);
+    }
+
     /**
      * @return array
      */
@@ -200,5 +259,37 @@ abstract class AbstractExportDataInCSV extends \OxidEsales\TestingLibrary\UnitTe
         $categoryFilename = $shopDir . $this->exportPath . '/categories.csv';
         $lines = array_map('trim', file($categoryFilename));
         return $lines;
+    }
+
+    /**
+     * @return array
+     */
+    private function prepareAndExecuteProductExport(): array
+    {
+        $shopDir = $this->prepareShopStructureForExport();
+
+        $this->runExport();
+
+        $productFilename = $shopDir . $this->exportPath . '/products.csv';
+        $lines = array_map('trim', file($productFilename));
+        return $lines;
+    }
+
+    private function prepareSubShop()
+    {
+        $this->getConfig()->setShopId(2);
+        $shop = oxNew(Shop::class);
+        $shop->load(2);
+        $shop->generateViews();
+    }
+
+    /**
+     * @return bool
+     */
+    private function isEnterpriseEdition(): bool
+    {
+        $facts = new Facts;
+
+        return ('EE' === $facts->getEdition());
     }
 }

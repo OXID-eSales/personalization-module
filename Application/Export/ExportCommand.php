@@ -19,6 +19,11 @@ use OxidEsales\PersonalizationModule\Component\File\FileSystem;
 class ExportCommand
 {
     /**
+     * @var array
+     */
+    private $config;
+
+    /**
      * @var FileSystem
      */
     private $fileSystem;
@@ -54,18 +59,18 @@ class ExportCommand
     private $categoryDataPreparator;
 
     /**
-     * @param Factory|null $factory
+     * @param array   $cliArguments
+     * @param Factory $factory
      */
-    public function __construct($factory = null)
+    public function __construct($cliArguments, $factory)
     {
         Registry::getConfig()->setAdminMode(true);
+        $this->config = $this->getConfigurationParameters($cliArguments);
+        Registry::getConfig()->setShopId($this->config['shopId']);
         if (!Registry::getConfig()->getActiveView()->getViewConfig()->isModuleActive('oepersonalization')) {
             exit('Please activate the "OXID personalization powered by Econda" module before running the script.' . "\n");
         }
 
-        if (is_null($factory)) {
-            $factory = oxNew(Factory::class);
-        }
         $this->exportFilePathProvider = $factory->makeExportFilePathProvider();
         $this->productRepository = $factory->makeProductRepositoryForExport();
         $this->csvWriter = $factory->makeCsvWriterForExport();
@@ -76,17 +81,15 @@ class ExportCommand
     }
 
     /**
-     * @param array $cliArguments
+     * Method executes export.
      */
-    public function export($cliArguments)
+    public function export()
     {
-        $config = $this->getConfigurationParameters($cliArguments);
-
-        $categoriesIds = (isset($config['exportCategories'])) ? $config['exportCategories'] : [];
-        $shouldExportVariants = (isset($config['exportVariants'])) ? $config['exportVariants'] : false;
-        $shouldExportBaseProducts = (isset($config['exportVariantsParentProduct'])) ? $config['exportVariantsParentProduct'] : true;
-        $minimumQuantityInStock = (isset($config['exportMinStock'])) ? $config['exportMinStock'] : 1;
-        $relativeExportPath = (isset($config['exportPath'])) ? $config['exportPath'] : null;
+        $categoriesIds = (isset($this->config['exportCategories'])) ? $this->config['exportCategories'] : [];
+        $shouldExportVariants = (isset($this->config['exportVariants'])) ? $this->config['exportVariants'] : false;
+        $shouldExportBaseProducts = (isset($this->config['exportVariantsParentProduct'])) ? $this->config['exportVariantsParentProduct'] : true;
+        $minimumQuantityInStock = (isset($this->config['exportMinStock'])) ? $this->config['exportMinStock'] : 1;
+        $relativeExportPath = (isset($this->config['exportPath'])) ? $this->config['exportPath'] : null;
 
         $directoryForFileToExport = $this->exportFilePathProvider->makeDirectoryPath($relativeExportPath);
         if ($this->fileSystem->createDirectory($directoryForFileToExport) === false) {

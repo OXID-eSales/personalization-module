@@ -6,6 +6,7 @@
  */
 
 use OxidEsales\Facts\Facts;
+use OxidEsales\PersonalizationModule\Application\Factory;
 use Webmozart\PathUtil\Path;
 
 $autoloadFileExist = false;
@@ -33,5 +34,5 @@ if (!$autoloadFileExist) {
 $facts = new Facts();
 require_once(Path::join($facts->getSourcePath(), 'bootstrap.php'));
 
-$exporter = new \OxidEsales\PersonalizationModule\Application\Export\ExportCommand();
-$exporter->export($argv);
+$exporter = new \OxidEsales\PersonalizationModule\Application\Export\ExportCommand($argv, oxNew(Factory::class));
+$exporter->export();
