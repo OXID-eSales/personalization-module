@@ -7,7 +7,11 @@
 namespace OxidEsales\PersonalizationModule\Application\Export;
 
 use OxidEsales\Eshop\Core\Registry;
-use OxidEsales\PersonalizationModule\Application\Controller\Admin\Tab\ExportTabController;
+use OxidEsales\PersonalizationModule\Application\Export\Filter\ParentProductsFilter;
+use OxidEsales\PersonalizationModule\Application\Factory;
+use OxidEsales\PersonalizationModule\Component\Export\CsvWriter;
+use OxidEsales\PersonalizationModule\Component\Export\ExportFilePathProvider;
+use OxidEsales\PersonalizationModule\Component\File\FileSystem;
 
 /**
  * Class used only for CLI to execute export.
@@ -15,30 +19,114 @@ use OxidEsales\PersonalizationModule\Application\Controller\Admin\Tab\ExportTabC
 class ExportCommand
 {
     /**
-     * @param array $cliArguments
+     * @var FileSystem
      */
-    public function export($cliArguments)
+    private $fileSystem;
+
+    /**
+     * @var ExportFilePathProvider
+     */
+    private $exportFilePathProvider;
+
+    /**
+     * @var ProductRepository
+     */
+    private $productRepository;
+
+    /**
+     * @var CsvWriter
+     */
+    private $csvWriter;
+
+    /**
+     * @var ParentProductsFilter
+     */
+    private $parentProductsFilter;
+
+    /**
+     * @var ProductDataPreparator
+     */
+    private $productDataPreparator;
+
+    /**
+     * @var CategoryDataPreparator
+     */
+    private $categoryDataPreparator;
+
+    /**
+     * @param Factory|null $factory
+     */
+    public function __construct($factory = null)
     {
+        Registry::getConfig()->setAdminMode(true);
         if (!Registry::getConfig()->getActiveView()->getViewConfig()->isModuleActive('oepersonalization')) {
             exit('Please activate the "OXID personalization powered by Econda" module before running the script.' . "\n");
         }
 
+        if (is_null($factory)) {
+            $factory = oxNew(Factory::class);
+        }
+        $this->exportFilePathProvider = $factory->makeExportFilePathProvider();
+        $this->productRepository = $factory->makeProductRepositoryForExport();
+        $this->csvWriter = $factory->makeCsvWriterForExport();
+        $this->parentProductsFilter = $factory->makeParentProductsFilterForExport();
+        $this->productDataPreparator = $factory->makeProductDataPreparatorForExport();
+        $this->categoryDataPreparator = $factory->makeCategoryDataPreparatorForExport();
+        $this->fileSystem = $factory->makeFileSystem();
+    }
+
+    /**
+     * @param array $cliArguments
+     */
+    public function export($cliArguments)
+    {
         $config = $this->getConfigurationParameters($cliArguments);
 
-        $_POST['blExportVars'] = (isset($config['exportVariants'])) ? $config['exportVariants'] : false;
-        $_POST['blExportMainVars'] = (isset($config['exportVariantsParentProduct'])) ? $config['exportVariantsParentProduct'] : true;
-        $_POST['acat'] = (isset($config['exportCategories'])) ? $config['exportCategories'] : [];
-        $_POST['sExportMinStock'] = (isset($config['exportMinStock'])) ? $config['exportMinStock'] : 1;
-        $exportPath = (isset($config['exportPath'])) ? $config['exportPath'] : null;
+        $categoriesIds = (isset($config['exportCategories'])) ? $config['exportCategories'] : [];
+        $shouldExportVariants = (isset($config['exportVariants'])) ? $config['exportVariants'] : false;
+        $shouldExportBaseProducts = (isset($config['exportVariantsParentProduct'])) ? $config['exportVariantsParentProduct'] : true;
+        $minimumQuantityInStock = (isset($config['exportMinStock'])) ? $config['exportMinStock'] : 1;
+        $relativeExportPath = (isset($config['exportPath'])) ? $config['exportPath'] : null;
 
-        /** @var ExportTabController $export */
-        $export = oxNew(ExportTabController::class, null, $exportPath);
+        $directoryForFileToExport = $this->exportFilePathProvider->makeDirectoryPath($relativeExportPath);
+        if ($this->fileSystem->createDirectory($directoryForFileToExport) === false) {
+            exit('Unable to create directory ' . $directoryForFileToExport);
+        } else {
+            $productsDataForExport = $this->productRepository
+                ->findProductsToExport(0, $shouldExportVariants, $categoriesIds, $minimumQuantityInStock);
 
-        $export->executeExport();
+            if ($shouldExportBaseProducts === false) {
+                $productsDataForExport = $this->parentProductsFilter->filterOutParentProducts($productsDataForExport);
+            }
 
-        $exportMessage = $this->getExportMessage($export);
-        print($exportMessage . "\n");
+            $productsToExport = $this->productDataPreparator->appendDataForExport($productsDataForExport);
+            $categoriesToExport = $this->categoryDataPreparator->prepareDataForExport($categoriesIds);
+            try {
+                $this->executeWritingToFile($relativeExportPath, $productsToExport, $categoriesToExport);
+            } catch (\Exception $exception) {
+                exit('Error occurred while writing data to file with message: ' . $exception->getMessage());
+            }
+        }
+
+        print("Export completed.\n");
         exit(0);
+    }
+
+    /**
+     * @param string $relativeExportPath
+     * @param array  $productsToExport
+     * @param array  $categoriesToExport
+     */
+    private function executeWritingToFile($relativeExportPath, $productsToExport, $categoriesToExport)
+    {
+        $this->csvWriter->write(
+            $this->exportFilePathProvider->makeProductsFilePath($relativeExportPath),
+            $productsToExport
+        );
+        $this->csvWriter->write(
+            $this->exportFilePathProvider->makeCategoriesFilePath($relativeExportPath),
+            $categoriesToExport
+        );
     }
 
     /**
@@ -86,22 +174,5 @@ class ExportCommand
         }
 
         return $config;
-    }
-
-    /**
-     * @param ExportTabController $export
-     *
-     * @return string
-     */
-    private function getExportMessage($export)
-    {
-        $isExportSuccessful = $export->isExportSuccessful();
-        if ($isExportSuccessful === true) {
-            $message = 'Export completed.';
-        } else {
-            $message = 'Not able to execute export.';
-        }
-
-        return $message;
     }
 }

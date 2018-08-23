@@ -189,7 +189,7 @@ class Factory
     }
 
     /**
-     * @return ProductRepository
+     * @return ParentProductsFilter
      */
     public function makeParentProductsFilterForExport()
     {
