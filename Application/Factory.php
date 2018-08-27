@@ -6,6 +6,7 @@
 
 namespace OxidEsales\PersonalizationModule\Application;
 
+use OxidEsales\PersonalizationModule\Application\Controller\Admin\ErrorDisplayer;
 use OxidEsales\PersonalizationModule\Application\Export\CategoryDataPreparator;
 use OxidEsales\PersonalizationModule\Application\Export\CategoryRepository;
 use OxidEsales\PersonalizationModule\Application\Export\Helper\SqlGenerator;
@@ -218,6 +219,14 @@ class Factory
             oxNew(CategoryRepository::class),
             $this->makeColumnNameVariationsGeneratorForExport()
         );
+    }
+
+    /**
+     * @return ErrorDisplayer
+     */
+    public function makeErrorDisplayer()
+    {
+        return oxNew(ErrorDisplayer::class);
     }
 
     /**

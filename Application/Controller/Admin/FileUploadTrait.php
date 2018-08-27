@@ -16,11 +16,10 @@ use FileUpload\FileUpload;
  * @property FileSystem $fileSystem
  * @property JsFileLocator $fileLocator
  * @property FileUpload $fileUploader
+ * @property ErrorDisplayer $errorDisplayer
  */
 trait FileUploadTrait
 {
-    use ErrorDisplayTrait;
-
     /**
      * An action to upload file emos.js file.
      */
@@ -31,7 +30,7 @@ trait FileUploadTrait
         );
 
         if ($isCreated === false) {
-            $this->addErrorToDisplay(
+            $this->errorDisplayer->addErrorToDisplay(
                 'Unable to create directory '
                 . $this->fileLocator->getJsDirectoryLocation()
                 . '. Add write permissions for web user or create this '
@@ -41,7 +40,7 @@ trait FileUploadTrait
             $dataAfterFileUpload = $this->fileUploader->processAll();
             foreach ($dataAfterFileUpload[0] as $fileData) {
                 if ($fileData->error) {
-                    $this->addErrorToDisplay($fileData->error . '.');
+                    $this->errorDisplayer->addErrorToDisplay($fileData->error . '.');
                 }
             }
         }

@@ -8,6 +8,7 @@ namespace OxidEsales\PersonalizationModule\Application\Controller\Admin\Tab;
 
 use OxidEsales\Eshop\Application\Controller\Admin\ShopConfiguration;
 use OxidEsales\PersonalizationModule\Application\Controller\Admin\ConfigurationTrait;
+use OxidEsales\PersonalizationModule\Application\Controller\Admin\ErrorDisplayer;
 use OxidEsales\PersonalizationModule\Application\Controller\Admin\FileUploadTrait;
 use OxidEsales\PersonalizationModule\Application\Factory;
 use OxidEsales\PersonalizationModule\Component\File\FileSystem;
@@ -44,6 +45,11 @@ class TrackingTabController extends ShopConfiguration
     protected $fileUploader;
 
     /**
+     * @var ErrorDisplayer
+     */
+    protected $errorDisplayer;
+
+    /**
      * @param null|Factory $factory
      */
     public function __construct($factory = null)
@@ -54,6 +60,7 @@ class TrackingTabController extends ShopConfiguration
         $this->fileSystem = $factory->makeFileSystem();
         $this->fileLocator = $factory->makeEmosJsFileLocator();
         $this->fileUploader = $factory->makeEmosJsFileUploader();
+        $this->errorDisplayer = $factory->makeErrorDisplayer();
         $this->_aViewData['sClassMain'] = __CLASS__;
         parent::__construct();
     }

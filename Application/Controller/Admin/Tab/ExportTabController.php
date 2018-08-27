@@ -8,7 +8,7 @@ namespace OxidEsales\PersonalizationModule\Application\Controller\Admin\Tab;
 
 use OxidEsales\Eshop\Application\Controller\Admin\ShopConfiguration;
 use OxidEsales\Eshop\Core\Registry;
-use OxidEsales\PersonalizationModule\Application\Controller\Admin\ErrorDisplayTrait;
+use OxidEsales\PersonalizationModule\Application\Controller\Admin\ErrorDisplayer;
 use OxidEsales\PersonalizationModule\Application\Controller\Admin\ConfigurationTrait;
 use OxidEsales\PersonalizationModule\Application\Export\CategoryDataPreparator;
 use OxidEsales\PersonalizationModule\Application\Export\Filter\ParentProductsFilter;
@@ -25,7 +25,6 @@ use OxidEsales\PersonalizationModule\Component\File\FileSystem;
 class ExportTabController extends ShopConfiguration
 {
     use ConfigurationTrait;
-    use ErrorDisplayTrait;
 
     protected $_sThisTemplate = 'oepersonalization_export_tab.tpl';
 
@@ -74,6 +73,11 @@ class ExportTabController extends ShopConfiguration
      */
     private $isExportSuccessful = false;
 
+    /**
+     * @var ErrorDisplayer
+     */
+    private $errorDisplayer;
+
 
     /**
      * @param null|Factory $factory
@@ -91,6 +95,7 @@ class ExportTabController extends ShopConfiguration
         $this->categoryDataPreparator = $factory->makeCategoryDataPreparatorForExport();
         $this->fileSystem = $factory->makeFileSystem();
         $this->exportFilePathProvider = $factory->makeExportFilePathProvider();
+        $this->errorDisplayer = $factory->makeErrorDisplayer();
 
         $this->_aViewData['sClassMain'] = __CLASS__;
 
@@ -110,7 +115,7 @@ class ExportTabController extends ShopConfiguration
 
         $directoryForFileToExport = $this->exportFilePathProvider->makeDirectoryPath($relativeExportPath);
         if ($this->fileSystem->createDirectory($directoryForFileToExport) === false) {
-            $this->addErrorToDisplay(
+            $this->errorDisplayer->addErrorToDisplay(
                 'Unable to create directory '
                 . $directoryForFileToExport
                 . '. Add write permissions for web user or create this '
@@ -130,7 +135,7 @@ class ExportTabController extends ShopConfiguration
                 $this->executeWritingToFile($relativeExportPath, $productsToExport, $categoriesToExport);
                 $this->isExportSuccessful = true;
             } catch (\Exception $exception) {
-                $this->addErrorToDisplay(
+                $this->errorDisplayer->addErrorToDisplay(
                     'Error occurred while writing data to file with message: '
                     . $exception->getMessage()
                 );

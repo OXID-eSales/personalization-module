@@ -7,14 +7,14 @@
 namespace OxidEsales\PersonalizationModule\Application\Controller\Admin;
 
 /**
- * Trait used for controllers to display errors.
+ * Class used for controllers to display errors.
  */
-trait ErrorDisplayTrait
+class ErrorDisplayer
 {
     /**
      * @param string $errorMessage
      */
-    protected function addErrorToDisplay($errorMessage)
+    public function addErrorToDisplay($errorMessage)
     {
         $exception = oxNew(\OxidEsales\Eshop\Core\Exception\StandardException::class, $errorMessage);
         $utilsView = \OxidEsales\Eshop\Core\Registry::getUtilsView();
