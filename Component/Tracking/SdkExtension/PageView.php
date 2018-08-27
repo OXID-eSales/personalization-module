@@ -15,12 +15,12 @@ class PageView extends \Econda\Tracking\PageView
      * @inheritdoc
      * @return string
      */
-    public function getAsJavaScriptNode()
+    public function getAsJavaScriptNode(): string
     {
         $globalData = $this->getGlobalDataLayer();
         $requestData = $this->getRequestDataLayer();
 
-        $html = array(
+        $html = [
             '<script type="text/javascript">',
             '  if(typeof window.emos3 !== "object" || window.emos3 === null) { window.emos3 = {}; }',
             '  (function(emos) { ',
@@ -53,7 +53,7 @@ class PageView extends \Econda\Tracking\PageView
             '      emos.send(requestData);',
             '  })(window.emos3);',
             '</script>',
-        );
+        ];
         return implode("\n", $html) . "\n";
     }
 }

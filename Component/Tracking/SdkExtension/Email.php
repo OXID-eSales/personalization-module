@@ -33,10 +33,14 @@ class Email extends BaseObject implements TrackingItemInterface
             }
         }
     }
-    
-    public function getTrackingData() {
-        return array(
-            'hashedvalue' => array(array($this->email)),
-        );
+
+    /**
+     * @return array
+     */
+    public function getTrackingData(): array
+    {
+        return [
+            'hashedvalue' => [[$this->email]],
+        ];
     }
 }

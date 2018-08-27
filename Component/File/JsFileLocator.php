@@ -8,7 +8,9 @@ namespace OxidEsales\PersonalizationModule\Component\File;
 
 use Webmozart\PathUtil\Path;
 
-
+/**
+ * Class responsible for returning location to JS file.
+ */
 class JsFileLocator
 {
     const TRACKING_CODE_DIRECTORY_NAME = 'oepersonalization';
@@ -43,7 +45,7 @@ class JsFileLocator
     /**
      * @return string
      */
-    public function getFileName()
+    public function getFileName(): string
     {
         return $this->jsFileName;
     }
@@ -51,7 +53,7 @@ class JsFileLocator
     /**
      * @return string
      */
-    public function getDirectoryName()
+    public function getDirectoryName(): string
     {
         return static::TRACKING_CODE_DIRECTORY_NAME;
     }
@@ -59,7 +61,7 @@ class JsFileLocator
     /**
      * @return string
      */
-    public function getJsDirectoryLocation()
+    public function getJsDirectoryLocation(): string
     {
         return Path::join([$this->documentRootPath, $this->getDirectoryName()]);
     }
@@ -67,7 +69,7 @@ class JsFileLocator
     /**
      * @return string
      */
-    public function getJsFileLocation()
+    public function getJsFileLocation(): string
     {
         return Path::join([$this->getJsDirectoryLocation(), $this->getFileName()]);
     }
@@ -75,7 +77,7 @@ class JsFileLocator
     /**
      * @return string
      */
-    public function getJsFileUrl()
+    public function getJsFileUrl(): string
     {
         return rtrim($this->applicationUrl, '/') . '/' . Path::join([$this->getDirectoryName(), $this->getFileName()]);
     }

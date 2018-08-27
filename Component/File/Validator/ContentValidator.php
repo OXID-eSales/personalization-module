@@ -39,7 +39,7 @@ class ContentValidator implements Validator
     /**
      * @inheritdoc
      */
-    public function validate(File $file, $current_size = null)
+    public function validate(File $file, $current_size = null): bool
     {
         $isValid = true;
         $fileContents = (string) file_get_contents($file);

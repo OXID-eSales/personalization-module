@@ -16,6 +16,9 @@ class FileSystem
 {
     private $filesystem;
 
+    /**
+     * @param SymfonyFileSystem $filesystem
+     */
     public function __construct(SymfonyFileSystem $filesystem)
     {
         $this->filesystem = $filesystem;
@@ -26,7 +29,7 @@ class FileSystem
      *
      * @return bool
      */
-    public function createDirectory($pathToDirectory)
+    public function createDirectory($pathToDirectory): bool
     {
         try {
             $this->filesystem->mkdir($pathToDirectory);
@@ -40,7 +43,7 @@ class FileSystem
      * @param string $path
      * @return bool
      */
-    public function isWritable($path)
+    public function isWritable(string $path): bool
     {
         return is_writable($path);
     }
@@ -50,7 +53,7 @@ class FileSystem
      *
      * @return bool
      */
-    public function isFilePresent($path)
+    public function isFilePresent(string $path): bool
     {
         return $this->filesystem->exists($path);
     }

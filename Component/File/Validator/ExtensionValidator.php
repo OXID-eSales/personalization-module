@@ -27,7 +27,10 @@ class ExtensionValidator implements Validator
      */
     private $filePath;
 
-    public function __construct($filePath)
+    /**
+     * @param string $filePath
+     */
+    public function __construct(string $filePath)
     {
         $this->filePath = $filePath;
     }

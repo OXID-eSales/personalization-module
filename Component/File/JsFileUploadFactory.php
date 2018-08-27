@@ -6,17 +6,26 @@
 
 namespace OxidEsales\PersonalizationModule\Component\File;
 
+use FileUpload\FileUpload;
+use FileUpload\PathResolver\Simple;
 use OxidEsales\PersonalizationModule\Component\File\Validator\ContentValidator;
 use OxidEsales\PersonalizationModule\Component\File\Validator\ExtensionValidator;
 use OxidEsales\PersonalizationModule\Component\File\Validator\PermissionsValidator;
 
+/**
+ * Factory class to build file uploader.
+ */
 class JsFileUploadFactory
 {
     private $pathToUpload;
 
     private $fileName;
 
-    public function __construct($pathToUpload, $fileName)
+    /**
+     * @param string $pathToUpload
+     * @param string $fileName
+     */
+    public function __construct(string $pathToUpload, string $fileName)
     {
         $this->pathToUpload = $pathToUpload;
         $this->fileName = $fileName;
@@ -25,19 +34,20 @@ class JsFileUploadFactory
     /**
      * @return \FileUpload\FileUpload
      */
-    public function makeFileUploader()
+    public function makeFileUploader(): FileUpload
     {
-        $fileForUpload = $_FILES['file_to_upload'];
 
-        $pathResolver = new \FileUpload\PathResolver\Simple($this->pathToUpload);
+        $pathResolver = new Simple($this->pathToUpload);
         $filesystem = new \FileUpload\FileSystem\Simple();
         $validatorSimple = new \FileUpload\Validator\Simple('1M', []);
         $permissionsValidator = new PermissionsValidator($this->pathToUpload, $this->fileName);
         $contentValidator = new ContentValidator();
-        $extensionValidator = new ExtensionValidator($fileForUpload['name']);
+        $fileForUpload = $_FILES['file_to_upload'];
+        $fileName = $fileForUpload['name'] ? $fileForUpload['name'] : '';
+        $extensionValidator = new ExtensionValidator($fileName);
         $fileNameGenerator = new \FileUpload\FileNameGenerator\Custom($this->fileName);
 
-        $fileUpload = new \FileUpload\FileUpload($fileForUpload, $_SERVER);
+        $fileUpload = new FileUpload($fileForUpload, $_SERVER);
         $fileUpload->setPathResolver($pathResolver);
         $fileUpload->setFileSystem($filesystem);
         $fileUpload->addValidator($validatorSimple);

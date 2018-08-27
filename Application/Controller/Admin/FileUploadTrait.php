@@ -7,9 +7,15 @@
 namespace OxidEsales\PersonalizationModule\Application\Controller\Admin;
 
 use OxidEsales\Eshop\Core\Registry;
+use OxidEsales\PersonalizationModule\Component\File\FileSystem;
+use OxidEsales\PersonalizationModule\Component\File\JsFileLocator;
+use FileUpload\FileUpload;
 
 /**
  * Trait used to contain upload functionality for controllers.
+ * @property FileSystem $fileSystem
+ * @property JsFileLocator $fileLocator
+ * @property FileUpload $fileUploader
  */
 trait FileUploadTrait
 {

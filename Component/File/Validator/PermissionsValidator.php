@@ -21,7 +21,11 @@ class PermissionsValidator implements Validator
 
     private $fileName;
 
-    public function __construct($pathToUpload, $fileName)
+    /**
+     * @param string $pathToUpload
+     * @param string $fileName
+     */
+    public function __construct(string $pathToUpload, string $fileName)
     {
         $this->pathToUpload = $pathToUpload;
         $this->fileName = $fileName;
@@ -48,7 +52,7 @@ class PermissionsValidator implements Validator
      * @param  null|int $current_size
      * @return bool
      */
-    public function validate(File $file, $current_size = null)
+    public function validate(File $file, $current_size = null): bool
     {
         $isValid = true;
         if (!is_writable($this->pathToUpload)) {

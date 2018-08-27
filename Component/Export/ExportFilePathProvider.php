@@ -41,7 +41,7 @@ class ExportFilePathProvider
      * @param string $relativePathToDirectory
      * @return string
      */
-    public function makeProductsFilePath(string $relativePathToDirectory)
+    public function makeProductsFilePath(string $relativePathToDirectory): string
     {
         return $this->makeDirectoryPath($relativePathToDirectory) . static::PRODUCTS_FILE_NAME;
     }
@@ -50,7 +50,7 @@ class ExportFilePathProvider
      * @param string $relativePathToDirectory
      * @return string
      */
-    public function makeCategoriesFilePath(string $relativePathToDirectory)
+    public function makeCategoriesFilePath(string $relativePathToDirectory): string
     {
         return $this->makeDirectoryPath($relativePathToDirectory) . static::CATEGORY_FILE_PATH;
     }
