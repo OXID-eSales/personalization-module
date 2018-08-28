@@ -108,8 +108,8 @@ class ExportTabController extends ShopConfiguration
     public function executeExport()
     {
         $categoriesIds = Registry::getRequest()->getRequestEscapedParameter('acat', []);
-        $shouldExportVariants = Registry::getRequest()->getRequestEscapedParameter('blExportVars', true);
-        $shouldExportBaseProducts = Registry::getRequest()->getRequestEscapedParameter('blExportMainVars', true);
+        $shouldExportVariants = (bool) Registry::getRequest()->getRequestEscapedParameter('blExportVars', false);
+        $shouldExportBaseProducts = (bool) Registry::getRequest()->getRequestEscapedParameter('blExportMainVars', false);
         $minimumQuantityInStock = Registry::getRequest()->getRequestEscapedParameter('sExportMinStock', 0);
         $relativeExportPath = $this->relativeExportPath;
 
