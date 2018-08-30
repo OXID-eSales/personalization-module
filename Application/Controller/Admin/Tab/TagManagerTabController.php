@@ -8,7 +8,7 @@ namespace OxidEsales\PersonalizationModule\Application\Controller\Admin\Tab;
 
 use OxidEsales\Eshop\Application\Controller\Admin\ShopConfiguration;
 use OxidEsales\PersonalizationModule\Application\Controller\Admin\ConfigurationTrait;
-use OxidEsales\PersonalizationModule\Application\Controller\Admin\ErrorDisplayer;
+use OxidEsales\PersonalizationModule\Application\Controller\Admin\HttpErrorsDisplayer;
 use OxidEsales\PersonalizationModule\Application\Controller\Admin\FileUploadTrait;
 use OxidEsales\PersonalizationModule\Application\Factory;
 use OxidEsales\PersonalizationModule\Component\File\FileSystem;
@@ -45,7 +45,7 @@ class TagManagerTabController extends ShopConfiguration
     protected $fileUploader;
 
     /**
-     * @var ErrorDisplayer
+     * @var HttpErrorsDisplayer
      */
     protected $errorDisplayer;
 
@@ -60,7 +60,7 @@ class TagManagerTabController extends ShopConfiguration
         $this->fileSystem = $factory->makeFileSystem();
         $this->fileLocator = $factory->makeTagManagerJsFileLocator();
         $this->fileUploader = $factory->makeTagManagerFileUploader();
-        $this->errorDisplayer = $factory->makeErrorDisplayer();
+        $this->errorDisplayer = $factory->makeHttpErrorDisplayer();
         $this->_aViewData['sClassMain'] = __CLASS__;
         parent::__construct();
     }

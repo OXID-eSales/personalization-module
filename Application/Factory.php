@@ -6,9 +6,11 @@
 
 namespace OxidEsales\PersonalizationModule\Application;
 
-use OxidEsales\PersonalizationModule\Application\Controller\Admin\ErrorDisplayer;
+use OxidEsales\PersonalizationModule\Application\Controller\Admin\HttpErrorsDisplayer;
 use OxidEsales\PersonalizationModule\Application\Export\CategoryDataPreparator;
 use OxidEsales\PersonalizationModule\Application\Export\CategoryRepository;
+use OxidEsales\PersonalizationModule\Application\Export\Cli\CliErrorDisplayer;
+use OxidEsales\PersonalizationModule\Application\Export\Exporter;
 use OxidEsales\PersonalizationModule\Application\Export\Helper\SqlGenerator;
 use OxidEsales\PersonalizationModule\Application\Export\Filter\ParentProductsFilter;
 use OxidEsales\PersonalizationModule\Application\Export\ProductRepository;
@@ -26,6 +28,7 @@ use OxidEsales\PersonalizationModule\Application\Tracking\Page\PageMap;
 use OxidEsales\PersonalizationModule\Application\Tracking\ProductPreparation\ProductDataPreparator;
 use OxidEsales\PersonalizationModule\Application\Tracking\ProductPreparation\ProductTitlePreparator;
 use OxidEsales\PersonalizationModule\Application\Tracking\ActivePageEntityPreparator;
+use OxidEsales\PersonalizationModule\Component\ErrorDisplayerInterface;
 use OxidEsales\PersonalizationModule\Component\Export\ColumnNameVariationsGenerator;
 use OxidEsales\PersonalizationModule\Component\Export\CsvWriter;
 use OxidEsales\PersonalizationModule\Component\Export\ExportFilePathProvider;
@@ -222,11 +225,27 @@ class Factory
     }
 
     /**
-     * @return ErrorDisplayer
+     * @return HttpErrorsDisplayer
      */
-    public function makeErrorDisplayer()
+    public function makeHttpErrorDisplayer()
     {
-        return oxNew(ErrorDisplayer::class);
+        return oxNew(HttpErrorsDisplayer::class);
+    }
+
+    /**
+     * @return CliErrorDisplayer
+     */
+    public function makeCliErrorDisplayer()
+    {
+        return oxNew(CliErrorDisplayer::class);
+    }
+
+    /**
+     * @return Exporter
+     */
+    public function makeExporter()
+    {
+        return oxNew(Exporter::class, $this);
     }
 
     /**

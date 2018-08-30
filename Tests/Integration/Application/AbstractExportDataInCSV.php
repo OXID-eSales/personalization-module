@@ -7,18 +7,12 @@
 namespace OxidEsales\PersonalizationModule\Tests\Integration\Application;
 
 use OxidEsales\Eshop\Application\Model\Shop;
+use OxidEsales\Eshop\Core\Registry;
 use OxidEsales\Facts\Facts;
 
 abstract class AbstractExportDataInCSV extends \OxidEsales\TestingLibrary\UnitTestCase
 {
     protected $exportPath = 'export/oepersonalization';
-
-    /**
-     * Prepare the structure and return the shop dir
-     *
-     * @return string
-     */
-    abstract protected function prepareShopStructureForExport();
 
     /**
      * @param bool $exportParentProducts
@@ -31,12 +25,6 @@ abstract class AbstractExportDataInCSV extends \OxidEsales\TestingLibrary\UnitTe
      */
     abstract protected function setParametersForExport($exportParentProducts, $exportVars, $categories, $minStock, $exportPath, $shopId);
 
-    /**
-     * Prepare the structure and return the shop url
-     *
-     * @return string
-     */
-    abstract protected function prepareShopUrlForExport();
 
     /**
      * Executes export functionality.
@@ -195,6 +183,7 @@ abstract class AbstractExportDataInCSV extends \OxidEsales\TestingLibrary\UnitTe
         if (!$this->isEnterpriseEdition()) {
             return;
         }
+        $this->prepareSubShop();
 
         $this->setParametersForExport(
             true,
@@ -205,7 +194,6 @@ abstract class AbstractExportDataInCSV extends \OxidEsales\TestingLibrary\UnitTe
             2
         );
 
-        $this->prepareSubShop();
 
         $lines = $this->prepareAndExecuteCategoriesExport();
 
@@ -277,7 +265,30 @@ abstract class AbstractExportDataInCSV extends \OxidEsales\TestingLibrary\UnitTe
 
     private function prepareSubShop()
     {
-        $this->getConfig()->setShopId(2);
+        $this->switchToShop(2);
+        $this->activateModule('oepersonalization');
+        $this->getConfig()->saveShopConfVar('arr','aCurrencies', [
+            'EUR@ 1.00@ ,@ .@ €@ 2',
+            'GBP@ 0.8565@ .@  @ £@ 2',
+            'CHF@ 1.4326@ ,@ .@ <small>CHF</small>@ 2',
+            'USD@ 1.2994@ .@  @ $@ 2',
+        ], 2);
+        $this->getConfig()->saveShopConfVar('arr','aDetailImageSizes', [
+            'oxpic1' => '540*340',
+            'oxpic2' => '540*340',
+            'oxpic3' => '540*340',
+            'oxpic4' => '540*340',
+            'oxpic5' => '540*340',
+            'oxpic6' => '540*340',
+            'oxpic7' => '540*340',
+            'oxpic8' => '540*340',
+            'oxpic9' => '540*340',
+            'oxpic10' => '540*340',
+            'oxpic11' => '540*340',
+            'oxpic12' => '540*340',
+        ], 2);
+        $this->getConfig()->saveShopConfVar('string','sDefaultImageQuality', '75', 2);
+        $this->getConfig()->saveShopConfVar('bool', 'bl_perfLoadPrice', true, 2);
         $shop = oxNew(Shop::class);
         $shop->load(2);
         $shop->generateViews();
@@ -291,5 +302,72 @@ abstract class AbstractExportDataInCSV extends \OxidEsales\TestingLibrary\UnitTe
         $facts = new Facts;
 
         return ('EE' === $facts->getEdition());
+    }
+
+    /**
+     * Switch shop in session.
+     *
+     * @param int $shopId
+     *
+     * @return int
+     */
+    public function switchToShop($shopId)
+    {
+        $_POST['shp'] = $shopId;
+        $_POST['actshop'] = $shopId;
+        $keepThese = [\OxidEsales\Eshop\Core\ConfigFile::class];
+        $registryKeys = Registry::getKeys();
+        foreach ($registryKeys as $key) {
+            if (in_array($key, $keepThese)) {
+                continue;
+            }
+            Registry::set($key, null);
+        }
+        $utilsObject = new \OxidEsales\Eshop\Core\UtilsObject;
+        $utilsObject->resetInstanceCache();
+        Registry::set(\OxidEsales\Eshop\Core\UtilsObject::class, $utilsObject);
+        \OxidEsales\Eshop\Core\Module\ModuleVariablesLocator::resetModuleVariables();
+        Registry::getSession()->setVariable('shp', $shopId);
+        Registry::set(\OxidEsales\Eshop\Core\Config::class, null);
+        Registry::getConfig()->setConfig(null);
+        Registry::set(\OxidEsales\Eshop\Core\Config::class, null);
+        $moduleVariablesCache = new \OxidEsales\Eshop\Core\FileCache();
+        $shopIdCalculator = new \OxidEsales\Eshop\Core\ShopIdCalculator($moduleVariablesCache);
+
+        return  $shopIdCalculator->getShopId();
+    }
+
+    public function activateModule($moduleId)
+    {
+        $modulesDirectory = Registry::getConfig()->getModulesDir();
+        $moduleList = oxNew(\OxidEsales\Eshop\Core\Module\ModuleList::class);
+        $modules    = $moduleList->getModulesFromDir($modulesDirectory);
+        foreach ($modules as $moduleName => $module) {
+            if ($moduleName == $moduleId) {
+                $moduleCache     = oxNew(\OxidEsales\Eshop\Core\Module\ModuleCache::class, $module);
+                $moduleInstaller = oxNew(\OxidEsales\Eshop\Core\Module\ModuleInstaller::class, $moduleCache);
+                $moduleInstaller->deactivate($module);
+                $moduleInstaller->activate($module);
+            }
+        }
+    }
+
+    /**
+     * Prepare the structure and return the shop url
+     *
+     * @return string
+     */
+    protected function prepareShopUrlForExport()
+    {
+        return Registry::getConfig()->getConfigParam('sShopURL');
+    }
+    /**
+     * Prepare the structure and return the shop dir
+     *
+     * @return string
+     */
+    protected function prepareShopStructureForExport()
+    {
+        return Registry::getConfig()->getConfigParam('sShopDir');
     }
 }

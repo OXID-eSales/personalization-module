@@ -16,7 +16,7 @@ use FileUpload\FileUpload;
  * @property FileSystem $fileSystem
  * @property JsFileLocator $fileLocator
  * @property FileUpload $fileUploader
- * @property ErrorDisplayer $errorDisplayer
+ * @property HttpErrorsDisplayer $errorDisplayer
  */
 trait FileUploadTrait
 {

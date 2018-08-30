@@ -39,11 +39,6 @@ class ExportViaCmdTest extends AbstractExportDataInCSV
         file_put_contents($configFile, '<?php ');
     }
 
-    protected function prepareShopStructureForExport()
-    {
-        return Registry::getConfig()->getConfigParam('sShopDir');
-    }
-
     protected function setParametersForExport($exportParentProducts, $exportVars, $categories, $minStock, $exportPath, $shopId)
     {
         $fileContent = '<?php return ["exportVariants" => '.
@@ -58,11 +53,6 @@ class ExportViaCmdTest extends AbstractExportDataInCSV
         file_put_contents($configFile, $fileContent);
 
         $this->configFile = $configFile;
-    }
-
-    protected function prepareShopUrlForExport()
-    {
-        return Registry::getConfig()->getConfigParam('sShopURL');
     }
 
     protected function runExport($configFile = null)

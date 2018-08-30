@@ -7,13 +7,13 @@
 namespace OxidEsales\PersonalizationModule\Tests\Integration\Application;
 
 use OxidEsales\Eshop\Core\DisplayError;
-use OxidEsales\PersonalizationModule\Application\Controller\Admin\ErrorDisplayer;
+use OxidEsales\PersonalizationModule\Application\Controller\Admin\HttpErrorsDisplayer;
 
 class ErrorsDisplayerTest extends \OxidEsales\TestingLibrary\UnitTestCase
 {
     public function testIfErrorIsSet()
     {
-        $displayer = oxNew(ErrorDisplayer::class);
+        $displayer = oxNew(HttpErrorsDisplayer::class);
         $displayer->addErrorToDisplay('Test error');
         $errors = \OxidEsales\Eshop\Core\Registry::getSession()->getVariable('Errors');
 

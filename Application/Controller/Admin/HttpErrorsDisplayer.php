@@ -9,12 +9,12 @@ namespace OxidEsales\PersonalizationModule\Application\Controller\Admin;
 /**
  * Class used for controllers to display errors.
  */
-class ErrorDisplayer
+class HttpErrorsDisplayer
 {
     /**
      * @param string $errorMessage
      */
-    public function addErrorToDisplay($errorMessage)
+    public function addErrorToDisplay(string $errorMessage)
     {
         $exception = oxNew(\OxidEsales\Eshop\Core\Exception\StandardException::class, $errorMessage);
         $utilsView = \OxidEsales\Eshop\Core\Registry::getUtilsView();
