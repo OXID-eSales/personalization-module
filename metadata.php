@@ -30,6 +30,7 @@ $aModule = array(
         \OxidEsales\Eshop\Application\Component\Widget\ArticleDetails::class => \OxidEsales\PersonalizationModule\Application\Component\Widget\ArticleDetails::class,
         \OxidEsales\Eshop\Application\Controller\ThankYouController::class => \OxidEsales\PersonalizationModule\Application\Controller\ThankYouController::class,
         \OxidEsales\Eshop\Application\Component\Widget\CookieNote::class => \OxidEsales\PersonalizationModule\Application\Component\Widget\CookieNote::class,
+        \OxidEsales\Eshop\Application\Model\Article::class => \OxidEsales\PersonalizationModule\Application\Model\Product::class,
     ],
     'controllers' => [
         'oepersonalizationadmin' => \OxidEsales\PersonalizationModule\Application\Controller\Admin\Tab\Container\TabsContainerController::class,

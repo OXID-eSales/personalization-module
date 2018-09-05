@@ -54,6 +54,69 @@ SET
   `OXACTIVEFROM` = '2008-02-04 17:07:29',
   `OXACTIVETO` = '2600-02-04 17:07:29',
   `OXDELIVERY` = '2008-02-04';
+REPLACE INTO `oxarticles`
+SET
+  `OXID` = '1001',
+  `OXSHOPID` = 1,
+  `OXACTIVE` = 1,
+  `OXARTNUM` = '1001',
+  `OXTITLE` = 'Test product',
+  `OXSHORTDESC` = 'Test product short desc',
+  `OXPRICE` = 10,
+  `OXUNITNAME` = 'kg',
+  `OXUNITQUANTITY` = 2,
+  `OXVAT` = NULL,
+  `OXWEIGHT` = 24,
+  `OXSTOCK` = 15,
+  `OXSTOCKFLAG` = 1,
+  `OXINSERT` = '2008-02-04',
+  `OXTIMESTAMP` = '2008-02-04 17:07:29',
+  `OXLENGTH` = 1,
+  `OXWIDTH` = 2,
+  `OXHEIGHT` = 2,
+  `OXSEARCHKEYS` = 'search1001',
+  `OXISSEARCH` = 1,
+  `OXVARMINPRICE` = 50,
+  `OXTITLE_1` = 'Test product',
+  `OXSHORTDESC_1` = 'Test product short desc',
+  `OXSUBCLASS` = 'oxarticle',
+  `OXACTIVEFROM` = '2008-02-04 17:07:29',
+  `OXACTIVETO` = '2600-02-04 17:07:29',
+  `OXDELIVERY` = '2008-02-04',
+  `OXVARNAME` = 'Variant',
+  `OXVARSTOCK` = '40',
+  `OXVARCOUNT` = '2';
+REPLACE INTO `oxarticles`
+SET
+  `OXID` = '1002',
+  `OXSHOPID` = 1,
+  `OXACTIVE` = 1,
+  `OXARTNUM` = '1002',
+  `OXTITLE` = 'Test variant',
+  `OXSHORTDESC` = 'Test product short desc',
+  `OXPRICE` = 10,
+  `OXUNITNAME` = 'kg',
+  `OXUNITQUANTITY` = 2,
+  `OXVAT` = NULL,
+  `OXWEIGHT` = 24,
+  `OXSTOCK` = 15,
+  `OXSTOCKFLAG` = 1,
+  `OXINSERT` = '2008-02-04',
+  `OXTIMESTAMP` = '2008-02-04 17:07:29',
+  `OXLENGTH` = 1,
+  `OXWIDTH` = 2,
+  `OXHEIGHT` = 2,
+  `OXSEARCHKEYS` = 'search1002',
+  `OXISSEARCH` = 1,
+  `OXVARMINPRICE` = 50,
+  `OXTITLE_1` = 'Test product',
+  `OXSHORTDESC_1` = 'Test product short desc',
+  `OXSUBCLASS` = 'oxarticle',
+  `OXACTIVEFROM` = '2008-02-04 17:07:29',
+  `OXACTIVETO` = '2600-02-04 17:07:29',
+  `OXDELIVERY` = '2008-02-04',
+  `OXPARENTID` = '1001',
+  `OXVARSELECT` = 'Variant 1';
 
 # Add categories demo data.
 REPLACE INTO `oxcategories`
@@ -86,6 +149,20 @@ REPLACE INTO `oxobject2category`
 SET
   `OXID` = 'oepersonalizationid',
   `OXOBJECTID` = '1000',
+  `OXCATNID` = 'oepersonalizationcategoryid',
+  `OXPOS` = 0,
+  `OXTIME` = 1202134861;
+REPLACE INTO `oxobject2category`
+SET
+  `OXID` = 'oepersonalizationid2',
+  `OXOBJECTID` = '1001',
+  `OXCATNID` = 'oepersonalizationcategoryid',
+  `OXPOS` = 0,
+  `OXTIME` = 1202134861;
+REPLACE INTO `oxobject2category`
+SET
+  `OXID` = 'oepersonalizationid3',
+  `OXOBJECTID` = '1002',
   `OXCATNID` = 'oepersonalizationcategoryid',
   `OXPOS` = 0,
   `OXTIME` = 1202134861;

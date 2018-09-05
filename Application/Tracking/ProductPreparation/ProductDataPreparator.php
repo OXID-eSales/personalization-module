@@ -64,20 +64,11 @@ class ProductDataPreparator
      */
     protected function prepareData($product, $categoryPath)
     {
-        $parentProduct = $product->getParentArticle();
-        $currentProductId = (isset($product->oxarticles__oxartnum->value) && $product->oxarticles__oxartnum->value) ? $product->oxarticles__oxartnum->value : $product->getId();
+        $currentProductId = $product->oePersonalizationGetProductId();
         $productData = [
             'pid' => $currentProductId,
-            'sku' => $currentProductId,
+            'sku' => $product->oePersonalizationGetSku(),
         ];
-
-        if ($parentProduct) {
-            $productId = (isset($parentProduct->oxarticles__oxartnum->value) && $parentProduct->oxarticles__oxartnum->value) ? $parentProduct->oxarticles__oxartnum->value : $parentProduct->getId();
-            $productData = [
-                'pid' => $productId,
-                'sku' => $currentProductId,
-            ];
-        }
 
         $currency = Registry::getConfig()->getActShopCurrencyObject();
         $productMergedData = array_merge(

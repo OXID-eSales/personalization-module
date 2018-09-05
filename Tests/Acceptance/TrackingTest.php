@@ -23,6 +23,18 @@ class TrackingTest extends BaseAcceptanceTestCase
         $this->checkIfElementInPage($this->prepareElementForPageId('1startpage/shop/start.tpl'));
     }
 
+    public function testIfParentProductWithoutSku()
+    {
+        $this->open($this->getTestConfig()->getShopUrl() .'index.php?cl=details&cnid=oepersonalizationcategoryid&anid=1001');
+        $this->checkIfElementInPage($this->prepareEvent('[{"type":"view","count":1,"pid":"1001","sku":null,"name":"Test product","group":"Test category\/Test product","price":10,"var1":"NULL","var2":"NULL","var3":"1001"}]'));
+    }
+
+    public function testIfVariantWithSku()
+    {
+        $this->open($this->getTestConfig()->getShopUrl() .'index.php?cl=details&cnid=oepersonalizationcategoryid&anid=1002');
+        $this->checkIfElementInPage($this->prepareEvent('[{"type":"view","count":1,"pid":"1001","sku":"1002","name":"Test product","group":"Test category\/Test product","price":10,"var1":"NULL","var2":"NULL","var3":"1002"}]'));
+    }
+
     public function testAddToBasket()
     {
         $this->addToBasket('1000', 1, 'Start');
