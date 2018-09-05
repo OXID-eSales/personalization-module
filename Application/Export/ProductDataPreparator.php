@@ -7,7 +7,7 @@
 namespace OxidEsales\PersonalizationModule\Application\Export;
 
 use OxidEsales\Eshop\Application\Model\Article;
-use OxidEsales\Eshop\Core\Registry;
+use OxidEsales\PersonalizationModule\Application\Model\Product;
 use OxidEsales\PersonalizationModule\Component\Export\ColumnNameVariationsGenerator;
 
 /**
@@ -47,6 +47,7 @@ class ProductDataPreparator
         $dataToExport = $this->addHeaders($dataToExport);
 
         foreach ($productsIdsForExport as $productData) {
+            /** @var Product $product */
             $product = oxNew(Article::class);
             if ($product->load($productData['OXID'])) {
                 $articleForDescription = $product;
@@ -60,7 +61,8 @@ class ProductDataPreparator
                     $oldPrice = $product->getTPrice()->getBruttoPrice();
                 }
                 $productDataToExport = [
-                    (isset($product->oxarticles__oxartnum->value) && $product->oxarticles__oxartnum->value) ? $product->oxarticles__oxartnum->value : $product->getId(),
+                    $product->oePersonalizationGetProductId(),
+                    $product->oePersonalizationGetSku(),
                 ];
                 $productDataToExport = array_merge(
                     $productDataToExport,
@@ -94,7 +96,7 @@ class ProductDataPreparator
     private function addHeaders($dataToExport)
     {
         $header = array_merge(
-            ['ID'],
+            ['ID', 'SKU'],
             $this->columnNameVariationsGenerator->generateNames('Name'),
             $this->columnNameVariationsGenerator->generateNames('Description'),
             $this->columnNameVariationsGenerator->generateNames('ProductUrl'),
