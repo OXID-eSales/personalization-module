@@ -77,7 +77,7 @@ EOT;
 
             $content->setLanguage(1);
             $content->oxcontents__oxtitle = new Field('Cookie "I agree (activate personalization)" hint');
-            $content->oxcontents__oxcontent = new Field($text);
+            $content->oxcontents__oxcontent = new Field('Please update this text. An example can be found in German language of this entry.');
             $content->save();
         }
     }
@@ -112,7 +112,7 @@ EOT;
 
             $content->setLanguage(1);
             $content->oxcontents__oxtitle = new Field('Cookie "I disagree (deactivate personalization)" hint');
-            $content->oxcontents__oxcontent = new Field($text);
+            $content->oxcontents__oxcontent = new Field('Please update this text. An example can be found in German language of this entry.');
             $content->save();
         }
     }
@@ -122,12 +122,20 @@ EOT;
      */
     protected static function addContentSnippetUpdate()
     {
-        $text = <<<'EOT'
+        $textGerman = <<<'EOT'
 <div id="oepersonalization-update">
     <h4>Tracking</h4>
     <input type="radio" name="oepersonalization-state" value="ALLOW"> Zulassen
     <input type="radio" name="oepersonalization-state" value="DENY"> Verbieten
     <div><button type="button" class="btn btn-primary">Aktualisieren</button></div>
+</div>
+EOT;
+        $textEnglish = <<<'EOT'
+<div id="oepersonalization-update">
+    <h4>Tracking</h4>
+    <input type="radio" name="oepersonalization-state" value="ALLOW"> Allow
+    <input type="radio" name="oepersonalization-state" value="DENY"> Deny
+    <div><button type="button" class="btn btn-primary">Update</button></div>
 </div>
 EOT;
         $sql = "select count(oxid) from `oxcontents` where oxloadid = 'oepersonalizationupdate'";
@@ -139,12 +147,12 @@ EOT;
             $content->setLanguage(0);
             $content->oxcontents__oxloadid = new Field('oepersonalizationupdate');
             $content->oxcontents__oxtitle = new Field('Privacy Protection-Einstellungen');
-            $content->oxcontents__oxcontent = new Field($text);
+            $content->oxcontents__oxcontent = new Field($textGerman);
             $content->save();
 
             $content->setLanguage(1);
             $content->oxcontents__oxtitle = new Field('Privacy protection settings');
-            $content->oxcontents__oxcontent = new Field($text);
+            $content->oxcontents__oxcontent = new Field($textEnglish);
             $content->save();
         }
     }
