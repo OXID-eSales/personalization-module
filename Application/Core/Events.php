@@ -69,8 +69,14 @@ EOT;
             $id = Registry::getUtilsObject()->generateUId();
             $content = oxNew(Content::class);
             $content->setId($id);
+            $content->setLanguage(0);
             $content->oxcontents__oxloadid = new Field('oepersonalizationoptin');
             $content->oxcontents__oxtitle = new Field('Cookie "Ich bin einverstanden (Personalisierung aktivieren)" Hinweis');
+            $content->oxcontents__oxcontent = new Field($text);
+            $content->save();
+
+            $content->setLanguage(1);
+            $content->oxcontents__oxtitle = new Field('Cookie "I agree (activate personalization)" hint');
             $content->oxcontents__oxcontent = new Field($text);
             $content->save();
         }
@@ -98,8 +104,14 @@ EOT;
             $id = Registry::getUtilsObject()->generateUId();
             $content = oxNew(Content::class);
             $content->setId($id);
+            $content->setLanguage(0);
             $content->oxcontents__oxloadid = new Field('oepersonalizationoptout');
             $content->oxcontents__oxtitle = new Field('Cookie "Widerspruch (Personalisierung deaktivieren)" Hinweis');
+            $content->oxcontents__oxcontent = new Field($text);
+            $content->save();
+
+            $content->setLanguage(1);
+            $content->oxcontents__oxtitle = new Field('Cookie "I disagree (deactivate personalization)" hint');
             $content->oxcontents__oxcontent = new Field($text);
             $content->save();
         }
@@ -124,8 +136,14 @@ EOT;
             $id = Registry::getUtilsObject()->generateUId();
             $content = oxNew(Content::class);
             $content->setId($id);
+            $content->setLanguage(0);
             $content->oxcontents__oxloadid = new Field('oepersonalizationupdate');
             $content->oxcontents__oxtitle = new Field('Privacy Protection-Einstellungen');
+            $content->oxcontents__oxcontent = new Field($text);
+            $content->save();
+
+            $content->setLanguage(1);
+            $content->oxcontents__oxtitle = new Field('Privacy protection settings');
             $content->oxcontents__oxcontent = new Field($text);
             $content->save();
         }
