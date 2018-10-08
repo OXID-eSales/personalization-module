@@ -6,7 +6,7 @@
 
 namespace OxidEsales\PersonalizationModule\Tests\Acceptance;
 
-use OxidEsales\Eshop\Core\Config;
+use OxidEsales\TestingLibrary\TestConfig;
 
 abstract class BaseAcceptanceTestCase extends \OxidEsales\TestingLibrary\AcceptanceTestCase
 {
@@ -64,6 +64,11 @@ abstract class BaseAcceptanceTestCase extends \OxidEsales\TestingLibrary\Accepta
         if ($waitForLogin) {
             $this->waitForTextDisappear('%LOGIN%');
         }
+    }
+
+    public function logoutFrontend()
+    {
+        $this->open((new TestConfig)->getShopUrl() . '/index.php?cl=start&fnc=logout&redirect=1');
     }
 
     protected function enableWidgets()

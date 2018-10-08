@@ -43,5 +43,6 @@ trait WidgetsDontShowCases
         $this->clickAndWait("//form[@id='orderConfirmAgbBottom']//button");
 
         $this->assertElementNotPresent(static::THANK_YOU_INFO_WIDGET_ID);
+        $this->logoutFrontend();
     }
 }

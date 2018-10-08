@@ -11,7 +11,7 @@ class TrackingTest extends BaseAcceptanceTestCase
     public function setUp()
     {
         parent::setUp();
-        $this->startMinkSession('goutte');
+        $this->startMinkSession('selenium');
         $this->enableTracking();
         $this->openShop();
     }
@@ -50,7 +50,7 @@ class TrackingTest extends BaseAcceptanceTestCase
     public function testCheckoutStep2()
     {
         $this->addToBasketProductAndGotToCheckoutPage();
-        $this->click("//button[contains(text(), '%CONTINUE_TO_NEXT_STEP%')]");
+        $this->clickAndWait("//button[contains(text(), '%CONTINUE_TO_NEXT_STEP%')]");
 
         $this->checkCommonElements();
         $this->checkIfElementInPage($this->prepareElementForContent('Shop\/Kaufprozess\/Kundendaten'));
@@ -61,8 +61,8 @@ class TrackingTest extends BaseAcceptanceTestCase
     public function testCheckoutStep2WithoutRegistration()
     {
         $this->addToBasketProductAndGotToCheckoutPage();
-        $this->click("//button[contains(text(), '%CONTINUE_TO_NEXT_STEP%')]");
-        $this->click("//div[@id='optionNoRegistration']//button[contains(text(), '%NEXT%')]");
+        $this->clickAndWait("//button[contains(text(), '%CONTINUE_TO_NEXT_STEP%')]");
+        $this->clickAndWait("//div[@id='optionNoRegistration']//button[contains(text(), '%NEXT%')]");
 
         $this->checkCommonElements();
         $this->checkIfElementInPage($this->prepareElementForContent('Shop\/Kaufprozess\/Kundendaten\/OhneReg'));
@@ -73,8 +73,8 @@ class TrackingTest extends BaseAcceptanceTestCase
     public function testCheckoutStep2ExistingUser()
     {
         $this->addToBasketProductAndGotToCheckoutPage();
-        $this->click("//button[contains(text(), '%CONTINUE_TO_NEXT_STEP%')]");
-        $this->click("//div[@id='optionNoRegistration']//button[contains(text(), '%NEXT%')]");
+        $this->clickAndWait("//button[contains(text(), '%CONTINUE_TO_NEXT_STEP%')]");
+        $this->clickAndWait("//div[@id='optionNoRegistration']//button[contains(text(), '%NEXT%')]");
 
         $this->checkCommonElements();
         $this->checkIfElementInPage($this->prepareElementForContent('Shop\/Kaufprozess\/Kundendaten\/OhneReg'));
@@ -85,8 +85,8 @@ class TrackingTest extends BaseAcceptanceTestCase
     public function testCheckoutStep2NewAccount()
     {
         $this->addToBasketProductAndGotToCheckoutPage();
-        $this->click("//button[contains(text(), '%CONTINUE_TO_NEXT_STEP%')]");
-        $this->click("//div[@id='optionRegistration']//button[contains(text(), '%NEXT%')]");
+        $this->clickAndWait("//button[contains(text(), '%CONTINUE_TO_NEXT_STEP%')]");
+        $this->clickAndWait("//div[@id='optionRegistration']//button[contains(text(), '%NEXT%')]");
 
         $this->checkCommonElements();
         $this->checkIfElementInPage($this->prepareElementForContent('Shop\/Kaufprozess\/Kundendaten\/NeuesKonto'));
@@ -97,9 +97,9 @@ class TrackingTest extends BaseAcceptanceTestCase
     public function testCheckoutStep3()
     {
         $this->addToBasketProductAndGotToCheckoutPage();
-        $this->click("//button[contains(text(), '%CONTINUE_TO_NEXT_STEP%')]");
+        $this->clickAndWait("//button[contains(text(), '%CONTINUE_TO_NEXT_STEP%')]");
         $this->logInUser();
-        $this->click("//button[contains(text(), '%CONTINUE_TO_NEXT_STEP%')]");
+        $this->clickAndWait("//button[contains(text(), '%CONTINUE_TO_NEXT_STEP%')]");
 
         $this->checkCommonElements();
         $this->checkIfElementInPage($this->prepareElementForContent('Shop\/Kaufprozess\/Zahlungsoptionen'));
@@ -111,10 +111,10 @@ class TrackingTest extends BaseAcceptanceTestCase
     public function testCheckoutStep4()
     {
         $this->addToBasketProductAndGotToCheckoutPage();
-        $this->click("//button[contains(text(), '%CONTINUE_TO_NEXT_STEP%')]");
+        $this->clickAndWait("//button[contains(text(), '%CONTINUE_TO_NEXT_STEP%')]");
         $this->logInUser();
-        $this->click("//button[contains(text(), '%CONTINUE_TO_NEXT_STEP%')]");
-        $this->click("//button[contains(text(), '%CONTINUE_TO_NEXT_STEP%')]");
+        $this->clickAndWait("//button[contains(text(), '%CONTINUE_TO_NEXT_STEP%')]");
+        $this->clickAndWait("//button[contains(text(), '%CONTINUE_TO_NEXT_STEP%')]");
 
         $this->checkCommonElements();
         $this->checkIfElementInPage($this->prepareElementForContent('Shop\/Kaufprozess\/Bestelluebersicht'));
@@ -126,11 +126,11 @@ class TrackingTest extends BaseAcceptanceTestCase
     public function testCheckThankYouPage()
     {
         $this->addToBasketProductAndGotToCheckoutPage();
-        $this->click("//button[contains(text(), '%CONTINUE_TO_NEXT_STEP%')]");
+        $this->clickAndWait("//button[contains(text(), '%CONTINUE_TO_NEXT_STEP%')]");
         $this->logInUser();
-        $this->click("//button[contains(text(), '%CONTINUE_TO_NEXT_STEP%')]");
-        $this->click("//button[contains(text(), '%CONTINUE_TO_NEXT_STEP%')]");
-        $this->click("//form[@id='orderConfirmAgbBottom']//button");
+        $this->clickAndWait("//button[contains(text(), '%CONTINUE_TO_NEXT_STEP%')]");
+        $this->clickAndWait("//button[contains(text(), '%CONTINUE_TO_NEXT_STEP%')]");
+        $this->clickAndWait("//form[@id='orderConfirmAgbBottom']//button");
 
         $this->checkCommonElements();
         $this->checkIfElementInPage($this->prepareElementForContent('Shop\/Kaufprozess\/Bestaetigung'));
@@ -143,7 +143,7 @@ class TrackingTest extends BaseAcceptanceTestCase
     public function testCheckSearch()
     {
         $this->type("//input[@id='searchParam']", '1000');
-        $this->click("//form[@class='form search']//button");
+        $this->clickAndWait("//form[@class='form search']//button");
 
         $this->checkCommonElements();
         $this->checkIfElementInPage($this->prepareElementForContent('Shop\/Suche'));
@@ -154,7 +154,7 @@ class TrackingTest extends BaseAcceptanceTestCase
     public function testGiftRegistry()
     {
         $this->logInUser();
-        $this->click("//ul/li/a[contains(text(), '%MY_GIFT_REGISTRY%')]");
+        $this->clickAndWait("//ul/li/a[contains(text(), '%MY_GIFT_REGISTRY%')]");
 
         $this->checkCommonElements();
         $this->checkIfElementInPage($this->prepareElementForContent('Service\/Wunschzettel'));
@@ -164,7 +164,7 @@ class TrackingTest extends BaseAcceptanceTestCase
 
     public function testHelp()
     {
-        $this->click("//a[contains(text(), 'Help')]");
+        $this->clickAndWait("//a[contains(text(), 'Help')]");
 
         $this->checkCommonElements();
         $this->checkIfElementInPage($this->prepareElementForContent('Content\/Help - Main'));
@@ -174,13 +174,13 @@ class TrackingTest extends BaseAcceptanceTestCase
     public function testNewsletter()
     {
         $this->type("//input[@id='footer_newsletter_oxusername']", 'test_user_email@oxid-esales.local');
-        $this->click("//button[contains(text(), '%SUBSCRIBE%')]");
+        $this->clickAndWait("//button[contains(text(), '%SUBSCRIBE%')]");
 
         $this->checkCommonElements();
         $this->checkIfElementInPage($this->prepareElementForContent('Service\/Newsletter\/Form'));
         $this->checkIfElementInPage($this->prepareElementForPageId('1newsletterpage/info/newsletter.tpl'));
 
-        $this->click("//button[@id='newsLetterSubmit']");
+        $this->clickAndWait("//button[@id='newsLetterSubmit']");
 
         $this->checkCommonElements();
         $this->checkIfElementInPage($this->prepareElementForContent('Service\/Newsletter\/Success'));
@@ -190,7 +190,7 @@ class TrackingTest extends BaseAcceptanceTestCase
 
     public function testLinks()
     {
-        $this->click("//a[contains(text(), 'Links')]");
+        $this->clickAndWait("//a[contains(text(), 'Links')]");
 
         $this->checkCommonElements();
         $this->checkIfElementInPage($this->prepareElementForContent('Service\/Links'));
@@ -236,7 +236,7 @@ class TrackingTest extends BaseAcceptanceTestCase
 
     public function testLogin()
     {
-        $this->click("//a[contains(text(), '%MY_ACCOUNT%')]");
+        $this->clickAndWait("//a[contains(text(), '%MY_ACCOUNT%')]");
 
         $this->checkCommonElements();
         $this->checkIfElementInPage($this->prepareElementForContent('Login\/Formular\/Login'));
@@ -320,7 +320,7 @@ class TrackingTest extends BaseAcceptanceTestCase
         $this->type("//input[@name='invadr[oxuser__oxzip]']", 'test');
         $this->type("//input[@name='invadr[oxuser__oxcity]']", 'test');
         $this->type("//select[@name='invadr[oxuser__oxcountryid]']", 'a7c40f631fc920687.20179984');
-        $this->click("//button[@id='accUserSaveTop']");
+        $this->clickAndWait("//button[@id='accUserSaveTop']");
 
         $this->checkIfElementInPage($this->prepareElementForLoginEvent(''));
         $this->checkIfElementInPage($this->prepareElementForRegisterEvent(''));
@@ -339,7 +339,7 @@ class TrackingTest extends BaseAcceptanceTestCase
         $this->type("//input[@name='editval[oxuser__oxlname]']", 'test');
         $this->type("//input[@name='editval[oxuser__oxusername]']", 'testing_account@oxid-esales.local');
         $this->type("//input[@name='c_subject']", 'test subject');
-        $this->click("//form[@class='form-horizontal']//button");
+        $this->clickAndWait("//form[@class='form-horizontal']//button[@type='submit']");
 
         $this->checkCommonElements();
         $this->checkIfElementInPage($this->prepareElementForContent('Service\/Kontakt\/Success'));
@@ -354,7 +354,7 @@ class TrackingTest extends BaseAcceptanceTestCase
         $this->type("//input[@name='editval[oxuser__oxfname]']", 'test');
         $this->type("//input[@name='editval[oxuser__oxlname]']", 'test');
         $this->type("//input[@name='editval[oxuser__oxusername]']", 'test');
-        $this->click("//form[@class='form-horizontal']//button");
+        $this->clickAndWait("//form[@class='form-horizontal']//button[@type='submit']");
 
         $this->checkCommonElements();
         $this->checkIfElementInPage($this->prepareElementForContent('Service\/Kontakt\/Form'));
@@ -443,7 +443,7 @@ class TrackingTest extends BaseAcceptanceTestCase
     {
         $this->type("//input[@name='lgn_usr']", 'testing_account@oxid-esales.local');
         $this->type("//input[@name='lgn_pwd']", 'useruser');
-        $this->click("//form[@name='login']//button[contains(text(), '%LOGIN%')]");
+        $this->clickAndWait("//form[@name='login']//button[contains(text(), '%LOGIN%')]");
     }
     
     protected function getSiteId()
@@ -462,8 +462,10 @@ class TrackingTest extends BaseAcceptanceTestCase
      */
     private function checkIfInPageThereIsNoDoubleEvent()
     {
-        $this->open($this->getTestConfig()->getShopUrl() . 'en/Test-category/Test-product.html');
-        $this->click("//button[@id='toBasket']");
+        $this->openArticle('1000');
+//        $this->waitForElement("//button[@id='toBasket']");
+//        $this->open($this->getTestConfig()->getShopUrl() . 'en/Test-category/Test-product.html');
+        $this->clickAndWait("//button[@id='toBasket']");
         $this->checkIfElementNotInPage('{"type":"view"');
         $this->checkIfElementInPage($this->prepareEvent('[{"type":"c_add","count":"1","pid":"1000","sku":"1000","name":"Test product","group":"Test category\/Test product","price":10,"var1":"NULL","var2":"NULL","var3":"1000"}]'));
     }
