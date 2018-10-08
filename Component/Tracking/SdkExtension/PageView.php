@@ -49,7 +49,6 @@ class PageView extends \Econda\Tracking\PageView
             '      }',
             '      if (typeof emosProps !== \'undefined\') {',
             '          Object.assign(requestData, emosProps);',
-            '           console.log(requestData);',
             '      }',
             '      emos.send(requestData);',
             '  })(window.emos3);',
