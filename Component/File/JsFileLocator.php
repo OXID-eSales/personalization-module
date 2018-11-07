@@ -31,15 +31,22 @@ class JsFileLocator
     private $jsFileName;
 
     /**
+     * @var int
+     */
+    private $shopId;
+
+    /**
      * @param string $documentRootPath
      * @param string $jsFileName
      * @param string $applicationUrl
+     * @param int    $shopId
      */
-    public function __construct($documentRootPath, $jsFileName, $applicationUrl)
+    public function __construct($documentRootPath, $jsFileName, $applicationUrl, int $shopId)
     {
         $this->documentRootPath = $documentRootPath;
         $this->jsFileName = $jsFileName;
         $this->applicationUrl = $applicationUrl;
+        $this->shopId = $shopId;
     }
 
     /**
@@ -63,7 +70,9 @@ class JsFileLocator
      */
     public function getJsDirectoryLocation(): string
     {
-        return Path::join([$this->documentRootPath, $this->getDirectoryName()]);
+        $path = Path::join([$this->documentRootPath, $this->getShopAwareDirectoryPath()]);
+
+        return $path;
     }
 
     /**
@@ -79,6 +88,19 @@ class JsFileLocator
      */
     public function getJsFileUrl(): string
     {
-        return rtrim($this->applicationUrl, '/') . '/' . Path::join([$this->getDirectoryName(), $this->getFileName()]);
+        return rtrim($this->applicationUrl, '/') . '/' . Path::join([$this->getShopAwareDirectoryPath(), $this->getFileName()]);
+    }
+
+    /**
+     * @return string
+     */
+    private function getShopAwareDirectoryPath(): string
+    {
+        $directory = $this->getDirectoryName();
+        if ($this->shopId !== 1) {
+            $directory = Path::join([$directory, (string) $this->shopId]);
+        }
+
+        return $directory;
     }
 }

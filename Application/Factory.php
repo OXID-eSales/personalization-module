@@ -6,10 +6,10 @@
 
 namespace OxidEsales\PersonalizationModule\Application;
 
+use OxidEsales\Eshop\Core\ShopIdCalculator;
 use OxidEsales\PersonalizationModule\Application\Controller\Admin\HttpErrorsDisplayer;
 use OxidEsales\PersonalizationModule\Application\Export\CategoryDataPreparator;
 use OxidEsales\PersonalizationModule\Application\Export\CategoryRepository;
-use OxidEsales\PersonalizationModule\Application\Export\Cli\CliErrorDisplayer;
 use OxidEsales\PersonalizationModule\Application\Export\Exporter;
 use OxidEsales\PersonalizationModule\Application\Export\Helper\SqlGenerator;
 use OxidEsales\PersonalizationModule\Application\Export\Filter\ParentProductsFilter;
@@ -28,7 +28,6 @@ use OxidEsales\PersonalizationModule\Application\Tracking\Page\PageMap;
 use OxidEsales\PersonalizationModule\Application\Tracking\ProductPreparation\ProductDataPreparator;
 use OxidEsales\PersonalizationModule\Application\Tracking\ProductPreparation\ProductTitlePreparator;
 use OxidEsales\PersonalizationModule\Application\Tracking\ActivePageEntityPreparator;
-use OxidEsales\PersonalizationModule\Component\ErrorDisplayerInterface;
 use OxidEsales\PersonalizationModule\Component\Export\ColumnNameVariationsGenerator;
 use OxidEsales\PersonalizationModule\Component\Export\CsvWriter;
 use OxidEsales\PersonalizationModule\Component\Export\ExportFilePathProvider;
@@ -55,7 +54,7 @@ class Factory
      */
     public function makeEmosJsFileLocator()
     {
-        return new JsFileLocator(Registry::getConfig()->getOutDir(), EmosFileData::TRACKING_CODE_FILE_NAME, Registry::getConfig()->getOutUrl());
+        return new JsFileLocator(Registry::getConfig()->getOutDir(), EmosFileData::TRACKING_CODE_FILE_NAME, Registry::getConfig()->getOutUrl(), ShopIdCalculator::BASE_SHOP_ID);
     }
 
     /**
@@ -63,7 +62,13 @@ class Factory
      */
     public function makeTagManagerJsFileLocator()
     {
-        return new JsFileLocator(Registry::getConfig()->getOutDir(), TagManagerFileData::TRACKING_CODE_FILE_NAME, Registry::getConfig()->getOutUrl());
+        $config = Registry::getConfig();
+        return new JsFileLocator(
+            $config->getOutDir(),
+            TagManagerFileData::TRACKING_CODE_FILE_NAME,
+            $config->getOutUrl(),
+            $config->getShopId()
+        );
     }
 
     /**
