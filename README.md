@@ -35,7 +35,8 @@ To display products nicely it is needed to disable some of OXID eShop functional
 To comply with the privacy protection laws, the personalization module provides functionality.
 For the tracking, example texts are provided for the opt-in/opt-out notices.
 Be sure to review, update and activate them before using the tracking functionality.
-You can find the texts in "Customer Info" -> "CMS Pages", search for the idents "oepersonalizationoptin" and "oepersonalizationoptout".
+You can find the texts in "Customer Info" -> "CMS Pages", search for the idents "oeecondaanalyticsoptin",
+"oeecondaanalyticsoptout" and "oeecondaanalyticsupdate".
 
 ### Econda Analytics/Tag Manager with OXID eShop on multiple servers
 
