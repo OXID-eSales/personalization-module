@@ -20,10 +20,7 @@
     },
     "require": {
         "php": ">=7.0",
-        "webmozart/path-util": "^2.3",
-        "gargron/fileupload": "^1.4.5",
-        "symfony/filesystem": "^3.0",
-        "econda/tracking": "^3.0.1",
+        "oxid-esales/econda-tracking-component": "^v1.0.0",
         "league/csv": "^9.1.4"
     },
     "bin": [

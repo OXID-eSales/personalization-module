@@ -8,8 +8,8 @@ namespace OxidEsales\PersonalizationModule\Tests\Integration\Application;
 
 use FileUpload\FileUpload;
 use OxidEsales\PersonalizationModule\Application\Factory;
-use OxidEsales\PersonalizationModule\Component\File\FileSystem;
-use OxidEsales\PersonalizationModule\Component\File\JsFileLocator;
+use OxidEsales\EcondaTrackingComponent\File\FileSystem;
+use OxidEsales\EcondaTrackingComponent\File\JsFileLocator;
 
 class FactoryTest extends \OxidEsales\TestingLibrary\UnitTestCase
 {

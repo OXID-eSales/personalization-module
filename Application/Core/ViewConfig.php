@@ -7,7 +7,7 @@
 namespace OxidEsales\PersonalizationModule\Application\Core;
 
 use OxidEsales\PersonalizationModule\Application\Factory;
-use OxidEsales\PersonalizationModule\Application\Tracking\Helper\ActiveUserDataProvider;
+use OxidEsales\EcondaTrackingComponent\Adapter\Helper\ActiveUserDataProvider;
 use OxidEsales\PersonalizationModule\Component\DemoAccountData;
 use OxidEsales\Eshop\Core\Registry;
 

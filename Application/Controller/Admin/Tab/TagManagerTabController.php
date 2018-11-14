@@ -11,8 +11,8 @@ use OxidEsales\PersonalizationModule\Application\Controller\Admin\ConfigurationT
 use OxidEsales\PersonalizationModule\Application\Controller\Admin\HttpErrorsDisplayer;
 use OxidEsales\PersonalizationModule\Application\Controller\Admin\FileUploadTrait;
 use OxidEsales\PersonalizationModule\Application\Factory;
-use OxidEsales\PersonalizationModule\Component\File\FileSystem;
-use OxidEsales\PersonalizationModule\Component\File\JsFileLocator;
+use OxidEsales\EcondaTrackingComponent\File\FileSystem;
+use OxidEsales\EcondaTrackingComponent\File\JsFileLocator;
 use FileUpload\FileUpload;
 
 /**

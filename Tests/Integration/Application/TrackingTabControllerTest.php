@@ -9,7 +9,7 @@ namespace OxidEsales\PersonalizationModule\Tests\Integration\Application;
 use FileUpload\FileUpload;
 use OxidEsales\PersonalizationModule\Application\Controller\Admin\Tab\TrackingTabController;
 use OxidEsales\PersonalizationModule\Application\Factory;
-use OxidEsales\PersonalizationModule\Component\File\FileSystem;
+use OxidEsales\EcondaTrackingComponent\File\FileSystem;
 use stdClass;
 
 class TrackingTabControllerTest extends \OxidEsales\TestingLibrary\UnitTestCase

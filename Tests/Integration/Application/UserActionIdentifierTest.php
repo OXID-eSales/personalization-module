@@ -9,7 +9,7 @@ namespace OxidEsales\PersonalizationModule\Tests\Integration\Application;
 use OxidEsales\Eshop\Application\Model\User;
 use OxidEsales\Eshop\Core\Registry;
 use OxidEsales\PersonalizationModule\Application\Tracking\Helper\UserActionIdentifier;
-use OxidEsales\PersonalizationModule\Application\Tracking\Page\PageIdentifiers;
+use OxidEsales\EcondaTrackingComponent\Adapter\Page\PageIdentifiers;
 use OxidEsales\PersonalizationModule\Tests\Helper\ActiveControllerPreparatorTrait;
 use OxidEsales\PersonalizationModule\Tests\Helper\UserPreparationTrait;
 

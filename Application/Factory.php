@@ -6,41 +6,44 @@
 
 namespace OxidEsales\PersonalizationModule\Application;
 
+use OxidEsales\EcondaTrackingComponent\TrackingCodeGenerator\TrackingCodeGenerator;
+use OxidEsales\EcondaTrackingComponent\TrackingCodeGenerator\TrackingCodeGeneratorInterface;
 use OxidEsales\Eshop\Core\ShopIdCalculator;
 use OxidEsales\PersonalizationModule\Application\Controller\Admin\HttpErrorsDisplayer;
+use OxidEsales\PersonalizationModule\Application\Core\Events;
 use OxidEsales\PersonalizationModule\Application\Export\CategoryDataPreparator;
 use OxidEsales\PersonalizationModule\Application\Export\CategoryRepository;
 use OxidEsales\PersonalizationModule\Application\Export\Exporter;
 use OxidEsales\PersonalizationModule\Application\Export\Helper\SqlGenerator;
 use OxidEsales\PersonalizationModule\Application\Export\Filter\ParentProductsFilter;
 use OxidEsales\PersonalizationModule\Application\Export\ProductRepository;
-use OxidEsales\PersonalizationModule\Application\Tracking\Helper\ActiveControllerCategoryPathBuilder;
-use OxidEsales\PersonalizationModule\Application\Tracking\Helper\ActiveUserDataProvider;
-use OxidEsales\PersonalizationModule\Application\Tracking\Helper\CategoryPathBuilder;
-use OxidEsales\PersonalizationModule\Application\Tracking\Helper\SearchDataProvider;
+use OxidEsales\EcondaTrackingComponent\Adapter\Helper\ActiveControllerCategoryPathBuilder;
+use OxidEsales\EcondaTrackingComponent\Adapter\Helper\ActiveUserDataProvider;
+use OxidEsales\EcondaTrackingComponent\Adapter\Helper\CategoryPathBuilder;
+use OxidEsales\EcondaTrackingComponent\Adapter\Helper\SearchDataProvider;
 use OxidEsales\PersonalizationModule\Application\Tracking\Helper\UserActionIdentifier;
-use OxidEsales\PersonalizationModule\Application\Tracking\Modifiers\OrderStepsMapModifier;
-use OxidEsales\PersonalizationModule\Application\Tracking\Modifiers\PageMapModifier;
-use OxidEsales\PersonalizationModule\Application\Tracking\Modifiers\EntityModifierByCurrentAction;
-use OxidEsales\PersonalizationModule\Application\Tracking\Modifiers\EntityModifierByCurrentBasketAction;
-use OxidEsales\PersonalizationModule\Application\Tracking\Page\PageIdentifiers;
-use OxidEsales\PersonalizationModule\Application\Tracking\Page\PageMap;
-use OxidEsales\PersonalizationModule\Application\Tracking\ProductPreparation\ProductDataPreparator;
-use OxidEsales\PersonalizationModule\Application\Tracking\ProductPreparation\ProductTitlePreparator;
-use OxidEsales\PersonalizationModule\Application\Tracking\ActivePageEntityPreparator;
+use OxidEsales\EcondaTrackingComponent\Adapter\Modifiers\OrderStepsMapModifier;
+use OxidEsales\EcondaTrackingComponent\Adapter\Modifiers\PageMapModifier;
+use OxidEsales\EcondaTrackingComponent\Adapter\Modifiers\EntityModifierByCurrentAction;
+use OxidEsales\EcondaTrackingComponent\Adapter\Modifiers\EntityModifierByCurrentBasketAction;
+use OxidEsales\EcondaTrackingComponent\Adapter\Page\PageIdentifiers;
+use OxidEsales\EcondaTrackingComponent\Adapter\Page\PageMap;
+use OxidEsales\EcondaTrackingComponent\Adapter\ProductPreparation\ProductDataPreparator;
+use OxidEsales\EcondaTrackingComponent\Adapter\ProductPreparation\ProductTitlePreparator;
+use OxidEsales\EcondaTrackingComponent\Adapter\ActivePageEntityPreparator;
 use OxidEsales\PersonalizationModule\Component\Export\ColumnNameVariationsGenerator;
 use OxidEsales\PersonalizationModule\Component\Export\CsvWriter;
 use OxidEsales\PersonalizationModule\Component\Export\ExportFilePathProvider;
-use OxidEsales\PersonalizationModule\Component\Tracking\ActivePageEntity;
-use OxidEsales\PersonalizationModule\Component\Tracking\ActivePageEntityInterface;
-use OxidEsales\PersonalizationModule\Component\Tracking\File\EmosFileData;
+use OxidEsales\EcondaTrackingComponent\TrackingCodeGenerator\ActivePageEntity;
+use OxidEsales\EcondaTrackingComponent\TrackingCodeGenerator\ActivePageEntityInterface;
+use OxidEsales\EcondaTrackingComponent\TrackingCodeGenerator\File\EmosFileData;
 use OxidEsales\PersonalizationModule\Component\Tracking\File\TagManagerFileData;
-use OxidEsales\PersonalizationModule\Component\Tracking\TrackingCodeGenerator;
-use OxidEsales\PersonalizationModule\Component\File\FileSystem;
-use OxidEsales\PersonalizationModule\Component\File\JsFileLocator;
-use OxidEsales\PersonalizationModule\Component\File\JsFileUploadFactory;
+use OxidEsales\EcondaTrackingComponent\File\FileSystem;
+use OxidEsales\EcondaTrackingComponent\File\JsFileLocator;
+use OxidEsales\EcondaTrackingComponent\File\JsFileUploadFactory;
 use OxidEsales\Eshop\Application\Model\User;
 use OxidEsales\Eshop\Core\Registry;
+use OxidEsales\PersonalizationModule\Component\Tracking\TrackingCodeGeneratorDecorator;
 use Smarty;
 use OxidEsales\PersonalizationModule\Application\Export\ProductDataPreparator as ProductDataPreparatorForExport;
 
@@ -54,7 +57,13 @@ class Factory
      */
     public function makeEmosJsFileLocator()
     {
-        return new JsFileLocator(Registry::getConfig()->getOutDir(), EmosFileData::TRACKING_CODE_FILE_NAME, Registry::getConfig()->getOutUrl(), ShopIdCalculator::BASE_SHOP_ID);
+        return new JsFileLocator(
+            Registry::getConfig()->getOutDir(),
+            Events::MODULE_ID,
+            EmosFileData::TRACKING_CODE_FILE_NAME,
+            Registry::getConfig()->getOutUrl(),
+            ShopIdCalculator::BASE_SHOP_ID
+        );
     }
 
     /**
@@ -65,6 +74,7 @@ class Factory
         $config = Registry::getConfig();
         return new JsFileLocator(
             $config->getOutDir(),
+            Events::MODULE_ID,
             TagManagerFileData::TRACKING_CODE_FILE_NAME,
             $config->getOutUrl(),
             $config->getShopId()
@@ -110,14 +120,16 @@ class Factory
     /**
      * @param ActivePageEntityInterface $activePageEntity
      *
-     * @return TrackingCodeGenerator
+     * @return TrackingCodeGeneratorInterface
      */
     public function makeTrackingCodeGenerator(ActivePageEntityInterface $activePageEntity)
     {
-        return new TrackingCodeGenerator(
+        $generator = new TrackingCodeGenerator(
             $activePageEntity,
             $this->makeEmosJsFileLocator()->getJsFileUrl()
         );
+
+        return new TrackingCodeGeneratorDecorator($generator);
     }
 
     /**
@@ -235,14 +247,6 @@ class Factory
     public function makeHttpErrorDisplayer()
     {
         return oxNew(HttpErrorsDisplayer::class);
-    }
-
-    /**
-     * @return CliErrorDisplayer
-     */
-    public function makeCliErrorDisplayer()
-    {
-        return oxNew(CliErrorDisplayer::class);
     }
 
     /**

@@ -10,7 +10,7 @@ use OxidEsales\PersonalizationModule\Application\Controller\Admin\Tab\ExportTabC
 use OxidEsales\PersonalizationModule\Application\Controller\Admin\Tab\TrackingTabController;
 use OxidEsales\PersonalizationModule\Application\Factory;
 use OxidEsales\PersonalizationModule\Component\Export\CsvWriter;
-use OxidEsales\PersonalizationModule\Component\File\FileSystem;
+use OxidEsales\EcondaTrackingComponent\File\FileSystem;
 
 class ExportTabControllerTest extends \OxidEsales\TestingLibrary\UnitTestCase
 {

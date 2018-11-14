@@ -18,6 +18,8 @@ class Events
 {
     const MODULE_NAME = 'module:oepersonalization';
 
+    const MODULE_ID = 'oepersonalization';
+
     /**
      * Execute action on activate event
      */

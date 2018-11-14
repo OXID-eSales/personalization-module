@@ -10,7 +10,7 @@ use OxidEsales\PersonalizationModule\Application\Export\Filter\ParentProductsFil
 use OxidEsales\PersonalizationModule\Application\Factory;
 use OxidEsales\PersonalizationModule\Component\Export\CsvWriter;
 use OxidEsales\PersonalizationModule\Component\Export\ExportFilePathProvider;
-use OxidEsales\PersonalizationModule\Component\File\FileSystem;
+use OxidEsales\EcondaTrackingComponent\File\FileSystem;
 
 /**
  * Class is used to execute products/categories export.

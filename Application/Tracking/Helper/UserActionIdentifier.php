@@ -8,7 +8,7 @@ namespace OxidEsales\PersonalizationModule\Application\Tracking\Helper;
 
 use OxidEsales\Eshop\Application\Model\User;
 use OxidEsales\Eshop\Core\Registry;
-use OxidEsales\PersonalizationModule\Application\Tracking\Page\PageIdentifiers;
+use OxidEsales\EcondaTrackingComponent\Adapter\Page\PageIdentifiers;
 
 /**
  * Class helps to identify user action.
