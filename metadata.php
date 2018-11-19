@@ -12,7 +12,7 @@ $sMetadataVersion = '2.1';
 /**
  * Module information.
  */
-$aModule = array(
+$aModule = [
     'id'           => 'oepersonalization',
     'title'        => 'OXID personalization powered by Econda',
     'description'  => [
@@ -89,4 +89,4 @@ $aModule = array(
     'smartyPluginDirectories' => [
         'Application/Core/Smarty/Plugin'
     ],
-);
+];
