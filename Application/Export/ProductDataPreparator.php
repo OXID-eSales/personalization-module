@@ -61,8 +61,8 @@ class ProductDataPreparator
                     $oldPrice = $product->getTPrice()->getBruttoPrice();
                 }
                 $productDataToExport = [
-                    $product->oePersonalizationGetProductId(),
-                    $product->oePersonalizationGetSku(),
+                    $product->oeEcondaTrackingGetProductId(),
+                    $product->oeEcondaTrackingGetSku(),
                 ];
                 $productDataToExport = array_merge(
                     $productDataToExport,

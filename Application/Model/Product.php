@@ -6,45 +6,14 @@
 
 namespace OxidEsales\PersonalizationModule\Application\Model;
 
+use OxidEsales\EcondaTrackingComponent\Adapter\ProductPreparation\ProductInterface;
 use OxidEsales\Eshop\Application\Model\Article;
 
 /**
  * @mixin \OxidEsales\Eshop\Application\Model\Article
  */
-class Product extends Product_parent
+class Product extends Product_parent implements ProductInterface
 {
-    /**
-     * Method checks if product has variants.
-     *
-     * @deprecated Use oeEcondaTrackingHasVariants method instead.
-     *
-     * @return bool
-     */
-    public function oePersonalizationHasVariants()
-    {
-        return $this->oeEcondaTrackingHasVariants();
-    }
-
-    /**
-     * @deprecated Use oeEcondaTrackingGetSku method instead.
-     *
-     * @return string|null
-     */
-    public function oePersonalizationGetSku()
-    {
-        return $this->oeEcondaTrackingGetSku();
-    }
-
-    /**
-     * @deprecated Use oeEcondaTrackingGetProductId method instead.
-     *
-     * @return string
-     */
-    public function oePersonalizationGetProductId()
-    {
-        return $this->oeEcondaTrackingGetProductId();
-    }
-
     /**
      * Method checks if product has variants.
      *
@@ -73,7 +42,7 @@ class Product extends Product_parent
     public function oeEcondaTrackingGetSku()
     {
         $sku = null;
-        if (!$this->oePersonalizationHasVariants()) {
+        if (!$this->oeEcondaTrackingHasVariants()) {
             $sku = (isset($this->oxarticles__oxartnum->value) && $this->oxarticles__oxartnum->value) ? $this->oxarticles__oxartnum->value : $this->getId();
         }
 

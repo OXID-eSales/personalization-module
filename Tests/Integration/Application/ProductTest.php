@@ -18,7 +18,7 @@ class ProductTest extends UnitTestCase
         $product = oxNew(Article::class);
         $product->load('1952');
 
-        $this->assertTrue($product->oePersonalizationHasVariants());
+        $this->assertTrue($product->oeEcondaTrackingHasVariants());
     }
 
     public function testHasNoVariants()
@@ -27,7 +27,7 @@ class ProductTest extends UnitTestCase
         $product = oxNew(Article::class);
         $product->load('1952_variant_1');
 
-        $this->assertFalse($product->oePersonalizationHasVariants());
+        $this->assertFalse($product->oeEcondaTrackingHasVariants());
     }
 
     public function testGetProductIdForParent()
@@ -36,7 +36,7 @@ class ProductTest extends UnitTestCase
         $product = oxNew(Article::class);
         $product->load('1952');
 
-        $this->assertSame('1952', $product->oePersonalizationGetProductId());
+        $this->assertSame('1952', $product->oeEcondaTrackingGetProductId());
     }
 
     public function testGetProductIdForVariant()
@@ -45,7 +45,7 @@ class ProductTest extends UnitTestCase
         $product = oxNew(Article::class);
         $product->load('1952_variant_1');
 
-        $this->assertSame('1952', $product->oePersonalizationGetProductId());
+        $this->assertSame('1952', $product->oeEcondaTrackingGetProductId());
     }
 
     public function testGetSkuForParent()
@@ -54,7 +54,7 @@ class ProductTest extends UnitTestCase
         $product = oxNew(Article::class);
         $product->load('1952');
 
-        $this->assertSame(null, $product->oePersonalizationGetSku());
+        $this->assertSame(null, $product->oeEcondaTrackingGetSku());
     }
 
     public function testGetSkuForVariant()
@@ -63,7 +63,7 @@ class ProductTest extends UnitTestCase
         $product = oxNew(Article::class);
         $product->load('1952_variant_1');
 
-        $this->assertSame('1952_variant_1', $product->oePersonalizationGetSku());
+        $this->assertSame('1952_variant_1', $product->oeEcondaTrackingGetSku());
     }
 
     public function testGetSkuForProductWithoutVariants()
@@ -72,6 +72,6 @@ class ProductTest extends UnitTestCase
         $product = oxNew(Article::class);
         $product->load('1849');
 
-        $this->assertSame('1849', $product->oePersonalizationGetSku());
+        $this->assertSame('1849', $product->oeEcondaTrackingGetSku());
     }
 }
