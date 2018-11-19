@@ -4,6 +4,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.0.0] - Not released
+
+### Changed
+- Started using `oxid-esales/econda-tracking-component`
+
+### Removed
+- `OxidEsales\PersonalizationModule\Application\Model\Product::oePersonalizationHasVariants()`
+- `OxidEsales\PersonalizationModule\Application\Model\Product::oePersonalizationGetSku()`
+- `OxidEsales\PersonalizationModule\Application\Model\Product::oePersonalizationGetProductId()`
+
+## [1.2.0] - Not released
+
+### Deprecated
+- `OxidEsales\PersonalizationModule\Application\Model::oePersonalizationHasVariants`
+- `OxidEsales\PersonalizationModule\Application\Model::oePersonalizationGetSku`
+- `OxidEsales\PersonalizationModule\Application\Model::oePersonalizationGetProductId`
+
 ## [1.1.0] - 2018-11-12
 
 ### Changed
