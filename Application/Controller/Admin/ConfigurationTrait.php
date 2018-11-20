@@ -6,6 +6,8 @@
 
 namespace OxidEsales\PersonalizationModule\Application\Controller\Admin;
 
+use OxidEsales\Eshop\Core\Registry;
+
 /**
  * Trait used for some of the controllers to provide configuration variables functionality.
  */
@@ -45,7 +47,7 @@ trait ConfigurationTrait
      */
     protected function getConfVarsFromDatabase()
     {
-        $sShopId = $this->getEditObjectId();
+        $sShopId = Registry::getConfig()->getShopId();
         $aDbVariables = $this->loadConfVars($sShopId, $this->_getModuleForConfigVars());
 
         return $aDbVariables['vars'];
