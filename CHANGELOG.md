@@ -21,6 +21,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - `OxidEsales\PersonalizationModule\Application\Model::oePersonalizationGetSku`
 - `OxidEsales\PersonalizationModule\Application\Model::oePersonalizationGetProductId`
 
+## [1.1.1] - 2018-11-20
+
+### Fixed
+- Wrong shop data loaded in admin when clicking on "Econda" menu element.
+
 ## [1.1.0] - 2018-11-12
 
 ### Changed
