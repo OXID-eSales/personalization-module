@@ -18,11 +18,11 @@ trait ConfigurationTrait
      */
     public function render()
     {
-        $aConfVars = $this->getConfVarsFromDatabase();
-        foreach ($this->_aConfParams as $sType => $sParam) {
-            if (is_array($aConfVars[$sType])) {
-                foreach ($aConfVars[$sType] as $sName => $sValue) {
-                    $this->_aViewData[$sName] = $sValue;
+        $configurationVariables = $this->getConfVarsFromDatabase();
+        foreach ($this->_aConfParams as $type => $parameter) {
+            if (is_array($configurationVariables[$type])) {
+                foreach ($configurationVariables[$type] as $name => $value) {
+                    $this->_aViewData[$name] = $value;
                 }
             }
         }
@@ -47,9 +47,9 @@ trait ConfigurationTrait
      */
     protected function getConfVarsFromDatabase()
     {
-        $sShopId = Registry::getConfig()->getShopId();
-        $aDbVariables = $this->loadConfVars($sShopId, $this->_getModuleForConfigVars());
+        $shopId = Registry::getConfig()->getShopId();
+        $databaseVariables = $this->loadConfVars($shopId, $this->_getModuleForConfigVars());
 
-        return $aDbVariables['vars'];
+        return $databaseVariables['vars'];
     }
 }
