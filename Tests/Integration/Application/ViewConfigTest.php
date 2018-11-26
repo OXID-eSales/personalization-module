@@ -162,6 +162,18 @@ class ViewConfigTest extends \OxidEsales\TestingLibrary\UnitTestCase
         $this->assertFalse($this->getViewConfig()->oePersonalizationIsTagManagerActive());
     }
 
+    public function testIsTrackingEnabled()
+    {
+        Registry::getConfig()->setConfigParam('blOePersonalizationTracking', 1);
+        $this->assertTrue($this->getViewConfig()->oePersonalizationIsTrackingEnabled());
+    }
+
+    public function testIsTrackingDisabled()
+    {
+        Registry::getConfig()->setConfigParam('blOePersonalizationTracking', 0);
+        $this->assertFalse($this->getViewConfig()->oePersonalizationIsTrackingEnabled());
+    }
+
     /**
      * @return object|\OxidEsales\Eshop\Core\ViewConfig|ViewConfig
      */

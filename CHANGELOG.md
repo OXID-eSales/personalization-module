@@ -4,12 +4,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [1.2.0] - Not released
+## [1.2.0] - 2018-11-26
+
+### Added
+- `OxidEsales\PersonalizationModule\Application\Core\ViewConfig::oePersonalizationIsTrackingEnabled`
 
 ### Deprecated
 - `OxidEsales\PersonalizationModule\Application\Model::oePersonalizationHasVariants`
 - `OxidEsales\PersonalizationModule\Application\Model::oePersonalizationGetSku`
 - `OxidEsales\PersonalizationModule\Application\Model::oePersonalizationGetProductId`
+
+### Fixed
+- Tracking issue when sometimes empty SiteId and PageId is being sent.
 
 ## [1.1.1] - 2018-11-20
 

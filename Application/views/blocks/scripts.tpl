@@ -1,6 +1,14 @@
 [{$smarty.block.parent}]
 
 [{block name="oepersonalization_add_js_in_head"}]
+    [{if $oViewConf->oePersonalizationIsTrackingEnabled() === true}]
+        <script type="text/javascript">
+            window.emos3 = {
+                stored : [],
+                send : function(p){this.stored.push(p);}
+            };
+        </script>
+    [{/if}]
     [{capture append="oxidBlock_pageHead"}]
         <script type="text/javascript" src="[{$oViewConf->getModuleUrl('oepersonalization', 'out/js/econda-recommendations.js')}]"></script>
         <script type="text/javascript">

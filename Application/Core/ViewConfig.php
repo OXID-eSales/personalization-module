@@ -263,6 +263,14 @@ class ViewConfig extends ViewConfig_parent
     }
 
     /**
+     * @return bool
+     */
+    public function oePersonalizationIsTrackingEnabled(): bool
+    {
+        return (bool) Registry::getConfig()->getConfigParam('blOePersonalizationTracking');
+    }
+
+    /**
      * @return ActiveUserDataProvider
      */
     private function getActiveUserDataProvider()
