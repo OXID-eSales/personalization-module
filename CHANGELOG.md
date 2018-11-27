@@ -16,10 +16,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [1.2.0] - Not released
 
+### Added
+- `OxidEsales\PersonalizationModule\Application\Core\ViewConfig::oePersonalizationIsTrackingEnabled`
+
 ### Deprecated
 - `OxidEsales\PersonalizationModule\Application\Model::oePersonalizationHasVariants`
 - `OxidEsales\PersonalizationModule\Application\Model::oePersonalizationGetSku`
 - `OxidEsales\PersonalizationModule\Application\Model::oePersonalizationGetProductId`
+
+### Fixed
+- Tracking issue when sometimes empty SiteId and PageId is being sent.
 
 ## [1.1.1] - 2018-11-20
 
