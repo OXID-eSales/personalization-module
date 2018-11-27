@@ -20,14 +20,14 @@ class ProductRepository
     /**
      * @var SqlGenerator
      */
-    private $sqlFenerator;
+    private $sqlGenerator;
 
     /**
      * @param SqlGenerator $sqlGenerator
      */
     public function __construct($sqlGenerator)
     {
-        $this->sqlFenerator = $sqlGenerator;
+        $this->sqlGenerator = $sqlGenerator;
     }
 
     /**
@@ -56,7 +56,7 @@ class ProductRepository
         }
 
         if (!is_null($categoriesIds)) {
-            $categoriesIdsQuery = $this->sqlFenerator->makeCategoriesQueryPart($categoriesIds);
+            $categoriesIdsQuery = $this->sqlGenerator->makeCategoriesQueryPart($categoriesIds);
             $query .= $categoriesIdsQuery;
         }
 
