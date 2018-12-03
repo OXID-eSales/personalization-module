@@ -329,8 +329,6 @@ abstract class AbstractExportDataInCSV extends \OxidEsales\TestingLibrary\UnitTe
         \OxidEsales\Eshop\Core\Module\ModuleVariablesLocator::resetModuleVariables();
         Registry::getSession()->setVariable('shp', $shopId);
         Registry::set(\OxidEsales\Eshop\Core\Config::class, null);
-        Registry::getConfig()->setConfig(null);
-        Registry::set(\OxidEsales\Eshop\Core\Config::class, null);
         $moduleVariablesCache = new \OxidEsales\Eshop\Core\FileCache();
         $shopIdCalculator = new \OxidEsales\Eshop\Core\ShopIdCalculator($moduleVariablesCache);
 
