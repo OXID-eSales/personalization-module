@@ -54,7 +54,12 @@ class Factory
      */
     public function makeEmosJsFileLocator()
     {
-        return new JsFileLocator(Registry::getConfig()->getOutDir(), EmosFileData::TRACKING_CODE_FILE_NAME, Registry::getConfig()->getOutUrl(), ShopIdCalculator::BASE_SHOP_ID);
+        return new JsFileLocator(
+            Registry::getConfig()->getOutDir(),
+            EmosFileData::TRACKING_CODE_FILE_NAME,
+            Registry::getConfig()->getOutUrl(null, null, true),
+            ShopIdCalculator::BASE_SHOP_ID
+        );
     }
 
     /**
@@ -66,7 +71,7 @@ class Factory
         return new JsFileLocator(
             $config->getOutDir(),
             TagManagerFileData::TRACKING_CODE_FILE_NAME,
-            $config->getOutUrl(),
+            $config->getOutUrl(null, null, true),
             $config->getShopId()
         );
     }
