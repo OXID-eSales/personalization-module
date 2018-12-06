@@ -61,7 +61,7 @@ class Factory
             Registry::getConfig()->getOutDir(),
             Events::MODULE_ID,
             EmosFileData::TRACKING_CODE_FILE_NAME,
-            Registry::getConfig()->getOutUrl(),
+            Registry::getConfig()->getOutUrl(null, null, true),
             ShopIdCalculator::BASE_SHOP_ID
         );
     }
@@ -76,7 +76,7 @@ class Factory
             $config->getOutDir(),
             Events::MODULE_ID,
             TagManagerFileData::TRACKING_CODE_FILE_NAME,
-            $config->getOutUrl(),
+            $config->getOutUrl(null, null, true),
             $config->getShopId()
         );
     }

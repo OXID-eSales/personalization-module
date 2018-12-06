@@ -14,7 +14,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - `OxidEsales\PersonalizationModule\Application\Model\Product::oePersonalizationGetSku()`
 - `OxidEsales\PersonalizationModule\Application\Model\Product::oePersonalizationGetProductId()`
 
-## [1.2.0] - Not released
+## [1.2.1] - 2018-12-06
+
+### Fixed
+- Mall URL to javascript files [PR-1](https://github.com/OXID-eSales/econda-analytics-module/pull/1)
+
+## [1.2.0] - 2018-11-27
 
 ### Added
 - `OxidEsales\PersonalizationModule\Application\Core\ViewConfig::oePersonalizationIsTrackingEnabled`
