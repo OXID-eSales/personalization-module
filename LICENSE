@@ -8,10 +8,6 @@ OXID eShop End User License Agreement
 module, (ii) related documentation, and (iii) any updates, 
 upgrades and additions to such Software. 
 
-"Software Core": all Software files, which are stored by the installation 
-procedure of the Software on the system in den directory "core" and its 
-subdirectories. 
-
 "Client": in organizational and technical database terms, a self-contained 
 unit in a System with separate master records and its own set of tables, 
 defined and controlled by parameters. View means a dynamic, virtual table 
@@ -40,35 +36,27 @@ installed on systems.
 
 4. Restrictions
 
-4.1. The use of OXID eShop Professional Edition/Enterprise Edition requires
-a valid and effective OXID eShop Support and Maintenance Agreement.
+4.1. The Software may contain software products of other vendors. Such Third
+Party Products may be subject to additional terms, which could be seen after 
+their Composer installation.
 
-4.2. The use of OXID eShop Professional Edition is limited to one (1) Client.
+4.2. You may not modify, adapt or translate the Software Core.
 
-4.3. The use of OXID eShop Enterprise Edition is limited by the number of
-licensed CPUs/ Clients.
-
-4.4. The Software may contain software products of other vendors. Such Third
-Party Products may be subject to additional terms, see under
-http://www.oxid-esales.com/en/eshop/third-party-licenses
-
-4.5. You may not modify, adapt or translate the Software Core.
-
-4.6. Any copy of the Software permitted under the terms of this License must
+4.3. Any copy of the Software permitted under the terms of this License must
 contain the same copyright and other proprietary notices of OXID eSales that
 appear on or in the licensed Software.
 
-4.7. You may not rent, lease, let or sublicense the Software or make the
+4.4. You may not rent, lease, let or sublicense the Software or make the
 Software by any other means available to or accessible by third parties.
 Notwithstanding the aforementioned, you are entitled to assign this License
 or sublicense the Software to Associated Companies, provided that the use of
 all sublicensed Software does in total not exceed the number of licensed CPUs/
 Clients.
 
-4.8. Software provided for testing or demonstration purposes ("Testsoftware")
+4.5. Software provided for testing or demonstration purposes ("Testsoftware")
 may not be used on production systems.
 
-4.9. You may use the Software only in full compliance with applicable laws,
+4.6. You may use the Software only in full compliance with applicable laws,
 including, without limitation, compliance of any collecting, use and
 processing of personal data with applicable data protection laws.
 
@@ -127,9 +115,6 @@ OXID eShop Endnutzer Lizenzvereinbarung
 (ii) die dazugehörige Dokumentation sowie (iii)alle Updates, Upgrades 
 und Ergänzungen hierzu.
 
-"Software Core": alle Dateien, die von der Installationsroutine der Software im
-Programmverzeichnis "core" und dessen Unterverzeichnissen gespeichert wird.
-
 "Mandant": eine organisatorisch und datentechnisch abgeschlossene Einheit
 innerhalb des Systems mit getrennten Stammsätzen und einem eigenständigen Satz
 von Tabellen/Views, die über Parameter gesteuert und kontrolliert wird. View
@@ -157,35 +142,26 @@ machen, vorausgesetzt, diese Kopien sind nicht auf Systemen installiert.
 
 4. Beschränkungen
 
-4.1. Die Nutzung der OXID eShop Professional Edition/Enterprise Edition setzt
-einen gültigen OXID eShop Support- und Wartungsvertrag voraus.
+4.1. Die Software enthält Softwareprodukte von Fremdherstellern. Für diese
+Fremdprodukte gelten zusätzliche Lizenzbestimmungen, die nach deren Composer 
+Installation eingesehen werden können.
 
-4.2. Die Nutzung der OXID eShop Professional Edition ist auf einen (1)
-Mandanten beschränkt.
+4.2. Sie dürfen den Software Core weder umarbeiten, anpassen noch übersetzen.
 
-4.3. Die Nutzung der OXID eShop Enterprise Edition ist auf die Anzahl
-lizensierter CPUs/Mandanten beschränkt.
-
-4.4. Die Software enthält Softwareprodukte von Fremdherstellern. Für diese
-Fremdprodukte gelten zusätzliche Lizenzbestimmungen, siehe
-http://www.oxid-esales.com/de/eshop/fremdlizenzen
-
-4.5. Sie dürfen den Software Core weder umarbeiten, anpassen noch übersetzen.
-
-4.6. Jede gemäß dieser Lizenz zulässige Kopie der Software muss die Urheberrechts-
+4.3. Jede gemäß dieser Lizenz zulässige Kopie der Software muss die Urheberrechts-
 und Schutzrechtsvermerke von OXID eSales tragen, die auf oder in der lizensierten
 Software vorhanden sind.
 
-4.7. Sie dürfen die Software Dritten weder vermieten, verleihen, unterlizensieren
+4.4. Sie dürfen die Software Dritten weder vermieten, verleihen, unterlizensieren
 oder auf Dritte übertragen. Sie dürfen jedoch diese Lizenz auf Verbundene
 Unternehmen übertragen und die Software an Verbundene Unternehmen unterlizensieren,
 wobei auch im Falle der Unterlizenz die Anzahl zulässiger CPUSs/Mandanten
 insgesamt nicht überschritten werden darf.
 
-4.8. Zu Test- oder Demonstrationszwecken überlassene Software ("Testsoftware")
+4.5. Zu Test- oder Demonstrationszwecken überlassene Software ("Testsoftware")
 darf nicht in Produktivsystemen eingesetzt werden.
 
-4.9. Sie dürfen die Software nur in Übereinstimmung mit den anwendbaren
+4.6. Sie dürfen die Software nur in Übereinstimmung mit den anwendbaren
 gesetzlichen Bestimmungen nutzen, insbesondere personenbezogene Daten nur im
 Rahmen der geltenden datenschutzrechtlichen Bestimmungen erheben, nutzen und
 verarbeiten.
