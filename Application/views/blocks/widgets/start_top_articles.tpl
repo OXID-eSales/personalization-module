@@ -16,7 +16,8 @@
                 </div>
             </div>
             <script type="text/javascript">
-                var lang_MORE_INFO = '[{oxmultilang ident="MORE_INFO"}]';
+                [{assign var="moreInfo" value='MORE_INFO'|oxmultilangassign|oxaddslashes}]
+                var lang_MORE_INFO = '[{$moreInfo}]';
                 var widget = new econda.recengine.Widget({
                     element: '#oePersonalizationTopArticles .inner',
                     renderer: {

@@ -54,9 +54,8 @@ class oepersonalization_shortcode extends VisualEditorShortcode
         $output = '';
 
         if ($this->getViewConfig()->oePersonalizationEnableWidgets()) {
-
             $language = Registry::getLang();
-            $lang_MORE_INFO = $language->translateString('MORE_INFO');
+            $lang_MORE_INFO = addslashes($language->translateString('MORE_INFO'));
 
             $elementId = 'oepersonalization-widget-' . $parameters['widgetId'] . '-' . uniqid();
             $accountId = $this->getViewConfig()->oePersonalizationGetAccountId();
