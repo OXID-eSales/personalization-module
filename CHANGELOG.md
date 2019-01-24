@@ -14,6 +14,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - `OxidEsales\PersonalizationModule\Application\Model\Product::oePersonalizationGetSku()`
 - `OxidEsales\PersonalizationModule\Application\Model\Product::oePersonalizationGetProductId()`
 
+## [1.2.2] - 2019-01-24
+
+### Fixed
+- Escape quotes for JS variables.
+
 ## [1.2.1] - 2018-12-06
 
 ### Fixed
