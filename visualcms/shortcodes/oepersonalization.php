@@ -79,20 +79,23 @@ class oepersonalization_shortcode extends VisualEditorShortcode
                         <img alt="{$loadingText}" src="{$loadingImage}" />
                     </div>
                 </div>
-                <script type="text/javascript">
-                    var lang_MORE_INFO = '{$lang_MORE_INFO}';
+
+            [{oxscript add='
+            var lang_MORE_INFO = "{$lang_MORE_INFO}";
+                (function () {
                     var widget = new econda.recengine.Widget({
-                        element: '#{$elementId}',
+                        element: "#{$elementId}",
                         renderer: {
-                            type: 'template',
-                            uri: '{$widgetTemplate}'
+                            type: "template",
+                            uri: "{$widgetTemplate}"
                         },
-                        accountId: '{$accountId}',
-                        id: '{$widgetId}',
-                        chunkSize: parseInt('{$chunkSize}', 10)
+                        accountId: "{$accountId}",
+                        id: "{$widgetId}",
+                        chunkSize: parseInt("{$chunkSize}", 10)
                     });
                     widget.render();
-                </script>
+                })();
+            '}]
 EOT;
         }
 

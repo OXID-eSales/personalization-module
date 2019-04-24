@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [1.3.0] - Not released yet
 
+### Changed
+- Widget rendering call after jQuery inclusion.
+
 ### Added
 - New block `oepersonalization_cookienote` in `Application/views/widget/header/cookienote.tpl`
 

@@ -11,22 +11,25 @@
                     [{include file=$oViewConf->getModulePath('oepersonalization','Application/views/blocks/widgets/includes/preloader.tpl')}]
                 </div>
             </div>
-            <script type="text/javascript">
-                [{assign var="moreInfo" value='MORE_INFO'|oxmultilangassign|oxaddslashes}]
-                var lang_MORE_INFO = '[{$moreInfo}]';
-                var widget = new econda.recengine.Widget({
-                    element: '#oePersonalizationThankYouInfo .inner',
-                    renderer: {
-                        type: 'template',
-                        uri: '[{$oViewConf->oePersonalizationGetThankYouPageTemplateUrl()}]'
-                    },
-                    accountId: '[{$oViewConf->oePersonalizationGetAccountId()}]',
-                    id: '[{$oViewConf->oePersonalizationGetThankYouPageWidgetId()}]',
-                    chunkSize: 4,
-                    autoContext: true
-                });
-                widget.render();
-            </script>
+            [{assign var="moreInfo" value='MORE_INFO'|oxmultilangassign|oxaddslashes}]
+            [{assign var="widgetScript" value='
+                var lang_MORE_INFO = "'|cat:$moreInfo|cat:'";
+                (function () {
+                    var widget = new econda.recengine.Widget({
+                        element: "#oePersonalizationThankYouInfo .inner",
+                        renderer: {
+                            type: "template",
+                            uri: "'|cat:$oViewConf->oePersonalizationGetThankYouPageTemplateUrl()|cat:'"
+                        },
+                        accountId: "'|cat:$oViewConf->oePersonalizationGetAccountId()|cat:'",
+                        id: "'|cat:$oViewConf->oePersonalizationGetThankYouPageWidgetId()|cat:'",
+                        chunkSize: 4,
+                        autoContext: true
+                    });
+                    widget.render();
+                })();
+            '}]
+            [{oxscript add=$widgetScript}]
         </div>
     [{/block}]
 [{/if}]
