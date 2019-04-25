@@ -13,6 +13,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - In `scripts.tpl` removed `oxidBlock_pageHead` capture usages since scripts already in HTML head.
 - Declared types in `Factory` class.
 
+### Removed
+- Not working method `Factory::makeCliErrorDisplayer()`
+
 ### Fixed
 - Widget rendering call after jQuery inclusion, as some times it was not working.
 - JS files wrong inclusion order.

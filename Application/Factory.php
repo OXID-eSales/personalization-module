@@ -240,14 +240,6 @@ class Factory
     }
 
     /**
-     * @return CliErrorDisplayer
-     */
-    public function makeCliErrorDisplayer()
-    {
-        return oxNew(CliErrorDisplayer::class);
-    }
-
-    /**
      * @return Exporter
      */
     public function makeExporter(): Exporter
