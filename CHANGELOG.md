@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 - In `scripts.tpl` removed `oxidBlock_pageHead` capture usages since scripts already in HTML head.
+- Declared types in `Factory` class.
 
 ### Added
 - New block `oepersonalization_cookienote` in `Application/views/widget/header/cookienote.tpl`
