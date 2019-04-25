@@ -6,12 +6,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [1.3.0] - Not released yet
 
+### Added
+- New block `oepersonalization_cookienote` in `Application/views/widget/header/cookienote.tpl`
+
 ### Changed
 - In `scripts.tpl` removed `oxidBlock_pageHead` capture usages since scripts already in HTML head.
 - Declared types in `Factory` class.
-
-### Added
-- New block `oepersonalization_cookienote` in `Application/views/widget/header/cookienote.tpl`
 
 ### Fixed
 - Widget rendering call after jQuery inclusion, as some times it was not working.
