@@ -22,13 +22,6 @@ use OxidEsales\PersonalizationModule\Component\Tracking\SdkExtension\PageView;
 class TrackingCodeGenerator
 {
     /**
-     * URL to the emos.js script-file.
-     *
-     * @var string
-     */
-    private $url = '';
-
-    /**
      * @var ActivePageEntityInterface
      */
     private $activePageEntity;
@@ -40,12 +33,10 @@ class TrackingCodeGenerator
 
     /**
      * @param ActivePageEntityInterface $activePageEntity
-     * @param string                    $urlToFile
      */
-    public function __construct(ActivePageEntityInterface $activePageEntity, $urlToFile = "")
+    public function __construct(ActivePageEntityInterface $activePageEntity)
     {
         $this->activePageEntity = $activePageEntity;
-        $this->url = $urlToFile;
     }
 
     /**
@@ -67,9 +58,7 @@ class TrackingCodeGenerator
         $this->addNewsletterSubscriptionDataToPageView();
         $this->addEmailToPageView();
 
-        $jsCode = "<script type=\"text/javascript\" " .
-            "src=\"" . $this->url . "\" async=\"async\">" . " </script>";
-        $jsCode .= '<script type="text/javascript">';
+        $jsCode = '<script type="text/javascript">';
         $jsCode .= 'econda.privacyprotection.setEmos3PrivacySettings();';
         $jsCode .= '</script>';
         $jsCode .= (string) $this->pageView;

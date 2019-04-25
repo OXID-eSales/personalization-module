@@ -8,11 +8,11 @@
                 send : function(p){this.stored.push(p);}
             };
         </script>
+        <script type="text/javascript" src="[{$oViewConf->oePersonalizationGetTrackingJsFileUrl()}]"></script>
     [{/if}]
-    [{capture append="oxidBlock_pageHead"}]
-        <script type="text/javascript" src="[{$oViewConf->getModuleUrl('oepersonalization', 'out/js/econda-recommendations.js')}]"></script>
+    <script type="text/javascript" src="[{$oViewConf->getModuleUrl('oepersonalization', 'out/js/econda-recommendations.js')}]"></script>
+    [{if $oViewConf->oePersonalizationShowTrackingNote() == 'opt_in'}]
         <script type="text/javascript">
-            [{if $oViewConf->oePersonalizationShowTrackingNote() == 'opt_in'}]
             if (econda.privacyprotection.getPermissionsFromLocalStorage().profile.state === 'UNKNOWN') {
                 var emosProps = {};
                 econda.privacyprotection.applyAndStoreNewPrivacySettings(
@@ -24,8 +24,10 @@
                     }
                 );
             }
-            [{/if}]
-            [{if $oViewConf->oePersonalizationShowTrackingNote() == 'opt_out'}]
+        </script>
+    [{/if}]
+    [{if $oViewConf->oePersonalizationShowTrackingNote() == 'opt_out'}]
+        <script type="text/javascript">
             if (econda.privacyprotection.getPermissionsFromLocalStorage().profile.state === 'UNKNOWN') {
                 var emosProps = {};
                 econda.privacyprotection.applyAndStoreNewPrivacySettings(
@@ -37,9 +39,8 @@
                     }
                 );
             }
-            [{/if}]
         </script>
-    [{/capture}]
+    [{/if}]
     [{oxscript include=$oViewConf->getModuleUrl('oepersonalization','out/js/oepersonalization.js')}]
     [{if $oViewConf->oePersonalizationEnableWidgets()}]
         [{if $oViewConf->oePersonalizationIsLoginAction()}]

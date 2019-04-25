@@ -119,10 +119,7 @@ class Factory
      */
     public function makeTrackingCodeGenerator(ActivePageEntityInterface $activePageEntity)
     {
-        return new TrackingCodeGenerator(
-            $activePageEntity,
-            $this->makeEmosJsFileLocator()->getJsFileUrl()
-        );
+        return new TrackingCodeGenerator($activePageEntity);
     }
 
     /**
