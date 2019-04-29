@@ -9,7 +9,7 @@ $aLang = [
 
     'SHOP_MODULE_GROUP_oepersonalization_account' => 'econda account',
     'SHOP_MODULE_sOePersonalizationAccountId' => 'ID of the econda account',
-    'SHOP_MODULE_blOePersonalizationEnableWidgets' => 'Enable econda recommandation widgets',
+    'SHOP_MODULE_blOePersonalizationEnableWidgets' => 'Enable econda recommendation widgets',
     'SHOP_MODULE_blOePersonalizationUseDemoAccount' => 'Use products from the econda demo shop',
 
     'SHOP_MODULE_GROUP_oepersonalization_start_page_widgets' => 'Start page',

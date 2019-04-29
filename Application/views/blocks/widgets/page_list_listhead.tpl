@@ -13,27 +13,30 @@
                         [{include file=$oViewConf->getModulePath('oepersonalization','Application/views/blocks/widgets/includes/preloader.tpl')}]
                     </div>
                 </div>
-                <script type="text/javascript">
-                    [{assign var="moreInfo" value='MORE_INFO'|oxmultilangassign|oxaddslashes}]
-                    var lang_MORE_INFO = '[{$moreInfo}]';
-                    var widget = new econda.recengine.Widget({
-                        element: '#oePersonalizationListHead .inner',
-                        renderer: {
-                            type: 'template',
-                            uri: '[{$oViewConf->oePersonalizationGetListPageTemplateUrl()}]'
-                        },
-                        accountId: '[{$oViewConf->oePersonalizationGetAccountId()}]',
-                        id: '[{$oViewConf->oePersonalizationGetListPageWidgetId()}]',
-                        context: {
-                            categories: new Array({
-                                type: 'productcategory',
-                                id: '[{$oView->oePersonalizationGetCategoryId()}]'
-                            })
-                        },
-                        chunkSize: 4
-                    });
-                    widget.render();
-                </script>
+                [{assign var="moreInfo" value='MORE_INFO'|oxmultilangassign|oxaddslashes}]
+                [{assign var="widgetScript" value='
+                    var lang_MORE_INFO = "'|cat:$moreInfo|cat:'";
+                    (function () {
+                        var widget = new econda.recengine.Widget({
+                            element: "#oePersonalizationListHead .inner",
+                            renderer: {
+                                type: "template",
+                                uri: "'|cat:$oViewConf->oePersonalizationGetListPageTemplateUrl()|cat:'"
+                            },
+                            accountId: "'|cat:$oViewConf->oePersonalizationGetAccountId()|cat:'",
+                            id: "'|cat:$oViewConf->oePersonalizationGetListPageWidgetId()|cat:'",
+                            context: {
+                                categories: new Array({
+                                    type: "productcategory",
+                                    id: "'|cat:$oView->oePersonalizationGetCategoryId()|cat:'"
+                                })
+                            },
+                            chunkSize: 4
+                        });
+                        widget.render();
+                    })();
+                '}]
+                [{oxscript add=$widgetScript}]
             </div>
         [{/if}]
     [{/block}]

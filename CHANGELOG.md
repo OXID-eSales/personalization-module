@@ -14,6 +14,22 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - `OxidEsales\PersonalizationModule\Application\Model\Product::oePersonalizationGetSku()`
 - `OxidEsales\PersonalizationModule\Application\Model\Product::oePersonalizationGetProductId()`
 
+## [1.3.0] - Not released yet
+
+### Added
+- New block `oepersonalization_cookienote` in `Application/views/widget/header/cookienote.tpl`
+
+### Changed
+- In `scripts.tpl` removed `oxidBlock_pageHead` capture usages since scripts already in HTML head.
+- Declared types in `Factory` class.
+
+### Removed
+- Not working method `Factory::makeCliErrorDisplayer()`
+
+### Fixed
+- Widget rendering call after jQuery inclusion, as some times it was not working.
+- JS files wrong inclusion order.
+
 ## [1.2.2] - 2019-01-24
 
 ### Fixed

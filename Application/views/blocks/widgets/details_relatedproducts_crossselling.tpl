@@ -13,26 +13,29 @@
                         [{include file=$oViewConf->getModulePath('oepersonalization','Application/views/blocks/widgets/includes/preloader.tpl')}]
                     </div>
                 </div>
-                <script type="text/javascript">
-                    [{assign var="moreInfo" value='MORE_INFO'|oxmultilangassign|oxaddslashes}]
-                    var lang_MORE_INFO = '[{$moreInfo}]';
-                    var widget = new econda.recengine.Widget({
-                        element: '#oePersonalizationRelatedProductsCrossSelling .inner',
-                        renderer: {
-                            type: 'template',
-                            uri: '[{$oViewConf->oePersonalizationGetDetailsPageTemplateUrl()}]'
-                        },
-                        accountId: '[{$oViewConf->oePersonalizationGetAccountId()}]',
-                        id: '[{$oViewConf->oePersonalizationGetDetailsPageWidgetId()}]',
-                        context: {
-                            products: new Array({
-                                id: '[{$oView->oePersonalizationGetProductNumber()}]'
-                            })
-                        },
-                        chunkSize: 4
-                    });
-                    widget.render();
-                </script>
+                [{assign var="moreInfo" value='MORE_INFO'|oxmultilangassign|oxaddslashes}]
+                [{assign var="widgetScript" value='
+                    var lang_MORE_INFO = "'|cat:$moreInfo|cat:'";
+                    (function () {
+                        var widget = new econda.recengine.Widget({
+                            element: "#oePersonalizationRelatedProductsCrossSelling .inner",
+                            renderer: {
+                                type: "template",
+                                uri: "'|cat:$oViewConf->oePersonalizationGetDetailsPageTemplateUrl()|cat:'"
+                            },
+                            accountId: "'|cat:$oViewConf->oePersonalizationGetAccountId()|cat:'",
+                            id: "'|cat:$oViewConf->oePersonalizationGetDetailsPageWidgetId()|cat:'",
+                            context: {
+                                products: new Array({
+                                    id:  "'|cat:$oView->oePersonalizationGetProductNumber()|cat:'"
+                                })
+                            },
+                            chunkSize: 4
+                        });
+                        widget.render();
+                    })();
+                '}]
+                [{oxscript add=$widgetScript}]
             </div>
         [{/capture}]
     [{/block}]
