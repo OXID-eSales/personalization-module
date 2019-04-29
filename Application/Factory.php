@@ -122,7 +122,7 @@ class Factory
      *
      * @return TrackingCodeGeneratorInterface
      */
-    public function makeTrackingCodeGenerator(ActivePageEntityInterface $activePageEntity): TrackingCodeGenerator
+    public function makeTrackingCodeGenerator(ActivePageEntityInterface $activePageEntity): TrackingCodeGeneratorInterface
     {
         $generator = new TrackingCodeGenerator($activePageEntity);
         return new TrackingCodeGeneratorDecorator($generator);
