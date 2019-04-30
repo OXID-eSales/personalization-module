@@ -14,7 +14,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - `OxidEsales\PersonalizationModule\Application\Model\Product::oePersonalizationGetSku()`
 - `OxidEsales\PersonalizationModule\Application\Model\Product::oePersonalizationGetProductId()`
 
-## [1.3.0] - Not released yet
+## [1.3.0] - 2019-04-30
 
 ### Added
 - New block `oepersonalization_cookienote` in `Application/views/widget/header/cookienote.tpl`
