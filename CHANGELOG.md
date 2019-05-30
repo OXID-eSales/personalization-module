@@ -6,8 +6,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [2.0.0] - Not released
 
+### Added
+- Ensure module works with PHP 7.2
+
 ### Changed
 - Started using `oxid-esales/econda-tracking-component`
+- Drop support of PHP 7.0.
 
 ### Removed
 - `OxidEsales\PersonalizationModule\Application\Model\Product::oePersonalizationHasVariants()`
@@ -66,3 +70,5 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
   - Sub-shop 2 case: out/oepersonalization/2/tagmanager.js
 
 ## [1.0.0] - 2018-08-23
+
+[2.0.0]: https://github.com/OXID-eSales/oxideshop_pe/compare/v1.3.0...master
