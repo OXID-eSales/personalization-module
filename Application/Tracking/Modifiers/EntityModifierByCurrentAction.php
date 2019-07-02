@@ -104,7 +104,7 @@ class EntityModifierByCurrentAction
                 /** @var \OxidEsales\Eshop\Application\Controller\ThankYouController $currentController */
                 $this->modifyByThankYouController(
                     $currentController->getOrder(),
-                    $activeUser,
+                    $currentController->getOrder()->getOrderUser(),
                     $currentController->getBasket()
                 );
                 break;
