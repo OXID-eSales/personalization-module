@@ -18,7 +18,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - `OxidEsales\PersonalizationModule\Application\Model\Product::oePersonalizationGetSku()`
 - `OxidEsales\PersonalizationModule\Application\Model\Product::oePersonalizationGetProductId()`
 
-## [1.3.1] - Not released yet
+## [1.3.1] - 2019-07-16
 
 ### Fixed
 - Fix empty userId in thank you page for order with guest user.
