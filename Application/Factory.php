@@ -52,7 +52,7 @@ class Factory
     /**
      * @return JsFileLocator
      */
-    public function makeEmosJsFileLocator(): JsFileLocator
+    public function makeEmosJsFileLocator()
     {
         return new JsFileLocator(
             Registry::getConfig()->getOutDir(),
@@ -65,7 +65,7 @@ class Factory
     /**
      * @return JsFileLocator
      */
-    public function makeTagManagerJsFileLocator(): JsFileLocator
+    public function makeTagManagerJsFileLocator()
     {
         $config = Registry::getConfig();
         return new JsFileLocator(
@@ -79,7 +79,7 @@ class Factory
     /**
      * @return FileSystem
      */
-    public function makeFileSystem(): FileSystem
+    public function makeFileSystem()
     {
         return new FileSystem(new \Symfony\Component\Filesystem\Filesystem());
     }
@@ -87,7 +87,7 @@ class Factory
     /**
      * @return \FileUpload\FileUpload
      */
-    public function makeEmosJsFileUploader(): \FileUpload\FileUpload
+    public function makeEmosJsFileUploader()
     {
         $fileLocator = $this->makeEmosJsFileLocator();
         $jsFileUploadFactory = new JsFileUploadFactory(
@@ -101,7 +101,7 @@ class Factory
     /**
      * @return \FileUpload\FileUpload
      */
-    public function makeTagManagerFileUploader(): \FileUpload\FileUpload
+    public function makeTagManagerFileUploader()
     {
         $fileLocator = $this->makeTagManagerJsFileLocator();
         $jsFileUploadFactory = new JsFileUploadFactory(
@@ -117,7 +117,7 @@ class Factory
      *
      * @return TrackingCodeGenerator
      */
-    public function makeTrackingCodeGenerator(ActivePageEntityInterface $activePageEntity): TrackingCodeGenerator
+    public function makeTrackingCodeGenerator(ActivePageEntityInterface $activePageEntity)
     {
         return new TrackingCodeGenerator($activePageEntity);
     }
@@ -125,7 +125,7 @@ class Factory
     /**
      * @return UserActionIdentifier
      */
-    public function makeUserActionIdentifier(): UserActionIdentifier
+    public function makeUserActionIdentifier()
     {
         return oxNew(
             UserActionIdentifier::class,
@@ -139,7 +139,7 @@ class Factory
      *
      * @return ActivePageEntityPreparator
      */
-    public function makeActivePageEntityPreparator($templateEngine): ActivePageEntityPreparator
+    public function makeActivePageEntityPreparator($templateEngine)
     {
         $activeUser = oxNew(User::class);
         $activeUser->loadActiveUser();
@@ -194,7 +194,7 @@ class Factory
     /**
      * @return ProductRepository
      */
-    public function makeProductRepositoryForExport(): ProductRepository
+    public function makeProductRepositoryForExport()
     {
         return oxNew(ProductRepository::class, oxNew(SqlGenerator::class));
     }
@@ -202,7 +202,7 @@ class Factory
     /**
      * @return ParentProductsFilter
      */
-    public function makeParentProductsFilterForExport(): ParentProductsFilter
+    public function makeParentProductsFilterForExport()
     {
         return oxNew(ParentProductsFilter::class);
     }
@@ -210,7 +210,7 @@ class Factory
     /**
      * @return ProductDataPreparatorForExport
      */
-    public function makeProductDataPreparatorForExport(): ProductDataPreparatorForExport
+    public function makeProductDataPreparatorForExport()
     {
         return oxNew(
             ProductDataPreparatorForExport::class,
@@ -222,7 +222,7 @@ class Factory
     /**
      * @return CategoryDataPreparator
      */
-    public function makeCategoryDataPreparatorForExport(): CategoryDataPreparator
+    public function makeCategoryDataPreparatorForExport()
     {
         return oxNew(
             CategoryDataPreparator::class,
@@ -234,7 +234,7 @@ class Factory
     /**
      * @return HttpErrorsDisplayer
      */
-    public function makeHttpErrorDisplayer(): HttpErrorsDisplayer
+    public function makeHttpErrorDisplayer()
     {
         return oxNew(HttpErrorsDisplayer::class);
     }
@@ -242,7 +242,7 @@ class Factory
     /**
      * @return Exporter
      */
-    public function makeExporter(): Exporter
+    public function makeExporter()
     {
         return oxNew(Exporter::class, $this);
     }
@@ -250,7 +250,7 @@ class Factory
     /**
      * @return ExportFilePathProvider
      */
-    public function makeExportFilePathProvider(): ExportFilePathProvider
+    public function makeExportFilePathProvider()
     {
         return new ExportFilePathProvider(Registry::getConfig()->getConfigParam('sShopDir'));
     }
@@ -258,7 +258,7 @@ class Factory
     /**
      * @return CsvWriter
      */
-    public function makeCsvWriterForExport(): CsvWriter
+    public function makeCsvWriterForExport()
     {
         return new CsvWriter();
     }
@@ -266,7 +266,7 @@ class Factory
     /**
      * @return ColumnNameVariationsGenerator
      */
-    public function makeColumnNameVariationsGeneratorForExport(): ColumnNameVariationsGenerator
+    public function makeColumnNameVariationsGeneratorForExport()
     {
         return new ColumnNameVariationsGenerator(count(Registry::getLang()->getLanguageArray(null, true, true)));
     }

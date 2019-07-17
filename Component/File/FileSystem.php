@@ -29,7 +29,7 @@ class FileSystem
      *
      * @return bool
      */
-    public function createDirectory($pathToDirectory): bool
+    public function createDirectory($pathToDirectory)
     {
         try {
             $this->filesystem->mkdir($pathToDirectory);
@@ -43,7 +43,7 @@ class FileSystem
      * @param string $path
      * @return bool
      */
-    public function isWritable(string $path): bool
+    public function isWritable(string $path)
     {
         return is_writable($path);
     }
@@ -53,7 +53,7 @@ class FileSystem
      *
      * @return bool
      */
-    public function isFilePresent(string $path): bool
+    public function isFilePresent(string $path)
     {
         return $this->filesystem->exists($path);
     }

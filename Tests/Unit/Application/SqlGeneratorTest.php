@@ -7,9 +7,8 @@
 namespace OxidEsales\PersonalizationModule\Tests\Unit\Application;
 
 use OxidEsales\PersonalizationModule\Application\Export\Helper\SqlGenerator;
-use PHPUnit\Framework\TestCase;
 
-class SqlGeneratorTest extends TestCase
+class SqlGeneratorTest extends \PHPUnit_Framework_TestCase
 {
     public function sqlGeneratorProvider()
     {
