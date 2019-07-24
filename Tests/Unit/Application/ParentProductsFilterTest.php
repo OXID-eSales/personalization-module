@@ -7,9 +7,8 @@
 namespace OxidEsales\PersonalizationModule\Tests\Unit\Application;
 
 use OxidEsales\PersonalizationModule\Application\Export\Filter\ParentProductsFilter;
-use PHPUnit\Framework\TestCase;
 
-class ParentProductsFilterTest extends TestCase
+class ParentProductsFilterTest extends \PHPUnit_Framework_TestCase
 {
     public function filteringOutProductsProvider()
     {
