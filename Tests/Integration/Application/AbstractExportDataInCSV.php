@@ -344,8 +344,13 @@ abstract class AbstractExportDataInCSV extends \OxidEsales\TestingLibrary\UnitTe
             if ($moduleName == $moduleId) {
                 $moduleCache     = oxNew(\OxidEsales\Eshop\Core\Module\ModuleCache::class, $module);
                 $moduleInstaller = oxNew(\OxidEsales\Eshop\Core\Module\ModuleInstaller::class, $moduleCache);
-                $moduleInstaller->deactivate($module);
-                $moduleInstaller->activate($module);
+                if ($module->isActive()) {
+                    $moduleInstaller->deactivate($module);
+                }
+
+                if (!$module->isActive()) {
+                    $moduleInstaller->activate($module);
+                }
             }
         }
     }
