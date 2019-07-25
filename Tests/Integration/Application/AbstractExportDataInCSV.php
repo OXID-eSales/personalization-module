@@ -8,6 +8,9 @@ namespace OxidEsales\PersonalizationModule\Tests\Integration\Application;
 
 use OxidEsales\Eshop\Application\Model\Shop;
 use OxidEsales\Eshop\Core\Registry;
+use OxidEsales\EshopCommunity\Internal\Application\ContainerFactory;
+use OxidEsales\EshopCommunity\Internal\Module\Configuration\Dao\ShopConfigurationDaoInterface;
+use OxidEsales\EshopCommunity\Internal\Utility\ContextInterface;
 use OxidEsales\Facts\Facts;
 
 abstract class AbstractExportDataInCSV extends \OxidEsales\TestingLibrary\UnitTestCase
@@ -266,6 +269,13 @@ abstract class AbstractExportDataInCSV extends \OxidEsales\TestingLibrary\UnitTe
     private function prepareSubShop()
     {
         $this->switchToShop(2);
+
+        $container = ContainerFactory::getInstance()->getContainer();
+        $environment = $container->get(ContextInterface::class)->getEnvironment();
+        $shopConfigurationDao = $container->get(ShopConfigurationDaoInterface::class);
+        $shopConfiguration = $shopConfigurationDao->get(1, $environment);
+        $shopConfigurationDao->save($shopConfiguration, 2, $environment);
+
         $this->activateModule('oepersonalization');
         $this->getConfig()->saveShopConfVar('arr','aCurrencies', [
             'EUR@ 1.00@ ,@ .@ €@ 2',
