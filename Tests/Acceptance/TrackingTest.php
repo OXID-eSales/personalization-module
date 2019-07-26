@@ -140,6 +140,24 @@ class TrackingTest extends BaseAcceptanceTestCase
         $this->checkIfElementInPage($this->prepareElementForEmailShowEvent('testing_account@oxid-esales.local'));
     }
 
+    public function testCheckGuestUserThankYouPage()
+    {
+        $this->addToBasketProductAndGotToCheckoutPage();
+        $this->clickAndWait("//button[contains(text(), '%CONTINUE_TO_NEXT_STEP%')]");
+        $this->clickAndWait("//div[@id='optionNoRegistration']//button[contains(text(), '%NEXT%')]");
+        $this->logInGuestUser();
+        $this->clickAndWait("//button[contains(text(), '%CONTINUE_TO_NEXT_STEP%')]");
+        $this->clickAndWait("//button[contains(text(), '%CONTINUE_TO_NEXT_STEP%')]");
+        $this->clickAndWait("//form[@id='orderConfirmAgbBottom']//button");
+
+        $this->checkCommonElements();
+        $this->checkIfElementInPage($this->prepareElementForContent('Shop\/Kaufprozess\/Bestaetigung'));
+        $this->checkIfElementInPage($this->prepareElementForPageId('1thankyoupage/checkout/thankyou.tpl'));
+        $this->checkIfElementInPage($this->prepareElementForOrderProcess('5_Bestaetigung'));
+        $this->checkIfElementInPage($this->prepareEvent('[{"type":"buy","count":1,"pid":"1000","sku":"1000","name":"Test product","group":"Test category\/Test product","price":10,"var1":"NULL","var2":"NULL","var3":"1000"}]'));
+        $this->checkIfElementInPage($this->prepareElementForBilling('"2","8a9bd8030e4829e93191a781165af108","Germany\/5\/55\/Berlin\/55555",21.4'));
+    }
+
     public function testCheckSearch()
     {
         $this->type("//input[@id='searchParam']", '1000');
@@ -382,6 +400,11 @@ class TrackingTest extends BaseAcceptanceTestCase
         return "\"orderProcess\":\"$processId\"";
     }
 
+    protected function prepareElementForBilling($value)
+    {
+        return "\"billing\":[$value]";
+    }
+
     protected function prepareElementForSearch($value)
     {
         return "\"search\":$value";
@@ -444,6 +467,18 @@ class TrackingTest extends BaseAcceptanceTestCase
         $this->type("//input[@name='lgn_usr']", 'testing_account@oxid-esales.local');
         $this->type("//input[@name='lgn_pwd']", 'useruser');
         $this->clickAndWait("//form[@name='login']//button[contains(text(), '%LOGIN%')]");
+    }
+
+    protected function logInGuestUser()
+    {
+        $this->type("//input[@id='userLoginName']", "test1@oxid-esales.dev");
+        $this->type("invadr[oxuser__oxfname]", "tname");
+        $this->type("invadr[oxuser__oxlname]", "fname");
+        $this->type("invadr[oxuser__oxstreet]", "test street");
+        $this->type("invadr[oxuser__oxstreetnr]", "10");
+        $this->type("invadr[oxuser__oxzip]", "55555");
+        $this->type("invadr[oxuser__oxcity]", "Berlin");
+        $this->select("invadr[oxuser__oxcountryid]", "Germany");
     }
     
     protected function getSiteId()
