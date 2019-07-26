@@ -7,8 +7,9 @@
 namespace OxidEsales\PersonalizationModule\Tests\Unit\Component;
 
 use OxidEsales\PersonalizationModule\Component\Export\ColumnNameVariationsGenerator;
+use PHPUnit\Framework\TestCase;
 
-class ColumnNameVariationsGeneratorTest extends \PHPUnit_Framework_TestCase
+class ColumnNameVariationsGeneratorTest extends TestCase
 {
     public function testGenerationWhenOnlyOneLanguage()
     {

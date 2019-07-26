@@ -7,8 +7,9 @@
 namespace OxidEsales\PersonalizationModule\Tests\Unit\Component;
 
 use OxidEsales\PersonalizationModule\Component\Export\ExportFilePathProvider;
+use PHPUnit\Framework\TestCase;
 
-class ExportFilePathProviderTest extends \PHPUnit_Framework_TestCase
+class ExportFilePathProviderTest extends TestCase
 {
     public function makeExportDirectoryPathProvider()
     {
