@@ -3,9 +3,10 @@ OXID personalization module powered by Econda
 
 Module adds Econda service functionality.
 
-## Requirements
+## Compatibility
 
-* OXID eShop compilation ^v6.1.0
+* 1.x version of the module works with OXID eShop compilation 6.1.x
+* master branch of the module works with OXID eShop compilations 6.2.x and up
 
 ## Installation
 
