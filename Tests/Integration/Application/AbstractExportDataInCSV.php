@@ -271,10 +271,9 @@ abstract class AbstractExportDataInCSV extends \OxidEsales\TestingLibrary\UnitTe
         $this->switchToShop(2);
 
         $container = ContainerFactory::getInstance()->getContainer();
-        $environment = $container->get(ContextInterface::class)->getEnvironment();
         $shopConfigurationDao = $container->get(ShopConfigurationDaoInterface::class);
-        $shopConfiguration = $shopConfigurationDao->get(1, $environment);
-        $shopConfigurationDao->save($shopConfiguration, 2, $environment);
+        $shopConfiguration = $shopConfigurationDao->get(1);
+        $shopConfigurationDao->save($shopConfiguration, 2);
 
         $this->activateModule('oepersonalization');
         $this->getConfig()->saveShopConfVar('arr','aCurrencies', [
