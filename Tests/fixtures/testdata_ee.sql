@@ -1,7 +1,7 @@
 SET @@session.sql_mode = '';
 
 # Activate en and de languages
-UPDATE `oxconfig` SET `OXVARVALUE` = 0x4dba832f744c5786a371d9df33778f9525f408b6efbc82de7c3c5ae3396caa6f8afb6864afa833b43597cad1fb8f9b8970c8e9098d10aae1be4637faa40a012a04e45a8a1cdd1b2ac3da558638600e58acf70fe8c192b668995bb533dac95be7af7d343b3a9c9b8daeaf4d637f065895346773476d667de331fe40d18765d4b98faf7375e1090587d8dd4bf98ad5005eb30666410920 WHERE `OXVARNAME` = 'aLanguageParams';
+UPDATE `oxconfig` SET `OXVARVALUE` = 'a:2:{s:2:"de";a:3:{s:6:"baseId";i:0;s:6:"active";s:1:"1";s:4:"sort";s:1:"1";}s:2:"en";a:3:{s:6:"baseId";i:1;s:6:"active";s:1:"1";s:4:"sort";s:1:"2";}}' WHERE `OXVARNAME` = 'aLanguageParams';
 
 #set country for default user
 UPDATE oxuser SET oxcountryid = 'a7c40f631fc920687.20179984' where oxid='oxdefaultadmin';
@@ -53,6 +53,6 @@ INSERT INTO `oxshops` (`OXID`, `OXPARENTID`, `OXACTIVE`, `OXISINHERITED`, `OXISM
 (2,	0,	1,	0,	0,	0,	0,	'',	0,	'subshop',	'OXID eShop 6',	'OXID eShop 6',	'',	'',	'online kaufen',	'purchase online',	'',	'',	'Der Onlineshop',	'Online Shop',	'',	'',	'info@myoxideshop.com',	'reply@myoxideshop.com',	'order@myoxideshop.com',	'Ihre Bestellung bei OXID eSales',	'Vielen Dank für Ihre Registrierung im OXID eShop',	'Ihr Passwort im OXID eShop',	'Ihre OXID eSales Bestellung wurde versandt',	'Your order at OXID eShop',	'Thank you for your registration at OXID eShop',	'Your OXID eShop password',	'Your OXID eSales Order has been shipped',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'Your Company Name',	'2425 Maple Street',	'9041',	'Any City, CA',	'United States',	'Bank of America',	'1234567890',	'900 1234567',	'',	'',	'',	'',	'John',	'Doe',	'217-8918712',	'217-8918713',	'www.myoxideshop.com',	'',	'',	'',	'',	'',	'',	'',	'',	'EE',	'6.0.0',	1,	1,	1,	1,	'2018-08-23 13:40:25',	'');
 
 INSERT INTO `oxconfig` (`OXID`, `OXSHOPID`, `OXMODULE`, `OXVARNAME`, `OXVARTYPE`, `OXVARVALUE`) VALUES
-('aLanguagesForShop2', 2, '', 'aLanguages', 'aarr', 0x4dba832f744c5786a371d9df3377ea87f0e2773dbaf685493e0b949a1c149111959424345b628f640a0d92ea6047ec118252e992),
-('aSEOReservedWordsForShop2', 2, '', 'aSEOReservedWords', 'arr', 0x4dba422a71e248f1c8d0aa4c153fcde9eec56a0fcc7c8947b718d1dff30f2db6d7a60c59398fb5e1aa5999cfde45071ab225fba4d72b3ba9c23a4b0adb75314b1e7a2de97adee42d81197c0b48d4621740313f9df1ad63f693b7c47aa031ed88093c0e12eb85a75de769ede4f57823a56c6576106fb7)
+('aLanguagesForShop2', 2, '', 'aLanguages', 'aarr', 'a:2:{s:2:"de";s:7:"Deutsch";s:2:"en";s:7:"English";}'),
+('aSEOReservedWordsForShop2', 2, '', 'aSEOReservedWords', 'arr', 'a:7:{i:0;s:5:"admin";i:1;s:4:"core";i:2;s:6:"export";i:3;s:7:"modules";i:4;s:3:"out";i:5;s:5:"setup";i:6;s:5:"views";}')
 ;

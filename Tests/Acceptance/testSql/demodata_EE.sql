@@ -1,5 +1,5 @@
 # Making EN as default lang.
-UPDATE `oxconfig` SET `OXVARVALUE` = 0x07 WHERE `OXVARNAME` = 'sDefaultLang';
+UPDATE `oxconfig` SET `OXVARVALUE` = '1' WHERE `OXVARNAME` = 'sDefaultLang';
 
 # Add test user data.
 REPLACE INTO `oxuser`
