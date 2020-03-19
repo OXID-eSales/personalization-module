@@ -24,28 +24,6 @@ class EventsTest extends \OxidEsales\TestingLibrary\UnitTestCase
         );
     }
 
-    public function testDoesSetDefaultTrackingShowNoteOnActivate()
-    {
-        Events::onActivate();
-
-        $this->assertEquals(
-            'no',
-            Registry::getConfig()->getConfigParam('sOePersonalizationTrackingShowNote')
-        );
-    }
-
-    public function testDoesNotOverwriteAlreadySetTrackingShowNoteOnActivate()
-    {
-        Registry::getConfig()->setConfigParam('sOePersonalizationTrackingShowNote', 'opt_in');
-
-        Events::onActivate();
-
-        $this->assertEquals(
-            'opt_in',
-            Registry::getConfig()->getConfigParam('sOePersonalizationTrackingShowNote')
-        );
-    }
-
     public function testDoesSetDefaultExportPathConfigurationOnActivate()
     {
         Events::onActivate();
@@ -134,74 +112,6 @@ class EventsTest extends \OxidEsales\TestingLibrary\UnitTestCase
                 'testThankYouTemplate'
             ],
         ];
-    }
-
-    public function testInsertDefaultSnippetForOptIn()
-    {
-        Events::onActivate();
-
-        $sql = "select oxid from `oxcontents` where oxloadid = 'oepersonalizationoptin'";
-        $result = DatabaseProvider::getDb()->getCol($sql);
-        $id = $result[0];
-
-        $content = oxNew(Content::class);
-        $content->load($id);
-
-        $this->assertEquals('oepersonalizationoptin', $content->oxcontents__oxloadid->value);
-    }
-
-    public function testDoesNotOverwriteAlreadySetSnippetForOptIn()
-    {
-        $sql = "delete from `oxcontents` where OXLOADID = 'oepersonalizationoptin'";
-        DatabaseProvider::getDb()->execute($sql);
-
-        $id = Registry::getUtilsObject()->generateUId();
-        $content = oxNew(Content::class);
-        $content->setId($id);
-        $content->oxcontents__oxloadid = new Field('oepersonalizationoptin');
-        $content->oxcontents__oxcontent = new Field('test content');
-        $content->save();
-
-        Events::onActivate();
-
-        $content = oxNew(Content::class);
-        $content->load($id);
-
-        $this->assertEquals('test content', $content->oxcontents__oxcontent->value);
-    }
-
-    public function testInsertDefaultSnippetForOptOut()
-    {
-        Events::onActivate();
-
-        $sql = "select oxid from `oxcontents` where oxloadid = 'oepersonalizationoptout'";
-        $result = DatabaseProvider::getDb()->getCol($sql);
-        $id = $result[0];
-
-        $content = oxNew(Content::class);
-        $content->load($id);
-
-        $this->assertEquals('oepersonalizationoptout', $content->oxcontents__oxloadid->value);
-    }
-
-    public function testDoesNotOverwriteAlreadySetSnippetForOptOut()
-    {
-        $sql = "delete from `oxcontents` where OXLOADID = 'oepersonalizationoptout'";
-        DatabaseProvider::getDb()->execute($sql);
-
-        $id = Registry::getUtilsObject()->generateUId();
-        $content = oxNew(Content::class);
-        $content->setId($id);
-        $content->oxcontents__oxloadid = new Field('oepersonalizationoptout');
-        $content->oxcontents__oxcontent = new Field('test content');
-        $content->save();
-
-        Events::onActivate();
-
-        $content = oxNew(Content::class);
-        $content->load($id);
-
-        $this->assertEquals('test content', $content->oxcontents__oxcontent->value);
     }
 
     public function testInsertDefaultSnippetForUpdate()

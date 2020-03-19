@@ -34,11 +34,6 @@ $aLang = [
 
     'SHOP_MODULE_blOePersonalizationEnableTagManager' => 'Tag Manager aktivieren',
 
-    'SHOP_MODULE_sOePersonalizationTrackingShowNote' => 'Hinweis',
-    'SHOP_MODULE_sOePersonalizationTrackingShowNoteNo' => 'Nicht anzeigen',
-    'SHOP_MODULE_sOePersonalizationTrackingShowNoteOptIn' => '"Ich bin einverstanden (Personalisierung aktivieren)" anzeigen',
-    'SHOP_MODULE_sOePersonalizationTrackingShowNoteOptOut' => '"Widerspruch (Personalisierung deaktivieren)" anzeigen',
-
     'SHOP_MODULE_GROUP_oepersonalization_export' => 'Export',
     'SHOP_MODULE_sOePersonalizationExportPath'=> 'Export-Pfad',
 ];

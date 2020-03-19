@@ -166,14 +166,6 @@ class ViewConfig extends ViewConfig_parent
     /**
      * @return string
      */
-    public function oePersonalizationShowTrackingNote()
-    {
-        return $this->getConfig()->getConfigParam('sOePersonalizationTrackingShowNote');
-    }
-
-    /**
-     * @return string
-     */
     public function oePersonalizationGetExportPath()
     {
         return $this->getConfig()->getConfigParam('sOePersonalizationExportPath');
