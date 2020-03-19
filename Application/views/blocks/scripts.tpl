@@ -11,36 +11,6 @@
         <script type="text/javascript" src="[{$oViewConf->oePersonalizationGetTrackingJsFileUrl()}]"></script>
     [{/if}]
     <script type="text/javascript" src="[{$oViewConf->getModuleUrl('oepersonalization', 'out/js/econda-recommendations.js')}]"></script>
-    [{if $oViewConf->oePersonalizationShowTrackingNote() == 'opt_in'}]
-        <script type="text/javascript">
-            if (econda.privacyprotection.getPermissionsFromLocalStorage().profile.state === 'UNKNOWN') {
-                var emosProps = {};
-                econda.privacyprotection.applyAndStoreNewPrivacySettings(
-                    emosProps,
-                    {
-                        "permissions:profile": {
-                            state: "DENY"
-                        }
-                    }
-                );
-            }
-        </script>
-    [{/if}]
-    [{if $oViewConf->oePersonalizationShowTrackingNote() == 'opt_out'}]
-        <script type="text/javascript">
-            if (econda.privacyprotection.getPermissionsFromLocalStorage().profile.state === 'UNKNOWN') {
-                var emosProps = {};
-                econda.privacyprotection.applyAndStoreNewPrivacySettings(
-                    emosProps,
-                    {
-                        "permissions:profile": {
-                            state: "ALLOW"
-                        }
-                    }
-                );
-            }
-        </script>
-    [{/if}]
     [{oxscript include=$oViewConf->getModuleUrl('oepersonalization','out/js/oepersonalization.js')}]
     [{if $oViewConf->oePersonalizationEnableWidgets()}]
         [{if $oViewConf->oePersonalizationIsLoginAction()}]
