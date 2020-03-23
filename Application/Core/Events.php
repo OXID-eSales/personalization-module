@@ -191,6 +191,18 @@ EOT;
                 'type' => 'str',
                 'value' => 'export/oepersonalization'
             ],
+            [
+                'group' => '',
+                'name' => 'oePersonalizationActive',
+                'type' => 'bool',
+                'value' => ''
+            ],
+            [
+                'group' => '',
+                'name' => 'oePersonalizationContainerId',
+                'type' => 'str',
+                'value' => ''
+            ],
         ];
     }
 }

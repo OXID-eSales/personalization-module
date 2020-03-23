@@ -33,6 +33,8 @@ $aLang = [
     'SHOP_MODULE_blOePersonalizationEnableTracking' => 'Enable econda Analytics',
 
     'SHOP_MODULE_blOePersonalizationEnableTagManager' => 'Enable Tag Manager',
+    'SHOP_MODULE_oePersonalizationActive' => 'Activate Personalization',
+    'SHOP_MODULE_oePersonalizationContainerId' => 'ID of the econda ARP container',
 
     'SHOP_MODULE_GROUP_oepersonalization_export' => 'Export',
     'SHOP_MODULE_sOePersonalizationExportPath'=> 'Export path',

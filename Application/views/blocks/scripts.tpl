@@ -48,5 +48,10 @@
                         j.async=true;j.src='[{$oViewConf->oePersonalizationGetTagManagerJsFileUrl()}]';f.parentNode.insertBefore(j,f);})
                     (document,'econdaTM');</script>
             [{/if}]
+            [{if $oViewConf->showPrivacyProtectionBanner() == true}]
+                <script type="text/javascript" defer="defer" src="https://d35ojb8dweouoy.cloudfront.net/loader/loader.js"
+                        client-key="[{$oViewConf->oePersonalizationGetClientKey()}]"
+                        container-id="[{$oViewConf->oePersonalizationGetContainerId()}]"></script>
+            [{/if}]
     [{/capture}]
 [{/block}]

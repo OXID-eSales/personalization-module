@@ -278,4 +278,32 @@ class ViewConfig extends ViewConfig_parent
     {
         return oxNew(ActiveUserDataProvider::class);
     }
+
+    /**
+     * @return bool
+     */
+    public function oePersonalizationIsActive(): bool
+    {
+        return (bool) Registry::getConfig()->getConfigParam('oePersonalizationActive');
+    }
+
+    /**
+     * @return string
+     */
+    public function oePersonalizationGetContainerId()
+    {
+        return Registry::getConfig()->getConfigParam('oePersonalizationContainerId');
+    }
+
+    /**
+     * @return bool
+     */
+    public function showPrivacyProtectionBanner(): bool
+    {
+        if ($this->oePersonalizationGetAccountId() !== '' && $this->oePersonalizationGetContainerId() !== '') {
+            return $this->oePersonalizationIsActive();
+        }
+
+        return false;
+    }
 }

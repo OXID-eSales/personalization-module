@@ -54,6 +54,17 @@
     </div>
     <br/>
     <div>
+        <input type=hidden name="confbools[oePersonalizationActive]" value=false>
+        <input type="checkbox" name="confbools[oePersonalizationActive]" value=true [{if ($oePersonalizationActive)}]checked[{/if}]>
+        [{oxmultilang ident="SHOP_MODULE_oePersonalizationActive"}]
+    </div>
+    <br/>
+    <div>
+        <input type=text  class="txt" style="width: 250px;" name="confstrs[oePersonalizationContainerId]" value="[{$oePersonalizationContainerId}]">
+        [{oxmultilang ident="SHOP_MODULE_oePersonalizationContainerId"}]
+    </div>
+    <br/>
+    <div>
         <input type="submit" value="[{oxmultilang ident="GENERAL_SAVE"}]">
     </div>
 </form>
