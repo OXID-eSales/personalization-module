@@ -84,7 +84,7 @@ abstract class AbstractExportDataInCSV extends \OxidEsales\TestingLibrary\UnitTe
                 'exportVars' => true,
                 [
                     'ID|SKU|Name|Name_var1|Description|Description_var1|ProductUrl|ProductUrl_var1|ImageUrl|Price|OldPrice|New|Stock|EAN|Brand|ProductCategory',
-                    '1849|1849|"Bar Butler 6 BOTTLES"|"Bar Butler 6 BOTTLES"|||%shopUrl%Geschenke/Bar-Equipment/Bar-Butler-6-BOTTLES.html|%shopUrl%en/Gifts/Bar-Equipment/Bar-Butler-6-BOTTLES.html|%shopUrl%out/pictures/generated/product/1/540_340_75/nopic.jpg|89.9|94|0|6|||8a142c3e49b5a80c1.23676990',
+                    '1849|1849|"Bar ""Butler"" 6 BOTTLES"|"Bar ""Butler"" 6 BOTTLES"|||%shopUrl%Geschenke/Bar-Equipment/Bar-Butler-6-BOTTLES.html|%shopUrl%en/Gifts/Bar-Equipment/Bar-Butler-6-BOTTLES.html|%shopUrl%out/pictures/generated/product/1/540_340_75/nopic.jpg|89.9|94|0|6|||8a142c3e49b5a80c1.23676990',
                     '1952||"Hangover Pack LITTLE HELPER"|"Hangover Set LITTLE HELPER"|||%shopUrl%Geschenke/Hangover-Pack-LITTLE-HELPER.html|%shopUrl%en/Gifts/Hangover-Set-LITTLE-HELPER.html|%shopUrl%out/pictures/generated/product/1/540_340_75/nopic.jpg|6|0|0|22|||8a142c3e4143562a5.46426637',
                     '1952|1952_variant_1|"Hangover Pack LITTLE HELPER"|"Hangover Set LITTLE HELPER"|||%shopUrl%Geschenke/Hangover-Pack-LITTLE-HELPER-1952-variant-1.html|%shopUrl%en/Gifts/Hangover-Set-LITTLE-HELPER-1952-variant-1.html|%shopUrl%out/pictures/generated/product/1/540_340_75/nopic.jpg|6|0|0|22|||8a142c3e4143562a5.46426637',
                     '2024|2024|"Popcornschale PINK"|"Popcorn Bowl PINK"|||%shopUrl%Geschenke/Popcornschale-PINK.html|%shopUrl%en/Gifts/Popcorn-Bowl-PINK.html|%shopUrl%out/pictures/generated/product/1/540_340_75/nopic.jpg|11|0|0|7|||8a142c3e4143562a5.46426637'
@@ -118,7 +118,7 @@ abstract class AbstractExportDataInCSV extends \OxidEsales\TestingLibrary\UnitTe
                 'exportVars' => false,
                 [
                     'ID|SKU|Name|Name_var1|Description|Description_var1|ProductUrl|ProductUrl_var1|ImageUrl|Price|OldPrice|New|Stock|EAN|Brand|ProductCategory',
-                    '1849|1849|"Bar Butler 6 BOTTLES"|"Bar Butler 6 BOTTLES"|||%shopUrl%Geschenke/Bar-Equipment/Bar-Butler-6-BOTTLES.html|%shopUrl%en/Gifts/Bar-Equipment/Bar-Butler-6-BOTTLES.html|%shopUrl%out/pictures/generated/product/1/540_340_75/nopic.jpg|89.9|94|0|6|||8a142c3e49b5a80c1.23676990',
+                    '1849|1849|"Bar ""Butler"" 6 BOTTLES"|"Bar ""Butler"" 6 BOTTLES"|||%shopUrl%Geschenke/Bar-Equipment/Bar-Butler-6-BOTTLES.html|%shopUrl%en/Gifts/Bar-Equipment/Bar-Butler-6-BOTTLES.html|%shopUrl%out/pictures/generated/product/1/540_340_75/nopic.jpg|89.9|94|0|6|||8a142c3e49b5a80c1.23676990',
                     '1952||"Hangover Pack LITTLE HELPER"|"Hangover Set LITTLE HELPER"|||%shopUrl%Geschenke/Hangover-Pack-LITTLE-HELPER.html|%shopUrl%en/Gifts/Hangover-Set-LITTLE-HELPER.html|%shopUrl%out/pictures/generated/product/1/540_340_75/nopic.jpg|6|0|0|22|||8a142c3e4143562a5.46426637',
                     '2024|2024|"Popcornschale PINK"|"Popcorn Bowl PINK"|||%shopUrl%Geschenke/Popcornschale-PINK.html|%shopUrl%en/Gifts/Popcorn-Bowl-PINK.html|%shopUrl%out/pictures/generated/product/1/540_340_75/nopic.jpg|11|0|0|7|||8a142c3e4143562a5.46426637'
                 ]
@@ -226,7 +226,7 @@ abstract class AbstractExportDataInCSV extends \OxidEsales\TestingLibrary\UnitTe
         $lines = $this->prepareAndExecuteProductExport();
         $expectedContent = [
             'ID|SKU|Name|Name_var1|Description|Description_var1|ProductUrl|ProductUrl_var1|ImageUrl|Price|OldPrice|New|Stock|EAN|Brand|ProductCategory',
-            '8888|8888|"Bar Butler 6 BOTTLES"|"Bar Butler 6 BOTTLES"|||%shopUrl%Geschenke/Bar-Butler-6-BOTTLES.html?shp=2|%shopUrl%en/Gifts/Bar-Butler-6-BOTTLES.html?shp=2|%shopUrl%out/pictures/generated/product/1/540_340_75/nopic.jpg|89.9|94|0|6|||subshopcategoryid'
+            '8888|8888|"Bar ""Butler"" 6 BOTTLES"|"Bar ""Butler"" 6 BOTTLES"|||%shopUrl%Geschenke/Bar-Butler-6-BOTTLES.html?shp=2|%shopUrl%en/Gifts/Bar-Butler-6-BOTTLES.html?shp=2|%shopUrl%out/pictures/generated/product/1/540_340_75/nopic.jpg|89.9|94|0|6|||subshopcategoryid'
         ];
         array_walk($expectedContent, function(&$item) use ($shopUrl) {
             $item = str_replace('%shopUrl%', $shopUrl, $item);

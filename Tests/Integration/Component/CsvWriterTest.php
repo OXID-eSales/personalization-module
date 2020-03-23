@@ -47,6 +47,32 @@ class CsvWriterTest extends \OxidEsales\TestingLibrary\UnitTestCase
         $this->assertSame($expectedFormat, file_get_contents($filePath));
     }
 
+    public function testBasicRFC4180Conversions()
+    {
+        $data = [
+            ['Test header1', 'Test header2'],
+            ['test', '"test"'],
+            ['bl ank', '"bl ank"'],
+            ['col"on', '"col"on"']
+        ];
+
+        $rootPath = $this->getPathToVirtualFileSystem();
+        $filePath = $rootPath . 'export/oepersonalization/new_file.csv';
+
+        $writer = new CsvWriter();
+        $writer->write($filePath, $data);
+
+        $expectedCsv = [
+            '"Test header1"|"Test header2"',
+            'test|"""test"""',
+            '"bl ank"|"""bl ank"""',
+            '"col""on"|"""col""on"""'
+        ];
+
+        $lines = array_map('trim', file($filePath));
+        $this->assertSame($expectedCsv, $lines);
+    }
+
     /**
      * @return string
      */
