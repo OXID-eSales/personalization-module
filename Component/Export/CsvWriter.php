@@ -25,6 +25,7 @@ class CsvWriter implements WriterInterface
 
         $csv = Writer::createFromPath($filePath, 'a+');
         $csv->setDelimiter('|');
+        $csv->setEscape('');
 
         $csv->insertAll($dataToExport);
     }
