@@ -6,8 +6,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [3.0.0] - Not released
 
+### Changed
+- Increase `oxid-esales/econda-tracking-component` version to `v1.1.0` in composer.json file.
+- Increase `php` version to `7.3` in composer.json file.
+
 ### Fixed
 - Adapt module tests to removal of oxconfig encoding feature.
+- Fixed compatibility issues regarding `setUp` and `tearDown` phpunit methods.
 
 ## [2.0.0] - Not released
 
@@ -81,4 +86,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [1.0.0] - 2018-08-23
 
-[2.0.0]: https://github.com/OXID-eSales/oxideshop_pe/compare/v1.3.0...master
+[3.0.0]: https://github.com/OXID-eSales/personalization-module/compare/b-2.x...master
+[2.0.0]: https://github.com/OXID-eSales/personalization-module/compare/v1.3.1...b-2.x
+[1.3.1]: https://github.com/OXID-eSales/personalization-module/compare/v1.3.0...v1.3.1
+[1.3.0]: https://github.com/OXID-eSales/personalization-module/compare/v1.2.2...v1.3.0
+[1.2.2]: https://github.com/OXID-eSales/personalization-module/compare/v1.2.1...v1.2.2
+[1.2.1]: https://github.com/OXID-eSales/personalization-module/compare/v1.2.0...v1.2.1
+[1.2.0]: https://github.com/OXID-eSales/personalization-module/compare/v1.1.1...v1.2.0
+[1.1.1]: https://github.com/OXID-eSales/personalization-module/compare/v1.1.0...v1.1.1
+[1.1.0]: https://github.com/OXID-eSales/personalization-module/compare/v1.0.0...v1.1.0
+[1.0.0]: https://github.com/OXID-eSales/personalization-module/compare/df7baef7b886b1a983fe24e4f782b0954d076b1d...v1.0.0

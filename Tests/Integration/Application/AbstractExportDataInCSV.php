@@ -9,8 +9,7 @@ namespace OxidEsales\PersonalizationModule\Tests\Integration\Application;
 use OxidEsales\Eshop\Application\Model\Shop;
 use OxidEsales\Eshop\Core\Registry;
 use OxidEsales\EshopCommunity\Internal\Container\ContainerFactory;
-use OxidEsales\EshopCommunity\Internal\Framework\Module\Configuration\Dao\ShopConfigurationDaoInterface;
-use OxidEsales\EshopCommunity\Internal\Transition\Utility\ContextInterface;
+use OxidEsales\EshopCommunity\Internal\Framework\Module\Configuration\Bridge\ShopConfigurationDaoBridgeInterface;
 use OxidEsales\Facts\Facts;
 
 abstract class AbstractExportDataInCSV extends \OxidEsales\TestingLibrary\UnitTestCase
@@ -268,12 +267,13 @@ abstract class AbstractExportDataInCSV extends \OxidEsales\TestingLibrary\UnitTe
 
     private function prepareSubShop()
     {
-        $this->switchToShop(2);
-
+        $subShopId = 2;
         $container = ContainerFactory::getInstance()->getContainer();
-        $shopConfigurationDao = $container->get(ShopConfigurationDaoInterface::class);
-        $shopConfiguration = $shopConfigurationDao->get(1);
-        $shopConfigurationDao->save($shopConfiguration, 2);
+        /** @var ShopConfigurationDaoBridgeInterface $shopConfigurationDaoBridge */
+        $shopConfigurationDaoBridge = $container->get(ShopConfigurationDaoBridgeInterface::class);
+        $shopConfiguration = $shopConfigurationDaoBridge->get();
+        Registry::getConfig()->setShopId($subShopId);
+        $shopConfigurationDaoBridge->save($shopConfiguration);
 
         $this->activateModule('oepersonalization');
         $this->getConfig()->saveShopConfVar('arr','aCurrencies', [
@@ -281,7 +281,7 @@ abstract class AbstractExportDataInCSV extends \OxidEsales\TestingLibrary\UnitTe
             'GBP@ 0.8565@ .@  @ £@ 2',
             'CHF@ 1.4326@ ,@ .@ <small>CHF</small>@ 2',
             'USD@ 1.2994@ .@  @ $@ 2',
-        ], 2);
+        ], $subShopId);
         $this->getConfig()->saveShopConfVar('arr','aDetailImageSizes', [
             'oxpic1' => '540*340',
             'oxpic2' => '540*340',
@@ -295,11 +295,11 @@ abstract class AbstractExportDataInCSV extends \OxidEsales\TestingLibrary\UnitTe
             'oxpic10' => '540*340',
             'oxpic11' => '540*340',
             'oxpic12' => '540*340',
-        ], 2);
-        $this->getConfig()->saveShopConfVar('string','sDefaultImageQuality', '75', 2);
-        $this->getConfig()->saveShopConfVar('bool', 'bl_perfLoadPrice', true, 2);
+        ], $subShopId);
+        $this->getConfig()->saveShopConfVar('string','sDefaultImageQuality', '75', $subShopId);
+        $this->getConfig()->saveShopConfVar('bool', 'bl_perfLoadPrice', true, $subShopId);
         $shop = oxNew(Shop::class);
-        $shop->load(2);
+        $shop->load($subShopId);
         $shop->generateViews();
     }
 
@@ -311,37 +311,6 @@ abstract class AbstractExportDataInCSV extends \OxidEsales\TestingLibrary\UnitTe
         $facts = new Facts;
 
         return ('EE' === $facts->getEdition());
-    }
-
-    /**
-     * Switch shop in session.
-     *
-     * @param int $shopId
-     *
-     * @return int
-     */
-    public function switchToShop($shopId)
-    {
-        $_POST['shp'] = $shopId;
-        $_POST['actshop'] = $shopId;
-        $keepThese = [\OxidEsales\Eshop\Core\ConfigFile::class];
-        $registryKeys = Registry::getKeys();
-        foreach ($registryKeys as $key) {
-            if (in_array($key, $keepThese)) {
-                continue;
-            }
-            Registry::set($key, null);
-        }
-        $utilsObject = new \OxidEsales\Eshop\Core\UtilsObject;
-        $utilsObject->resetInstanceCache();
-        Registry::set(\OxidEsales\Eshop\Core\UtilsObject::class, $utilsObject);
-        \OxidEsales\Eshop\Core\Module\ModuleVariablesLocator::resetModuleVariables();
-        Registry::getSession()->setVariable('shp', $shopId);
-        Registry::set(\OxidEsales\Eshop\Core\Config::class, null);
-        $moduleVariablesCache = new \OxidEsales\Eshop\Core\FileCache();
-        $shopIdCalculator = new \OxidEsales\Eshop\Core\ShopIdCalculator($moduleVariablesCache);
-
-        return  $shopIdCalculator->getShopId();
     }
 
     public function activateModule($moduleId)

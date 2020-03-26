@@ -18,7 +18,7 @@ class UserActionIdentifierTest extends \OxidEsales\TestingLibrary\UnitTestCase
     use ActiveControllerPreparatorTrait;
     use UserPreparationTrait;
 
-    public function tearDown()
+    protected function tearDown(): void
     {
         $this->deleteUser('userid');
         parent::tearDown();

@@ -10,7 +10,7 @@ class WidgetsDontShowWhenWidgetsEnabledTest extends BaseAcceptanceTestCase
 {
     use WidgetsDontShowCases;
 
-    public function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
         $this->openShop();
