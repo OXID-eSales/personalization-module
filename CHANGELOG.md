@@ -18,6 +18,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - `OxidEsales\PersonalizationModule\Application\Model\Product::oePersonalizationGetSku()`
 - `OxidEsales\PersonalizationModule\Application\Model\Product::oePersonalizationGetProductId()`
 
+## [1.3.2] - Not released
+
+### Fixed
+- Enclose the text values in quotes by RFC-4180 specification.
+
 ## [1.3.1] - 2019-07-26
 
 ### Fixed
@@ -76,4 +81,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [1.0.0] - 2018-08-23
 
-[2.0.0]: https://github.com/OXID-eSales/oxideshop_pe/compare/v1.3.0...master
+[2.0.0]: https://github.com/OXID-eSales/personalization-module/compare/b-1.x...b-2.x
+[1.3.2]: https://github.com/OXID-eSales/personalization-module/compare/v1.3.1...b-1.x
+[1.3.1]: https://github.com/OXID-eSales/personalization-module/compare/v1.3.0...v1.3.1
+[1.3.0]: https://github.com/OXID-eSales/personalization-module/compare/v1.2.2...v1.3.0
+[1.2.2]: https://github.com/OXID-eSales/personalization-module/compare/v1.2.1...v1.2.2
+[1.2.1]: https://github.com/OXID-eSales/personalization-module/compare/v1.2.0...v1.2.1
+[1.2.0]: https://github.com/OXID-eSales/personalization-module/compare/v1.1.1...v1.2.0
+[1.1.1]: https://github.com/OXID-eSales/personalization-module/compare/v1.1.0...v1.1.1
+[1.1.0]: https://github.com/OXID-eSales/personalization-module/compare/v1.0.0...v1.1.0
+[1.0.0]: https://github.com/OXID-eSales/personalization-module/compare/df7baef7b886b1a983fe24e4f782b0954d076b1d...v1.0.0
