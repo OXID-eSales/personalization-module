@@ -44,47 +44,6 @@ class Events
             }
         }
 
-        self::addContentSnippetUpdate();
-    }
-
-    /**
-     * Add content snippet to update privacy settings
-     */
-    protected static function addContentSnippetUpdate()
-    {
-        $textGerman = <<<'EOT'
-<div id="oepersonalization-update">
-    <h4>Tracking</h4>
-    <input type="radio" name="oepersonalization-state" value="ALLOW"> Zulassen
-    <input type="radio" name="oepersonalization-state" value="DENY"> Verbieten
-    <div><button type="button" class="btn btn-primary">Aktualisieren</button></div>
-</div>
-EOT;
-        $textEnglish = <<<'EOT'
-<div id="oepersonalization-update">
-    <h4>Tracking</h4>
-    <input type="radio" name="oepersonalization-state" value="ALLOW"> Allow
-    <input type="radio" name="oepersonalization-state" value="DENY"> Deny
-    <div><button type="button" class="btn btn-primary">Update</button></div>
-</div>
-EOT;
-        $sql = "select count(oxid) from `oxcontents` where oxloadid = 'oepersonalizationupdate'";
-        $result = DatabaseProvider::getDb()->getCol($sql);
-        if ($result[0] == 0) {
-            $id = Registry::getUtilsObject()->generateUId();
-            $content = oxNew(Content::class);
-            $content->setId($id);
-            $content->setLanguage(0);
-            $content->oxcontents__oxloadid = new Field('oepersonalizationupdate');
-            $content->oxcontents__oxtitle = new Field('Privacy Protection-Einstellungen');
-            $content->oxcontents__oxcontent = new Field($textGerman);
-            $content->save();
-
-            $content->setLanguage(1);
-            $content->oxcontents__oxtitle = new Field('Privacy protection settings');
-            $content->oxcontents__oxcontent = new Field($textEnglish);
-            $content->save();
-        }
     }
 
     /**

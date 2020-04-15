@@ -113,38 +113,4 @@ class EventsTest extends \OxidEsales\TestingLibrary\UnitTestCase
             ],
         ];
     }
-
-    public function testInsertDefaultSnippetForUpdate()
-    {
-        Events::onActivate();
-
-        $sql = "select oxid from `oxcontents` where oxloadid = 'oepersonalizationupdate'";
-        $result = DatabaseProvider::getDb()->getCol($sql);
-        $id = $result[0];
-
-        $content = oxNew(Content::class);
-        $content->load($id);
-
-        $this->assertEquals('oepersonalizationupdate', $content->oxcontents__oxloadid->value);
-    }
-
-    public function testDoesNotOverwriteAlreadySetSnippetForUpdate()
-    {
-        $sql = "delete from `oxcontents` where OXLOADID = 'oepersonalizationupdate'";
-        DatabaseProvider::getDb()->execute($sql);
-
-        $id = Registry::getUtilsObject()->generateUId();
-        $content = oxNew(Content::class);
-        $content->setId($id);
-        $content->oxcontents__oxloadid = new Field('oepersonalizationupdate');
-        $content->oxcontents__oxcontent = new Field('test content');
-        $content->save();
-
-        Events::onActivate();
-
-        $content = oxNew(Content::class);
-        $content->load($id);
-
-        $this->assertEquals('test content', $content->oxcontents__oxcontent->value);
-    }
 }
