@@ -6664,15 +6664,6 @@ var econda;
       }
       return permissions
     };
-    privacyprotection.applyAndStoreNewPrivacySettings = function(emosProps, externalPermissions) {
-      var newPermissions = privacyprotection._convertExternalPermissionsToProfilePermissions(externalPermissions);
-      var currentPermissions = privacyprotection.getPermissionsFromLocalStorage();
-      var mergedPermissions = privacyprotection._mergePermissions(currentPermissions, newPermissions);
-      LocalStorage.setItem(EmosPrivacy.PRIVACY_PROTECTION_KEY, JSON.stringify(mergedPermissions));
-      var isOptOutAction = newPermissions.profile.state == "DENY" && currentPermissions.profile.state == "ALLOW";
-      _setEmos3PrivacySettingsBasedOn(isOptOutAction ? currentPermissions : mergedPermissions);
-      _setEmosArpProps(mergedPermissions, emosProps)
-    };
     function _setEmosArpProps(mergedPermissions, emosProps) {
       if(!mergedPermissions) {
         return

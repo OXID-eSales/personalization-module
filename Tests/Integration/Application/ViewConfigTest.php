@@ -69,12 +69,6 @@ class ViewConfigTest extends \OxidEsales\TestingLibrary\UnitTestCase
         $this->assertTrue($this->getViewConfig()->oePersonalizationEnableWidgets());
     }
 
-    public function testShowTrackingNote()
-    {
-        Registry::getConfig()->setConfigParam('sOePersonalizationTrackingShowNote', 'opt_in');
-        $this->assertEquals('opt_in', $this->getViewConfig()->oePersonalizationShowTrackingNote());
-    }
-
     public function testGetExportPath()
     {
         Registry::getConfig()->setConfigParam('sOePersonalizationExportPath', 'testExportPath');

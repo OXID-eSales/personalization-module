@@ -52,16 +52,16 @@
         <input type="checkbox" name="confbools[blOePersonalizationTracking]" value=true [{if ($blOePersonalizationTracking)}]checked[{/if}]>
         [{oxmultilang ident="SHOP_MODULE_blOePersonalizationEnableTracking"}]
     </div>
-    <h4>[{oxmultilang ident="SHOP_MODULE_sOePersonalizationTrackingShowNote"}]</h4>
-    <div class="messagebox">
-        [{oxmultilang ident="OEPERSONALIZATION_MESSAGE_CMS_SNIPPETS"}]
-    </div>
+    <br/>
     <div>
-        <select size="1" name="confstrs[sOePersonalizationTrackingShowNote]">
-            <option value="no"[{if $sOePersonalizationTrackingShowNote == 'no'}] selected[{/if}]>[{oxmultilang ident="SHOP_MODULE_sOePersonalizationTrackingShowNoteNo"}]</option>
-            <option value="opt_in"[{if $sOePersonalizationTrackingShowNote == 'opt_in'}] selected[{/if}]>[{oxmultilang ident="SHOP_MODULE_sOePersonalizationTrackingShowNoteOptIn"}]</option>
-            <option value="opt_out"[{if $sOePersonalizationTrackingShowNote == 'opt_out'}] selected[{/if}]>[{oxmultilang ident="SHOP_MODULE_sOePersonalizationTrackingShowNoteOptOut"}]</option>
-        </select>
+        <input type=hidden name="confbools[oePersonalizationActive]" value=false>
+        <input type="checkbox" name="confbools[oePersonalizationActive]" value=true [{if ($oePersonalizationActive)}]checked[{/if}]>
+        [{oxmultilang ident="SHOP_MODULE_oePersonalizationActive"}]
+    </div>
+    <br/>
+    <div>
+        <input type=text  class="txt" style="width: 250px;" name="confstrs[oePersonalizationContainerId]" value="[{$oePersonalizationContainerId}]">
+        [{oxmultilang ident="SHOP_MODULE_oePersonalizationContainerId"}]
     </div>
     <br/>
     <div>

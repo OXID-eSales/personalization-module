@@ -1,0 +1,14 @@
+namespace: OxidEsales\PersonalizationModule\Tests\Codeception
+params:
+  - Codeception/Config/params.php
+# additional paths
+paths:
+    tests: Codeception
+    output: Codeception/_output
+    data: Codeception/_data
+    support: Codeception/_support
+    envs: Codeception/_envs
+
+settings:
+    shuffle: false
+    lint: true
