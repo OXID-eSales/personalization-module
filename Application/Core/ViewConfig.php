@@ -166,14 +166,6 @@ class ViewConfig extends ViewConfig_parent
     /**
      * @return string
      */
-    public function oePersonalizationShowTrackingNote()
-    {
-        return $this->getConfig()->getConfigParam('sOePersonalizationTrackingShowNote');
-    }
-
-    /**
-     * @return string
-     */
     public function oePersonalizationGetExportPath()
     {
         return $this->getConfig()->getConfigParam('sOePersonalizationExportPath');
@@ -285,5 +277,33 @@ class ViewConfig extends ViewConfig_parent
     private function getActiveUserDataProvider()
     {
         return oxNew(ActiveUserDataProvider::class);
+    }
+
+    /**
+     * @return bool
+     */
+    public function oePersonalizationIsActive(): bool
+    {
+        return (bool) Registry::getConfig()->getConfigParam('oePersonalizationActive');
+    }
+
+    /**
+     * @return string
+     */
+    public function oePersonalizationGetContainerId()
+    {
+        return Registry::getConfig()->getConfigParam('oePersonalizationContainerId');
+    }
+
+    /**
+     * @return bool
+     */
+    public function showPrivacyProtectionBanner(): bool
+    {
+        if ($this->oePersonalizationGetAccountId() !== '' && $this->oePersonalizationGetContainerId() !== '') {
+            return $this->oePersonalizationIsActive();
+        }
+
+        return false;
     }
 }

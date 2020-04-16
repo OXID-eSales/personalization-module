@@ -23,7 +23,6 @@ $aLang = [
     'OEPERSONALIZATION_VISUAL_EDITOR_WIDGET_ECONDA_WIDGET_ID' => 'Widget ID',
     'OEPERSONALIZATION_VISUAL_EDITOR_WIDGET_ECONDA_WIDGET_TEMPLATE' => 'Widget template',
     'OEPERSONALIZATION_VISUAL_EDITOR_WIDGET_ECONDA_CHUNK_SIZE' => 'Results limit',
-    'OEPERSONALIZATION_MESSAGE_CMS_SNIPPETS' => 'You have to review and activate the CMS snippets "oepersonalizationoptin", "oepersonalizationoptout", "oepersonalizationupdate" that it works properly.',
     'OEPERSONALIZATION_EXPORT' => 'Export',
     'tbcloepersonalizationgeneral' => 'General',
     'tbcloepersonalizationtracking' => 'Analytics',

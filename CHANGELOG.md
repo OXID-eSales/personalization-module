@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 - Started using `oxid-esales/econda-tracking-component`
 - Drop support of PHP 7.0.
+- Replace privacy protection with mechanism provided by Econda
 
 ### Removed
 - `OxidEsales\PersonalizationModule\Application\Model\Product::oePersonalizationHasVariants()`
