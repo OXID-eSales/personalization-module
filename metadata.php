@@ -29,7 +29,6 @@ $aModule = [
         \OxidEsales\Eshop\Application\Controller\ArticleListController::class => \OxidEsales\PersonalizationModule\Application\Controller\ArticleListController::class,
         \OxidEsales\Eshop\Application\Component\Widget\ArticleDetails::class => \OxidEsales\PersonalizationModule\Application\Component\Widget\ArticleDetails::class,
         \OxidEsales\Eshop\Application\Controller\ThankYouController::class => \OxidEsales\PersonalizationModule\Application\Controller\ThankYouController::class,
-        \OxidEsales\Eshop\Application\Component\Widget\CookieNote::class => \OxidEsales\PersonalizationModule\Application\Component\Widget\CookieNote::class,
         \OxidEsales\Eshop\Application\Model\Article::class => \OxidEsales\PersonalizationModule\Application\Model\Product::class,
     ],
     'controllers' => [
@@ -52,7 +51,6 @@ $aModule = [
         'oepersonalization_widgets_tab.tpl' => 'oe/personalization/Application/views/admin/tpl/oepersonalization_widgets_tab.tpl',
         'oepersonalization_export_tab.tpl' => 'oe/personalization/Application/views/admin/tpl/oepersonalization_export_tab.tpl',
         'oepersonalization_tag_manager_tab.tpl' => 'oe/personalization/Application/views/admin/tpl/oepersonalization_tag_manager_tab.tpl',
-        'oepersonalizationcookienote.tpl' => 'oe/personalization/Application/views/widget/header/cookienote.tpl',
     ],
     'blocks' => [
         [
