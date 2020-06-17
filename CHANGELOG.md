@@ -14,7 +14,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Adapt module tests to removal of oxconfig encoding feature.
 - Fixed compatibility issues regarding `setUp` and `tearDown` phpunit methods.
 
-## [2.0.0] - Not released
+## [2.0.0] - 2020-06-17
 
 ### Added
 - Ensure module works with PHP 7.2
@@ -23,16 +23,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Started using `oxid-esales/econda-tracking-component`
 - Drop support of PHP 7.0.
 - Replace privacy protection with mechanism provided by Econda
+- Update econda-tracking-component version from 1.0.4 to 1.0.5
 
 ### Removed
 - `OxidEsales\PersonalizationModule\Application\Model\Product::oePersonalizationHasVariants()`
 - `OxidEsales\PersonalizationModule\Application\Model\Product::oePersonalizationGetSku()`
 - `OxidEsales\PersonalizationModule\Application\Model\Product::oePersonalizationGetProductId()`
 
-## [1.3.2] - Not released
+## [1.3.2] - 2020-06-17
 
 ### Fixed
 - Enclose the text values in quotes by RFC-4180 specification.
+- Added timestamp to URL in jsFileLocator to allow caching [PR-4](https://github.com/OXID-eSales/personalization-module/pull/4)
 
 ## [1.3.1] - 2019-07-26
 
@@ -94,7 +96,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 [3.0.0]: https://github.com/OXID-eSales/personalization-module/compare/b-2.x...master
 [2.0.0]: https://github.com/OXID-eSales/personalization-module/compare/b-1.x...b-2.x
-[1.3.2]: https://github.com/OXID-eSales/personalization-module/compare/v1.3.1...b-1.x
+[1.3.2]: https://github.com/OXID-eSales/personalization-module/compare/v1.3.1...v1.3.2
 [1.3.1]: https://github.com/OXID-eSales/personalization-module/compare/v1.3.0...v1.3.1
 [1.3.0]: https://github.com/OXID-eSales/personalization-module/compare/v1.2.2...v1.3.0
 [1.2.2]: https://github.com/OXID-eSales/personalization-module/compare/v1.2.1...v1.2.2
