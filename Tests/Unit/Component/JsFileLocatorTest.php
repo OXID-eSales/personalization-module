@@ -6,6 +6,7 @@
 
 namespace OxidEsales\PersonalizationModule\Tests\Unit\Component;
 
+use org\bovigo\vfs\vfsStream;
 use OxidEsales\PersonalizationModule\Component\File\JsFileLocator;
 
 class JsFileLocatorTest extends \OxidEsales\TestingLibrary\UnitTestCase
@@ -47,24 +48,28 @@ class JsFileLocatorTest extends \OxidEsales\TestingLibrary\UnitTestCase
 
     public function testGetJsFileUrlWhenMainShop()
     {
-        $locator = new JsFileLocator('root_path', 'file_name', 'oxideshop.local/out', 1);
+        $vfs = $this->getVfsStreamWrapper();
+        $vfs->createFile('root_path/oepersonalization/file_name');
+
+        $locator = new JsFileLocator('vfs://root_path', 'file_name', 'oxideshop.local/out', 1);
         $expectedUrl = 'oxideshop.local/out'
             . '/' . JsFileLocator::TRACKING_CODE_DIRECTORY_NAME
-            . '/file_name';
+            . '/file_name?%d';
 
-
-        $this->assertSame($expectedUrl, $locator->getJsFileUrl());
+        $this->assertStringMatchesFormat($expectedUrl, $locator->getJsFileUrl());
     }
 
     public function testGetJsFileUrlWhenSubShop()
     {
-        $locator = new JsFileLocator('root_path', 'file_name', 'oxideshop.local/out', 2);
+        $vfs = $this->getVfsStreamWrapper();
+        $vfs->createFile('root_path/oepersonalization/2/file_name');
+
+        $locator = new JsFileLocator('vfs://root_path', 'file_name', 'oxideshop.local/out', 2);
         $expectedUrl = 'oxideshop.local/out'
             . '/' . JsFileLocator::TRACKING_CODE_DIRECTORY_NAME
             . '/2'
-            . '/file_name';
+            . '/file_name?%d';
 
-
-        $this->assertSame($expectedUrl, $locator->getJsFileUrl());
+        $this->assertStringMatchesFormat($expectedUrl, $locator->getJsFileUrl());
     }
 }
