@@ -88,7 +88,17 @@ class JsFileLocator
      */
     public function getJsFileUrl(): string
     {
-        return rtrim($this->applicationUrl, '/') . '/' . Path::join([$this->getShopAwareDirectoryPath(), $this->getFileName()]);
+        return rtrim($this->applicationUrl, '/') . '/' . Path::join([$this->getShopAwareDirectoryPath(), $this->getTimestampFileName()]);
+    }
+
+    /**
+    * @return string
+    */
+    public function getTimestampFileName(): string
+    {
+        $fileInfo = new \SplFileInfo($this->getJsFileLocation());
+        $modified  = $fileInfo->getMTime();
+        return $this->getFileName() . "?" . $modified;
     }
 
     /**
