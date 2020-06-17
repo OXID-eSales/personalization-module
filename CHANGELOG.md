@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Fixed
 - Enclose the text values in quotes by RFC-4180 specification.
+- Added timestamp to URL in jsFileLocator to allow caching [PR-4](https://github.com/OXID-eSales/personalization-module/pull/4)
 
 ## [1.3.1] - 2019-07-26
 
