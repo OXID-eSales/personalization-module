@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [2.0.0] - Not released
+## [2.0.0] - 2020-06-17
 
 ### Added
 - Ensure module works with PHP 7.2
@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Started using `oxid-esales/econda-tracking-component`
 - Drop support of PHP 7.0.
 - Replace privacy protection with mechanism provided by Econda
+- Update econda-tracking-component version from 1.0.4 to 1.0.5
 
 ### Removed
 - `OxidEsales\PersonalizationModule\Application\Model\Product::oePersonalizationHasVariants()`
