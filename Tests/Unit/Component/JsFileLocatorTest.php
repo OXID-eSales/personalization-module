@@ -72,4 +72,14 @@ class JsFileLocatorTest extends \OxidEsales\TestingLibrary\UnitTestCase
 
         $this->assertStringMatchesFormat($expectedUrl, $locator->getJsFileUrl());
     }
+
+    public function testGetJsFileUrlWhenFileNotExists()
+    {
+        $locator = new JsFileLocator('vfs://root_path', 'file_name', 'oxideshop.local/out', 1);
+        $expectedUrl = 'oxideshop.local/out'
+                       . '/' . JsFileLocator::TRACKING_CODE_DIRECTORY_NAME
+                       . '/file_name';
+
+        $this->assertSame($expectedUrl, $locator->getJsFileUrl());
+    }
 }
