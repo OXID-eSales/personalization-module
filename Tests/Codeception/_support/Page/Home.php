@@ -11,5 +11,5 @@ namespace OxidEsales\PersonalizationModule\Tests\Codeception\Page;
 
 class Home extends \OxidEsales\Codeception\Page\Home
 {
-    public $privacyProtectionBanner = '#privacyProtectionBanner';
+    public $privacyProtectionBanner = '#econda-pp2-banner';
 }
