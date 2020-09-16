@@ -78,7 +78,7 @@ class ProductDataPreparator
                         $product->oxarticles__oxean->value,
                         ($product->getManufacturer()) ? $product->getManufacturer()->oxmanufacturers__oxtitle->value : '',
                     ],
-                    $product->getCategoryIds()
+                    [implode('^^', $product->getCategoryIds())]
                 );
 
 
