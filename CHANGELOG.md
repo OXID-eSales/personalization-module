@@ -20,6 +20,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - `OxidEsales\PersonalizationModule\Application\Model\Product::oePersonalizationGetSku()`
 - `OxidEsales\PersonalizationModule\Application\Model\Product::oePersonalizationGetProductId()`
 
+## [1.3.3] - unreleased
+ 
+### Fixed
+- Fix product feed to support multiple categories for one product [PR-6](https://github.com/OXID-eSales/personalization-module/pull/6).
+
 ## [1.3.2] - 2020-06-17
 
 ### Fixed
