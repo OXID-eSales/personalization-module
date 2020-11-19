@@ -7,8 +7,8 @@
 
 <!-- frames -->
 <frameset  rows="5%,*" border="0">
-    <frame src="[{$oViewConf->getSelfLink()}]&[{$listurl}]&oxid=1" name="list" marginwidth="0" marginheight="0" scrolling="off" frameborder="0">
-    <frame src="[{$oViewConf->getSelfLink()}]&[{$editurl}]&oxid=1" name="edit" marginwidth="0" marginheight="0" scrolling="auto" frameborder="0">
+    <frame src="[{$oViewConf->getSelfLink()}]&[{$listurl}]&oxid=1" id="list" name="list" marginwidth="0" marginheight="0" scrolling="off" frameborder="0">
+    <frame src="[{$oViewConf->getSelfLink()}]&[{$editurl}]&oxid=1" id="edit" name="edit" marginwidth="0" marginheight="0" scrolling="auto" frameborder="0">
 </frameset>
 
 
