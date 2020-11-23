@@ -4,10 +4,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [1.3.3] - unreleased
+## [1.4.0] - unreleased
  
 ### Fixed
 - Fix product feed to support multiple categories for one product [PR-6](https://github.com/OXID-eSales/personalization-module/pull/6).
+
+### Changed
+- Component econda/tracking updated to ^3.1.0.
+- Change visibility of `OxidEsales\PersonalizationModule\Component\Tracking\TrackingCodeGenerator::initializePageView()` and TrackingCodeGenerator class members to protected.
 
 ## [1.3.2] - 2020-06-17
 

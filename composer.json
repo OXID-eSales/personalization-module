@@ -23,7 +23,7 @@
         "webmozart/path-util": "^2.3",
         "gargron/fileupload": "^1.4.5",
         "symfony/filesystem": "^3.0",
-        "econda/tracking": "^3.0.1",
+        "econda/tracking": "^3.1.0",
         "league/csv": "^9.1.4"
     },
     "bin": [
