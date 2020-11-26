@@ -6,17 +6,20 @@
 
 namespace OxidEsales\PersonalizationModule\Tests\Integration\Component;
 
-use org\bovigo\vfs\vfsStream;
+use OxidEsales\PersonalizationModule\Tests\Integration\Component\VirtualFileHelperTrait;
 use Symfony\Component\Filesystem\Filesystem;
+use OxidEsales\TestingLibrary\UnitTestCase;
 
-class FileSystemTest extends \OxidEsales\TestingLibrary\UnitTestCase
+class FileSystemTest extends UnitTestCase
 {
+    use VirtualFileHelperTrait;
+
     private $virtualDirectory;
 
     public function setUp()
     {
         parent::setUp();
-        $this->virtualDirectory = $this->createVirtualDirectory();
+        $this->virtualDirectory = $this->createVirtualPath();
     }
 
     public function testDirectorySuccessfulCreation()
@@ -31,8 +34,9 @@ class FileSystemTest extends \OxidEsales\TestingLibrary\UnitTestCase
     {
         $fileSystem = new \OxidEsales\PersonalizationModule\Component\File\FileSystem(new Filesystem());
 
-        $this->assertFalse($fileSystem->createDirectory('/not_existing_directory/testDirectory'));
-        $this->assertFalse(is_dir('/not_existing_directory/testDirectory'));
+        chmod($this->virtualDirectory, 555);
+        $this->assertFalse($fileSystem->createDirectory($this->virtualDirectory.'/testDirectory'));
+        $this->assertFalse(is_dir($this->virtualDirectory.'/testDirectory'));
     }
 
     public function testIfPathNotWritable()
@@ -54,23 +58,6 @@ class FileSystemTest extends \OxidEsales\TestingLibrary\UnitTestCase
     {
         $fileSystem = new \OxidEsales\PersonalizationModule\Component\File\FileSystem(new Filesystem());
 
-        $this->assertTrue($fileSystem->isFilePresent($this->virtualDirectory.'/file.js'));
-    }
-
-    /**
-     * @return string
-     */
-    protected function createVirtualDirectory()
-    {
-        $structure = [
-            'out_dir' => [
-                'file.js' => 'contents'
-            ],
-        ];
-        $vfsStream = $this->getVfsStreamWrapper();
-        $vfsStream->createStructure($structure);
-        $pathToCreateDirectory = $vfsStream->getRootPath();
-
-        return $pathToCreateDirectory . DIRECTORY_SEPARATOR . 'out_dir';
+        $this->assertTrue($fileSystem->isFilePresent($this->virtualDirectory.'/file'));
     }
 }
