@@ -9,6 +9,8 @@ Module adds Econda service functionality.
 * 2.x version of the module works with OXID eShop compilation 6.2.x
 * master branch of the module works with OXID eShop compilations 6.x and up
 
+1.x version should not be merged up by merging strategy
+
 ## Installation
 
 Run the following commands to install OXID personalization module:

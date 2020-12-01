@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [1.4.0] - unreleased
+## [1.4.0] - 2020-12-01
  
 ### Fixed
 - Fix product feed to support multiple categories for one product [PR-6](https://github.com/OXID-eSales/personalization-module/pull/6).
