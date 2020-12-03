@@ -11,6 +11,7 @@ namespace OxidEsales\PersonalizationModule\Module\Tests\Codeception\Acceptance;
 
 use Codeception\Util\Fixtures;
 use OxidEsales\PersonalizationModule\Tests\Codeception\AcceptanceTester;
+use OxidEsales\PersonalizationModule\Tests\Codeception\AcceptanceAdminTester;
 
 /**
  * Class PrivacyProtectionCest
@@ -27,16 +28,34 @@ final class PrivacyProtectionCest
     {
         $I->wantToTest('if privacy protection banner is shown');
 
-        $I->updateConfigInDatabase('sOePersonalizationAccountId', Fixtures::get('oePersonalizationAccountId'));
-        $I->updateConfigInDatabase('oePersonalizationContainerId', Fixtures::get('econdaARPContainerId'));
-        $I->updateConfigInDatabase('oePersonalizationActive', true);
+        $I->loginAdmin();
+
+        //open econda settings
+        $I->selectNavigationFrame();
+        $I->click('Personalization');
+        $I->click('econda');
+
+        //fill data in 'general' tab
+        $I->selectEditFrame();
+        $I->fillField('confstrs[sOePersonalizationAccountId]', Fixtures::get('oePersonalizationAccountId'));
+        $I->click('Save');
+
+        //switch to 'analytics' tab
+        $I->selectListFrame();
+        $I->click('Analytics');
+
+        //fill data in 'analytics' tab
+        $I->selectEditFrame();
+        $I->checkOption('confbools[oePersonalizationActive]');
+        $I->fillField('confstrs[oePersonalizationContainerId]', 1);
+        $I->click('Save');
 
         //check if banner is on start page
         $homePage = $I->openShop();
         $I->waitForElementVisible($homePage->privacyProtectionBanner);
 
         //check if banner is there when when we switch pages
-        $homePage->openCategoryPage("Kiteboarding");
+        $I->amOnPage("/en/Kiteboarding");
         $I->waitForElementVisible($homePage->privacyProtectionBanner);
     }
 }

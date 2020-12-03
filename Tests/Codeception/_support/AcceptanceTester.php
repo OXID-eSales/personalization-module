@@ -22,6 +22,9 @@
 namespace OxidEsales\PersonalizationModule\Tests\Codeception;
 
 use OxidEsales\PersonalizationModule\Tests\Codeception\Page\Home;
+use OxidEsales\Codeception\Admin\AdminLoginPage;
+use Codeception\Util\Fixtures;
+use OxidEsales\Codeception\Admin\AdminPanel;
 
 /**
  * Inherited Methods
@@ -52,5 +55,20 @@ class AcceptanceTester extends \Codeception\Actor
         $I->amOnPage($homePage->URL);
 
         return $homePage;
+    }
+
+    public function openAdmin(): AdminLoginPage
+    {
+        $I = $this;
+        $adminLogin = new AdminLoginPage($I);
+        $I->amOnPage($adminLogin->URL);
+        return $adminLogin;
+    }
+
+    public function loginAdmin(): AdminPanel
+    {
+        $adminPage = $this->openAdmin();
+        $admin = Fixtures::get('adminUser');
+        return $adminPage->login($admin['userLoginName'], $admin['userPassword']);
     }
 }

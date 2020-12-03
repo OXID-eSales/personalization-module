@@ -8,3 +8,4 @@
 // This is acceptance bootstrap
 $helper = new \OxidEsales\Codeception\Module\FixturesHelper();
 $helper->loadRuntimeFixtures(dirname(__FILE__).'/../_data/oepersonalizationData.php');
+$helper->loadRuntimeFixtures(dirname(__FILE__).'/../_data/fixtures.php');
