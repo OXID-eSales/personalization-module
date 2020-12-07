@@ -94,7 +94,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [1.0.0] - 2018-08-23
 
+[2.1.0]: https://github.com/OXID-eSales/personalization-module/compare/v2.0.0...v2.1.0
 [2.0.0]: https://github.com/OXID-eSales/personalization-module/compare/b-1.x...b-2.x
+[1.3.3]: https://github.com/OXID-eSales/personalization-module/compare/v1.3.2...v1.3.3
 [1.3.2]: https://github.com/OXID-eSales/personalization-module/compare/v1.3.1...v1.3.2
 [1.3.1]: https://github.com/OXID-eSales/personalization-module/compare/v1.3.0...v1.3.1
 [1.3.0]: https://github.com/OXID-eSales/personalization-module/compare/v1.2.2...v1.3.0
