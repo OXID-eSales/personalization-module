@@ -205,4 +205,18 @@ interface ActivePageEntityInterface
      * @return string
      */
     public function getEmail();
+
+    /**
+     * @return array
+     */
+    public function getPromotions();
+
+    /**
+     * @param string $voucherId   oxvoucher.oxid
+     * @param string $voucherCode Eingelöster Gutscheincode
+     * @param float  $discount    Eingelöster Gutscheinwert
+     *
+     * @see https://docs.econda.de/de/MONDE/data-services/data-model-management/promotions+und+gutscheine.html
+     */
+    public function addPromotion($voucherId, $voucherCode, $discount);
 }

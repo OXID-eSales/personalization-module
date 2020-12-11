@@ -172,6 +172,15 @@ class EntityModifierByCurrentAction
         }
 
         $this->activePageEntity->setBoughtProducts($basketProducts);
+
+        // Promotion - Benutzerdefinierte dimensionen
+        foreach ($basket->getVouchers() as $voucherId => $voucher) {
+            $this->activePageEntity->addPromotion(
+                $voucherId,
+                $voucher->sVoucherNr,
+                $voucher->dVoucherdiscount
+            );
+        }
     }
 
     /**

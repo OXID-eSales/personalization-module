@@ -15,6 +15,7 @@ use Econda\Tracking\Target;
 use Econda\Tracking\TransactionProduct;
 use OxidEsales\PersonalizationModule\Component\Tracking\SdkExtension\Email;
 use OxidEsales\PersonalizationModule\Component\Tracking\SdkExtension\PageView;
+use OxidEsales\PersonalizationModule\Component\Tracking\SdkExtension\Promotions;
 
 /**
  * Class responsible for generating Econda tracking script.
@@ -51,6 +52,7 @@ class TrackingCodeGenerator
         $this->addCurrentOrderProcessToPageView();
         $this->addUserRegistrationDataToPageView();
         $this->addTransactionDataToPageView();
+        $this->addPromotionsDataToPageView();
         $this->addSearchQueryDataToPageView();
         $this->addLoginUserDataToPageView();
         $this->addCartDataToPageView();
@@ -98,6 +100,16 @@ class TrackingCodeGenerator
             ];
 
             $this->pageView->add(new Tracking\Order($billingInfo));
+        }
+    }
+
+    /**
+     * @see https://docs.econda.de/de/MONDE/data-services/data-model-management/promotions+und+gutscheine.html
+     */
+    private function addPromotionsDataToPageView()
+    {
+        if ($this->activePageEntity->getPromotions()) {
+            $this->pageView->add(new Promotions(['data' => $this->activePageEntity->getPromotions()]));
         }
     }
 

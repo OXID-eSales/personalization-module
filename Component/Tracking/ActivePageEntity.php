@@ -135,6 +135,11 @@ class ActivePageEntity implements ActivePageEntityInterface
     private $email = '';
 
     /**
+     * @var array
+     */
+    private $promotions = null;
+
+    /**
      * @return string
      */
     public function getContent()
@@ -468,5 +473,33 @@ class ActivePageEntity implements ActivePageEntityInterface
     public function getEmail()
     {
         return $this->email;
+    }
+
+    /**
+     * @return array
+     */
+    public function getPromotions()
+    {
+        return $this->promotions;
+    }
+
+    /**
+     * @param string $voucherId   oxvoucher.oxid
+     * @param string $voucherCode Eingelöster Gutscheincode
+     * @param float  $discount    Eingelöster Gutscheinwert
+     *
+     * @see https://docs.econda.de/de/MONDE/data-services/data-model-management/promotions+und+gutscheine.html
+     */
+    public function addPromotion($voucherId, $voucherCode, $discount)
+    {
+        if ($this->promotions === null) {
+            $this->promotions = [];
+        }
+
+        $this->promotions[] = [
+            'voucherId'   => $voucherId,
+            'voucherCode' => $voucherCode,
+            'discount'    => $discount
+        ];
     }
 }
