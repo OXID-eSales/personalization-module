@@ -10,7 +10,7 @@ use OxidEsales\TestingLibrary\TestConfig;
 
 class WidgetsTest extends BaseAcceptanceTestCase
 {
-    public function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
         $this->enableWidgets();

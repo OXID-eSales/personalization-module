@@ -14,7 +14,7 @@ use OxidEsales\Eshop\Core\Registry;
 
 class ArticleDetailsDemoModeTest extends \OxidEsales\TestingLibrary\UnitTestCase
 {
-    public function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
         Registry::getConfig()->setConfigParam('blOePersonalizationUseDemoAccount', '1');

@@ -22,7 +22,7 @@ class ExportViaCmdTest extends AbstractExportDataInCSV
         parent::__construct($name, $data, $dataName);
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         parent::tearDown();
         $exportDir = Registry::getConfig()->getConfigParam('sShopDir') . $this->exportPath;

@@ -13,7 +13,7 @@ use \OxidEsales\PersonalizationModule\Component\DemoAccountData;
 
 class ArticleListControllerDemoModeTest extends \OxidEsales\TestingLibrary\UnitTestCase
 {
-    public function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
         Registry::getConfig()->setConfigParam('blOePersonalizationUseDemoAccount', '1');

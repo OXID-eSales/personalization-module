@@ -8,7 +8,7 @@ namespace OxidEsales\PersonalizationModule\Tests\Acceptance;
 
 class TrackingTest extends BaseAcceptanceTestCase
 {
-    public function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
         $this->startMinkSession('selenium');
