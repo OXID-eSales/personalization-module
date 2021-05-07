@@ -19,8 +19,8 @@
         }
     },
     "require": {
-        "php": "^7.1",
-        "oxid-esales/econda-tracking-component": "v1.0.6",
+        "php": "^7.3 || ^8.0",
+        "oxid-esales/econda-tracking-component": "dev-master-OXDEV-4626",
         "league/csv": "^9.1.4"
     },
     "bin": [
