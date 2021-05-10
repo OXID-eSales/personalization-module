@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright © OXID eSales AG. All rights reserved.
  * See LICENSE file for license details.
@@ -10,7 +11,6 @@ use OxidEsales\Eshop\Application\Model\Shop;
 use OxidEsales\Eshop\Core\Registry;
 use OxidEsales\EshopCommunity\Internal\Container\ContainerFactory;
 use OxidEsales\EshopCommunity\Internal\Framework\Module\Configuration\Dao\ShopConfigurationDaoInterface;
-use OxidEsales\EshopCommunity\Internal\Transition\Utility\ContextInterface;
 use OxidEsales\Facts\Facts;
 
 abstract class AbstractExportDataInCSV extends \OxidEsales\TestingLibrary\UnitTestCase
@@ -185,6 +185,7 @@ abstract class AbstractExportDataInCSV extends \OxidEsales\TestingLibrary\UnitTe
     public function testCategoriesExportWithSubshop()
     {
         if (!$this->isEnterpriseEdition()) {
+            $this->markTestSkipped('Skip EE related tests for CE/PE edition');
             return;
         }
         $this->prepareSubShop();
@@ -212,6 +213,7 @@ abstract class AbstractExportDataInCSV extends \OxidEsales\TestingLibrary\UnitTe
     public function testProductsExportWithSubshop()
     {
         if (!$this->isEnterpriseEdition()) {
+            $this->markTestSkipped('Skip EE related tests for CE/PE edition');
             return;
         }
 

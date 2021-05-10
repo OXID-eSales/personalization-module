@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright © OXID eSales AG. All rights reserved.
  * See LICENSE file for license details.
@@ -44,7 +45,9 @@ abstract class BaseAcceptanceTestCase extends \OxidEsales\TestingLibrary\Accepta
 
     protected function checkIfProductExistsInWidget($widgetSelectorId, $productNumberInRow)
     {
-        $this->waitForItemAppear("//div[@id='$widgetSelectorId']//div[@class='row gridView']/div[$productNumberInRow]", 3);
+        $locator = "//div[@id='$widgetSelectorId']//div[@class='row gridView']/div[$productNumberInRow]";
+        $this->waitForItemAppear($locator, 3);
+        $this->assertElementVisible($locator);
     }
 
     /**

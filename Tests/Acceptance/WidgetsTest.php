@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright © OXID eSales AG. All rights reserved.
  * See LICENSE file for license details.
@@ -38,7 +39,7 @@ class WidgetsTest extends BaseAcceptanceTestCase
     {
         $this->open((new TestConfig)->getShopUrl() . 'en/By-manufacturer/Big-Matsol/');
 
-        $this->assertElementNotPresent(static::LIST_WIDGET_ID);
+        $this->assertElementNotVisible(static::LIST_WIDGET_ID);
     }
 
     public function testWidgetIsPresentOnDetailsPage()
