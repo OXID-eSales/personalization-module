@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright © OXID eSales AG. All rights reserved.
  * See LICENSE file for license details.
@@ -184,6 +185,7 @@ abstract class AbstractExportDataInCSV extends \OxidEsales\TestingLibrary\UnitTe
     public function testCategoriesExportWithSubshop()
     {
         if (!$this->isEnterpriseEdition()) {
+            $this->markTestSkipped('Skip EE related tests for CE/PE edition');
             return;
         }
         $this->prepareSubShop();
@@ -211,6 +213,7 @@ abstract class AbstractExportDataInCSV extends \OxidEsales\TestingLibrary\UnitTe
     public function testProductsExportWithSubshop()
     {
         if (!$this->isEnterpriseEdition()) {
+            $this->markTestSkipped('Skip EE related tests for CE/PE edition');
             return;
         }
 
