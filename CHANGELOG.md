@@ -6,10 +6,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [3.0.0] - Not released
 
-### Changed
-- Increase `oxid-esales/econda-tracking-component` version to `v1.1.0` in composer.json file.
-- Increase `php` version to `7.3` in composer.json file.
-
 ### Fixed
 - Adapt module tests to removal of oxconfig encoding feature.
 - Fixed compatibility issues regarding `setUp` and `tearDown` phpunit methods.
