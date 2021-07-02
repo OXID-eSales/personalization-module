@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.2.0] - 2021-07-02
+
+### Added
+- Compatibility with eShop compilation 6.3
+
+### Fixed
+- Tests fixed by newer phpunit versions
+
+
 ## [2.1.0] - 2020-12-03
 
 ### Changed
@@ -94,6 +103,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [1.0.0] - 2018-08-23
 
+[2.2.0]: https://github.com/OXID-eSales/personalization-module/compare/v2.1.0...v2.2.0
 [2.1.0]: https://github.com/OXID-eSales/personalization-module/compare/v2.0.0...v2.1.0
 [2.0.0]: https://github.com/OXID-eSales/personalization-module/compare/v1.4.0...v2.0.0
 [1.4.0]: https://github.com/OXID-eSales/personalization-module/compare/v1.3.2...v1.4.0
