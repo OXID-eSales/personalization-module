@@ -1,4 +1,4 @@
-OXID personalization module powered by Econda
+OXID Personalization module powered by Econda
 =============================================
 
 Module adds Econda service functionality.
