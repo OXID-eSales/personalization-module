@@ -13,12 +13,10 @@ $aLang = [
     'mxpersonalizationeconda' => 'econda',
     'OEPERSONALIZATION_UPLOAD_BUTTON_TITLE' => 'Upload',
     'OEPERSONALIZATION_TRACKING_SECTION_TITLE' => 'econda Analytics',
-    'OEPERSONALIZATION_MESSAGE_FILE_IS_NOT_PRESENT' => 'At the moment the Analytics JS library is not present.'
-    .' It is required to upload the file before enabling econda Analytics.',
-    'OEPERSONALIZATION_MESSAGE_FILE_IS_PRESENT' => 'The Analytics JS library is present.',
-    'OEPERSONALIZATION_MESSAGE_TAG_MANAGER_FILE_IS_PRESENT' => 'The Tag Manager file is present.',
-    'OEPERSONALIZATION_MESSAGE_TAG_MANAGER_FILE_IS_NOT_PRESENT' => 'At the moment the Tag Manager file is not present.'
-        .' It is required to upload the file before enabling Tag Manager.',
+    'OEPERSONALIZATION_MESSAGE_FILE_IS_NOT_PRESENT' => 'Econda Loader will be used as default if econda Analytics is enabled and no Analytics JS library is uploaded.',
+    'OEPERSONALIZATION_MESSAGE_FILE_IS_PRESENT' => 'Analytics JS library is present and will be used instead of Econda Loader.',
+    'OEPERSONALIZATION_MESSAGE_TAG_MANAGER_FILE_IS_PRESENT' => 'Tag Manager file is present and will be used instead of Econda Loader.',
+    'OEPERSONALIZATION_MESSAGE_TAG_MANAGER_FILE_IS_NOT_PRESENT' => 'Econda Loader will be used as default if Tag Manager is enabled and no Tag Manager file is uploaded.',
     'OEPERSONALIZATION_VISUAL_EDITOR_SHORTCODE_ECONDA' => 'AI Content',
     'OEPERSONALIZATION_VISUAL_EDITOR_WIDGET_ECONDA_WIDGET_ID' => 'Widget ID',
     'OEPERSONALIZATION_VISUAL_EDITOR_WIDGET_ECONDA_WIDGET_TEMPLATE' => 'Widget template',

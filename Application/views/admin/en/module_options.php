@@ -31,6 +31,7 @@ $aLang = [
     'SHOP_MODULE_sOePersonalizationWidgetTemplateThankYouPage' => 'Widget template',
 
     'SHOP_MODULE_blOePersonalizationEnableTracking' => 'Enable econda Analytics',
+    'SHOP_MODULE_blOePersonalizationEnableLoader' => 'Enable econda Loader for econda modules',
 
     'SHOP_MODULE_blOePersonalizationEnableTagManager' => 'Enable Tag Manager',
     'SHOP_MODULE_oePersonalizationActive' => 'Activate Personalization',

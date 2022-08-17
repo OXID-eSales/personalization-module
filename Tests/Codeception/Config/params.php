@@ -9,11 +9,6 @@ use OxidEsales\Eshop\Core\ConfigFile;
 use OxidEsales\TestingLibrary\Services\Library\DatabaseDefaultsFileGenerator;
 
 $facts = new Facts();
-$selenium_server_port = getenv('SELENIUM_SERVER_PORT');
-$selenium_server_port = ($selenium_server_port) ? : '4444';
-$selenium_server_host = getenv('SELENIUM_SERVER_HOST');
-$selenium_server_host = ($selenium_server_host) ? : '127.0.0.1';
-$php = (getenv('PHPBIN')) ? getenv('PHPBIN') : 'php';
 
 return [
     'SHOP_URL' => $facts->getShopUrl(),
@@ -26,9 +21,10 @@ return [
     'DB_PORT' => $facts->getDatabasePort(),
     'DUMP_PATH' => getTestDataDumpFilePath(),
     'MYSQL_CONFIG_PATH' => getMysqlConfigPath(),
-    'SELENIUM_SERVER_PORT' => $selenium_server_port,
-    'SELENIUM_SERVER_HOST' => $selenium_server_host,
-    'PHP_BIN' => $php,
+    'SELENIUM_SERVER_PORT' => getenv('SELENIUM_SERVER_PORT') ?: '4444',
+    'SELENIUM_SERVER_HOST' => getenv('SELENIUM_SERVER_HOST') ?: '127.0.0.1',
+    'PHP_BIN' => getenv('PHPBIN') ?: 'php',
+    'BROWSER_NAME' => getenv('BROWSER_NAME') ?: 'firefox',
 ];
 
 function getTestDataDumpFilePath()

@@ -38,6 +38,7 @@ final class PrivacyProtectionCest
         //fill data in 'general' tab
         $I->selectEditFrame();
         $I->fillField('confstrs[sOePersonalizationAccountId]', Fixtures::get('oePersonalizationAccountId'));
+        $I->fillField('confstrs[oePersonalizationContainerId]', Fixtures::get('econdaARPContainerId'));
         $I->click('Save');
 
         //switch to 'analytics' tab
@@ -47,7 +48,6 @@ final class PrivacyProtectionCest
         //fill data in 'analytics' tab
         $I->selectEditFrame();
         $I->checkOption('confbools[oePersonalizationActive]');
-        $I->fillField('confstrs[oePersonalizationContainerId]', 1);
         $I->click('Save');
 
         //check if banner is on start page

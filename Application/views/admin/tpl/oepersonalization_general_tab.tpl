@@ -40,6 +40,12 @@
         <input type=text  class="txt" style="width: 250px;" name="confstrs[sOePersonalizationAccountId]" value="[{$sOePersonalizationAccountId}]">
         [{oxmultilang ident="SHOP_MODULE_sOePersonalizationAccountId"}]
     </div>
+    <br/>
+    <div>
+        <input type=text  class="txt" style="width: 250px;" name="confstrs[oePersonalizationContainerId]" value="[{$oePersonalizationContainerId}]">
+        [{oxmultilang ident="SHOP_MODULE_oePersonalizationContainerId"}]
+    </div>
+    <br/>
     <div>
         <input type=hidden name="confbools[blOePersonalizationUseDemoAccount]" value=false>
         <input type=checkbox name="confbools[blOePersonalizationUseDemoAccount]" value=true [{if ($blOePersonalizationUseDemoAccount)}]checked[{/if}]>
