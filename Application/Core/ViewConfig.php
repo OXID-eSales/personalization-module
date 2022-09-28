@@ -257,27 +257,9 @@ class ViewConfig extends ViewConfig_parent
     /**
      * @return bool
      */
-    public function oePersonalizationIsTagManagerJsFileUploaded(): bool
-    {
-        $fileLocator = $this->oePersonalizationfactory->makeTagManagerJsFileLocator();
-        $fileSystem = $this->oePersonalizationfactory->makeFileSystem();
-        return $fileSystem->isFilePresent($fileLocator->getJsFileLocation());
-    }
-
-    /**
-     * @return bool
-     */
     public function oePersonalizationIsTrackingEnabled(): bool
     {
         return (bool) Registry::getConfig()->getConfigParam('blOePersonalizationTracking');
-    }
-
-    /**
-     * @return bool
-     */
-    public function oePersonalizationIsTrackingEnabledWithLoader(): bool
-    {
-        return (bool) Registry::getConfig()->getConfigParam('blOePersonalizationTrackingLoader');
     }
 
     /**

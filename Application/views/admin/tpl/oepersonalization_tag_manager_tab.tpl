@@ -29,7 +29,9 @@
         [{$oView->getTrackingScriptMessageIfEnabled()}]
     [{/if}]
     [{if $oView->getTrackingScriptMessageIfDisabled()}]
-        [{$oView->getTrackingScriptMessageIfDisabled()}]
+        <p class="warning">
+            [{$oView->getTrackingScriptMessageIfDisabled()}]
+        </p>
     [{/if}]
 </div>
 

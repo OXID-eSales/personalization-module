@@ -50,31 +50,17 @@
 [{block name="oepersonalization_add_js_in_footer"}]
     [{capture append="oxidBlock_pageScript"}]
             [{if $oViewConf->oePersonalizationIsTagManagerActive()}]
-                [{if $oViewConf->oePersonalizationIsTagManagerJsFileUploaded() === true}]
-                    <script type="text/javascript">
-                        if (typeof econdaData === 'undefined') {
-                            econdaData = {};
-                        }
-                    </script>
-                    <div id="econdaTMC"></div>
-                    <script type="text/javascript" id="econdaTM">econdaTMD=econdaData;econdatm={stored:[],results:null,
-                            event:function(p){this.stored.push(p);},result:function(r){this.results=r;}};
-                        (function(d,s){var f=d.getElementById(s),j=d.createElement('script');
-                            j.async=true;j.src='[{$oViewConf->oePersonalizationGetTagManagerJsFileUrl()}]';f.parentNode.insertBefore(j,f);})
-                        (document,'econdaTM');</script>
-                [{else}]
-                    <script type="text/javascript">
-                        window.econda = {onReady:[], ready: function(f){this.onReady.push(f);}};
-                        window.emos3 = window.emos3 || {stored:[], send: function(p){this.stored.push(p);}};
-                    </script>
-                    <script
-                            type="text/javascript"
-                            defer="defer"
-                            src="https://d35ojb8dweouoy.cloudfront.net/loader/loader.js"
-                            client-key="[{$oViewConf->oePersonalizationGetClientKey()}]"
-                            container-id="[{$oViewConf->oePersonalizationGetContainerId()}]"
-                    ></script>
-                [{/if}]
+                <script type="text/javascript">
+                    if (typeof econdaData === 'undefined') {
+                        econdaData = {};
+                    }
+                </script>
+                <div id="econdaTMC"></div>
+                <script type="text/javascript" id="econdaTM">econdaTMD=econdaData;econdatm={stored:[],results:null,
+                        event:function(p){this.stored.push(p);},result:function(r){this.results=r;}};
+                    (function(d,s){var f=d.getElementById(s),j=d.createElement('script');
+                        j.async=true;j.src='[{$oViewConf->oePersonalizationGetTagManagerJsFileUrl()}]';f.parentNode.insertBefore(j,f);})
+                    (document,'econdaTM');</script>
             [{/if}]
             [{if $oViewConf->showPrivacyProtectionBanner() == true}]
                 <script type="text/javascript" defer="defer" src="https://d35ojb8dweouoy.cloudfront.net/loader/loader.js"
