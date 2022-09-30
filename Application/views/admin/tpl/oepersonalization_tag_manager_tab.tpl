@@ -26,12 +26,12 @@
 
 <div class="messagebox">
     [{if $oView->getTrackingScriptMessageIfEnabled()}]
-    [{$oView->getTrackingScriptMessageIfEnabled()}]
+        [{$oView->getTrackingScriptMessageIfEnabled()}]
     [{/if}]
     [{if $oView->getTrackingScriptMessageIfDisabled()}]
-    <p class="warning">
-        [{$oView->getTrackingScriptMessageIfDisabled()}]
-    </p>
+        <p class="warning">
+            [{$oView->getTrackingScriptMessageIfDisabled()}]
+        </p>
     [{/if}]
 </div>
 
