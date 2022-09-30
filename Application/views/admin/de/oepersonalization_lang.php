@@ -13,9 +13,8 @@ $aLang = [
     'mxpersonalizationeconda' => 'econda',
     'OEPERSONALIZATION_UPLOAD_BUTTON_TITLE' => 'Hochladen',
     'OEPERSONALIZATION_TRACKING_SECTION_TITLE' => 'econda Analytics',
-    'OEPERSONALIZATION_MESSAGE_FILE_IS_NOT_PRESENT' => 'Die Analytics JS-Bibliothek ist momentan nicht vorhanden.'
-    .' Es ist erforderlich, die Datei hochzuladen, bevor econda Analytics aktiviert wird.',
-    'OEPERSONALIZATION_MESSAGE_FILE_IS_PRESENT' => 'Die Analytics JS-Bibliothek ist vorhanden.',
+    'OEPERSONALIZATION_MESSAGE_FILE_IS_NOT_PRESENT' => 'Econda Loader wird als Standard verwendet, wenn econda Analytics aktiviert ist und keine Analytics JS-Bibliothek hochgeladen wurde.',
+    'OEPERSONALIZATION_MESSAGE_FILE_IS_PRESENT' => 'Die Analytics JS-Bibliothek ist vorhanden und wird anstelle von Econda Loader verwendet.',
     'OEPERSONALIZATION_MESSAGE_TAG_MANAGER_FILE_IS_PRESENT' => 'Die Tag Manager Datei ist vorhanden.',
     'OEPERSONALIZATION_MESSAGE_TAG_MANAGER_FILE_IS_NOT_PRESENT' => 'Die Tag Manager Datei ist momentan nicht vorhanden.'
         .' Es ist erforderlich, die Datei hochzuladen, bevor Tag Manager aktiviert wird.',

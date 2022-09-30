@@ -2,13 +2,27 @@
 
 [{block name="oepersonalization_add_js_in_head"}]
     [{if $oViewConf->oePersonalizationIsTrackingEnabled() === true}]
-        <script type="text/javascript">
-            window.emos3 = {
-                stored : [],
-                send : function(p){this.stored.push(p);}
-            };
-        </script>
-        <script type="text/javascript" src="[{$oViewConf->oePersonalizationGetTrackingJsFileUrl()}]"></script>
+        [{if $oViewConf->oePersonalizationIsTrackingJsFileUploaded() === true}]
+            <script type="text/javascript">
+                window.emos3 = {
+                    stored : [],
+                    send : function(p){this.stored.push(p);}
+                };
+            </script>
+            <script type="text/javascript" src="[{$oViewConf->oePersonalizationGetTrackingJsFileUrl()}]"></script>
+        [{else}]
+            <script type="text/javascript">
+                window.econda = {onReady:[], ready: function(f){this.onReady.push(f);}};
+                window.emos3 = window.emos3 || {stored:[], send: function(p){this.stored.push(p);}};
+            </script>
+            <script
+                    type="text/javascript"
+                    defer="defer"
+                    src="https://l.ecn-ldr.de/loader/loader.js"
+                    client-key="[{$oViewConf->oePersonalizationGetClientKey()}]"
+                    container-id="[{$oViewConf->oePersonalizationGetContainerId()}]"
+            ></script>
+        [{/if}]
     [{/if}]
     <script type="text/javascript" src="[{$oViewConf->getModuleUrl('oepersonalization', 'out/js/econda-recommendations.js')}]"></script>
     [{oxscript include=$oViewConf->getModuleUrl('oepersonalization','out/js/oepersonalization.js')}]

@@ -272,6 +272,16 @@ class ViewConfig extends ViewConfig_parent
     }
 
     /**
+     * @return bool
+     */
+    public function oePersonalizationIsTrackingJsFileUploaded(): bool
+    {
+        $fileLocator = $this->oePersonalizationfactory->makeEmosJsFileLocator();
+        $fileSystem = $this->oePersonalizationfactory->makeFileSystem();
+        return $fileSystem->isFilePresent($fileLocator->getJsFileLocation());
+    }
+
+    /**
      * @return ActiveUserDataProvider
      */
     private function getActiveUserDataProvider()

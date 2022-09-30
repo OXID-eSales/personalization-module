@@ -26,12 +26,10 @@
 
 <div class="messagebox">
     [{if $oView->getTrackingScriptMessageIfEnabled()}]
-    [{$oView->getTrackingScriptMessageIfEnabled()}]
+        [{$oView->getTrackingScriptMessageIfEnabled()}]
     [{/if}]
     [{if $oView->getTrackingScriptMessageIfDisabled()}]
-    <p class="warning">
         [{$oView->getTrackingScriptMessageIfDisabled()}]
-    </p>
     [{/if}]
 </div>
 
@@ -57,11 +55,6 @@
         <input type=hidden name="confbools[oePersonalizationActive]" value=false>
         <input type="checkbox" name="confbools[oePersonalizationActive]" value=true [{if ($oePersonalizationActive)}]checked[{/if}]>
         [{oxmultilang ident="SHOP_MODULE_oePersonalizationActive"}]
-    </div>
-    <br/>
-    <div>
-        <input type=text  class="txt" style="width: 250px;" name="confstrs[oePersonalizationContainerId]" value="[{$oePersonalizationContainerId}]">
-        [{oxmultilang ident="SHOP_MODULE_oePersonalizationContainerId"}]
     </div>
     <br/>
     <div>
