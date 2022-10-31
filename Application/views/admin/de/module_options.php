@@ -32,7 +32,7 @@ $aLang = [
 
     'SHOP_MODULE_blOePersonalizationEnableTracking' => 'econda Analytics aktivieren',
     'SHOP_MODULE_oePersonalizationActive' => 'Personalisierung aktivieren',
-    'SHOP_MODULE_oePersonalizationContainerId' => 'ID des econda ARP Containers',
+    'SHOP_MODULE_oePersonalizationContainerId' => 'ID des econda Containers',
 
     'SHOP_MODULE_blOePersonalizationEnableTagManager' => 'Tag Manager aktivieren',
 
