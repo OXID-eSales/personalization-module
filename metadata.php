@@ -14,7 +14,7 @@ $sMetadataVersion = '2.1';
  */
 $aModule = [
     'id'           => 'oepersonalization',
-    'title'        => 'OXID Personalization powered by Econda',
+    'title'        => 'Econda Personalization & Analytics',
     'description'  => [
         'de' => 'Modul fügt Personalisierungs-Funktionalität hinzu.',
         'en' => 'Module adds personalization functionality.',

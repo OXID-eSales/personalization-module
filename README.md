@@ -1,5 +1,5 @@
-OXID Personalization module powered by Econda
-=============================================
+Econda Personalization & Analytics module for OXID eShop
+========================================================
 
 Module adds Econda service functionality.
 
