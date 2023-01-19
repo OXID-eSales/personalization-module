@@ -1,211 +1,63 @@
-ENGLISH VERSION
+OXID ESS-Modul-Lizenz 2023
 
-OXID eShop End User License Agreement
+1. Präambel
 
-1. Definitions
-
-"Software": (i) software files of the product OXID personalization 
-module, (ii) related documentation, and (iii) any updates, 
-upgrades and additions to such Software. 
-
-"Client": in organizational and technical database terms, a self-contained 
-unit in a System with separate master records and its own set of tables, 
-defined and controlled by parameters. View means a dynamic, virtual table 
-computed or collated from data in the database for a subsection of the master 
-records. 
-
-"CPU": the number of physical (non-virtual) processors in the production 
-system, each with a maximum of 4 processor cores per CPU.
-
-"Associated Companies": associated companies within the meaning of §§ 15
-et.seq. German Stock Corporation Act.
-
-2. Copyright
-
-The Software is protected by copyright laws. Except as expressly stated herein,
-this agreement does not grant you any intellectual property rights in the
-Software and all rights not expressly granted are reserved by OXID eSales.
-
-3. License
-
-Upon full payment of the license fees, OXID eSales grants you a non-exclusive,
-permanent license to use the Software for your internal business purposes and
-those of your Associated Companies. You may make a reasonable number of backup/
-recovery copies of the Software, provided your backup/ recovery copies are not
-installed on systems.
-
-4. Restrictions
-
-4.1. The Software may contain software products of other vendors. Such Third
-Party Products may be subject to additional terms, which could be seen after 
-their Composer installation.
-
-4.2. You may not modify, adapt or translate the Software Core.
-
-4.3. Any copy of the Software permitted under the terms of this License must
-contain the same copyright and other proprietary notices of OXID eSales that
-appear on or in the licensed Software.
-
-4.4. You may not rent, lease, let or sublicense the Software or make the
-Software by any other means available to or accessible by third parties.
-Notwithstanding the aforementioned, you are entitled to assign this License
-or sublicense the Software to Associated Companies, provided that the use of
-all sublicensed Software does in total not exceed the number of licensed CPUs/
-Clients.
-
-4.5. Software provided for testing or demonstration purposes ("Testsoftware")
-may not be used on production systems.
-
-4.6. You may use the Software only in full compliance with applicable laws,
-including, without limitation, compliance of any collecting, use and
-processing of personal data with applicable data protection laws.
-
-5. Termination
-
-OXID eSales may terminate this license agreement, if you are in breach with
-your obligations under Sec. 4 and fail to remedy such breach within ten (10)
-days after receipt of notice identifying such breach from OXID eSales.
-OXID eSales right to recover damages for breach shall remain unaffected.
-
-6. Warranties
-
-6.1. Conformity of the Software is determined exclusively according to
-specifications of the Software documentation valid at the signing of this
-agreement.
-
-6.2. The warranty period shall expire 12 months after delivery (making
-available for download) of the Software.
-
-6.3. Testsoftware is provided "AS IS" without a warranty of any kind.
-
-7. Liability
-
-7.1. OXID eSales shall be liable a)for any damage caused by a willful,
-fraudulent or grossly negligent act, or resulting in injury to life, body or
-health, or covered by the Product Liability Act, b) for any reasonably
-foreseeable damage resulting from its breach of a fundamental contractual
-obligation up to the amount of the licensing fees agreed under this agreement.
-
-7.2. In case of Testsoftware, OXID eSales liability is limited to Sec. 7.1. a).
-
-7.3. All other claims shall be excluded.
-
-8. Miscellaneous
-
-8.1. This license agreement will be governed by German law.
-
-8.2. If any part of this agreement is found void and unenforceable, it will
-not affect the balance of this agreement which will remain valid and
-enforceable.
-
-8.3. The German Version of this agreement will be used when interpreting or
-construing this Agreement.
-
-8.4. For all disputes arising out of this License, the jurisdiction of the
-Regional Court Freiburg is herewith agreed.
-
---------------------------------------------------------------------------------
-GERMAN VERSION
-
-OXID eShop Endnutzer Lizenzvereinbarung
-
-1. Definitionen
-
-"Software": die (i) Softwaredateien des Produkts OXID Personalisierungs Modul, 
-(ii) die dazugehörige Dokumentation sowie (iii)alle Updates, Upgrades 
-und Ergänzungen hierzu.
-
-"Mandant": eine organisatorisch und datentechnisch abgeschlossene Einheit
-innerhalb des Systems mit getrennten Stammsätzen und einem eigenständigen Satz
-von Tabellen/Views, die über Parameter gesteuert und kontrolliert wird. View
-ist eine datenbanktechnisch eingerichtete Ansicht auf einen Teildatenbestand der
-Stammdaten.
-
-"CPU": die Anzahl der im Produktivsystem vorhanden physikalischen (nicht
-virtuellen) Prozessoren mit jeweils bis zu 4 Prozessorkernen pro CPU.
-
-"Verbundene Unternehmen": verbundene Unternehmen gemäß §§ 15 ff. AktG
+    Diese Software ist ein ESS-Modul (E-Commerce Standard Service) und ausschließlich für den Einsatz mit den für kommerzielle Nutzung freigegebenen Editionen des OXID eShop bestimmt. Dies sind die Professional Edition und die Enterprise Edition, sowie die OXID eShop CE-Software, vorausgesetzt, für diese wird eine monatliche Nutzungsgebühr bezahlt.
 
 2. Urheberrecht
 
-Die Software ist urheberrechtlich geschützt. OXID eSales behält sich alle Rechte
-vor, sofern Ihnen in diesem Vertrag keine ausdrücklichen Rechte an der Software
-eingeräumt werden.
+    Die Software ist urheberrechtlich geschützt und geschütztes Geschäftsgeheimnis von OXID eSales.
 
-3. Lizenz
+    OXID eSales behält sich alle Rechte vor, sofern Ihnen in dieser Lizenzvereinbarung keine ausdrücklichen Rechte an der Software eingeräumt werden.
 
-Mit vollständiger Bezahlung der Lizenzgebühren räumt Ihnen OXID eSales das nicht
-ausschließliche, zeitlich unbeschränkte Recht zur Nutzung der Software für Ihre
-internen Geschäftszwecke und die Ihrer Verbundenen Unternehmen ein. Sie sind
-berechtigt, eine angemessene Anzahl von Backup/ Recovery Kopien der Software zu
-machen, vorausgesetzt, diese Kopien sind nicht auf Systemen installiert.
+3. Rechteeinräumung
 
-4. Beschränkungen
+    OXID eSales räumt Ihnen an der Software das nicht ausschließliche und nicht übertragbare Recht zur Nutzung der Software ein.
 
-4.1. Die Software enthält Softwareprodukte von Fremdherstellern. Für diese
-Fremdprodukte gelten zusätzliche Lizenzbestimmungen, die nach deren Composer 
-Installation eingesehen werden können.
+4. Nutzungsbedingungen
 
-4.2. Sie dürfen den Software Core weder umarbeiten, anpassen noch übersetzen.
+    Sie erhalten das Recht zur Nutzung unter der Bedingung, dass Sie die Nutzungsbedingungen akzeptieren.
 
-4.3. Jede gemäß dieser Lizenz zulässige Kopie der Software muss die Urheberrechts-
-und Schutzrechtsvermerke von OXID eSales tragen, die auf oder in der lizensierten
-Software vorhanden sind.
+5. Einschränkungen
 
-4.4. Sie dürfen die Software Dritten weder vermieten, verleihen, unterlizensieren
-oder auf Dritte übertragen. Sie dürfen jedoch diese Lizenz auf Verbundene
-Unternehmen übertragen und die Software an Verbundene Unternehmen unterlizensieren,
-wobei auch im Falle der Unterlizenz die Anzahl zulässiger CPUSs/Mandanten
-insgesamt nicht überschritten werden darf.
+    a. Die Nutzung von unter dieser Lizenz veröffentlichten Softwareprodukten oder -modulen in Verbindung mit früheren Versionen der OXID eShop CE Software (vor Version 6.4.2) bzw. von dieser abgeleiteten Softwareprodukten (Forks) ist nicht zulässig.
+    b. Die Nutzung dieser Software oder Teilen davon durch Module oder Software Dritter unterliegt diesen Nutzungsbedingungen.
+    c. Die Software kann Softwareprodukte von Fremdherstellern enthalten. Die Fremdprodukte können Sie nach der Installation der composer.lock-Datei entnehmen. Für diese Fremdprodukte gelten zusätzliche Lizenzbestimmungen, die sie der entsprechenden Lizenzdatei des Fremdprodukts entnehmen können.
+    d. Sie dürfen die Software weder umarbeiten, anpassen noch in eine andere Programmiersprache übersetzen, ebenso sind Reverse Engineering und Nachbau der Software nicht erlaubt.
+    e. Jede gemäß dieser Lizenz zulässige Kopie der Software muss die Urheberrechts- und Schutzrechtsvermerke von OXID eSales tragen, die auf oder in der lizensierten Software vorhanden sind.
+    f. Sie dürfen die Software Dritten weder vermieten, verleihen, unterlizensieren oder übertragen.
+    g. Sie dürfen den Quellcode der Software Dritten nicht zugänglich machen, es sei denn,
+        - die entsprechenden Dateien sind von OXID eSales explizit als öffentlich (open source) gekennzeichnet oder
+        - der Dritte benötigt den Quellcode zur Durchführung seiner Tätigkeit für Sie und hat mit OXID eSales eine schriftliche Geheimhaltungsvereinbarung abgeschlossen.
 
-4.5. Zu Test- oder Demonstrationszwecken überlassene Software ("Testsoftware")
-darf nicht in Produktivsystemen eingesetzt werden.
+6. Nutzungsuntersagung und Nutzungsentschädigung
 
-4.6. Sie dürfen die Software nur in Übereinstimmung mit den anwendbaren
-gesetzlichen Bestimmungen nutzen, insbesondere personenbezogene Daten nur im
-Rahmen der geltenden datenschutzrechtlichen Bestimmungen erheben, nutzen und
-verarbeiten.
+    Wenn Sie die Bestimmungen von Ziff. 4 und 5 nicht oder nicht vollständig erfüllen, ist OXID eSales ohne weiteres berechtigt, Ihnen die Nutzung der Software zu untersagen. Schadensersatzansprüche von OXID eSales bleiben vorbehalten.
 
-5. Kündigung
-OXID eSales ist zur Kündigung dieses Lizenzvertrages berechtigt, wenn Sie die
-Bestimmungen von Ziff. 4 nicht oder nicht vollständig erfüllen und diesen
-Vertragsbruch nicht innerhalb von zehn (10) Tagen nach Erhalt einer entsprechenden
-Anzeige durch OXID eSales, die den Vertragsbruch beschreibt, abstellen.
-Schadensersatzansprüche von OXID eSales bleiben vorbehalten.
+    Werden die Nutzungsbedingungen nicht eingehalten und gibt es keine andere Vereinbarung, stimmt der Lizenznehmer der jeweils gültigen Nutzungsentschädigung (Stand 31.12.2022: 111€) zuzüglich des Inflationsausgleichs gemäß der vom statistischen Bundesamt festgestellten jährlichen Inflationsrate für jeden Monat unrechtmäßiger Nutzung der Software mit anderen Softwareprodukten zu. Diese Entschädigung entbindet nicht vom Abschluss eines der Nutzung entsprechenden Lizenzvertrags.
 
-6. Rechte bei Mängel
+    Für spätere Versionen behält sich OXID eine Anpassung der Nutzungsgebühr vor.
 
-6.1. Die vertragsgemäße Beschaffenheit der Software bestimmt sich ausschließlich
-nach den Spezifikationen der Dokumentation in der bei Abschluss dieses
-Lizenzvertrages gültigen Fassung.
+    Werden mehrere Shops oder Teile der OXID Professional Edition oder OXID Enterprise Edition oder vergleichbare Funktionalität, die durch Dritte auf Basis von OXID Software bereitgestellt wurde, mit dieser Software genutzt, wird eine Lizenzmiete für die Professional Edition oder Enterprise Edition gemäß der OXID Preisliste fällig. Es gilt die Preisliste des Monats, in dem die erste Lizenzmiete bezahlt wird.
 
-6.2. Die Verjährungsfrist beträgt 12 Monate nach Lieferung der Software
-(Bereitstellung zum Download).
+7. Support und Wartung
 
-6.3. Testsoftware wird unter Ausschluss aller Rechte bei Mängeln überlassen.
+    Support- und Wartungsleistungen sind nicht Bestandteil dieser Lizenzvereinbarung. Wenn Sie solche Leistungen in Anspruch nehmen wollen, wenden Sie sich bitte an sales@oxid-esales.com.
 
-7. Haftung
+8. Rechte bei Mängeln
 
-7.1. OXID eSales haftet für a) bei Vorsatz und grober Fahrlässigkeit, Ansprüchen
-nach dem deutschen Produkthaftungsgesetz sowie bei einer Verletzung des Lebens,
-des Körpers oder der Gesundheit haften die Parteien unbeschränkt nach den
-gesetzlichen Vorschriften, b) im übrigen bei der Verletzung wesentlicher
-Vertragspflichten bis zu einem Gesamtbetrag, der der Höhe der unter diesem
-Lizenzvertrag vereinbarten Lizenzgebühren entspricht.
+    a. Die vertragsgemäße Beschaffenheit der Software bestimmt sich ausschließlich nach den Spezifikationen der Dokumentation in der bei Abschluss dieses Lizenzvertrages gültigen Fassung.
+    b. Die Verjährungsfrist beträgt 12 Monate nach Lieferung der Software (Bereitstellung zum Download).
+    c. Die Software wird Ihnen in der Beschaffenheit überlassen, wie sie sich zum Zeitpunkt des Abschlusses dieses Lizenzvertrages befindet. OXID eSales übernimmt keine Haftung für Sach- und Rechtsmängel, insbesondere übernehmen wir keine Haftung für die vertragsgemäße Beschaffenheit oder die Eignung für den vertraglich vorausgesetzten Verwendungszweck. Die in der Dokumentation gegebene Beschreibung der Software darf in keinem Fall als Zusicherung oder Garantie verstanden werden. Unsere Haftung für vorsätzliches und/oder arglistiges Handeln bleibt davon jedoch unberührt.
 
-7.2. Bei Testsoftware haftet OXID eSales nur in Fällen von Ziff. 7.1. a).
+9. Haftung
 
-7.3. Alle anderen Ansprüche sind ausgeschlossen.
+    a. OXID eSales haftet nur bei Vorsatz und grober Fahrlässigkeit, Ansprüchen nach dem deutschen Produkthaftungsgesetz sowie bei einer Verletzung des Lebens, des Körpers oder der Gesundheit. Im Übrigen haften die Parteien unbeschränkt nach den gesetzlichen Vorschriften
+    b. Alle anderen Ansprüche sind ausgeschlossen.
 
-8. Sonstiges
+10. Sonstiges
 
-8.1. Dieser Lizenzvertrag unterliegt deutschem Recht.
-
-8.2. Sollte eine Bestimmung dieses Lizenzvertrages unwirksam oder nichtig sein
-oder werden, so bleibt seine Wirksamkeit im Übrigen unberührt.
-
-8.3. Für die Auslegung dieses Lizenzvertrages ist die deutsche Sprachfassung
-verbindlich.
-
-8.4. Für alle Streitigkeiten, die aus dieser Lizenzvereinbarung entstehen, wird
-die Zuständigkeit des Landgerichts Freiburg vereinbart.
+    a. Dieser Lizenzvertrag unterliegt deutschem Recht.
+    b. Sollte eine Bestimmung dieses Lizenzvertrages unwirksam oder nichtig sein oder werden, so bleibt seine Wirksamkeit im Übrigen unberührt.
+    c. Für die Auslegung dieses Lizenzvertrages ist die deutsche Sprachfassung verbindlich.
+    d. Für alle Streitigkeiten, die aus dieser Lizenzvereinbarung entstehen, wird die Zuständigkeit des Landgerichts Freiburg vereinbart.
