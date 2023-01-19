@@ -1,6 +1,6 @@
 {
     "name": "oxid-esales/personalization-module",
-    "description": "This is the Personalization module for the OXID eShop.",
+    "description": "Econda Personalization & Analytics module for the OXID eShop",
     "type": "oxideshop-module",
     "keywords": ["oxid", "modules", "eShop"],
     "homepage": "https://www.oxid-esales.com",
