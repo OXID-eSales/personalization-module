@@ -7,7 +7,7 @@ Module adds Econda service functionality.
 
 * 1.x version of the module works with OXID eShop compilation 6.1.x
 * 2.1.0 version of the module works with OXID eShop compilation 6.2.x
-* 2.2+ version (b-6.3.x branch) of the module works with OXID eShop compilation 6.3.x
+* 2.2+ version (b-6.3.x branch) of the module works with OXID eShop compilations 6.3.x, 6.4.x and 6.5.x
 * master branch of the module works with OXID eShop compilation master
 
 ## Installation
