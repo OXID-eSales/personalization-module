@@ -4,7 +4,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [2.2.1] - Unreleased
+## [3.0.0] - Unreleased
+
+### Added
+- Econda Loader is used by default for econda Analytics
+
+### Changed
+- Moved `ID of the econda container` settings field to General tab
 
 ### Fixed
 - Improve module descriptions
