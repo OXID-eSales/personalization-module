@@ -7,7 +7,6 @@ OXID ESS-Modul-Lizenz 2023
 2. Urheberrecht
 
     Die Software ist urheberrechtlich geschützt und geschütztes Geschäftsgeheimnis von OXID eSales.
-
     OXID eSales behält sich alle Rechte vor, sofern Ihnen in dieser Lizenzvereinbarung keine ausdrücklichen Rechte an der Software eingeräumt werden.
 
 3. Rechteeinräumung
@@ -16,7 +15,7 @@ OXID ESS-Modul-Lizenz 2023
 
 4. Nutzungsbedingungen
 
-    Sie erhalten das Recht zur Nutzung unter der Bedingung, dass Sie die Nutzungsbedingungen akzeptieren.
+    Sie erhalten das Recht zur Nutzung unter der Bedingung, dass Sie diese Lizenzvereinbarung und die darin enthaltenen Nutzungsbedingungen akzeptieren.
 
 5. Einschränkungen
 
@@ -33,11 +32,8 @@ OXID ESS-Modul-Lizenz 2023
 6. Nutzungsuntersagung und Nutzungsentschädigung
 
     Wenn Sie die Bestimmungen von Ziff. 4 und 5 nicht oder nicht vollständig erfüllen, ist OXID eSales ohne weiteres berechtigt, Ihnen die Nutzung der Software zu untersagen. Schadensersatzansprüche von OXID eSales bleiben vorbehalten.
-
     Werden die Nutzungsbedingungen nicht eingehalten und gibt es keine andere Vereinbarung, stimmt der Lizenznehmer der jeweils gültigen Nutzungsentschädigung (Stand 31.12.2022: 111€) zuzüglich des Inflationsausgleichs gemäß der vom statistischen Bundesamt festgestellten jährlichen Inflationsrate für jeden Monat unrechtmäßiger Nutzung der Software mit anderen Softwareprodukten zu. Diese Entschädigung entbindet nicht vom Abschluss eines der Nutzung entsprechenden Lizenzvertrags.
-
     Für spätere Versionen behält sich OXID eine Anpassung der Nutzungsgebühr vor.
-
     Werden mehrere Shops oder Teile der OXID Professional Edition oder OXID Enterprise Edition oder vergleichbare Funktionalität, die durch Dritte auf Basis von OXID Software bereitgestellt wurde, mit dieser Software genutzt, wird eine Lizenzmiete für die Professional Edition oder Enterprise Edition gemäß der OXID Preisliste fällig. Es gilt die Preisliste des Monats, in dem die erste Lizenzmiete bezahlt wird.
 
 7. Support und Wartung
@@ -61,3 +57,66 @@ OXID ESS-Modul-Lizenz 2023
     b. Sollte eine Bestimmung dieses Lizenzvertrages unwirksam oder nichtig sein oder werden, so bleibt seine Wirksamkeit im Übrigen unberührt.
     c. Für die Auslegung dieses Lizenzvertrages ist die deutsche Sprachfassung verbindlich.
     d. Für alle Streitigkeiten, die aus dieser Lizenzvereinbarung entstehen, wird die Zuständigkeit des Landgerichts Freiburg vereinbart.
+
+
+ENGLISH VERSION
+
+This is a rough translation of the German language version for informational purposes. The German language version of this license agreement is legally binding.
+
+1. Preamble
+
+    This software is an ESS module (E-Commerce Standard Service) and is intended exclusively for use with the editions of OXID eShop released for commercial use. These are the Professional Edition and the Enterprise Edition, as well as the OXID eShop CE software, provided that a monthly fee is paid for these.
+
+2. Copyright
+
+    The software is copyrighted and protected trade secret of OXID eSales.
+    OXID eSales reserves all rights unless you are granted explicit rights to the software in this license agreement.
+
+3. Granting of rights
+
+    OXID eSales grants you the non-exclusive and non-transferable right to use the software.
+
+4. Terms of use
+
+    You are granted the right to use the software under the condition that you accept this license agreement and the included terms of use.
+
+5. Restrictions
+
+    a.  The use of software products or modules published under this licence in connection with earlier versions of the OXID eShop CE software (prior to version 6.4.2) or software products derived from it (forks) is not permitted.
+    b.  The use of this software or parts thereof by third party modules or software is subject to these Terms of Use.
+    c.  The software contains software products from third-party manufacturers. You can find the third-party products in the composer.lock file after installation. Additional license conditions apply to these third-party products, which you can find in the corresponding license file of the third-party product.
+    d.  You may not modify, adapt or translate this software, nor may you reverse engineer or decompile the software.
+    e.  Any copy of the Software permitted under this license must bear the copyright and proprietary notices of OXID eSales that are present on or in the Licensed Software.
+    f.  You may not rent, loan, sublicense or transfer the Software to any third party.
+    g.  You may not make the source code of the software available to third parties unless,
+        - the corresponding files are explicitly marked as public (open source) by OXID eSales or
+        - the third party requires the source code to carry out its activities for you and has concluded a written non-disclosure agreement with OXID eSales.
+
+6. Prohibition of Use and Compensation for Use
+
+    If you do not or not completely fulfill the provisions of clauses 4 and 5, OXID eSales is entitled without further ado to prohibit you from using the software. OXID eSales reserves the right to claim damages.
+    If the terms of use are not complied with and there is no other agreement, the licensee agrees to compensation for use of € 111 plus inflation compensation in accordance with the annual inflation rate determined by the Federal Statistical Office of Germany for each month of unlawful use. This compensation does not release from the conclusion of a license agreement corresponding to the use.
+    For later versions OXID reserves the right to adjust the usage fee.
+    If several shops or parts of the OXID Professional Edition or OXID Enterprise Edition or comparable functionality provided by third parties based on OXID software are used, a license fee according to the OXID price list is due. The price list of the month in which the first license fee is paid applies.
+
+7. Support and Maintenance
+
+    Support and maintenance services are not part of this license agreement. If you wish to make use of such services, please contact sales@oxid-esales.com.
+
+8. Rights in the Event of Defects
+
+    a.	The contractual quality of the software is determined exclusively by the specifications of the documentation in the version valid at the time of conclusion of this license agreement.
+    b.	The limitation period is 12 months after delivery of the software (provision for download).
+    c.	The software is provided to you in the condition as it is at the time of the conclusion of this license agreement. OXID eSales accepts no liability for material defects or defects of title, in particular we accept no liability for the contractual condition or suitability for the contractually assumed purpose. The description of the software given in the documentation may in no case be understood as an assurance or guarantee. However, this shall not affect our liability for intentional and/or fraudulent acts.
+
+9. Liability
+
+    a.	OXID eSales shall only be liable in the event of intent and gross negligence, claims under the German Product Liability Act and in the event of injury to life or health. In all other respects the parties shall be liable without limitation in accordance with the statutory provisions.
+    b.	All other claims are excluded.
+
+10. Miscellaneous
+
+    a.	This license agreement is subject to German law.
+    b.	Should any provision of this license agreement be or become invalid or void, the validity of the remaining provisions shall remain unaffected.
+    c.	The German language version shall be binding for the interpretation of this license agreement.
+    d.	It is agreed that the Regional Court of Freiburg shall have jurisdiction over all disputes arising from this licence agreement.
