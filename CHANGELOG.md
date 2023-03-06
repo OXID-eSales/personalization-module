@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [3.0.0] - Unreleased
+## [3.0.0-rc.1] - 2023-03-06
 
 ### Added
 - Econda Loader is used by default for econda Analytics
@@ -115,7 +115,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [1.0.0] - 2018-08-23
 
-[2.2.1]: https://github.com/OXID-eSales/personalization-module/compare/v2.2.0...b-6.3.x
+[3.0.0-rc.1]: https://github.com/OXID-eSales/personalization-module/compare/v2.2.0...v3.0.0-rc.1
 [2.2.0]: https://github.com/OXID-eSales/personalization-module/compare/v2.1.0...v2.2.0
 [2.1.0]: https://github.com/OXID-eSales/personalization-module/compare/v2.0.0...v2.1.0
 [2.0.0]: https://github.com/OXID-eSales/personalization-module/compare/v1.4.0...v2.0.0
