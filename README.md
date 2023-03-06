@@ -16,7 +16,6 @@ Full documentation can be found on: https://docs.oxid-esales.com/add-ons/persona
 Run the following commands to install OXID personalization module:
 
 ```bash
-composer config repositories.oxid-esales/personalization-module composer https://personalization.packages.oxid-esales.com/
 composer require oxid-esales/personalization-module ^3.0.0-rc.1
 ```
 
