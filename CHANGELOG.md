@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [3.0.0] - Unreleased
+
+### Changed
+- Module logo updated
+
+### Fixed
+- Documentation link, author and compatibility information updated
+
 ## [3.0.0-rc.1] - 2023-03-06
 
 ### Added
@@ -115,6 +123,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [1.0.0] - 2018-08-23
 
+[3.0.0]: https://github.com/OXID-eSales/personalization-module/compare/v3.0.0-rc.1...b-6.3.x
 [3.0.0-rc.1]: https://github.com/OXID-eSales/personalization-module/compare/v2.2.0...v3.0.0-rc.1
 [2.2.0]: https://github.com/OXID-eSales/personalization-module/compare/v2.1.0...v2.2.0
 [2.1.0]: https://github.com/OXID-eSales/personalization-module/compare/v2.0.0...v2.1.0
