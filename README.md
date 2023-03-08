@@ -3,7 +3,7 @@ Econda Personalization & Analytics module for OXID eShop
 
 Module adds Econda service functionality.
 
-Full documentation can be found on: https://docs.oxid-esales.com/add-ons/personalizationoption/de/2.0/
+Full documentation can be found on: https://docs.oxid-esales.com/add-ons/personalizationoption/de/3.0/
 
 ## Compatibility
 
