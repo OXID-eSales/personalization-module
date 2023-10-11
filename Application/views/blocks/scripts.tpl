@@ -15,8 +15,7 @@
                 window.econda = {onReady:[], ready: function(f){this.onReady.push(f);}};
                 window.emos3 = window.emos3 || {stored:[], send: function(p){this.stored.push(p);}};
             </script>
-            <script
-                    type="text/javascript"
+            <script type="text/javascript"
                     defer="defer"
                     src="https://l.ecn-ldr.de/loader/loader.js"
                     client-key="[{$oViewConf->oePersonalizationGetClientKey()}]"
