@@ -1,23 +1,22 @@
-OXID personalization module powered by Econda
-=============================================
+Econda Personalization & Analytics module for OXID eShop
+========================================================
 
 Module adds Econda service functionality.
+
+Full documentation can be found on: https://docs.oxid-esales.com/add-ons/personalizationoption/de/3.0/
 
 ## Compatibility
 
 * 1.x version of the module works with OXID eShop compilation 6.1.x
 * 2.1.0 version of the module works with OXID eShop compilation 6.2.x
-* 2.2+ version (b-6.3.x branch) of the module works with OXID eShop compilation 6.3.x
-* master branch of the module works with OXID eShop compilation master
+* 2.2 and 3.0 module versions (b-6.3.x branch) works with OXID eShop compilations 6.3.x, 6.4.x and 6.5.x
 
 ## Installation
 
 Run the following commands to install OXID personalization module:
 
 ```bash
-composer config repositories.oxid-esales/personalization-module composer https://personalization.packages.oxid-esales.com/
-composer require oxid-esales/personalization-module
-bin/oe-console oe:module:install vendor/oxid-esales/personalization-module/
+composer require oxid-esales/personalization-module ^3.0.0-rc.1
 ```
 
 ### Avoid conflicts with existing OXID eShop functionality

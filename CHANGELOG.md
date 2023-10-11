@@ -4,11 +4,32 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [3.0.0] - Not released
+## [4.0.0] - Not released
 
 ### Fixed
 - Adapt module tests to removal of oxconfig encoding feature.
 - Fixed compatibility issues regarding `setUp` and `tearDown` phpunit methods.
+
+## [3.0.0] - Unreleased
+
+### Changed
+- Module logo updated
+
+### Fixed
+- Documentation link, author and compatibility information updated
+- `loader.js` script inclusion
+
+## [3.0.0-rc.1] - 2023-03-06
+
+### Added
+- Econda Loader is used by default for econda Analytics
+
+### Changed
+- Moved `ID of the econda container` settings field to General tab
+
+### Fixed
+- Improve module descriptions
+- Update License
 
 ## [2.2.0] - 2021-07-02
 
@@ -106,7 +127,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [1.0.0] - 2018-08-23
 
-[3.0.0]: https://github.com/OXID-eSales/personalization-module/compare/b-2.x...master
+[4.0.0]: https://github.com/OXID-eSales/personalization-module/compare/b-6.3.x...master
+[3.0.0]: https://github.com/OXID-eSales/personalization-module/compare/v3.0.0-rc.1...b-6.3.x
+[3.0.0-rc.1]: https://github.com/OXID-eSales/personalization-module/compare/v2.2.0...v3.0.0-rc.1
 [2.2.0]: https://github.com/OXID-eSales/personalization-module/compare/v2.1.0...v2.2.0
 [2.1.0]: https://github.com/OXID-eSales/personalization-module/compare/v2.0.0...v2.1.0
 [2.0.0]: https://github.com/OXID-eSales/personalization-module/compare/v1.4.0...v2.0.0

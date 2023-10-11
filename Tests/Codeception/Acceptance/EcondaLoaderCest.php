@@ -17,17 +17,17 @@ use OxidEsales\PersonalizationModule\Tests\Codeception\AcceptanceAdminTester;
  * Class PrivacyProtectionCest
  * @package OxidEsales\PersonalizationModule\Tests\Codeception\Acceptance
  */
-final class PrivacyProtectionCest
+final class EcondaLoaderCest
 {
     /**
      * @param AcceptanceTester $I
      *
      * @group econda_personalization
-     * @group privacy_protection
+     * @group econda_loader
      */
-    public function testPrivacyProtectionBannerIsShown(AcceptanceTester $I)
+    public function testEcondaLoaderScriptIsLoadedOnEnableTracking(AcceptanceTester $I)
     {
-        $I->wantToTest('if privacy protection banner is shown');
+        $I->wantToTest('econda loader script is loaded');
 
         $I->loginAdmin();
 
@@ -42,21 +42,31 @@ final class PrivacyProtectionCest
         $I->fillField('confstrs[oePersonalizationContainerId]', Fixtures::get('econdaARPContainerId'));
         $I->click('Save');
 
+        //econda tracking is not enabled and loader is not loaded
+        $I->clearShopCache();
+        $I->openShop();
+        $I->waitForJS("return typeof window.econda.ready == 'undefined';",10);
+
+        $I->loginAdmin();
+
+        //open econda settings
+        $I->selectNavigationFrame();
+        $I->click('Personalization');
+        $I->click('econda');
+
         //switch to 'analytics' tab
         $I->selectListFrame();
         $I->click('Analytics');
 
         //fill data in 'analytics' tab
         $I->selectEditFrame();
-        $I->checkOption('confbools[oePersonalizationActive]');
+        $I->checkOption('confbools[blOePersonalizationTracking]');
         $I->click('Save');
 
-        //check if banner is on start page
-        $homePage = $I->openShop();
-        $I->waitForElementVisible($homePage->privacyProtectionBanner);
-
-        //check if banner is there when when we switch pages
-        $I->amOnPage("/en/Kiteboarding");
-        $I->waitForElementVisible($homePage->privacyProtectionBanner);
+        //check if loader is loaded
+        $I->clearShopCache();
+        $I->openShop();
+        $I->waitForJS("return typeof window.econda.ready != 'undefined';",10);
+        $I->waitForJS("return (typeof window.econda.ready) == 'function';",10);
     }
 }

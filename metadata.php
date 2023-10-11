@@ -14,13 +14,13 @@ $sMetadataVersion = '2.1';
  */
 $aModule = [
     'id'           => 'oepersonalization',
-    'title'        => 'OXID personalization powered by Econda',
+    'title'        => 'Econda Personalization & Analytics',
     'description'  => [
         'de' => 'Modul fügt Personalisierungs-Funktionalität hinzu.',
         'en' => 'Module adds personalization functionality.',
     ],
     'thumbnail' => '/out/pictures/logo.png',
-    'version' => '2.2.0',
+    'version' => '3.0.0-rc.1',
     'author' => 'OXID eSales AG',
     'url' => 'https://www.oxid-esales.com',
     'email' => 'info@oxid-esales.com',
