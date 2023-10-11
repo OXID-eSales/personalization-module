@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Fixed
 - Documentation link, author and compatibility information updated
+- `loader.js` script inclusion
 
 ## [3.0.0-rc.1] - 2023-03-06
 
