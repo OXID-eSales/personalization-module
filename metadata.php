@@ -51,6 +51,7 @@ $aModule = [
         'oepersonalization_widgets_tab.tpl' => 'oe/personalization/Application/views/admin/tpl/oepersonalization_widgets_tab.tpl',
         'oepersonalization_export_tab.tpl' => 'oe/personalization/Application/views/admin/tpl/oepersonalization_export_tab.tpl',
         'oepersonalization_tag_manager_tab.tpl' => 'oe/personalization/Application/views/admin/tpl/oepersonalization_tag_manager_tab.tpl',
+        'oepersonalization_econda_products.tpl' => 'oe/personalization/Application/views/admin/tpl/oepersonalization_econda_products.tpl',
     ],
     'blocks' => [
         [

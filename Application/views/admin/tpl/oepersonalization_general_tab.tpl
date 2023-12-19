@@ -57,6 +57,8 @@
     </div>
 </form>
 
+[{include file="oepersonalization_econda_products.tpl"}]
+
 [{include file="pagetabsnippet.tpl" noOXIDCheck="true" sEditAction="changeEditBar"}]
 
 [{include file="bottomitem.tpl"}]
