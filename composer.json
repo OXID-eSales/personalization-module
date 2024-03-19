@@ -19,8 +19,8 @@
         }
     },
     "require": {
-        "php": "^7.3 || ^8.0",
-        "oxid-esales/econda-tracking-component": "^1.2.0",
+        "php": "^8.0",
+        "oxid-esales/econda-tracking-component": "dev-b-7.0.x-upgrade_to_70-OXDEV-7559",
         "league/csv": "^9.1.4"
     },
     "bin": [
@@ -28,7 +28,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "OxidEsales\\PersonalizationModule\\": "../../../source/modules/oe/personalization"
+            "OxidEsales\\PersonalizationModule\\": "./"
         }
     }
 }
