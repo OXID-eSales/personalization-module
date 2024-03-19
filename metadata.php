@@ -20,7 +20,7 @@ $aModule = [
         'en' => 'Module adds personalization functionality.',
     ],
     'thumbnail' => '/out/pictures/logo.png',
-    'version' => '3.0.0-rc.1',
+    'version' => '3.0.0',
     'author' => 'OXID eSales AG',
     'url' => 'https://www.oxid-esales.com',
     'email' => 'info@oxid-esales.com',

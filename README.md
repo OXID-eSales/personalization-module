@@ -9,14 +9,18 @@ Full documentation can be found on: https://docs.oxid-esales.com/add-ons/persona
 
 * 1.x version of the module works with OXID eShop compilation 6.1.x
 * 2.1.0 version of the module works with OXID eShop compilation 6.2.x
-* 2.2 and 3.0 module versions (b-6.3.x branch) works with OXID eShop compilations 6.3.x, 6.4.x and 6.5.x
+* 2.2 module version works with OXID eShop compilations 6.3.x, 6.4.x and 6.5.x
+* 3.0 module versions works with OXID eShop compilations 6.5.x
+
+#### Branches:
+* Branch b-6.3.x is compatible with OXID eShop 6.5.x branches
 
 ## Installation
 
 Run the following commands to install OXID personalization module:
 
 ```bash
-composer require oxid-esales/personalization-module ^3.0.0-rc.1
+composer require oxid-esales/personalization-module ^3.0.0
 ```
 
 ### Avoid conflicts with existing OXID eShop functionality
