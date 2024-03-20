@@ -6,6 +6,7 @@
 
 namespace OxidEsales\PersonalizationModule\Application\Core;
 
+use OxidEsales\Eshop\Core\Config;
 use OxidEsales\PersonalizationModule\Application\Factory;
 use OxidEsales\EcondaTrackingComponent\Adapter\Helper\ActiveUserDataProvider;
 use OxidEsales\PersonalizationModule\Component\DemoAccountData;
@@ -28,6 +29,14 @@ class ViewConfig extends ViewConfig_parent
     {
         parent::__construct();
         $this->oePersonalizationfactory = oxNew(Factory::class);
+    }
+
+    /**
+     * @deprecated Move module settings to separate class
+     */
+    private function getConfig(): Config
+    {
+        return Registry::getConfig();
     }
 
     /**

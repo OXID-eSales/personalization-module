@@ -23,8 +23,8 @@
             ></script>
         [{/if}]
     [{/if}]
-    <script type="text/javascript" src="[{$oViewConf->getModuleUrl('oepersonalization', 'out/js/econda-recommendations.js')}]"></script>
-    [{oxscript include=$oViewConf->getModuleUrl('oepersonalization','out/js/oepersonalization.js')}]
+    <script type="text/javascript" src="[{$oViewConf->getModuleUrl('oepersonalization', 'js/econda-recommendations.js')}]"></script>
+    [{oxscript include=$oViewConf->getModuleUrl('oepersonalization','js/oepersonalization.js')}]
     [{if $oViewConf->oePersonalizationEnableWidgets()}]
         [{if $oViewConf->oePersonalizationIsLoginAction()}]
         <script type="text/javascript">

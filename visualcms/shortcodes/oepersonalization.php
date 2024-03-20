@@ -70,7 +70,7 @@ class oepersonalization_shortcode extends VisualEditorShortcode
             $loadingText = $language->translateString('OEPERSONALIZATION_LOADING');
             $loadingImage = $this->getViewConfig()->getModuleUrl(
                 'oepersonalization',
-                'out/pictures/spinner.gif'
+                'pictures/spinner.gif'
             );
 
             $output = <<<EOT
