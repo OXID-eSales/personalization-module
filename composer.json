@@ -20,7 +20,7 @@
     },
     "require": {
         "php": "^8.0",
-        "oxid-esales/econda-tracking-component": "dev-b-7.0.x-upgrade_to_70-OXDEV-7559",
+        "oxid-esales/econda-tracking-component": "dev-b-7.0.x",
         "league/csv": "^9.1.4"
     },
     "bin": [
