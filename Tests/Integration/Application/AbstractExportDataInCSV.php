@@ -11,10 +11,18 @@ use OxidEsales\Eshop\Application\Model\Shop;
 use OxidEsales\Eshop\Core\Registry;
 use OxidEsales\EshopCommunity\Internal\Container\ContainerFactory;
 use OxidEsales\EshopCommunity\Internal\Framework\Module\Configuration\Bridge\ShopConfigurationDaoBridgeInterface;
+use OxidEsales\EshopCommunity\Internal\Framework\Module\Setup\Bridge\ModuleActivationBridgeInterface;
 use OxidEsales\Facts\Facts;
+use OxidEsales\PersonalizationModule\Application\Core\Events;
 
 abstract class AbstractExportDataInCSV extends \OxidEsales\TestingLibrary\UnitTestCase
 {
+    public function setUp(): void
+    {
+        parent::setUp();
+        Events::onActivate();
+    }
+
     protected $exportPath = 'export/oepersonalization';
 
     /**
@@ -64,10 +72,10 @@ abstract class AbstractExportDataInCSV extends \OxidEsales\TestingLibrary\UnitTe
                 'exportVars' => true,
                 [
                     'ID|SKU|Name|Name_var1|Description|Description_var1|ProductUrl|ProductUrl_var1|ImageUrl|Price|OldPrice|New|Stock|EAN|Brand|ProductCategory',
-                    '1849|1849|"Bar ""Butler"" 6 BOTTLES"|"Bar ""Butler"" 6 BOTTLES"|||%shopUrl%Geschenke/Bar-Equipment/Bar-Butler-6-BOTTLES.html|%shopUrl%en/Gifts/Bar-Equipment/Bar-Butler-6-BOTTLES.html|%shopUrl%out/pictures/generated/product/1/540_340_75/nopic.jpg|89.9|94|0|6|||8a142c3e49b5a80c1.23676990^^8a142c3e4143562a5.46426637',
-                    '1952||"Hangover Pack LITTLE HELPER"|"Hangover Set LITTLE HELPER"|||%shopUrl%Geschenke/Hangover-Pack-LITTLE-HELPER.html|%shopUrl%en/Gifts/Hangover-Set-LITTLE-HELPER.html|%shopUrl%out/pictures/generated/product/1/540_340_75/nopic.jpg|6|0|0|22|||8a142c3e4143562a5.46426637',
-                    '1952|1952_variant_1|"Hangover Pack LITTLE HELPER"|"Hangover Set LITTLE HELPER"|||%shopUrl%Geschenke/Hangover-Pack-LITTLE-HELPER-1952-variant-1.html|%shopUrl%en/Gifts/Hangover-Set-LITTLE-HELPER-1952-variant-1.html|%shopUrl%out/pictures/generated/product/1/540_340_75/nopic.jpg|6|0|0|22|||8a142c3e4143562a5.46426637',
-                    '2024|2024|"Popcornschale PINK"|"Popcorn Bowl PINK"|||%shopUrl%Geschenke/Popcornschale-PINK.html|%shopUrl%en/Gifts/Popcorn-Bowl-PINK.html|%shopUrl%out/pictures/generated/product/1/540_340_75/nopic.jpg|11|0|0|7|||8a142c3e4143562a5.46426637'
+                    '1849|1849|"Bar ""Butler"" 6 BOTTLES"|"Bar ""Butler"" 6 BOTTLES"|||%shopUrl%Geschenke/Bar-Equipment/Bar-Butler-6-BOTTLES.html|%shopUrl%en/Gifts/Bar-Equipment/Bar-Butler-6-BOTTLES.html|%shopUrl%out/pictures/generated/product/1/800_600_75/nopic.jpg|89.9|94|0|6|||8a142c3e49b5a80c1.23676990^^8a142c3e4143562a5.46426637',
+                    '1952||"Hangover Pack LITTLE HELPER"|"Hangover Set LITTLE HELPER"|||%shopUrl%Geschenke/Hangover-Pack-LITTLE-HELPER.html|%shopUrl%en/Gifts/Hangover-Set-LITTLE-HELPER.html|%shopUrl%out/pictures/generated/product/1/800_600_75/nopic.jpg|6|0|0|22|||8a142c3e4143562a5.46426637',
+                    '1952|1952_variant_1|"Hangover Pack LITTLE HELPER"|"Hangover Set LITTLE HELPER"|||%shopUrl%Geschenke/Hangover-Pack-LITTLE-HELPER-1952-variant-1.html|%shopUrl%en/Gifts/Hangover-Set-LITTLE-HELPER-1952-variant-1.html|%shopUrl%out/pictures/generated/product/1/800_600_75/nopic.jpg|6|0|0|22|||8a142c3e4143562a5.46426637',
+                    '2024|2024|"Popcornschale PINK"|"Popcorn Bowl PINK"|||%shopUrl%Geschenke/Popcornschale-PINK.html|%shopUrl%en/Gifts/Popcorn-Bowl-PINK.html|%shopUrl%out/pictures/generated/product/1/800_600_75/nopic.jpg|11|0|0|7|||8a142c3e4143562a5.46426637'
                 ]
             ],
             'non-existent category' => [
@@ -88,10 +96,10 @@ abstract class AbstractExportDataInCSV extends \OxidEsales\TestingLibrary\UnitTe
                 'exportVars' => true,
                 [
                     'ID|SKU|Name|Name_var1|Description|Description_var1|ProductUrl|ProductUrl_var1|ImageUrl|Price|OldPrice|New|Stock|EAN|Brand|ProductCategory',
-                    '1849|1849|"Bar ""Butler"" 6 BOTTLES"|"Bar ""Butler"" 6 BOTTLES"|||%shopUrl%Geschenke/Bar-Equipment/Bar-Butler-6-BOTTLES.html|%shopUrl%en/Gifts/Bar-Equipment/Bar-Butler-6-BOTTLES.html|%shopUrl%out/pictures/generated/product/1/540_340_75/nopic.jpg|89.9|94|0|6|||8a142c3e49b5a80c1.23676990^^8a142c3e4143562a5.46426637',
-                    '1952||"Hangover Pack LITTLE HELPER"|"Hangover Set LITTLE HELPER"|||%shopUrl%Geschenke/Hangover-Pack-LITTLE-HELPER.html|%shopUrl%en/Gifts/Hangover-Set-LITTLE-HELPER.html|%shopUrl%out/pictures/generated/product/1/540_340_75/nopic.jpg|6|0|0|22|||8a142c3e4143562a5.46426637',
-                    '1952|1952_variant_1|"Hangover Pack LITTLE HELPER"|"Hangover Set LITTLE HELPER"|||%shopUrl%Geschenke/Hangover-Pack-LITTLE-HELPER-1952-variant-1.html|%shopUrl%en/Gifts/Hangover-Set-LITTLE-HELPER-1952-variant-1.html|%shopUrl%out/pictures/generated/product/1/540_340_75/nopic.jpg|6|0|0|22|||8a142c3e4143562a5.46426637',
-                    '2024|2024|"Popcornschale PINK"|"Popcorn Bowl PINK"|||%shopUrl%Geschenke/Popcornschale-PINK.html|%shopUrl%en/Gifts/Popcorn-Bowl-PINK.html|%shopUrl%out/pictures/generated/product/1/540_340_75/nopic.jpg|11|0|0|7|||8a142c3e4143562a5.46426637'
+                    '1849|1849|"Bar ""Butler"" 6 BOTTLES"|"Bar ""Butler"" 6 BOTTLES"|||%shopUrl%Geschenke/Bar-Equipment/Bar-Butler-6-BOTTLES.html|%shopUrl%en/Gifts/Bar-Equipment/Bar-Butler-6-BOTTLES.html|%shopUrl%out/pictures/generated/product/1/800_600_75/nopic.jpg|89.9|94|0|6|||8a142c3e49b5a80c1.23676990^^8a142c3e4143562a5.46426637',
+                    '1952||"Hangover Pack LITTLE HELPER"|"Hangover Set LITTLE HELPER"|||%shopUrl%Geschenke/Hangover-Pack-LITTLE-HELPER.html|%shopUrl%en/Gifts/Hangover-Set-LITTLE-HELPER.html|%shopUrl%out/pictures/generated/product/1/800_600_75/nopic.jpg|6|0|0|22|||8a142c3e4143562a5.46426637',
+                    '1952|1952_variant_1|"Hangover Pack LITTLE HELPER"|"Hangover Set LITTLE HELPER"|||%shopUrl%Geschenke/Hangover-Pack-LITTLE-HELPER-1952-variant-1.html|%shopUrl%en/Gifts/Hangover-Set-LITTLE-HELPER-1952-variant-1.html|%shopUrl%out/pictures/generated/product/1/800_600_75/nopic.jpg|6|0|0|22|||8a142c3e4143562a5.46426637',
+                    '2024|2024|"Popcornschale PINK"|"Popcorn Bowl PINK"|||%shopUrl%Geschenke/Popcornschale-PINK.html|%shopUrl%en/Gifts/Popcorn-Bowl-PINK.html|%shopUrl%out/pictures/generated/product/1/800_600_75/nopic.jpg|11|0|0|7|||8a142c3e4143562a5.46426637'
                 ]
             ],
             'minimum stock' => [
@@ -101,8 +109,8 @@ abstract class AbstractExportDataInCSV extends \OxidEsales\TestingLibrary\UnitTe
                 'exportVars' => true,
                 [
                     'ID|SKU|Name|Name_var1|Description|Description_var1|ProductUrl|ProductUrl_var1|ImageUrl|Price|OldPrice|New|Stock|EAN|Brand|ProductCategory',
-                    '1952||"Hangover Pack LITTLE HELPER"|"Hangover Set LITTLE HELPER"|||%shopUrl%Geschenke/Hangover-Pack-LITTLE-HELPER.html|%shopUrl%en/Gifts/Hangover-Set-LITTLE-HELPER.html|%shopUrl%out/pictures/generated/product/1/540_340_75/nopic.jpg|6|0|0|22|||8a142c3e4143562a5.46426637',
-                    '1952|1952_variant_1|"Hangover Pack LITTLE HELPER"|"Hangover Set LITTLE HELPER"|||%shopUrl%Geschenke/Hangover-Pack-LITTLE-HELPER-1952-variant-1.html|%shopUrl%en/Gifts/Hangover-Set-LITTLE-HELPER-1952-variant-1.html|%shopUrl%out/pictures/generated/product/1/540_340_75/nopic.jpg|6|0|0|22|||8a142c3e4143562a5.46426637',
+                    '1952||"Hangover Pack LITTLE HELPER"|"Hangover Set LITTLE HELPER"|||%shopUrl%Geschenke/Hangover-Pack-LITTLE-HELPER.html|%shopUrl%en/Gifts/Hangover-Set-LITTLE-HELPER.html|%shopUrl%out/pictures/generated/product/1/800_600_75/nopic.jpg|6|0|0|22|||8a142c3e4143562a5.46426637',
+                    '1952|1952_variant_1|"Hangover Pack LITTLE HELPER"|"Hangover Set LITTLE HELPER"|||%shopUrl%Geschenke/Hangover-Pack-LITTLE-HELPER-1952-variant-1.html|%shopUrl%en/Gifts/Hangover-Set-LITTLE-HELPER-1952-variant-1.html|%shopUrl%out/pictures/generated/product/1/800_600_75/nopic.jpg|6|0|0|22|||8a142c3e4143562a5.46426637',
                 ]
             ],
             'no main variants' => [
@@ -112,7 +120,7 @@ abstract class AbstractExportDataInCSV extends \OxidEsales\TestingLibrary\UnitTe
                 'exportVars' => true,
                 [
                     'ID|SKU|Name|Name_var1|Description|Description_var1|ProductUrl|ProductUrl_var1|ImageUrl|Price|OldPrice|New|Stock|EAN|Brand|ProductCategory',
-                    '1952|1952_variant_1|"Hangover Pack LITTLE HELPER"|"Hangover Set LITTLE HELPER"|||%shopUrl%Geschenke/Hangover-Pack-LITTLE-HELPER-1952-variant-1.html|%shopUrl%en/Gifts/Hangover-Set-LITTLE-HELPER-1952-variant-1.html|%shopUrl%out/pictures/generated/product/1/540_340_75/nopic.jpg|6|0|0|22|||8a142c3e4143562a5.46426637',
+                    '1952|1952_variant_1|"Hangover Pack LITTLE HELPER"|"Hangover Set LITTLE HELPER"|||%shopUrl%Geschenke/Hangover-Pack-LITTLE-HELPER-1952-variant-1.html|%shopUrl%en/Gifts/Hangover-Set-LITTLE-HELPER-1952-variant-1.html|%shopUrl%out/pictures/generated/product/1/800_600_75/nopic.jpg|6|0|0|22|||8a142c3e4143562a5.46426637',
                 ]
             ],
             'no variants' => [
@@ -122,9 +130,9 @@ abstract class AbstractExportDataInCSV extends \OxidEsales\TestingLibrary\UnitTe
                 'exportVars' => false,
                 [
                     'ID|SKU|Name|Name_var1|Description|Description_var1|ProductUrl|ProductUrl_var1|ImageUrl|Price|OldPrice|New|Stock|EAN|Brand|ProductCategory',
-                    '1849|1849|"Bar ""Butler"" 6 BOTTLES"|"Bar ""Butler"" 6 BOTTLES"|||%shopUrl%Geschenke/Bar-Equipment/Bar-Butler-6-BOTTLES.html|%shopUrl%en/Gifts/Bar-Equipment/Bar-Butler-6-BOTTLES.html|%shopUrl%out/pictures/generated/product/1/540_340_75/nopic.jpg|89.9|94|0|6|||8a142c3e49b5a80c1.23676990^^8a142c3e4143562a5.46426637',
-                    '1952||"Hangover Pack LITTLE HELPER"|"Hangover Set LITTLE HELPER"|||%shopUrl%Geschenke/Hangover-Pack-LITTLE-HELPER.html|%shopUrl%en/Gifts/Hangover-Set-LITTLE-HELPER.html|%shopUrl%out/pictures/generated/product/1/540_340_75/nopic.jpg|6|0|0|22|||8a142c3e4143562a5.46426637',
-                    '2024|2024|"Popcornschale PINK"|"Popcorn Bowl PINK"|||%shopUrl%Geschenke/Popcornschale-PINK.html|%shopUrl%en/Gifts/Popcorn-Bowl-PINK.html|%shopUrl%out/pictures/generated/product/1/540_340_75/nopic.jpg|11|0|0|7|||8a142c3e4143562a5.46426637'
+                    '1849|1849|"Bar ""Butler"" 6 BOTTLES"|"Bar ""Butler"" 6 BOTTLES"|||%shopUrl%Geschenke/Bar-Equipment/Bar-Butler-6-BOTTLES.html|%shopUrl%en/Gifts/Bar-Equipment/Bar-Butler-6-BOTTLES.html|%shopUrl%out/pictures/generated/product/1/800_600_75/nopic.jpg|89.9|94|0|6|||8a142c3e49b5a80c1.23676990^^8a142c3e4143562a5.46426637',
+                    '1952||"Hangover Pack LITTLE HELPER"|"Hangover Set LITTLE HELPER"|||%shopUrl%Geschenke/Hangover-Pack-LITTLE-HELPER.html|%shopUrl%en/Gifts/Hangover-Set-LITTLE-HELPER.html|%shopUrl%out/pictures/generated/product/1/800_600_75/nopic.jpg|6|0|0|22|||8a142c3e4143562a5.46426637',
+                    '2024|2024|"Popcornschale PINK"|"Popcorn Bowl PINK"|||%shopUrl%Geschenke/Popcornschale-PINK.html|%shopUrl%en/Gifts/Popcorn-Bowl-PINK.html|%shopUrl%out/pictures/generated/product/1/800_600_75/nopic.jpg|11|0|0|7|||8a142c3e4143562a5.46426637'
                 ]
             ],
         ];
@@ -279,7 +287,7 @@ abstract class AbstractExportDataInCSV extends \OxidEsales\TestingLibrary\UnitTe
         Registry::getConfig()->setShopId($subShopId);
         $shopConfigurationDaoBridge->save($shopConfiguration);
 
-        $this->activateModule('oepersonalization');
+//        $this->activateModule('oepersonalization');
         $this->getConfig()->saveShopConfVar('arr','aCurrencies', [
             'EUR@ 1.00@ ,@ .@ €@ 2',
             'GBP@ 0.8565@ .@  @ £@ 2',
@@ -319,22 +327,10 @@ abstract class AbstractExportDataInCSV extends \OxidEsales\TestingLibrary\UnitTe
 
     public function activateModule($moduleId)
     {
-        $modulesDirectory = Registry::getConfig()->getModulesDir();
-        $moduleList = oxNew(\OxidEsales\Eshop\Core\Module\ModuleList::class);
-        $modules    = $moduleList->getModulesFromDir($modulesDirectory);
-        foreach ($modules as $moduleName => $module) {
-            if ($moduleName == $moduleId) {
-                $moduleCache     = oxNew(\OxidEsales\Eshop\Core\Module\ModuleCache::class, $module);
-                $moduleInstaller = oxNew(\OxidEsales\Eshop\Core\Module\ModuleInstaller::class, $moduleCache);
-                if ($module->isActive()) {
-                    $moduleInstaller->deactivate($module);
-                }
-
-                if (!$module->isActive()) {
-                    $moduleInstaller->activate($module);
-                }
-            }
-        }
+        $container = ContainerFactory::getInstance()->getContainer();
+        /** @var ModuleActivationBridgeInterface $moduleService */
+        $moduleService = $container->get(ModuleActivationBridgeInterface::class);
+        $moduleService->activate($moduleId, Registry::getConfig()->getShopId());
     }
 
     /**

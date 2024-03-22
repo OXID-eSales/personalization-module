@@ -6,6 +6,8 @@
 
 namespace OxidEsales\PersonalizationModule\Application\Component\Widget;
 
+use OxidEsales\Eshop\Core\Config;
+use OxidEsales\Eshop\Core\Registry;
 use OxidEsales\PersonalizationModule\Component\DemoAccountData;
 
 /**
@@ -38,5 +40,13 @@ class ArticleDetails extends ArticleDetails_parent
         }
 
         return $productId;
+    }
+
+    /**
+     * @deprecated
+     */
+    private function getConfig(): Config
+    {
+        return Registry::getConfig();
     }
 }

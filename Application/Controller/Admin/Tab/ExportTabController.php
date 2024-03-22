@@ -65,7 +65,8 @@ class ExportTabController extends ShopConfiguration
         $shouldExportVariants = (bool) Registry::getRequest()->getRequestEscapedParameter('blExportVars', false);
         $shouldExportBaseProducts = (bool) Registry::getRequest()->getRequestEscapedParameter('blExportMainVars', false);
         $minimumQuantityInStock = Registry::getRequest()->getRequestEscapedParameter('sExportMinStock', 0);
-        $relativeExportPath = Registry::getConfig()->getConfigParam('sOePersonalizationExportPath');
+        // TODO: Replace this hotfix with proper solution
+        $relativeExportPath = Registry::getConfig()->getShopConfVar('sOePersonalizationExportPath', 1, 'module:oepersonalization');
 
         try {
             $this->exporter->executeExport(

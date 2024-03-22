@@ -6,6 +6,8 @@
 
 namespace OxidEsales\PersonalizationModule\Application\Controller;
 
+use OxidEsales\Eshop\Core\Config;
+use OxidEsales\Eshop\Core\Registry;
 use OxidEsales\PersonalizationModule\Component\DemoAccountData;
 
 /**
@@ -24,5 +26,13 @@ class ThankYouController extends ThankYouController_parent
         }
 
         return $activeCategoryId;
+    }
+
+    /**
+     * @deprecated
+     */
+    private function getConfig(): Config
+    {
+        return Registry::getConfig();
     }
 }
