@@ -1,0 +1,87 @@
+{% include "headitem.html.twig" with {title: "GENERAL_ADMIN_TITLE"|translate, box: "list"} %}
+
+<script type="text/javascript">
+    if (parent.parent)
+    {   parent.parent.sShopTitle   = "{{ actshopobj.oxshops__oxname|addslashes|raw }}";
+        parent.parent.sMenuItem    = "{{ translate({ ident: "mxpersonalization" }) }}";
+        parent.parent.sMenuSubItem = "{{ translate({ ident: "tbcloepersonalizationwidgets" }) }}";
+        parent.parent.sWorkArea    = "{{ _act }}";
+        parent.parent.setTitle();
+    }
+</script>
+
+<script type="text/javascript">
+    <!--
+    window.onload = function ()
+    {
+        top.reloadEditFrame();
+        {% if updatelist == 1 %}
+        top.oxid.admin.updateList('{{ oxid }}');
+        {% endif %}
+    }
+    //-->
+</script>
+
+<form action="{{ oViewConf.getSelfLink()|raw }}" method="post">
+    {{ oViewConf.getHiddenSid()|raw }}
+    <input type="hidden" name="cl" value="{{ sClassMain }}">
+    <input type="hidden" name="fnc" value="save">
+    <h3>{{ translate({ ident: "SHOP_MODULE_GROUP_oepersonalization_start_page_widgets" }) }}</h3>
+    <div>
+        <input type=text  class="txt" style="width: 250px;" name="confstrs[sOePersonalizationWidgetIdStartPageBargainArticles]" value="{{ sOePersonalizationWidgetIdStartPageBargainArticles }}">
+        {{ translate({ ident: "SHOP_MODULE_sOePersonalizationWidgetIdStartPageBargainArticles" }) }}
+    </div>
+    <div>
+        <input type=text  class="txt" style="width: 250px;" name="confstrs[sOePersonalizationWidgetTemplateStartPageBargainArticles]" value="{{ sOePersonalizationWidgetTemplateStartPageBargainArticles }}">
+        {{ translate({ ident: "SHOP_MODULE_sOePersonalizationWidgetTemplateStartPageBargainArticles" }) }}
+    </div>
+    <br/>
+    <div>
+        <input type=text  class="txt" style="width: 250px;" name="confstrs[sOePersonalizationWidgetIdStartPageTopArticles]" value="{{ sOePersonalizationWidgetIdStartPageTopArticles }}">
+        {{ translate({ ident: "SHOP_MODULE_sOePersonalizationWidgetIdStartPageTopArticles" }) }}
+    </div>
+    <div>
+        <input type=text  class="txt" style="width: 250px;" name="confstrs[sOePersonalizationWidgetTemplateStartPageTopArticles]" value="{{ sOePersonalizationWidgetTemplateStartPageTopArticles }}">
+        {{ translate({ ident: "SHOP_MODULE_sOePersonalizationWidgetTemplateStartPageTopArticles" }) }}
+    </div>
+    <h3>{{ translate({ ident: "SHOP_MODULE_GROUP_oepersonalization_list_page_widgets" }) }}</h3>
+    <div>
+        <input type=text  class="txt" style="width: 250px;" name="confstrs[sOePersonalizationWidgetIdListPage]" value="{{ sOePersonalizationWidgetIdListPage }}">
+        {{ translate({ ident: "SHOP_MODULE_sOePersonalizationWidgetIdListPage" }) }}
+    </div>
+    <div>
+        <input type=text  class="txt" style="width: 250px;" name="confstrs[sOePersonalizationWidgetTemplateListPage]" value="{{ sOePersonalizationWidgetTemplateListPage }}">
+        {{ translate({ ident: "SHOP_MODULE_sOePersonalizationWidgetTemplateListPage" }) }}
+    </div>
+    <h3>{{ translate({ ident: "SHOP_MODULE_GROUP_oepersonalization_details_page_widgets" }) }}</h3>
+    <div>
+        <input type=text  class="txt" style="width: 250px;" name="confstrs[sOePersonalizationWidgetIdDetailsPage]" value="{{ sOePersonalizationWidgetIdDetailsPage }}">
+        {{ translate({ ident: "SHOP_MODULE_sOePersonalizationWidgetIdDetailsPage" }) }}
+    </div>
+    <div>
+        <input type=text  class="txt" style="width: 250px;" name="confstrs[sOePersonalizationWidgetTemplateDetailsPage]" value="{{ sOePersonalizationWidgetTemplateDetailsPage }}">
+        {{ translate({ ident: "SHOP_MODULE_sOePersonalizationWidgetTemplateDetailsPage" }) }}
+    </div>
+    <h3>{{ translate({ ident: "SHOP_MODULE_GROUP_oepersonalization_thank_you_page_widgets" }) }}</h3>
+    <div>
+        <input type=text  class="txt" style="width: 250px;" name="confstrs[sOePersonalizationWidgetIdThankYouPage]" value="{{ sOePersonalizationWidgetIdThankYouPage }}">
+        {{ translate({ ident: "SHOP_MODULE_sOePersonalizationWidgetIdThankYouPage" }) }}
+    </div>
+    <div>
+        <input type=text  class="txt" style="width: 250px;" name="confstrs[sOePersonalizationWidgetTemplateThankYouPage]" value="{{ sOePersonalizationWidgetTemplateThankYouPage }}">
+        {{ translate({ ident: "SHOP_MODULE_sOePersonalizationWidgetTemplateThankYouPage" }) }}
+    </div>
+    <br/>
+    <div>
+        <input type=hidden name="confbools[blOePersonalizationEnableWidgets]" value=false>
+        <input type=checkbox name="confbools[blOePersonalizationEnableWidgets]" value=true {% if (blOePersonalizationEnableWidgets) %}checked{% endif %}>
+        {{ translate({ ident: "SHOP_MODULE_blOePersonalizationEnableWidgets" }) }}
+    </div>
+    <br/>
+    <div>
+        <input type="submit" name="save" value="{{ translate({ ident: "GENERAL_SAVE" }) }}">
+    </div>
+</form>
+
+{% include "bottomitem.html.twig" %}
+

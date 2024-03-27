@@ -21,7 +21,7 @@ class ExportTabController extends ShopConfiguration
 {
     use ConfigurationTrait;
 
-    protected $_sThisTemplate = 'oepersonalization_export_tab.tpl';
+    protected $_sThisTemplate = '@oepersonalization/admin/export_tab';
 
     /**
      * @var bool

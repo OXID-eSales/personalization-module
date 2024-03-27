@@ -14,7 +14,7 @@
     <!--
     function changeEditBar( sLocation, sPos )
     {
-        parent.edit.location = '{{ oViewConf.getSelfLink()|raw }}&cl=' + sLocation;
+        parent.edit.location = '{{ oViewConf.getSelfLink()|replace({'&amp;': '&'})|raw }}&cl=' + sLocation;
 
         var oSearch = document.getElementById("search");
         oSearch.actedit.value = sPos;
@@ -41,7 +41,6 @@
     <input type="hidden" name="menu" value="{{ menu }}">
 </form>
 
-{% include "pagetabsnippet.html.twig" with { noOXIDCheck: true } %}
-{#{% include "pagetabsnippet.html.twig" %}#}
+{% include "pagetabsnippet.html.twig" with { noOXIDCheck: true, sEditAction: 'changeEditBar' } %}
 
 {% include "bottomitem.html.twig" %}

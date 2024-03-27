@@ -2,7 +2,7 @@
 
 <script type="text/javascript">
     if (parent.parent)
-    {   parent.parent.sShopTitle   = "{{ actshopobj.oxshops__oxname.getRawValue()|addslashes }}";
+    {   parent.parent.sShopTitle   = "{{ actshopobj.oxshops__oxname|addslashes|raw }}";
         parent.parent.sMenuItem    = "{{ translate({ ident: "mxpersonalization" }) }}";
         parent.parent.sMenuSubItem = "{{ translate({ ident: "tbcloepersonalizationgeneral" }) }}";
         parent.parent.sWorkArea    = "{{ _act }}";

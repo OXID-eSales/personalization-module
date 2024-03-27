@@ -27,7 +27,7 @@ class TrackingTabController extends ShopConfiguration
 
     const TRANSLATION_WHEN_FILE_IS_NOT_PRESENT = 'OEPERSONALIZATION_MESSAGE_FILE_IS_NOT_PRESENT';
 
-    protected $_sThisTemplate = 'oepersonalization_tracking_tab.tpl';
+    protected $_sThisTemplate = '@oepersonalization/admin/tracking_tab';
 
     /**
      * @var FileSystem

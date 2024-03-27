@@ -16,7 +16,7 @@ class WidgetsTabController extends ShopConfiguration
 {
     use ConfigurationTrait;
 
-    protected $_sThisTemplate = 'oepersonalization_widgets_tab.tpl';
+    protected $_sThisTemplate = '@oepersonalization/admin/widgets_tab';
 
     /**
      * @inheritdoc

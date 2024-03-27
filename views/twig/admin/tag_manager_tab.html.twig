@@ -1,0 +1,61 @@
+{% include "headitem.html.twig" with {title: "GENERAL_ADMIN_TITLE"|translate, box: "list"} %}
+
+<script type="text/javascript">
+    if (parent.parent)
+    {   parent.parent.sShopTitle   = "{{ actshopobj.oxshops__oxname|addslashes|raw }}";
+        parent.parent.sMenuItem    = "{{ translate({ ident: "mxpersonalization" }) }}";
+        parent.parent.sMenuSubItem = "{{ translate({ ident: "tbcloepersonalizationtagmanager" }) }}";
+        parent.parent.sWorkArea    = "{{ _act }}";
+        parent.parent.setTitle();
+    }
+</script>
+
+<script type="text/javascript">
+    <!--
+    window.onload = function ()
+    }
+        top.reloadEditFrame();
+        {% if updatelist == 1 %}
+        top.oxid.admin.updateList('{{ oxid }}');
+        {% endif %}
+    }
+    //-->
+</script>
+
+<br/>
+
+<div class="messagebox">
+    {% if oView.getTrackingScriptMessageIfEnabled() %}
+        {{ oView.getTrackingScriptMessageIfEnabled() }}
+    {% endif %}
+    {% if oView.getTrackingScriptMessageIfDisabled() %}
+        <p class="warning">
+            {{ oView.getTrackingScriptMessageIfDisabled() }}
+        </p>
+    {% endif %}
+</div>
+
+<form action="{{ oViewConf.getSelfLink()|raw }}" method="post" enctype="multipart/form-data">
+    {{ oViewConf.getHiddenSid()|raw }}
+    <input type="hidden" name="cl" value="{{ sClassMain }}">
+    <input type="hidden" name="fnc" value="upload">
+    <input type="file" name="file_to_upload">
+    <input type="submit" value="{{ translate({ ident: "OEPERSONALIZATION_UPLOAD_BUTTON_TITLE" }) }}">
+</form>
+<br>
+<form action="{{ oViewConf.getSelfLink()|raw }}" method="post">
+    {{ oViewConf.getHiddenSid()|raw }}
+    <input type="hidden" name="cl" value="{{ sClassMain }}">
+    <input type="hidden" name="fnc" value="save">
+    <div>
+        <input type=hidden name="confbools[blOePersonalizationTagManager]" value=false>
+        <input type="checkbox" name="confbools[blOePersonalizationTagManager]" value=true {% if (blOePersonalizationTagManager) %}checked{% endif %}>
+        {{ translate({ ident: "SHOP_MODULE_blOePersonalizationEnableTagManager" }) }}
+    </div>
+    <br/>
+    <div>
+        <input type="submit" value="{{ translate({ ident: "GENERAL_SAVE" }) }}">
+    </div>
+</form>
+
+{% include "bottomitem.html.twig" %}

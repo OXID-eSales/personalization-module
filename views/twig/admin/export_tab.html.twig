@@ -1,0 +1,76 @@
+{% include "headitem.html.twig" with {title: "GENERAL_ADMIN_TITLE"|translate, box: "list"} %}
+
+<script type="text/javascript">
+    if (parent.parent)
+    {   parent.parent.sShopTitle   = "{{ actshopobj.oxshops__oxname|addslashes|raw }}";
+        parent.parent.sMenuItem    = "{{ translate({ ident: "mxpersonalization" }) }}";
+        parent.parent.sMenuSubItem = "{{ translate({ ident: "tbcloepersonalizationexport" }) }}";
+        parent.parent.sWorkArea    = "{{ _act }}";
+        parent.parent.setTitle();
+    }
+</script>
+
+<script type="text/javascript">
+    <!--
+    window.onload = function ()
+    {
+        top.reloadEditFrame();
+        {% if updatelist == 1 %}
+        top.oxid.admin.updateList('{{ oxid }}');
+        {% endif %}
+    }
+    //-->
+</script>
+
+<br/>
+
+{% if oView.isExportSuccessful() %}
+    <div class="messagebox">
+        {{ translate({ ident: "OEPERSONALIZATION_EXPORT_SUCCESS" }) }}
+    </div>
+{% endif %}
+
+<form action="{{ oViewConf.getSelfLink()|raw }}" method="post">
+    {{ oViewConf.getHiddenSid()|raw }}
+    <input type="hidden" name="cl" value="{{ sClassMain }}">
+    <input type="hidden" name="fnc" value="save">
+    <div>
+        <input type=text  class="txt" style="width: 250px;" name="confstrs[sOePersonalizationExportPath]" value="{{ oViewConf.oePersonlalizationGetExportPath() }}">
+        {{ translate({ ident: "SHOP_MODULE_sOePersonalizationExportPath" }) }}
+    </div>
+    <br/>
+    <div>
+        <input type="submit" name="save" value="{{ translate({ ident: "GENERAL_SAVE" }) }}">
+    </div>
+</form>
+
+<form action="{{ oViewConf.getSelfLink()|raw }}" method="post">
+    {{ oViewConf.getHiddenSid()|raw }}
+    <input type="hidden" name="cl" value="{{ sClassMain }}">
+    <input type="hidden" name="fnc" value="executeExport">
+    <div>
+        <div>
+            <div>{{ translate({ ident: "GENERAL_CATEGORYSELECT" }) }}</div>
+            <select name="acat[]" size="20" multiple style="width: 210px;">
+                {% for category in oView.getCategoryList() %}
+                    <option value="{{ category.getId() }}">{{ category.oxcategories__oxtitle.value }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <input type="checkbox" name="blExportVars" value="true" checked> {{ translate({ ident: "OEPERSONALIZATION_EXPOSTVARS" }) }}
+        </div>
+        <div>
+            <input type="checkbox" name="blExportMainVars" value="true" checked> {{ translate({ ident: "OEPERSONALIZATION_EXPORTMAINVARS" }) }}
+        </div>
+        <div>
+            <input type="text" size="10" maxlength="10" name="sExportMinStock" value="1"> {{ translate({ ident: "OEPERSONALIZATION_EXPORTMINSTOCK" }) }}
+        </div>
+    </div>
+    <br/>
+    <div>
+        <input type="submit" value="{{ translate({ ident: "OEPERSONALIZATION_EXPORT" }) }}">
+    </div>
+</form>
+
+{% include "bottomitem.html.twig" %}
