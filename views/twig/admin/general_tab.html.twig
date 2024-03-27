@@ -1,0 +1,64 @@
+{% include "headitem.html.twig" with {title: "GENERAL_ADMIN_TITLE"|translate, box: "list"} %}
+
+<script type="text/javascript">
+    if (parent.parent)
+    {   parent.parent.sShopTitle   = "{{ actshopobj.oxshops__oxname.getRawValue()|addslashes }}";
+        parent.parent.sMenuItem    = "{{ translate({ ident: "mxpersonalization" }) }}";
+        parent.parent.sMenuSubItem = "{{ translate({ ident: "tbcloepersonalizationgeneral" }) }}";
+        parent.parent.sWorkArea    = "{{ _act }}";
+        parent.parent.setTitle();
+    }
+</script>
+
+<script type="text/javascript">
+    <!--
+    function changeEditBar( sLocation, sPos )
+    {
+        parent.edit.location = '{{ oViewConf.getSelfLink()|raw }}&cl=' + sLocation;
+
+        var oSearch = document.getElementById("search");
+        oSearch.actedit.value = sPos;
+        oSearch.submit();
+    }
+    window.onload = function ()
+    {
+        top.reloadEditFrame();
+        {% if updatelist == 1 %}
+        top.oxid.admin.updateList('{{ oxid }}');
+        {% endif %}
+    }
+    //-->
+</script>
+
+<br/>
+
+<form action="{{ oViewConf.getSelfLink()|raw }}" method="post">
+    {{ oViewConf.getHiddenSid()|raw }}
+    <input type="hidden" name="cl" value="{{ sClassMain }}">
+    <input type="hidden" name="fnc" value="save">
+    <div>
+        <input type=text  class="txt" style="width: 250px;" name="confstrs[sOePersonalizationAccountId]" value="{{ sOePersonalizationAccountId }}">
+        {{ translate({ ident: "SHOP_MODULE_sOePersonalizationAccountId" }) }}
+    </div>
+    <br/>
+    <div>
+        <input type=text  class="txt" style="width: 250px;" name="confstrs[oePersonalizationContainerId]" value="{{ oePersonalizationContainerId }}">
+        {{ translate({ ident: "SHOP_MODULE_oePersonalizationContainerId" }) }}
+    </div>
+    <br/>
+    <div>
+        <input type=hidden name="confbools[blOePersonalizationUseDemoAccount]" value=false>
+        <input type=checkbox name="confbools[blOePersonalizationUseDemoAccount]" value=true {% if (blOePersonalizationUseDemoAccount) %}checked{% endif %}>
+        {{ translate({ ident: "SHOP_MODULE_blOePersonalizationUseDemoAccount" }) }}
+    </div>
+    <br/>
+    <div>
+        <input type="submit" name="save" value="{{ translate({ ident: "GENERAL_SAVE" }) }}">
+    </div>
+</form>
+
+{% include "@oepersonalization/admin/econda_products.html.twig" %}
+
+{% include "pagetabsnippet.html.twig" with {noOXIDCheck: "true", sEditAction: "changeEditBar"} %}
+
+{% include "bottomitem.html.twig" %}

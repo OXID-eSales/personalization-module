@@ -13,7 +13,7 @@ use OxidEsales\Eshop\Application\Controller\Admin\AdminListController;
  */
 class TabsListController extends AdminListController
 {
-    protected $_sThisTemplate = 'oepersonalization_general.tpl';
+    protected $_sThisTemplate = '@oepersonalization/admin/container/general';
 
     /**
      * @inheritdoc

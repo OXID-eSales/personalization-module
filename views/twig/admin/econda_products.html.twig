@@ -1,0 +1,28 @@
+<hr>
+
+<section>
+    <h1>{{ translate({ ident: "OEPERSONALIZATION_ANALYTICS_HEADING" }) }}</h1>
+    <ul>
+        {% for item in 1..6 %}
+            <li>{{ translate({ ident: "OEPERSONALIZATION_ANALYTICS_ITEM_" ~ item }) }}</li>
+        {% endfor %}
+    </ul>
+</section>
+
+<section>
+    <h1>{{ translate({ ident: "OEPERSONALIZATION_CROSS_SELL_HEADING" }) }}</h1>
+    <ul>
+        {% for item in 1..4 %}
+            <li>{{ translate({ ident: "OEPERSONALIZATION_CROSS_SELL_ITEM_" ~ item }) }}</li>
+        {% endfor %}
+    </ul>
+</section>
+
+<section>
+    <h1>{{ translate({ ident: "OEPERSONALIZATION_RELATIONSHIP_PLATFORM_HEADING" }) }}</h1>
+    <ul>
+        {% for item in 1..5 %}
+            <li>{{ translate({ ident: "OEPERSONALIZATION_RELATIONSHIP_PLATFORM_ITEM_" ~ item }) }}</li>
+        {% endfor %}
+    </ul>
+</section>

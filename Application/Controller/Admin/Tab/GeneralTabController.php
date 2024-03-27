@@ -16,7 +16,7 @@ class GeneralTabController extends ShopConfiguration
 {
     use ConfigurationTrait;
 
-    protected $_sThisTemplate = 'oepersonalization_general_tab.tpl';
+    protected $_sThisTemplate = '@oepersonalization/admin/general_tab';
 
     /**
      * @inheritdoc
